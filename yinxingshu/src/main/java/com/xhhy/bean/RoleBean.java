@@ -4,26 +4,24 @@ import java.io.Serializable;
 
 public class RoleBean implements Serializable {
 
-	private Integer roleId;// Ö°Î»id
-	private Integer deptId;// ²¿ÃÅid
-	private String roleCode;// Ö°Î»±àºÅ
-	private String roleName;// Ö°Î»Ãû³Æ
-	private Integer roleKind;// Ö°Î»·ÖÀà
-	private Integer roleNum;// ÕĞÆ¸ÈË”µ
-	private String startTime;// µÇ¼ÇÊ±¼ä
-	private String eddTime;// ½ØÖ¹Ê±¼ä
-	private String roleIntro;// Ö°Î»ÉèÖÃÖĞµÄÖ°Î»ÃèÊö
-	private String roleRemark;// Ö°Î»ÃèÊö
-	private String roleRequired;// ÂšÎ»ÒªÇó
-	private Integer roleState;// Ö°Î»×´Ì¬
-	private Integer roleDel;// Ö°Î»µÄÉ¾³ı×´Ì¬
+	private Integer roleId;// èŒä½id
+	private Integer deptId;// éƒ¨é—¨id
+	private String roleCode;// èŒä½ç¼–å·
+	private String roleName;// èŒä½åç§°
+	private Integer roleKind;// èŒä½åˆ†ç±»
+	private Integer roleNum;// æ‹›è˜äººæ•¸
+	private String startTime;// ç™»è®°æ—¶é—´
+	private String eddTime;// æˆªæ­¢æ—¶é—´
+	private String roleIntro;// èŒä½è®¾ç½®ä¸­çš„èŒä½æè¿°
+	private String roleRemark;// èŒä½æè¿°
+	private String roleRequired;// è·ä½è¦æ±‚
+	private Integer roleState;// èŒä½çŠ¶æ€
+	private Integer roleDel;// èŒä½çš„åˆ é™¤çŠ¶æ€
 
 	public RoleBean() {
-		super();
+		super();	
 		// TODO Auto-generated constructor stub
 	}
-
-	
 
 	public RoleBean(Integer roleId, Integer deptId, String roleCode, String roleName, Integer roleKind, Integer roleNum,
 			String startTime, String eddTime, String roleIntro, String roleRemark, String roleRequired,
@@ -43,8 +41,6 @@ public class RoleBean implements Serializable {
 		this.roleState = roleState;
 		this.roleDel = roleDel;
 	}
-
-
 
 	public String getRoleRequired() {
 		return roleRequired;
@@ -93,8 +89,6 @@ public class RoleBean implements Serializable {
 	public void setRoleName(String roleName) {
 		this.roleName = roleName;
 	}
-
-	
 
 	public Integer getRoleKind() {
 		return roleKind;
@@ -152,8 +146,6 @@ public class RoleBean implements Serializable {
 		this.roleDel = roleDel;
 	}
 
-
-
 	@Override
 	public String toString() {
 		return "RoleBean [roleId=" + roleId + ", deptId=" + deptId + ", roleCode=" + roleCode + ", roleName=" + roleName
@@ -161,7 +153,5 @@ public class RoleBean implements Serializable {
 				+ eddTime + ", roleIntro=" + roleIntro + ", roleRemark=" + roleRemark + ", roleRequired=" + roleRequired
 				+ ", roleState=" + roleState + ", roleDel=" + roleDel + "]";
 	}
-
-	
 
 }

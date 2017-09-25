@@ -13,7 +13,7 @@
 	<head>
 		<title>职位发布登记</title>
 		<meta http-equiv="content-type" content="text/html;charset=utf-8">
-		<link href="../../css/mine.css" type="text/css" rel="stylesheet">
+		<link href="css/mine.css" type="text/css" rel="stylesheet">
 	</head>
 
 	<body>
@@ -29,7 +29,7 @@
 		<div></div>
 
 		<div style="font-size: 13px;margin: 10px 5px">
-			<form action="list.html" method="post" enctype="multipart/form-data">
+			<form action="../../rec/add" method="post" enctype="multipart/form-data">
 				<table border="1" width="100%" class="table_a">
 					<tr>
 						<td width="120px;">部门<span style="color:red">*</span>：</td>
@@ -56,12 +56,12 @@
 					<tr>
 						<td>招聘人数<span style="color:red">*</span>：</td>
 						<td>
-							<input type="text" name="" value="5" /></td>
+							<input type="text" name="roleNum" value="" /></td>
 					</tr>
 					<tr>
 						<td>职位名称<span style="color:red">*</span>：</td>
 						<td>
-							<select>
+							<select name="roleName">
 								<option>-请选择-</option>
 								<option>高级工程师</option>
 								<option>研发工程师</option>
@@ -71,41 +71,39 @@
 					<tr>
 						<td>职位编码<span style="color:red">*</span>：</td>
 						<td>
-							<input type="text" readonly name="positionnum" value="JS001" />
+							<input type="text"  name="roleCode" value="YXS-" />
 						</td>
 					</tr>
 					<tr>
 						<td>职位分类<span style="color:red">*</span>：</td>
 						<td>
-							<input type="text" readonly name="positioncategory" value="技术" />
+							<input type="text" readonly name="roleKind" value="" />
 						</td>
 					</tr>
 					<tr>
 						<td>登记人<span style="color:red">*</span>：</td>
 						<td>
-							<input type="text" readonly name="f_goods_image" value="当前登录人" />
+							<input type="text" readonly name="userId" value="当前登录人" />
 						</td>
 					</tr>
 					<tr>
 						<td>登记时间<span style="color:red">*</span>：</td>
 						<td>
-							<input type="text" name="f_goods_image" readonly value="2015-10-28" />
+							<input type="text" name="startTime" readonly value="" />
 						</td>
 					</tr>
 					<tr>
 						<td>截止时间<span style="color:red">*</span>：</td>
 						<td>
-							<input type="text" name="f_goods_image" readonly value="2015-11-28" />
+							<input type="text" name="eddTime" readonly value="" />
 						</td>
 					</tr>
 
 					<tr>
 						<td>职位描述<span style="color:red">*</span>：</td>
 						<td>
-							<textarea cols="70" rows="12">  
-					 1、负责指导java产品技术方向，研发java教育产品。
-					   2、为java产品提供专家级的技术支持。
-					 
+							<textarea cols="70" rows="12" name="roleRemark">  
+					
 					   </textarea>
 						</td>
 					</tr>
@@ -113,7 +111,7 @@
 					<tr>
 						<td>招聘要求<span style="color:red">*</span>：</td>
 						<td>
-							<textarea cols="70" rows="12"> 
+							<textarea cols="70" rows="12" name="roleRequired"> 
 					  技能要求：
 				1、至少5年以上大型B/S架构软件开发经验。
 				2、精通SSH，有2年以上的使用经验持。

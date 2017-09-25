@@ -17,12 +17,47 @@
 		<result column="role_del" property="roleDel" />
 	</resultMap>
 	<sql id="selectRole">
-	 select "ROLE_ID","DEPT_ID","ROLE_CODE","ROLE_NAME","ROLE_KIND","ROLE_NUM","STARTTIME","EDDTIME","ROLE_INTRO","ROLE_REMARK","ROLE_REQUIRED","ROLE_STATE","ROLE_ID" from role_tb
+		select
+		ROLE_ID,DEPT_ID,ROLE_CODE,ROLE_NAME,ROLE_KIND,ROLE_NUM,STARTTIME,EDDTIME,ROLE_INTRO,ROLE_REMARK,ROLE_REQUIRED,ROLE_STATE,ROLE_DEL
+		from role_tb
+		where role_del = 0
 	</sql>
 	<select id="getRoles" resultMap="myrole">
-	    <include refid="selectRole"/>
-	   <!--  <trim prefix="where" prefixOverrides="and">
-	       <if test="roleDel==0">role_id=#{roleId}</if>
-	    </trim> -->
+		<include refid="selectRole" />
 	</select>
+	<select id="getRole" resultMap="myrole">
+		<include refid="selectRole" />
+		and role_id = #{roleId}
+	</select>
+	<select id="pupdateRole" resultMap="myrole">
+		<include refid="selectRole" />
+		and role_id = #{roleId}
+	</select>
+	<update id="updateRole">
+		<if test="roleId!=0">
+			update role_tb
+			<trim prefix="set" suffixOverrides=",">
+				<if test="roleNum!=0">
+					role_num=#{roleNum},
+				</if>
+				<if test="roleRemark!=null and roleRemark!=&quot;&quot;">
+					role_remark=#{roleRemark},
+				</if>
+				<if test="roleRequired!=null and roleRequired!=&quot;&quot;">
+					role_required=#{roleRequired},
+				</if>
+			</trim>
+			where role_id=#{roleId}
+		</if>
+	</update>
+
+	<select id="paddRole">
+	     <include refid="selectRole"/>
+	</select>
+
+	<insert id="addRole">
+		insert into
+		role_tb(ROLE_ID,DEPT_ID,ROLE_CODE,ROLE_NAME,STARTTIME,EDDTIME,ROLE_INTRO,ROLE_REMARK,ROLE_REQUIRED,ROLE_STATE,ROLE_DEL,ROLE_NUM)
+		values(#{roleId},#{deptId},#{roleCode},#{roleName},#{roleKind},#{startTime},#{eddTime},#{roleIntro},#{roleRemark},#{roleRequired},#{roleState},#{roleDel},#{roleNum})
+	</insert>
 </mapper>

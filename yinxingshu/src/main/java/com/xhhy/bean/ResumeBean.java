@@ -3,31 +3,31 @@ package com.xhhy.bean;
 import java.io.Serializable;
 
 public class ResumeBean implements Serializable {
-	private Integer resumeId; // ¼òÀúId Ö÷¼ü
-	private Integer userId; // Ö°Ô±Id Íâ¼ü
-	private String name; // Ö°Ô±ĞÕÃû
-	private Integer resumeSex; // Ö°Ô±ĞÔ±ğ
-	private String resumeEmail; // Ö°Ô±email
-	private String resumePhone; // Ö°Ô±µç»°
-	private String localAddress; // »§¿ÚËùÔÚµØ
-	private String homeAddress; // ×¡Ö·
-	private String political; // ÕşÖÎÃæÃ²
-	private String cardId; // ¼òÀúµÄÉí·İÖ¤ºÅ
-	private String salaryRequire; // Ğ½×ÊÒªÇó
-	private String graduateSchool; // ±ÏÒµÔºĞ£
-	private Integer education; // Ñ§Àú
-	private String major; // ×¨Òµ
-	private Integer jobState;// ÊÇ·ñÔÚÖ° 0:ÔÚÖ°£» 1:ÀëÖ° £»
-	private Integer freshStudent; // ÊÇ·ñÓ¦½ìÉú 0:ÊÇ£» 1:·ñ£»
-	private Integer workYear; // ¹¤×÷Ê±¼ä
-	private String personResume; // ¸öÈËÂÄÀú
-	private String personFile; // ¼ÒÍ¥¹ØÏµĞÅÏ¢
-	private Integer recommendState; // ÍÆ¼ö×´Ì¬ 0:ÍÆ¼ö£» 1:²»ÍÆ¼ö
-	private String recommendTime; // ÍÆ¼öÊ±¼ä
-	private String recommendIdea; // ÍÆ¼öÒâ¼ûF
-	private String interviewResult; // Â¼ÓÃ½á¹û
-	private String interviewTime; // ÃæÊÔÊ±¼ä
-	private String resolutionTime; // ¾öÒéÊ±¼ä
+	private Integer resumeId; // ç®€å†Id ä¸»é”®
+	private Integer userId; // èŒå‘˜Id å¤–é”®
+	private String name; // èŒå‘˜å§“å
+	private Integer resumeSex; // èŒå‘˜æ€§åˆ«
+	private String resumeEmail; // èŒå‘˜email
+	private String resumePhone; // èŒå‘˜ç”µè¯
+	private String localAddress; // æˆ·å£æ‰€åœ¨åœ°
+	private String homeAddress; // ä½å€
+	private String political; // æ”¿æ²»é¢è²Œ
+	private String cardId; // ç®€å†çš„èº«ä»½è¯å·
+	private String salaryRequire; // è–ªèµ„è¦æ±‚
+	private String graduateSchool; // æ¯•ä¸šé™¢æ ¡
+	private Integer education; // å­¦å†
+	private String major; // ä¸“ä¸š
+	private Integer jobState;// æ˜¯å¦åœ¨èŒ 0:åœ¨èŒï¼› 1:ç¦»èŒ ï¼›
+	private Integer freshStudent; // æ˜¯å¦åº”å±Šç”Ÿ 0:æ˜¯ï¼› 1:å¦ï¼›
+	private Integer workYear; // å·¥ä½œæ—¶é—´
+	private String personResume; // ä¸ªäººå±¥å†
+	private String personFile; // å®¶åº­å…³ç³»ä¿¡æ¯
+	private Integer recommendState; // æ¨èçŠ¶æ€ 0:æ¨èï¼› 1:ä¸æ¨è
+	private String recommendTime; // æ¨èæ—¶é—´
+	private String recommendIdea; // æ¨èæ„è§F
+	private String interviewResult; // å½•ç”¨ç»“æœ
+	private String interviewTime; // é¢è¯•æ—¶é—´
+	private String resolutionTime; // å†³è®®æ—¶é—´
 	
 	
 	

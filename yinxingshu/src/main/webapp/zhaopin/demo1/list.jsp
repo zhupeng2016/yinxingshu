@@ -14,7 +14,7 @@
 
         <title>会员列表</title>
 
-        <link href="../../css/mine.css" type="text/css" rel="stylesheet" />
+        <link href="css/mine.css" type="text/css" rel="stylesheet" />
     </head>
     <body>
         <style>
@@ -24,7 +24,7 @@
             <span>
                 <span style="float: left;">当前位置是：招聘管理-》职位发布管理</span>
                  <span style="float: right; margin-right: 8px; font-weight: bold;">
-                    <a style="text-decoration: none;" href="add.html">【添加】</a>
+                    <a style="text-decoration: none;" href="padd">【添加】</a>
                 </span>
             </span>
         </div>
@@ -68,17 +68,17 @@
 						<td width="40px;">截止日期</td>						
                         <td align="center" width="70px;">操作</td>
                     </tr>
-                    <c:forEach items="${list }" var="l">
+                    <c:forEach items="${list }" var="roleList">
                     <tr id="product1">
-                        <td>${l.roleCode }</td>
-                        <td><a href="view.html">${l.roleName }</a></td>
-                        <c:if test="${l.roleKind==0 }"><td>管理</td></c:if>
-						<c:if test="${l.roleKind==1 }"><td>技术</td></c:if>
+                        <td>${roleList.roleCode }</td>
+                        <td><a href="view?roleId=${roleList.roleId }">${roleList.roleName }</a></td>
+                        <c:if test="${roleList.roleKind==0 }"><td>管理</td></c:if>
+						<c:if test="${roleList.roleKind==1 }"><td>技术</td></c:if>
                         <td>产品设计中心</td> 
-						<td>${l.roleNum }</td> 						
-                        <td>${l.startTime }</td>
-						<td>${l.eddTime }</td>
-                        <td><a href="edit.html">变更</a> &nbsp;&nbsp;<a href="#">删除</a> </td>                        
+						<td>${roleList.roleNum }</td> 						
+                        <td>${roleList.startTime }</td>
+						<td>${roleList.eddTime }</td>
+                        <td><a href="viewtwo?roleId=${roleList.roleId }">变更</a> &nbsp;&nbsp;<a href="#">删除</a> </td>                        
                     </tr> 
                     </c:forEach>
 					 <!-- <tr id="product1">
