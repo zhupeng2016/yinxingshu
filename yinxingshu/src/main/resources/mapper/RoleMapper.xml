@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xhhy.dao.RoleDao">
+	<cache type="org.mybatis.caches.ehcache.EhcacheCache" />
+	<resultMap id="myrole" type="com.xhhy.bean.RoleBean">
+		<id column="role_id" property="roleId" />
+		<result column="dept_id" property="deptId" />
+		<result column="role_code" property="roleCode" />
+		<result column="role_name" property="roleName" />
+		<result column="role_kind" property="roleKind" />
+		<result column="starttime" property="startTime" />
+		<result column="eddtime" property="eddTime" />
+		<result column="role_intro" property="roleIntro" />
+		<result column="role_remark" property="roleRemark" />
+		<result column="role_required" property="roleRequired" />
+		<result column="role_state" property="roleState" />
+		<result column="role_del" property="roleDel" />
+	</resultMap>
+	<sql id="selectRole">
+	 select "ROLE_ID","DEPT_ID","ROLE_CODE","ROLE_NAME","ROLE_KIND","ROLE_NUM","STARTTIME","EDDTIME","ROLE_INTRO","ROLE_REMARK","ROLE_REQUIRED","ROLE_STATE","ROLE_ID" from role_tb
+	</sql>
+	<select id="getRoles" resultMap="myrole">
+	    <include refid="selectRole"/>
+	   <!--  <trim prefix="where" prefixOverrides="and">
+	       <if test="roleDel==0">role_id=#{roleId}</if>
+	    </trim> -->
+	</select>
+</mapper>

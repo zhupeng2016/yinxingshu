@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xhhy.dao.SalaryManagerDao">
+<!-- 数据库列名和bean的属性名称不相同  所以配置resultMap -->
+<resultMap type="com.xhhy.bean.SalaryBean" id="Salary">
+	<id column="SALARY_ID" jdbcType="INTEGER" property="salaryId"/>
+	<result column="SALARY_CODE" jdbcType="VARCHAR" property="salaryCode"/>
+	<result column="SALARY_NAME" jdbcType="VARCHAR" property="salaryName"/>
+	<result column="SALARY_MAKER" jdbcType="VARCHAR" property="salaryMaker"/>
+	<result column="SALARY_REGISTER" jdbcType="VARCHAR" property="salaryRegister"/>
+	<result column="REGISTER_TIME" jdbcType="DATE" property="registerTime"/>
+	<result column="BASE_PAY" jdbcType="VARCHAR" property="basePay"/>
+	<result column="ADD_PAY" jdbcType="VARCHAR" property="addPay"/>
+	<result column="TRAFFIC_PAY" jdbcType="VARCHAR" property="trafficPay"/>
+	<result column="PHONE_PAY" jdbcType="VARCHAR" property="phonePay"/>
+	<result column="FOOD_PAY" jdbcType="VARCHAR" property="foodPay"/>
+	<result column="HOUSE_PAY" jdbcType="VARCHAR" property="housePay"/>
+	<result column="AWAY_PAY" jdbcType="VARCHAR" property="awayPay"/>
+	<result column="OVERTIME_PAY" jdbcType="VARCHAR" property="overtimePay"/>
+	<result column="SALARY_REMARK" jdbcType="VARCHAR" property="salaryRemark"/>
+	<result column="SALARY_STATE" jdbcType="INTEGER" property="salaryState"/>
+	<result column="SALARY_DEL" jdbcType="INTEGER" property="salaryDel"/>
+	<result column="SALARY_2" jdbcType="VARCHAR" property="salary2"/>
+	<result column="SALARY_3" jdbcType="VARCHAR" property="salary3"/>
+	<result column="SALARY_4" jdbcType="VARCHAR" property="salary4"/>
+	
+</resultMap>
+	<select id="findAll" resultMap="Salary" >
+		select * from (select rownum rn,SALARY_TB.* from SALARY_TB) sa where rn>3 and rn<![CDATA[<=]]>10 and SA.SALARY_DEL=1
+	</select>
+</mapper>
