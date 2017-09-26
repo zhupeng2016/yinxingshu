@@ -16,14 +16,14 @@ import com.xhhy.service.DeptService;
 
 @RequestMapping("/dept")
 @Controller
-@SessionAttributes({"deptlist"})
+@SessionAttributes({"deptlist","msg"})
 public class DeptController {
 	
 	@Autowired
 	private DeptService ds;
 	
 	
-	@RequestMapping("/deptlist")
+	@RequestMapping("/deptList")
 	public String showDept(Model m){
 		
 		List<DeptBean> deptlist=ds.getAllDept();
@@ -34,16 +34,40 @@ public class DeptController {
 	@RequestMapping("/add")
 	public String addDept(Model m,DeptBean db){
 		m.addAttribute("db",db);
-		ds.addDept(db);
-		return "deptlist";
+		if(ds.addDept(db)){
+			m.addAttribute("msg","添加成功。");
+			}
+		return "deptList";
 	}
 
 	@RequestMapping("/showDept/{deptId}")
 	public String showDept(Model m,@PathVariable("deptId")int deptId){
 		DeptBean db=ds.getDeptById(deptId);
 		m.addAttribute("db",db);
-		return "resource/demo1/view.html";
+		return "/resource/demo1/view.jsp";
 	}
 	
+	@RequestMapping("/delete/{deptId}")
+	public String deleteDept(Model m,@PathVariable("deptId")int deptId){
+		if(ds.deleteDeptById(deptId)){
+			m.addAttribute("msg","删除成功。");
+		}
+		return "/dept/deptList";
+	}
 	
+	@RequestMapping("/pupdate/{deptId}")
+	public String pupdateDept(Model m,@PathVariable("deptId")int deptId){
+		DeptBean db=ds.getDeptById(deptId);
+		m.addAttribute("db",db);
+		return "/resource/demo1/update.jsp";
+	}
+	
+	@RequestMapping("/update/{deptId}")
+	public String updateDept(Model m,@PathVariable("deptId")int deptId,@RequestParam("db")DeptBean db){
+		db.setDeptId(deptId);
+		if(ds.updateDept(db)){
+			m.addAttribute("msg","修改成功。");
+		}
+		return "/dept/deptList";
+	}
 }
