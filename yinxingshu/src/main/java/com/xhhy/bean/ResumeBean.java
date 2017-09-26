@@ -24,7 +24,7 @@ public class ResumeBean implements Serializable {
 	private String personFile; // 家庭关系信息
 	private Integer recommendState; // 推荐状态 0:推荐； 1:不推荐
 	private String recommendTime; // 推荐时间
-	private String recommendIdea; // 推荐意见F
+	private String recommendIdea; // 推荐意见
 	private String interviewResult; // 录用结果
 	private String interviewTime; // 面试时间
 	private String resolutionTime; // 决议时间

@@ -26,8 +26,8 @@ public interface RoleService {
 
 	roleRequired);
 
-	//预添加
-	public RoleBean paddRole();
+	/*//预添加
+	public List<RoleBean> paddRole();*/
 	
 	
 	//添加职员发布数据

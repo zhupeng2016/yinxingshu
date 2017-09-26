@@ -1,11 +1,15 @@
 package com.xhhy.controller;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.xhhy.bean.DeptBean;
 import com.xhhy.bean.RoleBean;
+import com.xhhy.service.DeptService;
 import com.xhhy.service.RoleService;
 
 @Controller
@@ -15,9 +19,16 @@ public class RoleController {
 	//展现职位发布列表
 	@Autowired
 	private RoleService rs;
+	@Autowired
+	private DeptService ds;
+	
+	
 	@RequestMapping("/demo1")
 	public String getRoles(Model m){
 		List<RoleBean> roleList=rs.getRoles();
+		for (RoleBean roleBean : roleList) {
+			System.out.println(roleBean.toString()+"----");
+		}
 		m.addAttribute("list", roleList);
 		return "/zhaopin/demo1/list.jsp";
 	}
@@ -56,23 +67,24 @@ public class RoleController {
     //预添加
     @RequestMapping("/padd")
     public String paddRole(Model m){
-    	RoleBean role=rs.paddRole();
+    	List<DeptBean> role=ds.getAllDept();
+    	for (DeptBean d : role) {
+			System.out.println(d.toString());
+		}
     	m.addAttribute("role", role);
     	return "/zhaopin/demo1/add.jsp";
     }
     
     
     
-    //添加职位发布信息
     @RequestMapping("/add")
-    public String addRole(RoleBean role,Model m){
-    	role.setRoleId(1);
-    	Boolean is=rs.addRole(role);
-        if(!is){
-        	m.addAttribute("role", role);
-        	return "/zhaopin/demo1/add.jsp";
-        }else{
-        	return "rec/demo1";
-        }
-    }
+	public String addRole(RoleBean role,Model m){
+	    Boolean is=rs.addRole(role);
+	    if(!is){
+	    	m.addAttribute("role", role);
+	    	return "/zhaopin/demo1/add.jsp";
+	    }else{
+	    	return "rec/demo1";
+	    }
+	}
 }

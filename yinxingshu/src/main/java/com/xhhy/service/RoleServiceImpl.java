@@ -49,12 +49,12 @@ public class RoleServiceImpl implements RoleService {
 	}
 
 	
-	//预添加
+	/*//预添加
 	@Override
-	public RoleBean paddRole() {
+	public List<RoleBean> paddRole() {
 		// TODO Auto-generated method stub
 		return rd.paddRole();
-	}
+	}*/
 	
 	
 	//添加职位信息

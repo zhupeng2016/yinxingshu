@@ -15,13 +15,18 @@
 		<result column="role_required" property="roleRequired" />
 		<result column="role_state" property="roleState" />
 		<result column="role_del" property="roleDel" />
+		<result column="dept_name" property="dept.deptName"/>
+		<result column="role_recrittype" property="roleRecritType" />
+		<association property="dept" javaType="com.xhhy.bean.DeptBean" column="dept_id" select="com.xhhy.dao.DeptDao.getDeptById"></association>
 	</resultMap>
+	
 	<sql id="selectRole">
 		select
-		ROLE_ID,DEPT_ID,ROLE_CODE,ROLE_NAME,ROLE_KIND,ROLE_NUM,STARTTIME,EDDTIME,ROLE_INTRO,ROLE_REMARK,ROLE_REQUIRED,ROLE_STATE,ROLE_DEL
+		ROLE_ID,DEPT_ID,ROLE_CODE,ROLE_NAME,ROLE_KIND,ROLE_NUM,STARTTIME,EDDTIME,ROLE_INTRO,ROLE_REMARK,ROLE_REQUIRED,ROLE_STATE,ROLE_DEL,ROLE_RECRITTYPE
 		from role_tb
-		where role_del = 0
+		where  role_del = 0
 	</sql>
+	
 	<select id="getRoles" resultMap="myrole">
 		<include refid="selectRole" />
 	</select>
@@ -51,9 +56,9 @@
 		</if>
 	</update>
 
-	<select id="paddRole">
+	<!-- <select id="paddRole" resultMap="myrole">
 	     <include refid="selectRole"/>
-	</select>
+	</select> -->
 
 	<insert id="addRole">
 		insert into

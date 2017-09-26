@@ -25,7 +25,7 @@ public interface RoleDao {
 	roleNum, @Param("roleRemark") String roleRemark, @Param("roleRequired") String roleRequired);
 
 	//预添加
-	public RoleBean paddRole();
+	public List<RoleBean> paddRole();
 	
 	//添加职员发布数据
 	public boolean addRole(RoleBean role);
