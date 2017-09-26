@@ -4,24 +4,54 @@ import java.io.Serializable;
 
 public class UserBean implements Serializable {
 	
-	private int userId;//id
-	private int deptId;//外键
-	private String userCode;//部门编号
-	private String loginName;//登录帐号
-	private String password;//密码
-	private String userName;//登陆人
-	private String sex;//性别
-	private String idCard;//身份证号
-	private String phone;//座机号
-	private String mobilePhone;//手机号
-	private String userEail;//邮箱
-	private String address;//地址
-	private String userImg;//图片
-	private String userRemark;//职位
-	private String loginCount;//登录次数
-	private String userDel;//状态
+	private int userId;//id5
+	private int deptId;//澶栭敭
+	private String userCode;//閮ㄩ棬缂栧彿
+	private String loginName;//鐧诲綍甯愬彿
+	private String password;//瀵嗙爜
+	private String userName;//鐧婚檰浜�
+	private String sex;//鎬у埆
+	private String idCard;//韬唤璇佸彿
+	private String phone;//搴ф満鍙�
+	private String mobilePhone;//鎵嬫満鍙�
+	private String userEail;//閭
+	private String address;//鍦板潃
+	private String userImg;//鍥剧墖
+	private String userRemark;//鑱屼綅
+	private String loginCount;//鐧诲綍娆℃暟
+	private String userDel;//鐘舵�
+	private DeptBean db;//部门
+	private ResumeBean reb;//简历
+	private ArchiveBean ab;//档案
+	private RoleBean rb;//角色
 	
 	
+	
+	
+	public DeptBean getDb() {
+		return db;
+	}
+	public void setDb(DeptBean db) {
+		this.db = db;
+	}
+	public ResumeBean getReb() {
+		return reb;
+	}
+	public void setReb(ResumeBean reb) {
+		this.reb = reb;
+	}
+	public ArchiveBean getAb() {
+		return ab;
+	}
+	public void setAb(ArchiveBean ab) {
+		this.ab = ab;
+	}
+	public RoleBean getRb() {
+		return rb;
+	}
+	public void setRb(RoleBean rb) {
+		this.rb = rb;
+	}
 	public UserBean() {
 		super();
 		// TODO Auto-generated constructor stub
