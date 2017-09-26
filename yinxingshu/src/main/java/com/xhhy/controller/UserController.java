@@ -1,5 +1,8 @@
 package com.xhhy.controller;
 
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,5 +33,10 @@ public class UserController {
 			m.addAttribute("msg", "账号或密码错误");
 			return "/login.jsp";
 		}
+	}
+	@RequestMapping("/head")
+	public String head(HttpSession session){
+		session.invalidate();
+		return "login.jsp";
 	}
 }
