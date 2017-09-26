@@ -13,10 +13,12 @@ public class RoleServiceImpl implements RoleService {
 
 	@Autowired
 	private RoleDao rd;
-	
+
 	public List<RoleBean> getRoles() {
 		// TODO Auto-generated method stub
 		return rd.getRoles();
 	}
+	
+	
 
 }

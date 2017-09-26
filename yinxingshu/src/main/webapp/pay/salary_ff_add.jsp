@@ -8,6 +8,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 	<head>
 		<title>制定标准</title>
+		<base href="<%=basePath%>">
 		<meta http-equiv="content-type" content="text/html;charset=utf-8">
 		<link href="../css/mine.css" type="text/css" rel="stylesheet">
 	</head>
