@@ -34,14 +34,15 @@
 						<ul>
 							<li class="user_main_text">用户名： </li>
 							<li class="user_main_input"><input name="loginName" maxlength="20"  id="ln" value="" class="txtusernamecssclass">
-							<span style="font-size: 12px;color:red;"></span>
+							<span style="font-size: 12px;color:red;">${msg}</span>
 							 </li>
 						</ul>
 						<ul>
 							<li class="user_main_text">密 码： </li>
 							<li class="user_main_input"><input type="password" name="password" id="ps" value="" class="txtpasswordcssclass">
-							<span style="font-size: 12px;color:red;"></span>
+							<span style="font-size: 12px;color:red;">${msg}</span>
 							 </li>
+							 
 						</ul>
 						<ul>
 							<li class="user_main_text">Cookie： </li>
@@ -52,9 +53,7 @@
 					</div>
 				</li>
 				<li class="user_main_r">
-				<a href="index.html">
 				<input type="image" name="IbtnEnter" src="img/user_botton.gif" class="ibtnentercssclass">
-				</a>
 				</li>
 			</ul>
 		</dd>
