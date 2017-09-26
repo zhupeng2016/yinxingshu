@@ -20,10 +20,13 @@ public class RoleController {
 	@RequestMapping("/demo1")
 	public String getRoles(Model m){
 		List<RoleBean> list=rs.getRoles();
-		for(int i=0;i<list.size();i++){
-			System.out.println(list.get(i).getRoleKind());
+		if(list.size()!=0){
+			
+			for(int i=0;i<list.size();i++){
+				System.out.println(list.get(i).getRoleKind());
+			}
+			m.addAttribute("list", list);
 		}
-		m.addAttribute("list", list);
 		return "/zhaopin/demo1/list.jsp";
 	}
 }

@@ -7,10 +7,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
     <head>
         <title>薪酬标准管理添加</title>
+        <base href="<%=basePath%>">
         <meta http-equiv="content-type" content="text/html;charset=utf-8">
-        <link href="../css/mine.css" type="text/css" rel="stylesheet">
-        <script type="text/javascript" src="../js/jquery.js"></script>
-        <script type="text/javascript" src="../js/My97DatePicker/WdatePicker.js"></script>
+        <link href="/yinxingshu/css/mine.css" type="text/css" rel="stylesheet">
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/My97DatePicker/WdatePicker.js"></script>
     </head>
 
     <body>
@@ -19,7 +20,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <span>
                 <span style="float:left">当前位置是：-》薪酬标准管理》添加</span>
                 <span style="float:right;margin-right: 8px;font-weight: bold">
-                    <a style="text-decoration: none" href="salaryManager.jsp">【返回】</a>
+                    <a style="text-decoration: none" href="javascript:void(0)" onclik="history.back()">【返回】</a>
                 </span>
             </span>
         </div>
