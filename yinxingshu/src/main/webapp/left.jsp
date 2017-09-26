@@ -1,5 +1,13 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
+<!DOCTYPE html PUBLIC >
 <html>
+<base href="<%=basePath%>">
     <head>
         <meta http-equiv=content-type content="text/html; charset=utf-8" />
         <link href="css/admin.css" type="text/css" rel="stylesheet" />
@@ -81,7 +89,7 @@
 								<img height=9  src="./img/menu_icon.gif" width=9>
 							</td>
                             <td>
-								<a class=menuchild  href="salary/findAll?pageNum=1"   target="right">薪酬标准管理</a>
+								<a class=menuchild  href="pay/list_standard.html"   target="right">薪酬标准管理</a>
 							</td>
 						</tr>
 						
@@ -90,7 +98,7 @@
 								<img height=9  src="./img/menu_icon.gif" width=9>
 							</td>
                             <td>
-								<a class=menuchild  href="pay/salary_sp.jsp"   target="right">薪酬标准审批</a>
+								<a class=menuchild  href="pay/list_standard_sp.html"   target="right">薪酬标准审批</a>
 							</td>
 						</tr>
 						
@@ -100,7 +108,7 @@
 								<img height=9 src="./img/menu_icon.gif" width=9>
 							</td>
                             <td>
-								<a class=menuchild  href="pay/salary_ff.jsp"  target="right">薪酬发放管理</a>
+								<a class=menuchild  href="pay/list_payment.html"  target="right">薪酬发放管理</a>
 							</td>
 						</tr>
 						
@@ -160,7 +168,7 @@
 								<img height=9  src="./img/menu_icon.gif" width=9>
 							</td>
                             <td>
-								<a class=menuchild  href="../yinxingshu/rec/demo1"   target="right">职位发布管理</a>
+								<a class=menuchild  href="zhaopin/demo1/list.html"   target="right">职位发布管理</a>
 							</td>
 						</tr>
                         <tr height=20>

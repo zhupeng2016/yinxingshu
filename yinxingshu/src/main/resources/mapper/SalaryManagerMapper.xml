@@ -8,7 +8,7 @@
 	<result column="SALARY_NAME" jdbcType="VARCHAR" property="salaryName"/>
 	<result column="SALARY_MAKER" jdbcType="VARCHAR" property="salaryMaker"/>
 	<result column="SALARY_REGISTER" jdbcType="VARCHAR" property="salaryRegister"/>
-	<result column="REGISTER_TIME" jdbcType="DATE" property="registerTime"/>
+	<result column="REGISTER_TIME" jdbcType="TIMESTAMP" property="registerTime"/>
 	<result column="BASE_PAY" jdbcType="VARCHAR" property="basePay"/>
 	<result column="ADD_PAY" jdbcType="VARCHAR" property="addPay"/>
 	<result column="TRAFFIC_PAY" jdbcType="VARCHAR" property="trafficPay"/>
@@ -25,7 +25,25 @@
 	<result column="SALARY_4" jdbcType="VARCHAR" property="salary4"/>
 	
 </resultMap>
+	
 	<select id="findAll" resultMap="Salary" >
-		select * from (select rownum rn,SALARY_TB.* from SALARY_TB) sa where rn>3 and rn<![CDATA[<=]]>10 and SA.SALARY_DEL=1
+		select SALARY_ID,SALARY_CODE,SALARY_NAME,SALARY_MAKER,SALARY_REGISTER,REGISTER_TIME,BASE_PAY,ADD_PAY,
+		TRAFFIC_PAY,PHONE_PAY,FOOD_PAY,HOUSE_PAY,AWAY_PAY,OVERTIME_PAY,SALARY_REMARK,SALARY_STATE,SALARY_DEL,
+		SALARY_2,SALARY_3,SALARY_4 from SALARY_TB where SALARY_DEL=1
+	</select>
+	
+	<insert id="addSalary" >
+		<selectKey keyProperty="salaryId" order="BEFORE" resultType="int">
+			select salary_seq.nextval from dual
+		</selectKey>
+		insert into salary_tb
+		values(#{salaryId},#{salaryCode},#{salaryName},#{salaryMaker},#{salaryRegister},
+		to_date(#{registerTime},'yyyy-mm-dd hh24:mi'),#{basePay},#{addPay},#{trafficPay},#{phonePay},#{foodPay},
+		#{housePay},#{awayPay},#{overtimePay},#{salaryRemark},#{salaryState},
+		#{salaryDel},#{salary2},#{salary3},#{salary4})
+	</insert>
+	
+	<select id="prepareCode" resultType="int">
+		select salary_code.nextval from dual
 	</select>
 </mapper>

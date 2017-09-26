@@ -1,16 +1,20 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <head>
         <title>薪酬标准管理添加</title>
+        <base href="<%=basePath%>">
         <meta http-equiv="content-type" content="text/html;charset=utf-8">
-        <link href="../css/mine.css" type="text/css" rel="stylesheet">
-        <script type="text/javascript" src="../js/jquery.js"></script>
-        <script type="text/javascript" src="../js/My97DatePicker/WdatePicker.js"></script>
+        <link href="/yinxingshu/css/mine.css" type="text/css" rel="stylesheet">
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/My97DatePicker/WdatePicker.js"></script>
     </head>
 
     <body>
@@ -19,7 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <span>
                 <span style="float:left">当前位置是：-》薪酬标准管理》添加</span>
                 <span style="float:right;margin-right: 8px;font-weight: bold">
-                    <a style="text-decoration: none" href="salaryManager.jsp">【返回】</a>
+                    <a style="text-decoration: none" href="javascript:void(0)" onclick="history.back()">【返回】</a>
                 </span>
             </span>
         </div>
@@ -30,24 +34,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <table border="1" width="100%" class="table_a">
                 <tr>
                     <td width="120px;">薪酬标准编号<span style="color:red">*</span>：</td>
-                    <td><input type="text" name="f_goods_name" value="1006" /></td>
+                    <td><input type="text" name="f_goods_name" value="${code}" readonly="readonly"/></td>
                 </tr>
                 <tr>
                     <td>薪酬标准名称<span style="color:red">*</span>：</td>
                     <td>
-                       <input type="text" name="f_goods_name" value="高级开发工程师" /> 
+                       <input type="text" name="f_goods_name" value="" /> 
                     </td>
                 </tr>
                
                 <tr>
                     <td>制定人<span style="color:red">*</span>：</td>
                     <td>
-						<input type="text" name="f_goods_price" value="刘XX" /></td>
+						<input type="text" name="f_goods_price" value="" /></td>
                 </tr>
                 <tr>
                     <td>登记人<span style="color:red">*</span>：</td>
                     <td>
-						<input type="text" readonly name="f_goods_image" value="杨XX" />
+						<input type="text" readonly name="f_goods_image" value="${sessionScope.ub.userName}" />
 					</td>
                 </tr>
                 <tr>
@@ -61,60 +65,60 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<tr>
                     <td>基本工资<span style="color:red">*</span>：</td>
                     <td>
-                        <input type="text" name="f_goods_image"  value="1200"/>元
+                        <input type="text" name="f_goods_image"  value=""/>元
                     </td>                
                 </tr>
 
 				<tr>
                     <td>绩效奖金：</td>
                     <td>
-                        <input type="text" name="f_goods_image" value="1000" />元
+                        <input type="text" name="f_goods_image" value="" />元
                     </td>                
                 </tr>
 
 				<tr>
                     <td>交通补助：</td>
                     <td>
-                        <input type="text" name="f_goods_image" value="100"/>元
+                        <input type="text" name="f_goods_image" value=""/>元
                     </td>                
                 </tr>
 
 				<tr>
                     <td>通讯补助：</td>
                     <td>
-                        <input type="text" name="f_goods_image" value="100" />元
+                        <input type="text" name="f_goods_image" value="" />元
                     </td>                
                 </tr>
 
 				<tr>
                     <td>餐补：</td>
                     <td>
-                        <input type="text" name="f_goods_image" value="350" />元
+                        <input type="text" name="f_goods_image" value="" />元
                     </td>                
                 </tr>
 				<tr>
                     <td>住房补助：</td>
                     <td>
-                        <input type="text" name="f_goods_image" value="300" />元
+                        <input type="text" name="f_goods_image" value="" />元
                     </td>                
                 </tr>
 				<tr>
                     <td>出差补助：</td>
                     <td>
-                        <input type="text" name="f_goods_image" value="1000" />元
+                        <input type="text" name="f_goods_image" value="" />元
                     </td>                
                 </tr>
 				<tr>
                     <td>加班补助：</td>
                     <td>
-                        <input type="text" name="f_goods_image" value="150"/>元
+                        <input type="text" name="f_goods_image" value=""/>元
                     </td>                
                 </tr>	
 
 				<tr>
                     <td>薪酬总额：</td>
                     <td>
-						 <input type="text" readonly name="f_goods_name" value="15000" />元
+						 <input type="text" readonly name="f_goods_name" value="" />元
                     </td>
                 </tr>
 

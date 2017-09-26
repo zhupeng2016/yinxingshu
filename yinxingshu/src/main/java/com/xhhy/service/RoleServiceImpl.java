@@ -16,12 +16,15 @@ public class RoleServiceImpl implements RoleService {
 	@Autowired
 	private RoleDao rd;
 
+
 	// 展现职位发布
 	@Override
 	public List<RoleBean> getRoles() {
 		// TODO Auto-generated method stub
 		return rd.getRoles();
 	}
+	
+	
 
 	// 查看职位信息
 	@Override

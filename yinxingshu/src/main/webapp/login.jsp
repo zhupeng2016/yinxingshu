@@ -1,5 +1,13 @@
-<!DOCTYPE>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
+<!DOCTYPE html PUBLIC >
+<html>
+<base href="<%=basePath%>">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>用户登录</title>
@@ -8,7 +16,7 @@
 
 </head>
 <body id="userlogin_body">
-
+	<form action="login" method="post">
 <div id="user_login">
 	<dl>
 		<dd id="user_top">
@@ -25,15 +33,16 @@
 					<div class="user_main_box">
 						<ul>
 							<li class="user_main_text">用户名： </li>
-							<li class="user_main_input"><input name="loginName" maxlength="20" id="ln" class="txtusernamecssclass">
-							<span style="font-size: 12px;color:red;"></span>
+							<li class="user_main_input"><input name="loginName" maxlength="20"  id="ln" value="" class="txtusernamecssclass">
+							<span style="font-size: 12px;color:red;">${msg}</span>
 							 </li>
 						</ul>
 						<ul>
 							<li class="user_main_text">密 码： </li>
-							<li class="user_main_input"><input type="password" name="password" id="ps" class="txtpasswordcssclass">
-							<span style="font-size: 12px;color:red;"></span>
+							<li class="user_main_input"><input type="password" name="password" id="ps" value="" class="txtpasswordcssclass">
+							<span style="font-size: 12px;color:red;">${msg}</span>
 							 </li>
+							 
 						</ul>
 						<ul>
 							<li class="user_main_text">Cookie： </li>
@@ -44,9 +53,7 @@
 					</div>
 				</li>
 				<li class="user_main_r">
-				<a href="index.html">
 				<input type="image" name="IbtnEnter" src="img/user_botton.gif" class="ibtnentercssclass">
-				</a>
 				</li>
 			</ul>
 		</dd>
@@ -59,7 +66,6 @@
 		</dd>
 	</dl>
 </div>
-
-
+</form>
 </body>
 </html>

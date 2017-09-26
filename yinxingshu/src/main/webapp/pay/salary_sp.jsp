@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 
         <title>薪酬标准管理</title>
-
+		<base href="<%=basePath%>">
         <link href="../css/mine.css" type="text/css" rel="stylesheet" />
     </head>
     <body>
