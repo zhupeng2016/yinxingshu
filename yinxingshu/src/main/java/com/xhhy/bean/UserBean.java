@@ -14,12 +14,13 @@ public class UserBean implements Serializable {
 	private String idCard;//身份证号
 	private String phone;//座机号
 	private String mobilePhone;//手机号
-	private String userEail;//邮箱
+	private String userEmail;//邮箱
 	private String address;//地址
 	private String userImg;//图片
 	private String userRemark;//职位
 	private String loginCount;//登录次数
 	private String userDel;//状态
+	private String db;//链表
 	
 	
 	public UserBean() {
@@ -27,8 +28,8 @@ public class UserBean implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 	public UserBean(int userId, int deptId, String userCode, String loginName, String password, String userName,
-			String sex, String idCard, String phone, String mobilePhone, String userEail, String address,
-			String userImg, String userRemark, String loginCount, String userDel) {
+			String sex, String idCard, String phone, String mobilePhone, String userEmail, String address,
+			String userImg, String userRemark, String loginCount, String userDel, String db) {
 		super();
 		this.userId = userId;
 		this.deptId = deptId;
@@ -40,12 +41,13 @@ public class UserBean implements Serializable {
 		this.idCard = idCard;
 		this.phone = phone;
 		this.mobilePhone = mobilePhone;
-		this.userEail = userEail;
+		this.userEmail = userEmail;
 		this.address = address;
 		this.userImg = userImg;
 		this.userRemark = userRemark;
 		this.loginCount = loginCount;
 		this.userDel = userDel;
+		this.db = db;
 	}
 	public int getUserId() {
 		return userId;
@@ -107,11 +109,11 @@ public class UserBean implements Serializable {
 	public void setMobilePhone(String mobilePhone) {
 		this.mobilePhone = mobilePhone;
 	}
-	public String getUserEail() {
-		return userEail;
+	public String getUserEmail() {
+		return userEmail;
 	}
-	public void setUserEail(String userEail) {
-		this.userEail = userEail;
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
 	}
 	public String getAddress() {
 		return address;
@@ -142,6 +144,12 @@ public class UserBean implements Serializable {
 	}
 	public void setUserDel(String userDel) {
 		this.userDel = userDel;
+	}
+	public String getDb() {
+		return db;
+	}
+	public void setDb(String db) {
+		this.db = db;
 	}
 	
 	
