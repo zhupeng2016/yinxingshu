@@ -22,7 +22,7 @@
                     align=middle>当前用户：${ub.userName} &nbsp;&nbsp; 
 					<!--<a style="color: #fff"  href="password.html"  target="right">修改口令</a> 
 					&nbsp;&nbsp; -->
-					<a style="color: #fff"  href="login.html" target=_top>退出系统</a> 
+					<a style="color: #fff"  href="head.jsp" target=_top>退出系统</a> 
 														<!-- onclick="if (confirm('确定要退出吗？')) return true; else return false;"  -->
                 </td>
                 <td align=right width=268><a href="index.jsp"><img height=56 
