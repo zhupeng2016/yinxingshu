@@ -8,7 +8,7 @@
 	<result column="SALARY_NAME" jdbcType="VARCHAR" property="salaryName"/>
 	<result column="SALARY_MAKER" jdbcType="VARCHAR" property="salaryMaker"/>
 	<result column="SALARY_REGISTER" jdbcType="VARCHAR" property="salaryRegister"/>
-	<result column="REGISTER_TIME" jdbcType="DATE" property="registerTime"/>
+	<result column="REGISTER_TIME" jdbcType="TIMESTAMP" property="registerTime"/>
 	<result column="BASE_PAY" jdbcType="VARCHAR" property="basePay"/>
 	<result column="ADD_PAY" jdbcType="VARCHAR" property="addPay"/>
 	<result column="TRAFFIC_PAY" jdbcType="VARCHAR" property="trafficPay"/>

@@ -51,7 +51,7 @@
                 <tr>
                     <td>登记人<span style="color:red">*</span>：</td>
                     <td>
-						<input type="text" readonly name="f_goods_image" value="" />
+						<input type="text" readonly name="f_goods_image" value="${sessionScope.ub.userName}" />
 					</td>
                 </tr>
                 <tr>
