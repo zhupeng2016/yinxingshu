@@ -33,65 +33,17 @@ public class RecordBean implements Serializable{
 	private String archiveDutyCode;//职位编码
 	private String archiveTitle;//职称
 	private String archiveRemark;//备注
+	//模糊查询的两个字段
+	private String startTime;//模糊查询开始时间
+	private String endTime;//模糊查询结束时间
 	//引入其它几个对象
 	private DeptBean db;//
-	public RecordBean(int archiveId, int archiveState, String archiveCode, int auditState, int archiveDel,
-			String archiveTime, String familyInfo, String bank, String bankCard, String socialCard, String archiveName,
-			String archiveSex, String archiveDept, String archiveEmail, String archivePhone, String archiveAddress,
-			String archiveCardId, String archiveHomeAddress, String archivePolitics, String archiveGraduateSchool,
-			String archiveMajor, String archiveEducation, String archiveDuty, String archiveDutyCode,
-			String archiveTitle, String archiveRemark, DeptBean db, ResumeBean rb, UserBean ub, SalaryBean sb) {
-		super();
-		this.archiveId = archiveId;
-		this.archiveState = archiveState;
-		this.archiveCode = archiveCode;
-		this.auditState = auditState;
-		this.archiveDel = archiveDel;
-		this.archiveTime = archiveTime;
-		this.familyInfo = familyInfo;
-		this.bank = bank;
-		this.bankCard = bankCard;
-		this.socialCard = socialCard;
-		this.archiveName = archiveName;
-		this.archiveSex = archiveSex;
-		this.archiveDept = archiveDept;
-		this.archiveEmail = archiveEmail;
-		this.archivePhone = archivePhone;
-		this.archiveAddress = archiveAddress;
-		this.archiveCardId = archiveCardId;
-		this.archiveHomeAddress = archiveHomeAddress;
-		this.archivePolitics = archivePolitics;
-		this.archiveGraduateSchool = archiveGraduateSchool;
-		this.archiveMajor = archiveMajor;
-		this.archiveEducation = archiveEducation;
-		this.archiveDuty = archiveDuty;
-		this.archiveDutyCode = archiveDutyCode;
-		this.archiveTitle = archiveTitle;
-		this.archiveRemark = archiveRemark;
-		this.db = db;
-		this.rb = rb;
-		this.ub = ub;
-		this.sb = sb;
-	}
-	public String getArchiveDutyCode() {
-		return archiveDutyCode;
-	}
-	public void setArchiveDutyCode(String archiveDutyCode) {
-		this.archiveDutyCode = archiveDutyCode;
-	}
 	private ResumeBean  rb;
 	private UserBean  ub;//涉及到当前登陆人
 	private SalaryBean  sb;//关联到薪酬标准
 	//
-	
 	public int getArchiveId() {
 		return archiveId;
-	}
-	public String getArchiveRemark() {
-		return archiveRemark;
-	}
-	public void setArchiveRemark(String archiveRemark) {
-		this.archiveRemark = archiveRemark;
 	}
 	public void setArchiveId(int archiveId) {
 		this.archiveId = archiveId;
@@ -228,11 +180,35 @@ public class RecordBean implements Serializable{
 	public void setArchiveDuty(String archiveDuty) {
 		this.archiveDuty = archiveDuty;
 	}
+	public String getArchiveDutyCode() {
+		return archiveDutyCode;
+	}
+	public void setArchiveDutyCode(String archiveDutyCode) {
+		this.archiveDutyCode = archiveDutyCode;
+	}
 	public String getArchiveTitle() {
 		return archiveTitle;
 	}
 	public void setArchiveTitle(String archiveTitle) {
 		this.archiveTitle = archiveTitle;
+	}
+	public String getArchiveRemark() {
+		return archiveRemark;
+	}
+	public void setArchiveRemark(String archiveRemark) {
+		this.archiveRemark = archiveRemark;
+	}
+	public String getStartTime() {
+		return startTime;
+	}
+	public void setStartTime(String startTime) {
+		this.startTime = startTime;
+	}
+	public String getEndTime() {
+		return endTime;
+	}
+	public void setEndTime(String endTime) {
+		this.endTime = endTime;
 	}
 	public DeptBean getDb() {
 		return db;
@@ -263,7 +239,8 @@ public class RecordBean implements Serializable{
 			String archiveSex, String archiveDept, String archiveEmail, String archivePhone, String archiveAddress,
 			String archiveCardId, String archiveHomeAddress, String archivePolitics, String archiveGraduateSchool,
 			String archiveMajor, String archiveEducation, String archiveDuty, String archiveDutyCode,
-			String archiveTitle, DeptBean db, ResumeBean rb, UserBean ub, SalaryBean sb) {
+			String archiveTitle, String archiveRemark, String startTime, String endTime, DeptBean db, ResumeBean rb,
+			UserBean ub, SalaryBean sb) {
 		super();
 		this.archiveId = archiveId;
 		this.archiveState = archiveState;
@@ -290,6 +267,9 @@ public class RecordBean implements Serializable{
 		this.archiveDuty = archiveDuty;
 		this.archiveDutyCode = archiveDutyCode;
 		this.archiveTitle = archiveTitle;
+		this.archiveRemark = archiveRemark;
+		this.startTime = startTime;
+		this.endTime = endTime;
 		this.db = db;
 		this.rb = rb;
 		this.ub = ub;
