@@ -82,7 +82,7 @@
 					<tr>
 						<td>登记人<span style="color:red">*</span>：</td>
 						<td>
-							<input type="text" readonly name="userId" value="当前登录人" />
+							<input type="text" readonly name="userId" value="${ub.userName }" />
 						</td>
 					</tr>
 					<tr>

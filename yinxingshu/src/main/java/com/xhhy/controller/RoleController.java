@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.xhhy.bean.DeptBean;
 import com.xhhy.bean.RoleBean;
@@ -13,6 +14,7 @@ import com.xhhy.service.DeptService;
 import com.xhhy.service.RoleService;
 
 @Controller
+@SessionAttributes({"roleList"})
 @RequestMapping("/rec")
 public class RoleController {
 
@@ -39,7 +41,7 @@ public class RoleController {
 
 			}
 		}
-		m.addAttribute("list", roleList);
+		m.addAttribute("roleList", roleList);
 
 		return "/zhaopin/demo1/list.jsp";
 	}
