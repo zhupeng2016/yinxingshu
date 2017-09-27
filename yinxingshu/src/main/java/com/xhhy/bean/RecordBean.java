@@ -30,15 +30,68 @@ public class RecordBean implements Serializable{
 	private String archiveMajor;//专业
 	private String archiveEducation;//学历
 	private String archiveDuty;//职位
+	private String archiveDutyCode;//职位编码
 	private String archiveTitle;//职称
+	private String archiveRemark;//备注
 	//引入其它几个对象
 	private DeptBean db;//
+	public RecordBean(int archiveId, int archiveState, String archiveCode, int auditState, int archiveDel,
+			String archiveTime, String familyInfo, String bank, String bankCard, String socialCard, String archiveName,
+			String archiveSex, String archiveDept, String archiveEmail, String archivePhone, String archiveAddress,
+			String archiveCardId, String archiveHomeAddress, String archivePolitics, String archiveGraduateSchool,
+			String archiveMajor, String archiveEducation, String archiveDuty, String archiveDutyCode,
+			String archiveTitle, String archiveRemark, DeptBean db, ResumeBean rb, UserBean ub, SalaryBean sb) {
+		super();
+		this.archiveId = archiveId;
+		this.archiveState = archiveState;
+		this.archiveCode = archiveCode;
+		this.auditState = auditState;
+		this.archiveDel = archiveDel;
+		this.archiveTime = archiveTime;
+		this.familyInfo = familyInfo;
+		this.bank = bank;
+		this.bankCard = bankCard;
+		this.socialCard = socialCard;
+		this.archiveName = archiveName;
+		this.archiveSex = archiveSex;
+		this.archiveDept = archiveDept;
+		this.archiveEmail = archiveEmail;
+		this.archivePhone = archivePhone;
+		this.archiveAddress = archiveAddress;
+		this.archiveCardId = archiveCardId;
+		this.archiveHomeAddress = archiveHomeAddress;
+		this.archivePolitics = archivePolitics;
+		this.archiveGraduateSchool = archiveGraduateSchool;
+		this.archiveMajor = archiveMajor;
+		this.archiveEducation = archiveEducation;
+		this.archiveDuty = archiveDuty;
+		this.archiveDutyCode = archiveDutyCode;
+		this.archiveTitle = archiveTitle;
+		this.archiveRemark = archiveRemark;
+		this.db = db;
+		this.rb = rb;
+		this.ub = ub;
+		this.sb = sb;
+	}
+	public String getArchiveDutyCode() {
+		return archiveDutyCode;
+	}
+	public void setArchiveDutyCode(String archiveDutyCode) {
+		this.archiveDutyCode = archiveDutyCode;
+	}
 	private ResumeBean  rb;
 	private UserBean  ub;//涉及到当前登陆人
 	private SalaryBean  sb;//关联到薪酬标准
 	//
+	
 	public int getArchiveId() {
 		return archiveId;
+	}
+	public String getArchiveRemark() {
+		return archiveRemark;
+	}
+	public void setArchiveRemark(String archiveRemark) {
+		this.archiveRemark = archiveRemark;
 	}
 	public void setArchiveId(int archiveId) {
 		this.archiveId = archiveId;
@@ -209,8 +262,8 @@ public class RecordBean implements Serializable{
 			String archiveTime, String familyInfo, String bank, String bankCard, String socialCard, String archiveName,
 			String archiveSex, String archiveDept, String archiveEmail, String archivePhone, String archiveAddress,
 			String archiveCardId, String archiveHomeAddress, String archivePolitics, String archiveGraduateSchool,
-			String archiveMajor, String archiveEducation, String archiveDuty, String archiveTitle, DeptBean db,
-			ResumeBean rb, UserBean ub, SalaryBean sb) {
+			String archiveMajor, String archiveEducation, String archiveDuty, String archiveDutyCode,
+			String archiveTitle, DeptBean db, ResumeBean rb, UserBean ub, SalaryBean sb) {
 		super();
 		this.archiveId = archiveId;
 		this.archiveState = archiveState;
@@ -235,6 +288,7 @@ public class RecordBean implements Serializable{
 		this.archiveMajor = archiveMajor;
 		this.archiveEducation = archiveEducation;
 		this.archiveDuty = archiveDuty;
+		this.archiveDutyCode = archiveDutyCode;
 		this.archiveTitle = archiveTitle;
 		this.db = db;
 		this.rb = rb;
@@ -245,21 +299,6 @@ public class RecordBean implements Serializable{
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	@Override
-	public String toString() {
-		return "RecordBean [archiveId=" + archiveId + ", archiveState=" + archiveState + ", archiveCode=" + archiveCode
-				+ ", auditState=" + auditState + ", archiveDel=" + archiveDel + ", archiveTime=" + archiveTime
-				+ ", familyInfo=" + familyInfo + ", bank=" + bank + ", bankCard=" + bankCard + ", socialCard="
-				+ socialCard + ", archiveName=" + archiveName + ", archiveSex=" + archiveSex + ", archiveDept="
-				+ archiveDept + ", archiveEmail=" + archiveEmail + ", archivePhone=" + archivePhone
-				+ ", archiveAddress=" + archiveAddress + ", archiveCardId=" + archiveCardId + ", archiveHomeAddress="
-				+ archiveHomeAddress + ", archivePolitics=" + archivePolitics + ", archiveGraduateSchool="
-				+ archiveGraduateSchool + ", archiveMajor=" + archiveMajor + ", archiveEducation=" + archiveEducation
-				+ ", archiveDuty=" + archiveDuty + ", archiveTitle=" + archiveTitle + ", db=" + db + ", rb=" + rb
-				+ ", ub=" + ub + ", sb=" + sb + "]";
-	}
-	
-	
 	
 	
 	 
