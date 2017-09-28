@@ -74,7 +74,7 @@
 				<bean class="com.github.pagehelper.PageInterceptor">
 					<property name="properties">
 						<value>
-							helperDialect=mysql
+							helperDialect=oracle
 						</value>
 					</property>
 				</bean>
@@ -109,7 +109,7 @@
                 <value>application/json;charset=UTF-8</value>
             </list>
         </property>
-    </bean>
+    </bean> 
 	
 
 	  <!-- 上传文件的配置 -->
