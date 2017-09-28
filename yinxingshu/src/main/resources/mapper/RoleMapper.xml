@@ -22,6 +22,7 @@
 	</resultMap>
 
 	<sql id="selectRole">
+	 select "ROLE_ID","DEPT_ID","ROLE_CODE","ROLE_NAME","ROLE_KIND","ROLE_NUM","STARTTIME","EDDTIME","ROLE_INTRO","ROLE_REMARK","ROLE_REQUIRED","ROLE_STATE","ROLE_ID" from role_tb
 		select
 		ROLE_ID,DEPT_ID,ROLE_CODE,ROLE_NAME,ROLE_KIND,ROLE_NUM,STARTTIME,EDDTIME,ROLE_INTRO,ROLE_REMARK,ROLE_REQUIRED,ROLE_STATE,ROLE_DEL,ROLE_RECRITTYPE
 		from role_tb
@@ -29,6 +30,10 @@
 	</sql>
 
 	<select id="getRoles" resultMap="myrole">
+	    <include refid="selectRole"/>
+	   <!--  <trim prefix="where" prefixOverrides="and">
+	       <if test="roleDel==0">role_id=#{roleId}</if>
+	    </trim> -->
 		<include refid="selectRole" />
 	</select>
 	<!-- 根据用户id得到roleid -->

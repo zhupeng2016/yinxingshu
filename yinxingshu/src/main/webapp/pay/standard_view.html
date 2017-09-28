@@ -1,15 +1,9 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE>
 <html>
     <head>
         <title>薪酬标准管理</title>
-        <base href="<%=basePath%>">
         <meta http-equiv="content-type" content="text/html;charset=utf-8">
-        <link href="css/mine.css" type="text/css" rel="stylesheet">
+        <link href="../css/mine.css" type="text/css" rel="stylesheet">
     </head>
 
     <body>
@@ -18,7 +12,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <span>
                 <span style="float:left">当前位置是：-》薪酬标准管理</span>
                 <span style="float:right;margin-right: 8px;font-weight: bold">
-                    <a style="text-decoration: none" href="javascript:void(0)" onclick="history.back()">【返回】</a>
+                    <a style="text-decoration: none" href="list_standard.html">【返回】</a>
                 </span>
             </span>
         </div>
@@ -30,37 +24,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <tr>
                     <td width="120px;">薪酬标准编号：</td>
                     <td>
-					${message.salaryCode}
+						a1001
 					</td>
                 </tr>
                 <tr>
                     <td>薪酬标准名称：</td>
                     <td>
-						${message.salaryName}
+						高级开发工程师
 					</td>
                 </tr>
                 <tr>
                     <td>薪酬总额：</td>
                      <td>
-						${message.allSalary}
+						15000 元
 					</td>
                 </tr>
                 <tr>
                     <td>制定人：</td>
                      <td>
-						${message.salaryMaker}
+						张XX
 					</td>
                 </tr>
                 <tr>
                     <td>登记人：</td>
                      <td>
-						${message.salaryRegister}
+						张XX
 					</td>
                 </tr>
                 <tr>
                     <td>登记时间：</td>
                      <td>
-						${message.registerTime}
+						2015-10-29
 					</td>
                 </tr>
 
@@ -68,59 +62,59 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<tr>
                     <td>基本工资：</td>
                      <td>
-						${message.basePay}
+						12000 元
 					</td>               
                 </tr>
 
 				<tr>
                     <td>绩效奖金：</td>
                      <td>
-						${message.addPay}
+						1000 元
 					</td>                
                 </tr>
 
 				<tr>
                     <td>交通补助：</td>
                     <td>
-                        ${message.trafficPay}
+                        100 元
                     </td>                
                 </tr>
 
 				<tr>
                     <td>通讯补助：</td>
                     <td>
-                       ${message.phonePay}
+                       100 元
                     </td>                
                 </tr>
 
 				<tr>
                     <td>餐补：</td>
                     <td>
-                        ${message.foodPay}
+                        350 元
                     </td>                
                 </tr>
 				<tr>
                     <td>住房补助：</td>
                     <td>
-                       ${message.housePay}
+                       300 元
                     </td>                
                 </tr>
 				<tr>
                     <td>出差补助：</td>
                     <td> 
-                       ${message.awayPay}
+                       1000 元
                     </td>                
                 </tr>
 				<tr>
                     <td>加班补助：</td>
                     <td>
-                        ${message.overtimePay}
+                        150 元
                     </td>                
                 </tr>	
 				<tr>
                     <td>备注：</td>
                     <td>
-                    ${message.salaryRemark}
+                       基本工资+补助
                     </td>                
                 </tr>
             </table>
