@@ -19,14 +19,8 @@ public class RoleServiceImpl implements RoleService {
 		// TODO Auto-generated method stub
 		return rd.getRoles();
 	}
-    //根据用户id得到roleid
-	@Override
-	public int getRoleId(int userId) {
-		// TODO Auto-generated method stub
-		return rd.getRoleId(userId);
-	}
+   
 
-	
 
 	// 查看职位信息
 	@Override
@@ -69,11 +63,30 @@ public class RoleServiceImpl implements RoleService {
 		return rd.addRole(role);
 	}
 
+	
+	
+// -----葛大龙------------
+	 //根据用户id得到roleid
+		@Override
+		public int getRoleId(int userId) {
+			// TODO Auto-generated method stub
+			return rd.getRoleId(userId);
+		}
 
-	//删除职位
+	//状态删除职位
 	@Override
 	public boolean deleteRole(Integer roleId) {
 		// TODO Auto-generated method stub
 		return rd.deleteRole(roleId);
 	}
+	//修改职位信息
+	@Override
+	public boolean updateRoleBy(RoleBean rb) {
+		// TODO Auto-generated method stub
+		return rd.updateRoleBy(rb);
+	}
+	
+	
+// -----葛大龙------------	
+	
 }

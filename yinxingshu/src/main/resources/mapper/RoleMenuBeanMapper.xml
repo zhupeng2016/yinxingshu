@@ -16,4 +16,15 @@
 		 from menu_tb m,role_menu rm  where m.menu_id=rm.menu_id and rm.role_id=#{roleId} 
 	</select>
 	
+	<delete id="delete">
+	    delete from role_menu where role_id=#{roleId}
+	</delete>
+	<!-- //根据roleId添加菜单项 -->
+	<insert id="addMenu">
+	    insert into role_menu  
+	    <foreach collection="menuIds" item="menuId" separator=" union all " >
+	      select  #{roleId},#{menuId} from dual 
+	    </foreach>
+	</insert>
+	
 </mapper>

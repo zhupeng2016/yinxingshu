@@ -1,5 +1,6 @@
 package com.xhhy.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,12 +10,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.xhhy.bean.DeptBean;
+import com.xhhy.bean.MenuBean;
 import com.xhhy.bean.RoleBean;
 import com.xhhy.service.DeptService;
+import com.xhhy.service.MenuService;
+import com.xhhy.service.RoleMenuService;
 import com.xhhy.service.RoleService;
 
 @Controller
 @RequestMapping("/rec")
+
 public class RoleController {
 
 	// 展现职位发布列表
@@ -22,6 +27,7 @@ public class RoleController {
 	private RoleService rs;
 	@Autowired
 	private DeptService ds;
+	
 	@RequestMapping("/demo1")
 	public String getRoles(Model m) {
 

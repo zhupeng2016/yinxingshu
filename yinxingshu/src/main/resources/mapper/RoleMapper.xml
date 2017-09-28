@@ -31,10 +31,7 @@
 	<select id="getRoles" resultMap="myrole">
 		<include refid="selectRole" />
 	</select>
-	<!-- 根据用户id得到roleid -->
-	<select id="getRoleId" resultType="int">
-		select role_id from user_role where user_id=#{userId}
-	</select>
+	
 	<select id="getRole" resultMap="myrole">
 		<include refid="selectRole" />
 		and role_id = #{roleId}
@@ -74,4 +71,19 @@
 		ROLE_ID=#{roleId},DEPT_ID=#{deptId},ROLE_CODE={roleCode},ROLE_NAME=#{roleName},ROLE_KIND=#{roleKind},ROLE_NUM=#{roleNum},STARTTIME=#{startTime},EDDTIME=#{eddTime},ROLE_INTRO=#{roleIntro},ROLE_REMARK=#{roleRemark},ROLE_REQUIRED=#{roleRequired},ROLE_STATE=#{roleState},ROLE_DEL=#{roleDel},ROLE_RECRITTYP=#{roleRecritType}
 		where ROLE_ID=#{roleId} and ROLE_DEL=1
 	</update>
+	
+	
+<!--         葛大龙            -->
+
+    <!-- 根据用户id得到roleid -->
+	<select id="getRoleId" resultType="int">
+		select role_id from user_role where user_id=#{userId}
+	</select>
+   <update id="updateRoleBy">
+       update role_tb set role_name=#{roleName},dept_id=#{deptId},role_kind=#{roleKind},role_intro=#{roleIntro},role_remark=#{roleRemark},role_state=#{roleState}
+   </update>
+
+<!--         葛大龙            -->
+	
+	
 </mapper>
