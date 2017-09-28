@@ -8,21 +8,23 @@ public class TarBean implements Serializable {
 		private String tarTeacher;//培训教师
 		private String tarStartTime;//培训开始时间
 		private String tarEddTime;//培训结束时间
-		private String tarRequired;//
+		private String tarRequired;//培训反馈
 		private String tarIntro;//培训简介
-		private String tarResouce;//
+		private String tarResouce;//培训目的
 		private int tarState;//培训状态
 		private String tarOpinion;//培训意见
-		private int tarResult;//培训结果状态
+		private int tarResult;//培训结果删除状态
 		private String tarSummary;//培训总结
 		private String evalutionResult;//培训结果
+		private String tarEmployee;//培训人员
+		private String tarFile;//培训资料
 		public TarBean() {
 			super();
 			// TODO Auto-generated constructor stub
-		}
+		}//培训资料
 		public TarBean(int tarId, String tarName, String tarTeacher, String tarStartTime, String tarEddTime,
 				String tarRequired, String tarIntro, String tarResouce, int tarState, String tarOpinion, int tarResult,
-				String tarSummary, String evalutionResult) {
+				String tarSummary, String evalutionResult, String tarEmployee, String tarFile) {
 			super();
 			this.tarId = tarId;
 			this.tarName = tarName;
@@ -37,6 +39,8 @@ public class TarBean implements Serializable {
 			this.tarResult = tarResult;
 			this.tarSummary = tarSummary;
 			this.evalutionResult = evalutionResult;
+			this.tarEmployee = tarEmployee;
+			this.tarFile = tarFile;
 		}
 		public int getTarId() {
 			return tarId;
@@ -116,5 +120,19 @@ public class TarBean implements Serializable {
 		public void setEvalutionResult(String evalutionResult) {
 			this.evalutionResult = evalutionResult;
 		}
+		public String getTarEmployee() {
+			return tarEmployee;
+		}
+		public void setTarEmployee(String tarEmployee) {
+			this.tarEmployee = tarEmployee;
+		}
+		public String getTarFile() {
+			return tarFile;
+		}
+		public void setTarFile(String tarFile) {
+			this.tarFile = tarFile;
+		}
+		
+		
 		
 }

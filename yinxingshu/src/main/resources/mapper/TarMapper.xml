@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xhhy.dao.TarDao">
+	<cache type="org.mybatis.caches.ehcache.EhcacheCache" />
+	<resultMap id="mytar" type="com.xhhy.bean.TarBean">
+		<id column="TRA_ID" jdbcType="INTEGER" property="tarId" />
+		<result column="TRA_NAME" jdbcType="VARCHAR" property="tarName" />
+		<result column="TRA_TEACHER" jdbcType="VARCHAR" property="tarTeacher" />
+		<result column="TRA_STARTTIME" jdbcType="TIMESTAMP" property="tarStartTime" />
+		<result column="TRA_EDDTIME" jdbcType="TIMESTAMP" property="tarEddTime" />
+		<result column="TRA_REQUIRED" jdbcType="VARCHAR"  property="tarRequired" />
+		<result column="TRA_INTRO" jdbcType="LONGVARCHAR" property="tarIntro" />
+		<result column="TRA_RESOUCE" jdbcType="VARCHAR" property="tarResouce" />
+		<result column="TRA_STATE" jdbcType="INTEGER" property="tarState" />
+		<result column="TRA_OPINION" jdbcType="VARCHAR" property="TarOpinion" />
+		<result column="TRA_RESULT" jdbcType="VARCHAR" property="tarResult" />
+		<result column="TRA_SUMMARY" jdbcType="LONGVARCHAR" property="tarSummary" />
+		<result column="EVALUTION_RESULT" jdbcType="LONGVARCHAR" property="evalutionResult" />
+		<result column="TAR_EMPLOYEE" jdbcType="VARCHAR" property="tarEmployee" />
+		<result column="TAR_FILE" jdbcType="VARCHAR" property="tarFile" />
+	</resultMap>
+	<sql id="selectTar">
+		select TRA_ID,TRA_NAME,TRA_TEACHER,TRA_STARTTIME,TRA_EDDTIME,TRA_REQUIRED,
+		TRA_INTRO,TRA_RESOUCE,TRA_STATE,TRA_OPINION,TRA_RESULT,TRA_SUMMARY,EVALUTION_RESULT,TAR_EMPLOYEE,TAR_FILE
+		from TRAIN_TB
+	</sql>
+	<!-- 培训计划展现 -->
+	<select id="getTar" resultMap="mytar">
+		<include refid="selectTar" /> where TRA_RESULT=0 
+	</select>
+	<!--培训计划模糊差  -->
+	<select id="autoList" resultMap="mytar">
+	    <include refid="selectTar" /> where TRA_RESULT=0 
+		<if test="tarName!=null and tarName != &quot;&quot;">
+		    and TRA_NAME like concat('%',#{tarName},'%')
+		</if>
+		<if test="tarState !=null and tarState != &quot;&quot;">
+		    and TRA_STATE = #{tarState}
+		</if>
+		<if test="tarStartTime !=null and tarStartTime != &quot;&quot;">
+		    and TRA_STARTTIME = #{tarStartTime}
+		</if>
+		<if test="tarEddTime !=null and tarEddTime != &quot;&quot;">
+		    and TRA_EDDTIME = #{tarEddTime}
+		</if>
+	</select>
+	<!--培训计划增加  -->
+	<insert id="addTar">
+		<selectKey keyProperty="tarId" order="BEFORE" resultType="int">
+			select my_train.nextval from dual
+		</selectKey>
+		insert into TRAIN_TB(TRA_ID,TRA_NAME,TRA_TEACHER,TRA_STARTTIME,TRA_EDDTIME,
+					TRA_REQUIRED,TRA_INTRO,TRA_RESOUCE,TRA_STATE,TRA_OPINION,TRA_RESULT,TRA_SUMMARY,
+					EVALUTION_RESULT,TAR_EMPLOYEE,TAR_FILE) 
+		values(#{tarId},#{tarName},#{tarTeacher},
+		to_date(#{tarStartTime},'yyyy-mm-dd hh24:mi:ss'),to_date(#{tarEddTime},'yyyy-mm-dd hh24:mi:ss'),
+		#{tarRequired},#{tarIntro},#{tarResouce},#{tarState},#{tarOpinion},#{tarResult},
+		#{tarSummary},#{evalutionResult},#{tarEmployee},#{tarFile})
+	</insert>
+	<!--培训计划查看  -->
+	<select id="lookTar" resultMap="mytar">
+	    <include refid="selectTar" /> where TRA_ID =#{0}
+	</select>
+	<!--培训计划删除  -->
+	<update id="deleteTar">
+	    update TRAIN_TB set TRA_RESULT = 1 where TRA_ID = #{0}
+	</update>
+	<!--培训计划修改  -->
+	<update id="updateTar">
+	    update TRAIN_TB set TRA_NAME = #{tarName},TRA_TEACHER = #{tarTeacher},TRA_STARTTIME=to_date(#{tarStartTime},'yyyy-mm-dd hh24:mi:ss'),
+	    TRA_EDDTIME = to_date(#{tarEddTime},'yyyy-mm-dd hh24:mi:ss'),TRA_RESOUCE=#{tarResouce},
+	    TAR_EMPLOYEE = #{tarEmployee},TRA_INTRO=#{tarIntro},TAR_FILE=#{tarFile} where TRA_ID = #{tarId}
+	</update>
+	<!--培训计划复核  -->
+	<update id="fuheTar">
+	    update TRAIN_TB set TRA_STATE = 1 where TRA_ID = #{0}
+	</update>
+	<!-- 培训复核 -->
+	<select id="fuList" resultMap="mytar">
+	    <include refid="selectTar" /> where TRA_RESULT=0 and TRA_STATE=1
+		<if test="tarName!=null and tarName != &quot;&quot;">
+		    and TRA_NAME like concat('%',#{tarName},'%')
+		</if>
+		<if test="tarStartTime !=null and tarStartTime != &quot;&quot;">
+		    and TRA_STARTTIME = #{tarStartTime}
+		</if>
+		<if test="tarEddTime !=null and tarEddTime != &quot;&quot;">
+		    and TRA_EDDTIME = #{tarEddTime}
+		</if>
+	</select>
+	<!--培训复核查看 -->
+	<select id="fuLook" resultMap="mytar">
+		<include refid="selectTar" /> where TRA_ID=#{0}
+	</select>
+	<!--培训复核提交  -->
+	<update id="fuUpdate">
+	    update TRAIN_TB set TRA_STATE = 2,TRA_OPINION=#{TarOpinion} where TRA_ID = #{tarId}
+	</update>
+	<!--培训复核驳回  -->
+	<update id="bohui">
+	    update TRAIN_TB set TRA_STATE = 3 where TRA_ID = #{tarId}
+	</update>
+</mapper>
