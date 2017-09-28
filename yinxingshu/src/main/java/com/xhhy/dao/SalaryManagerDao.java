@@ -32,4 +32,22 @@ public interface SalaryManagerDao {
 	 *  准备获取薪酬编码的值 
 	 */
 	public int prepareCode();
+	
+	
+	/**
+	 * 查看薪酬详细信息
+	 */
+	public SalaryBean message(int salaryId);
+	
+	/**
+	 * 修改薪酬信息
+	 */
+	public void update(SalaryBean sb);
+	
+	
+
+	/**
+	 * 删除薪酬信息
+	 */
+	public void delete(int salaryId);
 }
