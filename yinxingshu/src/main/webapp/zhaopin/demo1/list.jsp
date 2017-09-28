@@ -84,7 +84,7 @@
 						<td width="40px;">截止日期</td>						
                         <td align="center" width="70px;">操作</td>
                     </tr>
-                    <c:forEach items="${list }" var="roleList">
+                    <c:forEach items="${roleList }" var="roleList">
                     <tr id="product1">
                         <td>${roleList.roleCode }</td>
                         <td><a href="rec/view?roleId=${roleList.roleId }">${roleList.roleName }</a></td>

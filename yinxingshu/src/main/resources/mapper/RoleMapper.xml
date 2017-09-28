@@ -65,4 +65,7 @@
 		role_tb(ROLE_ID,DEPT_ID,ROLE_CODE,ROLE_NAME,STARTTIME,EDDTIME,ROLE_INTRO,ROLE_REMARK,ROLE_REQUIRED,ROLE_STATE,ROLE_DEL,ROLE_NUM)
 		values(#{roleId},#{deptId},#{roleCode},#{roleName},#{roleKind},#{startTime},#{eddTime},#{roleIntro},#{roleRemark},#{roleRequired},#{roleState},#{roleDel},#{roleNum})
 	</insert>
+	<update id="deleteRole">
+update role_tb set ROLE_ID=#{roleId},DEPT_ID=#{deptId},ROLE_CODE={roleCode},ROLE_NAME=#{roleName},ROLE_KIND=#{roleKind},ROLE_NUM=#{roleNum},STARTTIME=#{startTime},EDDTIME=#{eddTime},ROLE_INTRO=#{roleIntro},ROLE_REMARK=#{roleRemark},ROLE_REQUIRED=#{roleRequired},ROLE_STATE=#{roleState},ROLE_DEL=#{roleDel},ROLE_RECRITTYP=#{roleRecritType} where ROLE_ID=#{roleId} and ROLE_DEL=1	
+</update>
 </mapper>

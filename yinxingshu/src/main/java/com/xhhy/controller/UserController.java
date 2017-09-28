@@ -98,4 +98,9 @@ public class UserController {
 		}
 		return "/msg.jsp";
 	}
+	@RequestMapping("/msg")
+	public String index(Model m,boolean userId){
+		
+		return "/right.jsp";
+	}
 }

@@ -11,9 +11,25 @@
 <html>
 
 	<head>
+	<base href="<%=basePath%>">
 		<title>职位发布登记</title>
 		<meta http-equiv="content-type" content="text/html;charset=utf-8">
 		<link href="css/mine.css" type="text/css" rel="stylesheet">
+		<script type="text/javascript" src="js/My97DatePicker/WdatePicker.js"></script>
+        <script type="text/javascript">
+			function checkTime() {
+				var st = document.getElementById("st");
+				var et = document.getElementById("et");
+				if (st.value != null && st.value != "" && et.value != null
+						&& et.value != "") {
+					if (st.value > et.value) {
+						st.value = "";
+						et.value = "";
+						alert("请输入正确的时间!");
+					}
+				}
+			}
+		</script>
 	</head>
 
 	<body>
@@ -82,19 +98,19 @@
 					<tr>
 						<td>登记人<span style="color:red">*</span>：</td>
 						<td>
-							<input type="text" readonly name="userId" value="当前登录人" />
+							<input type="text" readonly name="userId" value="${ub.userName }" />
 						</td>
 					</tr>
 					<tr>
 						<td>登记时间<span style="color:red">*</span>：</td>
 						<td>
-							<input type="text" name="startTime" readonly value="" />
+							<input type="text"  id="st" onclick="WdatePicker()" onchange="checkTime()"/>
 						</td>
 					</tr>
 					<tr>
 						<td>截止时间<span style="color:red">*</span>：</td>
 						<td>
-							<input type="text" name="eddTime" readonly value="" />
+							<input type="text"  id="et" onclick="WdatePicker()" onchange="checkTime()"/>
 						</td>
 					</tr>
 

@@ -12,7 +12,7 @@ public interface UserDao {
 
 	public void update(int userId);
 	
-	public UserBean  UpdateById(UserBean userId);
+	public boolean  UpdateById(UserBean userId);
 	
 	
 }

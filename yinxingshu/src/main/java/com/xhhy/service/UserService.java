@@ -9,6 +9,6 @@ public interface UserService {
 	
 	public void update(int userId);
 	
-	public UserBean  UpdateById(UserBean userId);
+	public boolean  UpdateById(UserBean userId);
 
 }

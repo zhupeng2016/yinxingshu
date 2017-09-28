@@ -30,5 +30,7 @@ public interface RoleDao {
 	//添加职员发布数据
 	public boolean addRole(RoleBean role);
 	
+	//删除职位
+	public boolean deleteRole(Integer roleId);
 }
 

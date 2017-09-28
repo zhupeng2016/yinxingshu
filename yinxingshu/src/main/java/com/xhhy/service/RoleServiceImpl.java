@@ -2,9 +2,7 @@ package com.xhhy.service;
 
 import java.util.List;
 
-import
-
-org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.xhhy.bean.RoleBean;
@@ -15,16 +13,12 @@ public class RoleServiceImpl implements RoleService {
 
 	@Autowired
 	private RoleDao rd;
-
-
-	// 展现职位发布
+	
 	public List<RoleBean> getRoles() {
 		// TODO Auto-generated method stub
 		return rd.getRoles();
 	}
-	
-	
-
+    //根据用户id得到roleid
 	// 查看职位信息
 	public RoleBean getRole(Integer roleId) {
 		// TODO Auto-generated method stub
@@ -63,4 +57,9 @@ public class RoleServiceImpl implements RoleService {
 	}
 
 
+	//删除职位
+	public boolean deleteRole(Integer roleId) {
+		// TODO Auto-generated method stub
+		return rd.deleteRole(roleId);
+	}
 }

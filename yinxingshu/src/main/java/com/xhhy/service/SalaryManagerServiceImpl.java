@@ -28,10 +28,17 @@ public class SalaryManagerServiceImpl implements SalaryManagerService {
 	 * 薪酬管理 分页
 	 */
 	public PageInfo getSalarys(int pageNum, int pageSize, int num) {
-		// TODO Auto-generated method stub
+		List<SalaryBean> l = null;
+		PageInfo<Object> info = null;
 		PageHelper.startPage(pageNum, pageSize);
-		List<SalaryBean> l = salaryManagerDao.findAll();
-		PageInfo<Object> info = new PageInfo(l,num);
+		l = salaryManagerDao.findAll();
+		info = new PageInfo(l,num);
+		int c = info.getPages();
+		if(pageNum > c){
+			PageHelper.startPage(c, pageSize);
+			l = salaryManagerDao.findAll();
+			info = new PageInfo(l,num);
+		}
 		return info;
 
 	}
@@ -51,6 +58,34 @@ public class SalaryManagerServiceImpl implements SalaryManagerService {
 		// TODO Auto-generated method stub
 		return salaryManagerDao.prepareCode();
 	}
+	
+	
+	/**
+	 * 查看薪酬标准详情
+	 */
+	public SalaryBean message(int salaryId) {
+		// TODO Auto-generated method stub
+		return salaryManagerDao.message(salaryId);
+	}
+	
+
+	/**
+	 * 修改薪酬详情
+	 */
+	public void update(SalaryBean sb) {
+		// TODO Auto-generated method stub
+		salaryManagerDao.update(sb);
+	}
+	
+	
+	/**
+	 * 删除薪酬信息
+	 */
+	public void delete(int salaryId) {
+		// TODO Auto-generated method stub
+		salaryManagerDao.delete(salaryId);
+	}
+	
 	
 	
 	

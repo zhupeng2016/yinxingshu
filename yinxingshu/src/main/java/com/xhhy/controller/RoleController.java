@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.xhhy.bean.DeptBean;
 import com.xhhy.bean.RoleBean;
@@ -26,7 +27,7 @@ public class RoleController {
 	public String getRoles(Model m) {
 
 		List<RoleBean> roleList = rs.getRoles();
-		for (RoleBean roleBean : roleList) {
+		/*for (RoleBean roleBean : roleList) {
 			System.out.println(roleBean.toString() + "----");
 
 			List<RoleBean> list = rs.getRoles();
@@ -38,8 +39,8 @@ public class RoleController {
 				m.addAttribute("list", list);
 
 			}
-		}
-		m.addAttribute("list", roleList);
+		}*/
+		m.addAttribute("roleList", roleList);
 
 		return "/zhaopin/demo1/list.jsp";
 	}
@@ -97,4 +98,7 @@ public class RoleController {
 			return "rec/demo1";
 		}
 	}
+	
+	
+	
 }

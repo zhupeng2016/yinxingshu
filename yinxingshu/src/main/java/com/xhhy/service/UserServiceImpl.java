@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService {
 		ud.update(userId);
 	}
 
-	public UserBean UpdateById(UserBean userId) {
+	public boolean UpdateById(UserBean userId) {
 		// TODO Auto-generated method stub
 		return ud.UpdateById(userId);
 	}

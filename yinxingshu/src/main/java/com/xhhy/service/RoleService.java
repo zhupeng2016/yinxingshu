@@ -9,7 +9,7 @@ public interface RoleService {
 	// 展现职位发布
 	public List<RoleBean> getRoles();
 
-	// 查看职位xinx
+	// 查看职位信息
 	public RoleBean getRole(Integer
 
 	roleId);
@@ -32,4 +32,7 @@ public interface RoleService {
 	
 	//添加职员发布数据
 	public boolean addRole(RoleBean role);
+	
+	//删除职位
+	public boolean deleteRole(Integer roleId);
 }
