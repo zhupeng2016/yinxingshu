@@ -14,7 +14,6 @@ public class ResumeServiceImpl implements ResumeService {
 	@Autowired
 	private ResumeDao rsd;
 
-	@Override
 	public List<ResumeBean> getResume() {
 		// TODO Auto-generated method stub
 		return rsd.getResume();
