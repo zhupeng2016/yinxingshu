@@ -21,7 +21,7 @@ public interface SalaryManagerDao {
 	 * @return
 	 */
 	
-	public List<SalaryBean> findAll();
+	public List<SalaryBean> findAll(SalaryBean sb);
 	
 	/**
 	 * 增加薪酬信息

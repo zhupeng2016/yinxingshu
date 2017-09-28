@@ -29,7 +29,14 @@
 	<select id="findAll" resultMap="Salary" >
 		select SALARY_ID,SALARY_CODE,SALARY_NAME,SALARY_MAKER,SALARY_REGISTER,REGISTER_TIME,BASE_PAY,ADD_PAY,
 		TRAFFIC_PAY,PHONE_PAY,FOOD_PAY,HOUSE_PAY,AWAY_PAY,OVERTIME_PAY,SALARY_REMARK,SALARY_STATE,SALARY_DEL,
-		ALLSALARY,SALARY_3,SALARY_4 from SALARY_TB where SALARY_DEL=1 order by salary_code desc
+		ALLSALARY,SALARY_3,SALARY_4 from SALARY_TB where SALARY_DEL=1 
+		<if test="salaryName != null and salaryName != &quot;&quot;">
+			and SALARY_NAME like concat(concat('%',#{salaryName}),'%')
+		</if>
+		<if test="salaryState != 0">
+			and salary_state = #{salaryState}
+		</if>
+		order by salary_code desc
 	</select>
 	
 	<insert id="addSalary" >

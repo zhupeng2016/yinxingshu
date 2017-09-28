@@ -29,16 +29,16 @@ public class SalaryManagerServiceImpl implements SalaryManagerService {
 	/**
 	 * 薪酬管理 分页
 	 */
-	public PageInfo getSalarys(int pageNum, int pageSize, int num) {
+	public PageInfo getSalarys(SalaryBean sb,int pageNum, int pageSize, int num) {
 		List<SalaryBean> l = null;
 		PageInfo<Object> info = null;
 		PageHelper.startPage(pageNum, pageSize);
-		l = salaryManagerDao.findAll();
+		l = salaryManagerDao.findAll(sb);
 		info = new PageInfo(l,num);
 		int c = info.getPages();
 		if(pageNum > c){
 			PageHelper.startPage(c, pageSize);
-			l = salaryManagerDao.findAll();
+			l = salaryManagerDao.findAll(sb);
 			info = new PageInfo(l,num);
 		}
 		return info;
