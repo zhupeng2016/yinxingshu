@@ -27,7 +27,7 @@ public class UserController {
 			}else{
 				us.update(ub.getUserId());
 				m.addAttribute("ub", ub);
-				return "/index.jsp";
+				return "/home/index";
 			}
 		}else{
 			m.addAttribute("msg", "账号或密码错误");

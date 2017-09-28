@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.xhhy.bean.RoleBean;
 import com.xhhy.dao.RoleDao;
 
@@ -14,9 +16,23 @@ public class RoleServiceImpl implements RoleService {
 	@Autowired
 	private RoleDao rd;
 	
-	public List<RoleBean> getRoles() {
+	public PageInfo getRoles(int pageNum,int pageSize,int num) {
 		// TODO Auto-generated method stub
-		return rd.getRoles();
+		
+		List<RoleBean> l = null;
+		PageInfo<Object> info = null;
+		PageHelper.startPage(pageNum, pageSize);
+		l=rd.getRoles();
+		info=new PageInfo(l,num);
+		int c = info.getPages();
+		if(pageNum > c){
+			PageHelper.startPage(c, 
+
+pageSize);
+			l = rd.getRoles();
+			info = new PageInfo(l,num);
+		}
+		return info;
 	}
     //根据用户id得到roleid
 	public int getRoleId(int userId) {
@@ -68,5 +84,10 @@ public class RoleServiceImpl implements RoleService {
 	public boolean deleteRole(Integer roleId) {
 		// TODO Auto-generated method stub
 		return rd.deleteRole(roleId);
+	}
+	@Override
+	public List<RoleBean> getRoles() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
