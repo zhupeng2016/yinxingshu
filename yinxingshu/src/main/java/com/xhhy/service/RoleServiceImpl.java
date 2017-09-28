@@ -14,7 +14,6 @@ public class RoleServiceImpl implements RoleService {
 	@Autowired
 	private RoleDao rd;
 	
-	@Override
 	public List<RoleBean> getRoles() {
 		// TODO Auto-generated method stub
 		return rd.getRoles();

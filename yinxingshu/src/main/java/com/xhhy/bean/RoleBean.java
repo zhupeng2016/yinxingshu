@@ -5,18 +5,18 @@ import java.io.Serializable;
 public class RoleBean implements Serializable {
 
 	private Integer roleId;// Ö°Î»id
-	private Integer deptId;// ²¿ÃÅid
-	private String roleCode;// Ö°Î»±àºÅ
-	private String roleName;// Ö°Î»Ãû³Æ
-	private Integer roleKind;// Ö°Î»·ÖÀà
-	private Integer roleNum;// ÕÐÆ¸ÈË”µ
-	private String startTime;// µÇ¼ÇÊ±¼ä
-	private String eddTime;// ½ØÖ¹Ê±¼ä
-	private String roleIntro;// Ö°Î»ÉèÖÃÖÐµÄÖ°Î»ÃèÊö
-	private String roleRemark;// Ö°Î»ÃèÊö
-	private String roleRequired;// ÂšÎ»ÒªÇó
+	private Integer deptId;// ï¿½ï¿½ï¿½ï¿½id
+	private String roleCode;// Ö°Î»ï¿½ï¿½ï¿½
+	private String roleName;// Ö°Î»ï¿½ï¿½ï¿½
+	private Integer roleKind;// Ö°Î»ï¿½ï¿½ï¿½ï¿½
+	private Integer roleNum;// ï¿½ï¿½Æ¸ï¿½Ë”ï¿½
+	private String startTime;// ï¿½Ç¼ï¿½Ê±ï¿½ï¿½
+	private String eddTime;// ï¿½ï¿½Ö¹Ê±ï¿½ï¿½
+	private String roleIntro;// Ö°Î»ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½Ö°Î»ï¿½ï¿½ï¿½ï¿½
+	private String roleRemark;// Ö°Î»ï¿½ï¿½ï¿½ï¿½
+	private String roleRequired;// ÂšÎ»Òªï¿½ï¿½
 	private Integer roleState;// Ö°Î»×´Ì¬
-	private Integer roleDel;// Ö°Î»µÄÉ¾³ý×´Ì¬
+	private Integer roleDel;// Ö°Î»ï¿½ï¿½É¾ï¿½ï¿½×´Ì¬
 
 	public RoleBean() {
 		super();
