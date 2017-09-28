@@ -16,5 +16,9 @@ public interface DeptDao {
 	public boolean addDept(DeptBean db);
 	//根据Id查询部门信息。
 	public DeptBean getDeptById(int deptId);
+	//根据Id状态删除部门。
+	public boolean deleteDeptById(int deptId);
+	//根据Id修改部门信息。
+	public boolean updateDept(DeptBean db);
 
 }

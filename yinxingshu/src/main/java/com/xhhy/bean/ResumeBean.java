@@ -1,3 +1,4 @@
+
 package com.xhhy.bean;
 
 import java.io.Serializable;

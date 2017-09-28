@@ -18,9 +18,9 @@ public class SalaryBean implements Serializable {
 	  private String awayPay;//出差补助
 	  private String overtimePay;//加班补助
 	  private String salaryRemark;//备注
-	  private String salaryState;//审批状态
-      private String salaryDel;//删除状态
-      private String salary2;
+	  private int salaryState;//审批状态
+      private int salaryDel;//删除状态
+      private String allSalary;//工资总额
       private String salary3;
       private String salary4;
       
@@ -30,34 +30,7 @@ public class SalaryBean implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-
-	public SalaryBean(int salaryId, String salaryCode, String salaryName, String salaryMaker, String salaryRegister,
-			String registerTime, String basePay, String addPay, String trafficPay, String phonePay, String foodPay,
-			String housePay, String awayPay, String overtimePay, String salaryRemark, String salaryState,
-			String salaryDel, String salary2, String salary3, String salary4) {
-		super();
-		this.salaryId = salaryId;
-		this.salaryCode = salaryCode;
-		this.salaryName = salaryName;
-		this.salaryMaker = salaryMaker;
-		this.salaryRegister = salaryRegister;
-		this.registerTime = registerTime;
-		this.basePay = basePay;
-		this.addPay = addPay;
-		this.trafficPay = trafficPay;
-		this.phonePay = phonePay;
-		this.foodPay = foodPay;
-		this.housePay = housePay;
-		this.awayPay = awayPay;
-		this.overtimePay = overtimePay;
-		this.salaryRemark = salaryRemark;
-		this.salaryState = salaryState;
-		this.salaryDel = salaryDel;
-		this.salary2 = salary2;
-		this.salary3 = salary3;
-		this.salary4 = salary4;
-	}
-
+	
 
 	public int getSalaryId() {
 		return salaryId;
@@ -209,33 +182,40 @@ public class SalaryBean implements Serializable {
 	}
 
 
-	public String getSalaryState() {
+
+	
+
+	public int getSalaryState() {
 		return salaryState;
 	}
 
 
-	public void setSalaryState(String salaryState) {
+
+	public void setSalaryState(int salaryState) {
 		this.salaryState = salaryState;
 	}
 
 
-	public String getSalaryDel() {
+
+	public int getSalaryDel() {
 		return salaryDel;
 	}
 
 
-	public void setSalaryDel(String salaryDel) {
+
+	public void setSalaryDel(int salaryDel) {
 		this.salaryDel = salaryDel;
 	}
 
 
-	public String getSalary2() {
-		return salary2;
+
+	public String getAllSalary() {
+		return allSalary;
 	}
 
 
-	public void setSalary2(String salary2) {
-		this.salary2 = salary2;
+	public void setAllSalary(String allSalary) {
+		this.allSalary = allSalary;
 	}
 
 

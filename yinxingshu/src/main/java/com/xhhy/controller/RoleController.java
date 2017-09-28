@@ -22,7 +22,6 @@ public class RoleController {
 	private RoleService rs;
 	@Autowired
 	private DeptService ds;
-
 	@RequestMapping("/demo1")
 	public String getRoles(Model m) {
 

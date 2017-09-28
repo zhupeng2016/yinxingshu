@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.xhhy.dao.RoleMenuDao">
+    
+    <resultMap id="myrolemenu" type="com.xhhy.bean.RoleMenuBean">
+     <id column="role_id" jdbcType="INTEGER" property="roleId" />
+    <id column="menu_id" jdbcType="INTEGER" property="menuId" /> 
+    </resultMap>
+  
+	<select id="getMenuList"  resultMap="com.xhhy.bean.MenuBean" >
+	    select m.menu_id,m.menu_name,m.parent_menu,m.url,m.menu_state,m.menu_remark
+		 from menu_tb m,role_menu rm  where m.menu_id=rm.menu_id and rm.role_id=#{roleId} 
+	</select>
+	
+</mapper>
