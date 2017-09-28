@@ -11,7 +11,7 @@ public interface SalaryManagerService {
 	/**
 	 * 薪酬管理  分页
 	 */
-	public PageInfo getSalarys(int nowPage,int pageSize,int num);
+	public PageInfo getSalarys(SalaryBean sb,int nowPage,int pageSize,int num);
 	
 	/**
 	 * 增加薪酬信息
@@ -31,7 +31,7 @@ public interface SalaryManagerService {
 	/**
 	 * 修改薪酬信息
 	 */
-	public void update(SalaryBean sb);
+	public void update(SalaryBean sb,int flag);
 	
 	/**
 	 * 删除薪酬信息

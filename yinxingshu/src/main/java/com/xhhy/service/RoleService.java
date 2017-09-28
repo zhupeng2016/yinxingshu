@@ -1,13 +1,12 @@
 package com.xhhy.service;
 
-import java.util.List;
-
+import com.github.pagehelper.PageInfo;
 import com.xhhy.bean.RoleBean;
 
 public interface RoleService {
 
 	// 展现职位发布
-	public List<RoleBean> getRoles();
+	public PageInfo getRoles(int nowPage,int pageSize,int num);
     //根据用户id得到roleid
 	public int getRoleId(int userId);
 

@@ -77,6 +77,22 @@ public class TarServiceImpl implements TarService {
 		// TODO Auto-generated method stub
 		td.bohui(tb);
 	}
-			
-
+	//培训反馈展现		
+	public PageInfo fanList(int pageNum, int pageSize, int num, TarBean tb) {
+		// TODO Auto-generated method stub
+		PageHelper.startPage(pageNum, pageSize);
+		List<TarBean> l = td.fanList(tb);
+		PageInfo<Object> info = new PageInfo(l, num);
+		return info;
+	}
+	//培训反馈查看
+	public TarBean fanLook(int tarId) {
+		// TODO Auto-generated method stub
+		return td.fanLook(tarId);
+	}
+	//培训反馈提交
+	public void fanTi(TarBean tb) {
+		// TODO Auto-generated method stub
+		td.fanTi(tb);
+	}
 }
