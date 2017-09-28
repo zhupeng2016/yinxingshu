@@ -2,13 +2,13 @@ package com.xhhy.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.github.pagehelper.PageInfo;
+import com.xhhy.util.State;
 import com.xhhy.bean.DeptBean;
 import com.xhhy.bean.MenuBean;
 import com.xhhy.bean.RoleBean;
@@ -16,7 +16,6 @@ import com.xhhy.service.DeptService;
 import com.xhhy.service.MenuService;
 import com.xhhy.service.RoleMenuService;
 import com.xhhy.service.RoleService;
-
 @Controller
 @RequestMapping("/rec")
 
@@ -29,24 +28,16 @@ public class RoleController {
 	private DeptService ds;
 	
 	@RequestMapping("/demo1")
-	public String getRoles(Model m) {
-
-		List<RoleBean> roleList = rs.getRoles();
-		/*for (RoleBean roleBean : roleList) {
-			System.out.println(roleBean.toString() + "----");
-
-			List<RoleBean> list = rs.getRoles();
-			if (list.size() != 0) {
-
-				for (int i = 0; i < list.size(); i++) {
-					System.out.println(list.get(i).getRoleKind());
-				}
-				m.addAttribute("list", list);
-
-			}
-		}*/
-		m.addAttribute("roleList", roleList);
-
+	public String getRoles(Integer pageNum,Model map) {
+		
+		if(pageNum==null){
+			pageNum=1;
+		}
+		PageInfo page=rs.getRoles(pageNum,State.PAGESIZE,State.NUM);
+		List<RoleBean> roleList = page.getList();
+		
+		map.addAttribute("roleList", roleList);
+        map.addAttribute("page",page); 
 		return "/zhaopin/demo1/list.jsp";
 	}
 
@@ -93,6 +84,7 @@ public class RoleController {
 		return "/zhaopin/demo1/add.jsp";
 	}
 
+	//添加职位
 	@RequestMapping("/add")
 	public String addRole(RoleBean role, Model m) {
 		Boolean is = rs.addRole(role);
@@ -103,7 +95,5 @@ public class RoleController {
 			return "rec/demo1";
 		}
 	}
-	
-	
-	
-}
+	}
+

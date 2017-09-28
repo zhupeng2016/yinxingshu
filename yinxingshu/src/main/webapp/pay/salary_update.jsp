@@ -19,20 +19,23 @@
 				+ $("#c6").val() + "+" + $("#c7").val() + "+" + $("#c8").val();
 		$("#c9").val(eval(s));
 	}
-	$(document).ready(function(){
-		$("#btn1").click(function(){
+	$(document).ready(function() {
+		$("#btn1").click(function() {
 			var is = confirm("确定修改吗？");
-			if(is){
+			if (is) {
+				$("#up").append("<input type='hidden' name='flag' value='1'>");
+				$("#up").submit();
+			}
+		})
+	});
+	$(document).ready(function() {
+		$("#btn2").click(function() {
+			var is = confirm("确定审核吗？");
+			if (is) {
+				$("#up").append("<input type='hidden' name='flag' value='2'>");
 				$("#up").submit();
 			}
 		});
-		$(document).ready(function(){
-			$("#btn2").click(function(){
-				var is = confirm("确定审核吗？");
-				if(is){
-					$("#up").submit();
-				}
-			});
 	});
 </script>
 </head>
@@ -52,6 +55,7 @@
 	<div style="font-size: 13px; margin: 10px 5px">
 		<form action="salary/update" method="post"
 			enctype="multipart/form-data" id="up">
+			<input type="hidden" name="salaryId" value="${requestScope.message.salaryId}" />
 			<input type="hidden" name="pageNum" value="${requestScope.pageNum }" />
 			<table border="1" width="100%" class="table_a">
 				<tr>
@@ -124,8 +128,8 @@
 				</tr>
 				<tr>
 					<td>出差补助：</td>
-					<td><input type="text" name="awayPay" value="${message.awayPay }"
-						onblur="count()" id="c7" />元</td>
+					<td><input type="text" name="awayPay"
+						value="${message.awayPay }" onblur="count()" id="c7" />元</td>
 				</tr>
 				<tr>
 					<td>加班补助：</td>
@@ -146,9 +150,9 @@
 						vaaue="${message.salaryRemark }" /></td>
 				</tr>
 				<tr>
-					<td colspan="2" align="center"><input type="button" value="确认" id="btn1">
-						<input type="button" value="提交审核" id="btn2"> <input type="reset"
-						value="重置"></td>
+					<td colspan="2" align="center"><input type="button" value="确认"
+						id="btn1"> <input type="button" value="提交审核" id="btn2">
+						<input type="reset" value="重置"></td>
 				</tr>
 			</table>
 		</form>

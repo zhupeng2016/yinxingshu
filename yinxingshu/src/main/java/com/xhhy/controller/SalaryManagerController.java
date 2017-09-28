@@ -3,12 +3,15 @@ package com.xhhy.controller;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.github.pagehelper.PageInfo;
@@ -23,6 +26,7 @@ import com.xhhy.util.State;
  */
 @Controller
 @RequestMapping("/salary")
+@SessionAttributes({"salaryBean"})
 public class SalaryManagerController {
 	
 	@Autowired
@@ -35,10 +39,16 @@ public class SalaryManagerController {
 	 * @return
 	 */
 	@RequestMapping("/findAll")
-	public String findAll(int pageNum,Model map){
-		PageInfo page = salaryManagerService.getSalarys(pageNum,State.PAGESIZE,State.NUM);
+	public String findAll(SalaryBean sb,@RequestParam(value="flag",required=false)String flag,int pageNum,Model map,HttpServletRequest request){
+		System.out.println(flag);
+		if("clear".equals(flag)){
+		     sb.setSalaryName(null);
+		     sb.setSalaryState(0);
+		}
+		PageInfo page = salaryManagerService.getSalarys(sb,pageNum,State.PAGESIZE,State.NUM);
 		//page.getNavigatepageNums();    页面显示12345   23456  样式用这个方法
 		List<SalaryBean> list = page.getList();
+		map.addAttribute("salaryBean", sb);
 		map.addAttribute("salarylist", list);
 		map.addAttribute("page",page);
 		return "/pay/salaryManager.jsp";
@@ -50,11 +60,11 @@ public class SalaryManagerController {
 	 * @return
 	 */
 	@RequestMapping("/addSalary")
-	public String addSalary(SalaryBean sb,Model m){
+	public String addSalary(SalaryBean sb,Model m,HttpServletRequest request){
 		sb.setSalaryDel(State.UNDEL);
 		sb.setSalaryState(State.SALARY_QICAO);
 		salaryManagerService.addSalary(sb);
-		return findAll(1,m);
+		return findAll(new SalaryBean(),"clear",1,m,request);
 	}
 
 	/**
@@ -102,19 +112,21 @@ public class SalaryManagerController {
 	 * 修改薪酬信息
 	 */
 	@RequestMapping("/update")
-	public String update(SalaryBean sb,int pageNum,Model map){
-		salaryManagerService.update(sb);	
-		return findAll(pageNum, map);
-		
+	public String update(SalaryBean sb,int pageNum,@RequestParam("flag")int flag,Model map,HttpServletRequest request){
+		//flag是1 是修改
+		//flag是2 是先修改 后提交审核  需要修改薪酬的状态
+		System.out.println(sb);
+		salaryManagerService.update(sb,flag);
+		return findAll(new SalaryBean(),"clear",pageNum, map,request);
 	}
 	
 	/**
 	 * 删除薪酬标准信息
 	 */
 	@RequestMapping("/delete")
-	public String delete(int salaryId,int pageNum,Model m){
+	public String delete(int salaryId,int pageNum,Model m,HttpServletRequest request){
 		salaryManagerService.delete(salaryId);
-		return findAll(pageNum,m);
+		return findAll(new SalaryBean(),"clear",pageNum,m,request);
 	}
 	
 }

@@ -7,6 +7,12 @@ import org.springframework.stereotype.Service;
 
 import com.xhhy.bean.RoleBean;
 import com.xhhy.dao.RoleDao;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.xhhy.bean.RoleBean;
+import com.xhhy.dao.RoleDao;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 
 @Service
 public class RoleServiceImpl implements RoleService {
@@ -14,30 +20,39 @@ public class RoleServiceImpl implements RoleService {
 	@Autowired
 	private RoleDao rd;
 	
-	@Override
-	public List<RoleBean> getRoles() {
+	public PageInfo getRoles(int pageNum,int pageSize,int num) {
 		// TODO Auto-generated method stub
-		return rd.getRoles();
+		
+		List<RoleBean> l = null;
+		PageInfo<Object> info = null;
+		PageHelper.startPage(pageNum, pageSize);
+		l=rd.getRoles();
+		info=new PageInfo(l,num);
+		int c = info.getPages();
+		if(pageNum > c){
+			PageHelper.startPage(c, 
+
+pageSize);
+			l = rd.getRoles();
+			info = new PageInfo(l,num);
+		}
+		return info;
 	}
-   
 
 
 	// 查看职位信息
-	@Override
 	public RoleBean getRole(Integer roleId) {
 		// TODO Auto-generated method stub
 		return rd.getRole(roleId);
 	}
 
 	// 查看变更信息(预修改)
-	@Override
 	public RoleBean pupdateRole(Integer roleId) {
 		// TODO Auto-generated method stub
 		return rd.pupdateRole(roleId);
 	}
 
 	//修改职位发布信息
-	@Override
 	public boolean updateRole(Integer roleId, String
 
 	roleNum, String roleRemark, String roleRequired) {
@@ -57,7 +72,6 @@ public class RoleServiceImpl implements RoleService {
 	
 	
 	//添加职位信息
-	@Override
 	public boolean addRole(RoleBean role) {
 		// TODO Auto-generated method stub
 		return rd.addRole(role);
@@ -74,19 +88,25 @@ public class RoleServiceImpl implements RoleService {
 		}
 
 	//状态删除职位
-	@Override
 	public boolean deleteRole(Integer roleId) {
 		// TODO Auto-generated method stub
 		return rd.deleteRole(roleId);
 	}
+
 	//修改职位信息
-	@Override
+	
 	public boolean updateRoleBy(RoleBean rb) {
 		// TODO Auto-generated method stub
 		return rd.updateRoleBy(rb);
 	}
-	
+
+public List<RoleBean> getRoles() {
+	// TODO Auto-generated method stub
+	return null;
+}
 	
 // -----葛大龙------------	
+	
+
 	
 }

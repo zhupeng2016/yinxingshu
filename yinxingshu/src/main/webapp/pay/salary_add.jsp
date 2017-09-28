@@ -22,7 +22,16 @@
 				+ "+" + $("#c4").val() + "+" + $("#c5").val() + "+"
 				+ $("#c6").val() + "+" + $("#c7").val() + "+" + $("#c8").val();
 		$("#c9").val(eval(s));
-	}
+	};
+	$(function(){
+		$("#bnt").click(function(){
+			var is = confirm("确定添加吗？");
+			if(is){
+				$("#add").submit();
+			}
+		})
+		}
+	);
 </script>
 </head>
 
@@ -39,7 +48,7 @@
 	<div></div>
 
 	<div style="font-size: 13px; margin: 10px 5px">
-		<form action="salary/addSalary" method="post">
+		<form action="salary/addSalary" method="post" id="add">
 			<table border="1" width="100%" class="table_a">
 				<tr>
 					<td width="120px;">薪酬标准编号<span style="color: red">*</span>：
@@ -82,8 +91,8 @@
 
 				<tr>
 					<td>绩效奖金：</td>
-					<td><input type="text" name="addPay" value="0" onblur="count()"
-						id="c2" />元</td>
+					<td><input type="text" name="addPay" value="0"
+						onblur="count()" id="c2" />元</td>
 				</tr>
 
 				<tr>
@@ -131,8 +140,8 @@
 					<td><input type="text" name="salaryRemark" /></td>
 				</tr>
 				<tr>
-					<td colspan="2" align="center"><input type="button" value="添加" id=" btn">
-						<input type="reset" value="清空"></td>
+					<td colspan="2" align="center"><input type="button" value="添加"
+						id="bnt"> <input type="reset" value="清空"></td>
 				</tr>
 			</table>
 		</form>
