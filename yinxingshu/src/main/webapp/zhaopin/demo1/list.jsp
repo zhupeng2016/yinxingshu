@@ -70,7 +70,6 @@
                     </tr>
                     <c:forEach items="${list }" var="l">
                     <tr id="product1">
-<<<<<<< HEAD
                         <td>${l.roleCode }</td>
                         <td><a href="view.html">${l.roleName }</a></td>
                         <c:if test="${l.roleKind==0 }"><td>管理</td></c:if>
@@ -80,7 +79,6 @@
                         <td>${l.startTime }</td>
 						<td>${l.eddTime }</td>
                         <td><a href="edit.html">变更</a> &nbsp;&nbsp;<a href="#">删除</a> </td>                        
-=======
                         <td>${roleList.roleCode }</td>
                         <td><a href="rec/view?roleId=${roleList.roleId }">${roleList.roleName }</a></td>
                         <c:if test="${roleList.roleKind==0 }"><td>管理</td></c:if>
@@ -98,7 +96,6 @@
                         <td>${roleList.startTime }</td>
 						<td>${roleList.eddTime }</td>
                         <td><a href="rec/viewtwo?roleId=${roleList.roleId }">变更</a> &nbsp;&nbsp;<a href="dell?">删除</a> </td>                        
->>>>>>> branch 'master' of https://github.com/zhupeng2016/yinxingshu.git
                     </tr> 
                     </c:forEach>
 					 <!-- <tr id="product1">

@@ -26,19 +26,7 @@ public class RoleController {
 	public String getRoles(Model m) {
 
 		List<RoleBean> roleList = rs.getRoles();
-		/*for (RoleBean roleBean : roleList) {
-			System.out.println(roleBean.toString() + "----");
-
-			List<RoleBean> list = rs.getRoles();
-			if (list.size() != 0) {
-
-				for (int i = 0; i < list.size(); i++) {
-					System.out.println(list.get(i).getRoleKind());
-				}
-				m.addAttribute("list", list);
-
-			}
-		}*/
+		
 		m.addAttribute("roleList", roleList);
 
 		return "/zhaopin/demo1/list.jsp";
