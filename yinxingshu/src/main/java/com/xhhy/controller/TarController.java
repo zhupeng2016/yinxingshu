@@ -111,4 +111,28 @@ public class TarController {
 		ts.bohui(tb);
 		return fuList(pageNum,tb,m);
 	}
+	//培训反馈展现
+	@RequestMapping("/fankui")
+	public String  fanList(int pageNum,TarBean tb,Model m){
+		PageInfo page = ts.fanList(pageNum, StateTar.PAGESIZE, StateTar.NUM,tb);
+		List<TarBean> l = page.getList();	
+		m.addAttribute("l",l);
+		m.addAttribute("page",page);
+		return "peixunfankui/list.jsp";
+	}
+	//培训反馈查看
+	@RequestMapping("/kuifan")
+	public String fanUpdate(int tarId,int pageNum,Model m){
+		TarBean tb = ts.fanLook(tarId);
+		m.addAttribute("tb", tb);
+		m.addAttribute("pageNum", pageNum);
+		return "peixunfankui/fankui.jsp";
+	}
+	//培训反馈提交
+	@RequestMapping("/extra")
+	public String fanTi(int pageNum,TarBean tb,Model m){
+		ts.fanTi(tb);
+		return fanList(pageNum,tb,m);
+	}
+	
 }
