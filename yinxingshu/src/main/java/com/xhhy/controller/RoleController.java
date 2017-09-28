@@ -88,6 +88,7 @@ public class RoleController {
 		return "/zhaopin/demo1/add.jsp";
 	}
 
+	//添加职位
 	@RequestMapping("/add")
 	public String addRole(RoleBean role, Model m) {
 		Boolean is = rs.addRole(role);
@@ -98,7 +99,5 @@ public class RoleController {
 			return "rec/demo1";
 		}
 	}
-	
-	
-	
-}
+	}
+

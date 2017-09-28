@@ -102,7 +102,7 @@
 						<td>${roleList.roleNum }</td> 						
                         <td>${roleList.startTime }</td>
 						<td>${roleList.eddTime }</td>
-                        <td><a href="rec/viewtwo?roleId=${roleList.roleId }">变更</a> &nbsp;&nbsp;<a href="#">删除</a> </td>                        
+                        <td><a href="rec/viewtwo?roleId=${roleList.roleId }">变更</a> &nbsp;&nbsp;<a href="dell?">删除</a> </td>                        
                     </tr> 
                     </c:forEach>
 					 <!-- <tr id="product1">
