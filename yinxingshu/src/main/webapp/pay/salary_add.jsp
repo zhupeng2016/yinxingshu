@@ -138,7 +138,7 @@
 					<td><input type="text" name="salaryRemark" /></td>
 				</tr>
 				<tr>
-					<td colspan="2" align="center"><input type="button" value="添加" id=" bnt">
+					<td colspan="2" align="center"><input type="button" value="添加" id="bnt">
 						<input type="reset" value="清空"></td>
 				</tr>
 			</table>
