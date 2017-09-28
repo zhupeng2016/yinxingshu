@@ -19,5 +19,11 @@ public class RoleServiceImpl implements RoleService {
 		// TODO Auto-generated method stub
 		return rd.getRoles();
 	}
+//根据用户id得到roleid
+	@Override
+	public int getRoleId(int userId) {
+		// TODO Auto-generated method stub
+		return rd.getRoleId(userId);
+	}
 
 }

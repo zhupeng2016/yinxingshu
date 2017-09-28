@@ -16,7 +16,7 @@ import com.xhhy.service.DeptService;
 
 @RequestMapping("/dept")
 @Controller
-@SessionAttributes({"deptlist","msg"})
+@SessionAttributes({"deptlist"})
 public class DeptController {
 	
 	@Autowired

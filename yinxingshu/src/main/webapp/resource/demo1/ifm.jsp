@@ -28,7 +28,7 @@
 </head>
 
 	
-<frameset cols="170, *" onload="show()">
+<frameset cols="170, *"  onload="show()">
 	<frame name=left src="resource/demo1/left.jsp" frameborder=0 noresize />
                 <frame name=main_right src="resource/demo1/wecom.jsp"
 		frameborder=0 noresize scrolling=yes />

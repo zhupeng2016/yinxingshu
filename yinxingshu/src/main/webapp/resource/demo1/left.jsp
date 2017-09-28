@@ -54,7 +54,7 @@
 					
 					d = new dTree('d');
 					d.config.target = "main_right";
-					d.add(0,-1,'部门管理');	
+				/* 	d.add(0,-1,'部门管理'); */	
 					
 			  <c:forEach items="${deptlist }" var="dt">
 		            d.add("${dt.deptId}","${dt.parentDept}",""+"${dt.deptShortName}"+"","dept/showDept/${dt.deptId}");

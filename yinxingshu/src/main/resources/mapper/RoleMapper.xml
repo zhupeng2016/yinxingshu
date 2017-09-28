@@ -25,4 +25,8 @@
 	       <if test="roleDel==0">role_id=#{roleId}</if>
 	    </trim> -->
 	</select>
+	<!-- 根据用户id得到roleid -->
+	<select id="getRoleId" resultType="int">
+	    select role_id from user_role where user_id=#{userId}
+	</select>
 </mapper>

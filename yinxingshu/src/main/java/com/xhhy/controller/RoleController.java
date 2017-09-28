@@ -17,6 +17,7 @@ public class RoleController {
 	
 	@Autowired
 	private RoleService rs;
+	
 	@RequestMapping("/demo1")
 	public String getRoles(Model m){
 		List<RoleBean> list=rs.getRoles();
