@@ -31,6 +31,11 @@
 			}
 		}
 	}
+	$(function(){
+		$("#btn").click(function(){
+			location.href="peixun/shenhe?pageNum=1&flag=clear";
+		});
+	});
 </script>
 </head>
 <body>
@@ -47,7 +52,7 @@
 	<div></div>
 	<div class="div_search">
 		<span>
-			<form action="peixun/fuhe?pageNum=pageNum" method="post">
+			<form action="peixun/shenhe?pageNum=pageNum" method="post">
 			<input type="hidden" name=pageNum value="1">
 				培训名称: <input type="text" name="tarName" /> 培训时间： <input type="text" id="st"
 					onclick="WdatePicker()" onchange="checkTime()" name="tarStartTime" />至<input

@@ -12,7 +12,17 @@
 <head>
 <title>培训管理</title>
 <meta http-equiv="content-type" content="text/html;charset=utf-8">
-<link href="../../css/mine.css" type="text/css" rel="stylesheet">
+<link href="css/mine.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#bt").click(function(){
+		location.href="peixun/bohui?tarId=${requestScope.tb.tarId}&pageNum=1"
+	})
+	});
+
+</script>
+
 </head>
 
 <body>
@@ -20,14 +30,14 @@
 	<div class="div_head">
 		<span> <span style="float: left">当前位置是：-》培训管理 -》培训复核</span> <span
 			style="float: right; margin-right: 8px; font-weight: bold"> <a
-				style="text-decoration: none" href="../peixunfuhe/list.html">【返回】</a>
+				style="text-decoration: none" href="peixun/fuList?pageNum=${requestScope.pageNum }">【返回】</a>
 		</span>
 		</span>
 	</div>
 	<div></div>
 
 	<div style="font-size: 13px; margin: 10px 5px">
-		<form action="peixun/shenhe?pageNum=pageNum" method="post"
+		<form action="peixun/tijiao?pageNum=pageNum" method="post"
 			enctype="multipart/form-data">
 			<input type="hidden" name="pageNum" value="${requestScope.pageNum }">
 			<table border="1" width="100%" class="table_a">
@@ -92,7 +102,7 @@
 
 				<tr>
 					<td colspan="2" align="center"><input type="submit"
-						value="审核通过"> <input type="button" value="驳回"></td>
+						value="审核通过"> <input type="button" value="驳回" id="bt"></td>
 				</tr>
 			</table>
 		</form>

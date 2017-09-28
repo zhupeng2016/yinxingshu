@@ -16,18 +16,12 @@ public class TarServiceImpl implements TarService {
 	private TarDao td;
 
 	// 培训计划分页
-	public PageInfo getTar(int pageNum, int pageSize, int num) {
+	public PageInfo getTar(TarBean tb,int pageNum, int pageSize, int num) {
 		// TODO Auto-generated method stub
 		PageHelper.startPage(pageNum, pageSize);
-		List<TarBean> l = td.getTar();
+		List<TarBean> l = td.getTar(tb);
 		PageInfo<Object> info = new PageInfo(l, num);
 		return info;
-	}
-	//培训计划模糊差
-	public List<TarBean> autoList(TarBean tb) {
-		// TODO Auto-generated method stub
-		List<TarBean> l = td.autoList(tb);
-		return l;
 	}
 	//培训计划增加
 	public void addTar(TarBean tb) {
@@ -54,7 +48,7 @@ public class TarServiceImpl implements TarService {
 		// TODO Auto-generated method stub
 		td.fuheTar(tarId);
 	}
-	//培训复核
+	//培训复核展现
 	public PageInfo fuList(int pageNum, int pageSize, int num, TarBean tb) {
 		// TODO Auto-generated method stub
 		PageHelper.startPage(pageNum, pageSize);

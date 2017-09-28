@@ -13,6 +13,17 @@
 <title>培训管理</title>
 <meta http-equiv="content-type" content="text/html;charset=utf-8">
 <link href="css/mine.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#bnt").click(function(){
+		var is = confirm("确定添加吗？");
+		if(is){
+			$("#myForm").submit();
+		}
+	})
+	});
+</script>
 </head>
 
 <body>
@@ -81,8 +92,9 @@
 
 	</div>
 	<hr>
-	<form action="peixun/extra?pageNum=pageNum" method="post">
-	<input type="hidden" name="pageNum" value="${requestScope.pageNum }">
+	<form action="peixun/extra" method="post" id="myForm">
+		<input type="hidden" name="tarId" value="${requestScope.tb.tarId}">
+		<input type="hidden" name="pageNum" value="${requestScope.pageNum }">
 	培训反馈
 	<div style="font-size: 13px; margin: 10px 5px">
 		<table border="1" width="100%" class="table_a">
@@ -108,7 +120,7 @@
 				<td><textarea name="evalutionResult" value=""></textarea></td>
 			</tr>
 			<tr>
-				<td colspan="2" align="center"><input type="submit" value="保存">
+				<td colspan="2" align="center"><input type="button" id="bnt" value="保存">
 				</td>
 			</tr>
 

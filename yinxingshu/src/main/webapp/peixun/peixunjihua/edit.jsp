@@ -36,9 +36,8 @@
 	<div></div>
 
 	<div style="font-size: 13px; margin: 10px 5px">
-		<form action="peixun/update?pageNum=pageNum" method="get"
+		<form action="peixun/update?pageNum=pageNum" method="post"
 			enctype="multipart/form-data"> 
-			<input type="hidden" name=tarId value=${requestScope.tb.tarId }>
 			<input type="hidden" name=pageNum value=${requestScope.pageNum }>
 			<table border="1" width="100%" class="table_a">
 				<tr>

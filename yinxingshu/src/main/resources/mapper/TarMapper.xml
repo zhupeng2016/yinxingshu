@@ -27,21 +27,17 @@
 	<!-- 培训计划展现 -->
 	<select id="getTar" resultMap="mytar">
 		<include refid="selectTar" /> where TRA_RESULT=0 
-	</select>
-	<!--培训计划模糊差  -->
-	<select id="autoList" resultMap="mytar">
-	    <include refid="selectTar" /> where TRA_RESULT=0 
 		<if test="tarName!=null and tarName != &quot;&quot;">
-		    and TRA_NAME like concat('%',#{tarName},'%')
+		    and TRA_NAME like concat(concat('%',#{tarName}),'%')
 		</if>
-		<if test="tarState !=null and tarState != &quot;&quot;">
+		<if test="tarState !=999">
 		    and TRA_STATE = #{tarState}
 		</if>
 		<if test="tarStartTime !=null and tarStartTime != &quot;&quot;">
-		    and TRA_STARTTIME = #{tarStartTime}
+		    and TRA_STARTTIME <![CDATA[<=]]> #{tarStartTime}
 		</if>
 		<if test="tarEddTime !=null and tarEddTime != &quot;&quot;">
-		    and TRA_EDDTIME = #{tarEddTime}
+		    and TRA_EDDTIME <![CDATA[>=]]> #{tarEddTime}
 		</if>
 	</select>
 	<!--培训计划增加  -->
@@ -53,7 +49,7 @@
 					TRA_REQUIRED,TRA_INTRO,TRA_RESOUCE,TRA_STATE,TRA_OPINION,TRA_RESULT,TRA_SUMMARY,
 					EVALUTION_RESULT,TAR_EMPLOYEE,TAR_FILE) 
 		values(#{tarId},#{tarName},#{tarTeacher},
-		to_date(#{tarStartTime},'yyyy-mm-dd hh24:mi:ss'),to_date(#{tarEddTime},'yyyy-mm-dd hh24:mi:ss'),
+		to_date(#{tarStartTime},'yyyy-mm-dd hh24:mi'),to_date(#{tarEddTime},'yyyy-mm-dd hh24:mi'),
 		#{tarRequired},#{tarIntro},#{tarResouce},#{tarState},#{tarOpinion},#{tarResult},
 		#{tarSummary},#{evalutionResult},#{tarEmployee},#{tarFile})
 	</insert>
@@ -67,9 +63,8 @@
 	</update>
 	<!--培训计划修改  -->
 	<update id="updateTar">
-	    update TRAIN_TB set TRA_NAME = #{tarName},TRA_TEACHER = #{tarTeacher},TRA_STARTTIME=to_date(#{tarStartTime},'yyyy-mm-dd hh24:mi:ss'),
-	    TRA_EDDTIME = to_date(#{tarEddTime},'yyyy-mm-dd hh24:mi:ss'),TRA_RESOUCE=#{tarResouce},
-	    TAR_EMPLOYEE = #{tarEmployee},TRA_INTRO=#{tarIntro},TAR_FILE=#{tarFile} where TRA_ID = #{tarId}
+	    update TRAIN_TB set TRA_NAME = #{tarName},TRA_TEACHER = #{tarTeacher},TRA_STARTTIME=to_date(#{tarStartTime},'yyyy-mm-dd hh24:mi'),
+	    TRA_RESOUCE=#{tarResouce},TAR_EMPLOYEE = #{tarEmployee},TRA_INTRO=#{tarIntro},TAR_FILE=#{tarFile} where TRA_ID = #{tarId}
 	</update>
 	<!--培训计划复核  -->
 	<update id="fuheTar">
@@ -79,13 +74,13 @@
 	<select id="fuList" resultMap="mytar">
 	    <include refid="selectTar" /> where TRA_RESULT=0 and TRA_STATE=1
 		<if test="tarName!=null and tarName != &quot;&quot;">
-		    and TRA_NAME like concat('%',#{tarName},'%')
+		    and TRA_NAME like concat(concat('%',#{tarName}),'%')
 		</if>
 		<if test="tarStartTime !=null and tarStartTime != &quot;&quot;">
-		    and TRA_STARTTIME = #{tarStartTime}
+		    and TRA_STARTTIME <![CDATA[<=]]> #{tarStartTime}
 		</if>
 		<if test="tarEddTime !=null and tarEddTime != &quot;&quot;">
-		    and TRA_EDDTIME = #{tarEddTime}
+		    and TRA_EDDTIME <![CDATA[>=]]> #{tarEddTime}
 		</if>
 	</select>
 	<!--培训复核查看 -->
@@ -94,7 +89,7 @@
 	</select>
 	<!--培训复核提交  -->
 	<update id="fuUpdate">
-	    update TRAIN_TB set TRA_STATE = 2,TRA_OPINION=#{TarOpinion} where TRA_ID = #{tarId}
+	    update TRAIN_TB set TRA_STATE = 2,TRA_OPINION=#{tarOpinion} where TRA_ID = #{tarId}
 	</update>
 	<!--培训复核驳回  -->
 	<update id="bohui">
@@ -104,13 +99,13 @@
 	<select id="fanList" resultMap="mytar">
 		<include refid="selectTar" /> where TRA_RESULT=0 and TRA_STATE=2
 		<if test="tarName!=null and tarName != &quot;&quot;">
-		    and TRA_NAME like concat('%',#{tarName},'%')
+		    and TRA_NAME like concat(concat('%',#{tarName}),'%')
 		</if>
 		<if test="tarStartTime !=null and tarStartTime != &quot;&quot;">
-		    and TRA_STARTTIME = #{tarStartTime}
+		    and TRA_STARTTIME <![CDATA[<=]]> #{tarStartTime}
 		</if>
 		<if test="tarEddTime !=null and tarEddTime != &quot;&quot;">
-		    and TRA_EDDTIME = #{tarEddTime}
+		    and TRA_EDDTIME <![CDATA[>=]]> #{tarEddTime}
 		</if>
 	</select>
 	<!-- 培训反馈查看 -->
