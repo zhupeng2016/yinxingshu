@@ -1,3 +1,4 @@
+
 package com.xhhy.aspect;
 
 
@@ -22,13 +23,13 @@ public class AllAspect {
 	public void beforeMethod(JoinPoint jp){
 		String methodName = jp.getSignature().getName();
 		String className = jp.getTarget().getClass().getName();
-		log.warn("=============="+className+"ÀàµÄ"+methodName+"·½·¨¿ªÊ¼Ö´ÐÐ============");
+		log.warn("=============="+className+"ç±»çš„"+methodName+"æ–¹æ³•å¼€å§‹æ‰§è¡Œ============");
 	}
 	
 	@After("expre()")
 	public void afterMethod(JoinPoint jp){
 		String methodName = jp.getSignature().getName();
 		String className = jp.getTarget().getClass().getName();
-		log.warn("=============="+className+"ÀàµÄ"+methodName+"Ö´ÐÐÍê±Ï============");
+		log.warn("=============="+className+"ç±»çš„"+methodName+"æ‰§è¡Œå®Œæ¯•============");
 	}
 }

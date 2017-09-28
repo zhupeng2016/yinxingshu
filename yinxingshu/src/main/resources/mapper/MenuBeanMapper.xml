@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.xhhy.dao.MenuDao">
+    
+    <resultMap id="mymenu" type="com.xhhy.bean.MenuBean">
+    <id column="menu_id" jdbcType="INTEGER" property="menuId" />
+    <result column="menu_name" jdbcType="VARCHAR" property="menuName" />
+    <result column="parent_menu" jdbcType="INTEGER" property="parentMenu" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="menu_state" jdbcType="INTEGER" property="menuState" />
+    <result column="menu_del" jdbcType="INTEGER" property="menuDel" />
+    <result column="menu_remark" jdbcType="VARCHAR" property="menuRemark" />
+  </resultMap>
+  
+	<select id="getAllMenu" resultMap="mymenu"  >
+		select menu_id,menu_name,parent_menu,url,menu_state,menu_del,menu_remark
+		 from menu_tb  where menu_del=0 
+		 <!-- <if test="${menuName != null and menuName !="" }"> and menu_name like concat(concat('%',#{menuName}),'%') </if>  -->
+		 <!--  <if test="${menuState!=999}"> and menu_state="${menustate}" </if> -->
+		  order by menu_id desc
+	</select>
+	<select id="getMenuById"  resultMap="mymenu" >
+	    select menu_id,menu_name,parent_menu,url,menu_state,menu_remark
+		 from menu_tb  where menu_id=#{menuId} 
+	</select>
+	<!-- <select id="autoComplete"  resultMap="mymenu" >
+	    select  menu_name from menu_tb  where menu_del=0 and menu_name like  concat(concat('%',#{str}),'%')
+	</select> -->
+	<update id="deleteMenu">
+	    update menu_tb set menu_del=1 where menu_id=#{menuId}
+	</update>
+	<update id="updateMenu">
+	    update menu_tb set menu_name=#{menuName},parent_menu=#{parentMenu},url=#{url},menu_state=#{menuState},menu_remark=#{menuRemark}
+	      where menu_id=#{menuId}
+	</update>
+	<insert id="addMenu">
+	    insert into menu_tb(menu_id,menu_name,parent_menu,url,menu_state,menu_del,menu_remark)
+	      values(0,#{menuName},#{parentMenu},#{url},#{menuState},0,#{menuRemark})
+	</insert>
+</mapper>

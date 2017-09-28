@@ -12,17 +12,16 @@ import com.xhhy.dao.DeptDao;
 public class DeptServiceImpl implements DeptService {
 
 	@Autowired
-	private DeptDao dd;
+	public DeptDao dd;
 	
 	//查询所有部门信息
-	@Override
+	
 	public List<DeptBean> getAllDept() {
 		// TODO Auto-generated method stub
 		return dd.getAllDept();
 	}
 
 	//添加一个部门
-	@Override
 	public boolean addDept(DeptBean db) {
 		// TODO Auto-generated method stub
 		
@@ -30,10 +29,21 @@ public class DeptServiceImpl implements DeptService {
 	}
 
 	//根据Id查询部门信息。
-	@Override
 	public DeptBean getDeptById(int deptId) {
 		// TODO Auto-generated method stub
 		return dd.getDeptById(deptId);
+	}
+
+	//根据Id状态删除部门。
+	public boolean deleteDeptById(int deptId) {
+		// TODO Auto-generated method stub
+		return dd.deleteDeptById(deptId);
+	}
+
+	//根据Id修改部门信息。
+	public boolean updateDept(DeptBean db) {
+		// TODO Auto-generated method stub
+		return dd.updateDept(db);
 	}
 
 }

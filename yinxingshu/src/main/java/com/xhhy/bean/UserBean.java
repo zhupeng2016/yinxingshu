@@ -3,37 +3,31 @@ package com.xhhy.bean;
 import java.io.Serializable;
 
 public class UserBean implements Serializable {
-	
-	private int userId;//id
-	private int deptId;//外键
-	private String userCode;//部门编号
-	private String loginName;//登录帐号
-	private String password;//密码
-	private String userName;//登陆人
-	private String sex;//性别
-	private String idCard;//身份证号
-	private String phone;//座机号
-	private String mobilePhone;//手机号
-	private String userEmail;//邮箱
-	private String address;//地址
-	private String userImg;//图片
-	private String userRemark;//职位
-	private String loginCount;//登录次数
-	private String userDel;//状态
-	private DeptBean db;//部门
-	private ResumeBean reb;//简历
-	private RecordBean ab;//档案
-	private RoleBean rb;//角色
-	
-	public UserBean() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+
+	private int userId;// id
+	private int deptId;// 外键
+	private String userCode;// 部门编号
+	private String loginName;// 登录帐号
+	private String password;// 密码
+	private String userName;// 登陆人
+	private String sex;// 性别
+	private String idCard;// 身份证号
+	private String phone;// 座机号
+	private String mobilePhone;// 手机号
+	private String userEmail;// 邮箱
+	private String address;// 地址
+	private String userImg;// 图片
+	private String userRemark;// 职位
+	private String loginCount;// 登录次数
+	private String userDel;// 状态
+	private DeptBean db;// 部门
+	private ResumeBean reb;// 简历
+	private RecordBean ab;// 档案
+	private RoleBean rb;// 角色
 
 	public UserBean(int userId, int deptId, String userCode, String loginName, String password, String userName,
 			String sex, String idCard, String phone, String mobilePhone, String userEmail, String address,
-			String userImg, String userRemark, String loginCount, String userDel, DeptBean db, ResumeBean reb,
-			RecordBean ab, RoleBean rb) {
+			String userImg, String userRemark, String loginCount, String userDel, DeptBean db, RoleBean rb) {
 		super();
 		this.userId = userId;
 		this.deptId = deptId;
@@ -52,9 +46,12 @@ public class UserBean implements Serializable {
 		this.loginCount = loginCount;
 		this.userDel = userDel;
 		this.db = db;
-		this.reb = reb;
-		this.ab = ab;
 		this.rb = rb;
+	}
+
+	public UserBean() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	public int getUserId() {
@@ -216,11 +213,5 @@ public class UserBean implements Serializable {
 	public void setRb(RoleBean rb) {
 		this.rb = rb;
 	}
-	
-	
-	
-	
-	
-	
-	
+
 }
