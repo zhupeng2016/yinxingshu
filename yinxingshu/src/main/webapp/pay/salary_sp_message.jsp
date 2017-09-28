@@ -1,9 +1,15 @@
-<!DOCTYPE>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <head>
         <title>薪酬标准管理</title>
+        <base href="<%=basePath%>">
         <meta http-equiv="content-type" content="text/html;charset=utf-8">
-        <link href="../css/mine.css" type="text/css" rel="stylesheet">
+        <link href="css/mine.css" type="text/css" rel="stylesheet">
     </head>
 
     <body>
@@ -12,7 +18,7 @@
             <span>
                 <span style="float:left">当前位置是：-》薪酬标准管理</span>
                 <span style="float:right;margin-right: 8px;font-weight: bold">
-                    <a style="text-decoration: none" href="list_standard.html">【返回】</a>
+                    <a style="text-decoration: none" href="javascript:void(0)" onclick="history.back()">【返回】</a>
                 </span>
             </span>
         </div>
@@ -24,37 +30,37 @@
                 <tr>
                     <td width="120px;">薪酬标准编号：</td>
                     <td>
-						a1001
+					${message.salaryCode}
 					</td>
                 </tr>
                 <tr>
                     <td>薪酬标准名称：</td>
                     <td>
-						高级开发工程师
+						${message.salaryName}
 					</td>
                 </tr>
                 <tr>
                     <td>薪酬总额：</td>
                      <td>
-						15000 元
+						${message.allSalary}
 					</td>
                 </tr>
                 <tr>
                     <td>制定人：</td>
                      <td>
-						张XX
+						${message.salaryMaker}
 					</td>
                 </tr>
                 <tr>
                     <td>登记人：</td>
                      <td>
-						张XX
+						${message.salaryRegister}
 					</td>
                 </tr>
                 <tr>
                     <td>登记时间：</td>
                      <td>
-						2015-10-29
+						${message.registerTime}
 					</td>
                 </tr>
 
@@ -62,59 +68,59 @@
 				<tr>
                     <td>基本工资：</td>
                      <td>
-						12000 元
+						${message.basePay}
 					</td>               
                 </tr>
 
 				<tr>
                     <td>绩效奖金：</td>
                      <td>
-						1000 元
+						${message.addPay}
 					</td>                
                 </tr>
 
 				<tr>
                     <td>交通补助：</td>
                     <td>
-                        100 元
+                        ${message.trafficPay}
                     </td>                
                 </tr>
 
 				<tr>
                     <td>通讯补助：</td>
                     <td>
-                       100 元
+                       ${message.phonePay}
                     </td>                
                 </tr>
 
 				<tr>
                     <td>餐补：</td>
                     <td>
-                        350 元
+                        ${message.foodPay}
                     </td>                
                 </tr>
 				<tr>
                     <td>住房补助：</td>
                     <td>
-                       300 元
+                       ${message.housePay}
                     </td>                
                 </tr>
 				<tr>
                     <td>出差补助：</td>
                     <td> 
-                       1000 元
+                       ${message.awayPay}
                     </td>                
                 </tr>
 				<tr>
                     <td>加班补助：</td>
                     <td>
-                        150 元
+                        ${message.overtimePay}
                     </td>                
                 </tr>	
 				<tr>
                     <td>备注：</td>
                     <td>
-                       基本工资+补助
+                    ${message.salaryRemark}
                     </td>                
                 </tr>
             </table>

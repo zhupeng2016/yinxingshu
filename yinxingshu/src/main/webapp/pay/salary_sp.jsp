@@ -1,11 +1,17 @@
-<!DOCTYPE >
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <head>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 
         <title>薪酬标准管理</title>
-
-        <link href="../css/mine.css" type="text/css" rel="stylesheet" />
+		<base href="<%=basePath%>">
+        <link href="css/mine.css" type="text/css" rel="stylesheet" />
     </head>
     <body>
         <style>
@@ -43,19 +49,19 @@
                         <td align="center" width="100px;">操作</td>
                     </tr>
 
-                 
+                 <c:forEach items="">
 					 <tr id="product1">
                         <td>2</td>
                         <td><input type="checkbox" /></td>
 						<td>b1002</td>
-                        <td><a href="standard_view.html">实施工程师</a></td> 
+                        <td><a href="salary_sp_message.jsp">实施工程师</a></td> 
 						<td>审核中</td> 						
                         <td>2012-10-18 17:40</td>
                         <td>
-							<a href="standard_sp.html">审核</a>						   							
+							<a href="salary_sp_sh.jsp">审核</a>						   							
 						</td>                        
                     </tr>
-					
+					</c:forEach>
 					
 					
                     <tr>
