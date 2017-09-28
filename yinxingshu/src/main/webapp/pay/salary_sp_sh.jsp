@@ -7,6 +7,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
     <head>
         <title>薪酬——审核</title>
+        <base href="<%=basePath%>">
         <meta http-equiv="content-type" content="text/html;charset=utf-8">
         <link href="../css/mine.css" type="text/css" rel="stylesheet">
         <script type="text/javascript" src="../js/jquery.js"></script>

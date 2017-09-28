@@ -35,14 +35,18 @@
 									<li class="user_main_input"><input name="loginName"
 										maxlength="20" id="ln" class="txtusernamecssclass"></li>
 									<li style="line-height: 16px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 12px;color:red;">${msg }</span></li>
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+										style="font-size: 12px; color: red;">${msg }</span>
+									</li>
 								</ul>
 								<ul>
 									<li class="user_main_text">密 码：</li>
 									<li class="user_main_input"><input type="password"
 										name="password" id="ps" class="txtpasswordcssclass"></li>
 									<li style="line-height: 16px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 12px;color:red;">${msg }</span></li>
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+										style="font-size: 12px; color: red;">${msg }</span>
+									</li>
 								</ul>
 								<ul>
 									<li class="user_main_text">Cookie：</li>
@@ -70,6 +74,5 @@
 			</dl>
 		</div>
 	</form>
-
 </body>
 </html>

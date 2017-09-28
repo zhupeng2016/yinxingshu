@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -9,8 +10,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 
         <title>薪酬标准管理</title>
-
-        <link href="../css/mine.css" type="text/css" rel="stylesheet" />
+		<base href="<%=basePath%>">
+        <link href="css/mine.css" type="text/css" rel="stylesheet" />
     </head>
     <body>
         <style>
@@ -48,7 +49,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <td align="center" width="100px;">操作</td>
                     </tr>
 
-                 
+                 <c:forEach items="">
 					 <tr id="product1">
                         <td>2</td>
                         <td><input type="checkbox" /></td>
@@ -60,7 +61,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<a href="salary_sp_sh.jsp">审核</a>						   							
 						</td>                        
                     </tr>
-					
+					</c:forEach>
 					
 					
                     <tr>
