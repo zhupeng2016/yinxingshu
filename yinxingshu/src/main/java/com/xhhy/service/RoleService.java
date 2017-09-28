@@ -8,6 +8,8 @@ public interface RoleService {
 
 	// 展现职位发布
 	public List<RoleBean> getRoles();
+    //根据用户id得到roleid
+	public int getRoleId(int userId);
 
 	// 查看职位信息
 	public RoleBean getRole(Integer

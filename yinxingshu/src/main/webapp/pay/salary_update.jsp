@@ -30,6 +30,7 @@
 			$("#btn2").click(function(){
 				var is = confirm("确定审核吗？");
 				if(is){
+					$("#up").append("<input type='hidden' name='flag' value='1'>");  
 					$("#up").submit();
 				}
 			});

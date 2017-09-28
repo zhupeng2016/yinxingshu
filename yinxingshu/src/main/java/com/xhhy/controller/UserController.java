@@ -32,6 +32,7 @@ public class UserController {
 				m.addAttribute("msg","您的账号已禁用!");
 				return "/login.jsp";
 			}else{
+
 				String ipAddress = request.getHeader("x-forwarded-for");  
 	            if(ipAddress == null || ipAddress.length() == 0 || "unknown".equalsIgnoreCase(ipAddress)) {  
 	                ipAddress = request.getHeader("Proxy-Client-IP");  
@@ -99,8 +100,9 @@ public class UserController {
 		return "/msg.jsp";
 	}
 	@RequestMapping("/msg")
-	public String index(Model m,boolean userId){
-		
+	public String index(Model m,int userId,UserBean ub){
+		ub.setUserId(userId);
+		boolean is=us.UpdateById(ub);
 		return "/right.jsp";
 	}
 }

@@ -34,4 +34,16 @@ public class DeptServiceImpl implements DeptService {
 		return dd.getDeptById(deptId);
 	}
 
+	//根据Id状态删除部门。
+	public boolean deleteDeptById(int deptId) {
+		// TODO Auto-generated method stub
+		return dd.deleteDeptById(deptId);
+	}
+
+	//根据Id修改部门信息。
+	public boolean updateDept(DeptBean db) {
+		// TODO Auto-generated method stub
+		return dd.updateDept(db);
+	}
+
 }

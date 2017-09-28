@@ -22,24 +22,11 @@ public class RoleController {
 	private RoleService rs;
 	@Autowired
 	private DeptService ds;
-
 	@RequestMapping("/demo1")
 	public String getRoles(Model m) {
 
 		List<RoleBean> roleList = rs.getRoles();
-		/*for (RoleBean roleBean : roleList) {
-			System.out.println(roleBean.toString() + "----");
-
-			List<RoleBean> list = rs.getRoles();
-			if (list.size() != 0) {
-
-				for (int i = 0; i < list.size(); i++) {
-					System.out.println(list.get(i).getRoleKind());
-				}
-				m.addAttribute("list", list);
-
-			}
-		}*/
+		
 		m.addAttribute("roleList", roleList);
 
 		return "/zhaopin/demo1/list.jsp";
@@ -88,6 +75,7 @@ public class RoleController {
 		return "/zhaopin/demo1/add.jsp";
 	}
 
+	//添加职位
 	@RequestMapping("/add")
 	public String addRole(RoleBean role, Model m) {
 		Boolean is = rs.addRole(role);
@@ -98,7 +86,5 @@ public class RoleController {
 			return "rec/demo1";
 		}
 	}
-	
-	
-	
-}
+	}
+
