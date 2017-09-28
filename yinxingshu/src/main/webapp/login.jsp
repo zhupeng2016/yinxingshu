@@ -32,24 +32,29 @@
 				<li class="user_main_c">
 					<div class="user_main_box">
 						<ul>
-							<li class="user_main_text">用户名： </li>
-							<li class="user_main_input"><input name="loginName" maxlength="20"  id="ln" value="" class="txtusernamecssclass">
-							<span style="font-size: 12px;color:red;">${msg}</span>
-							 </li>
-						</ul>
-						<ul>
-							<li class="user_main_text">密 码： </li>
-							<li class="user_main_input"><input type="password" name="password" id="ps" value="" class="txtpasswordcssclass">
-							<span style="font-size: 12px;color:red;">${msg}</span>
-							 </li>
-							 
-						</ul>
-						<ul>
-							<li class="user_main_text">Cookie： </li>
-							<li class="user_main_input"><select name="DropExpiration" id="DropExpiration"> 
-							<option selected="" value="None">不保存</option> <option value="Day">保存一天</option> 
-							<option value="Month">保存一月</option> <option value="Year">保存一年</option></select> </li>
-						</ul>
+									<li class="user_main_text">用户名：</li>
+									<li class="user_main_input"><input name="loginName"
+										maxlength="20" id="ln" class="txtusernamecssclass"></li>
+									<li style="line-height: 16px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 12px;color:red;">${msg }</span></li>
+								</ul>
+								<ul>
+									<li class="user_main_text">密 码：</li>
+									<li class="user_main_input"><input type="password"
+										name="password" id="ps" class="txtpasswordcssclass"></li>
+									<li style="line-height: 16px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 12px;color:red;">${msg }</span></li>
+								</ul>
+								<ul>
+									<li class="user_main_text">Cookie：</li>
+									<li class="user_main_input"><select name="DropExpiration"
+										id="DropExpiration">
+											<option selected="" value="None">不保存</option>
+											<option value="Day">保存一天</option>
+											<option value="Month">保存一月</option>
+											<option value="Year">保存一年</option>
+									</select></li>
+								</ul>
 					</div>
 				</li>
 				<li class="user_main_r">

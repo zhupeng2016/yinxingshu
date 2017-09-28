@@ -20,9 +20,42 @@ public class UserBean implements Serializable {
 	private String userRemark;//职位
 	private String loginCount;//登录次数
 	private String userDel;//状态
+	private String userTime;
 	private DeptBean db;//链表
 	private RoleBean rb;
 	
+	
+	public UserBean(int userId, int deptId, String userCode, String loginName, String password, String userName,
+			String sex, String idCard, String phone, String mobilePhone, String userEmail, String address,
+			String userImg, String userRemark, String loginCount, String userDel, String userTime, DeptBean db,
+			RoleBean rb) {
+		super();
+		this.userId = userId;
+		this.deptId = deptId;
+		this.userCode = userCode;
+		this.loginName = loginName;
+		this.password = password;
+		this.userName = userName;
+		this.sex = sex;
+		this.idCard = idCard;
+		this.phone = phone;
+		this.mobilePhone = mobilePhone;
+		this.userEmail = userEmail;
+		this.address = address;
+		this.userImg = userImg;
+		this.userRemark = userRemark;
+		this.loginCount = loginCount;
+		this.userDel = userDel;
+		this.userTime = userTime;
+		this.db = db;
+		this.rb = rb;
+	}
+	public String getUserTime() {
+		return userTime;
+	}
+	public void setUserTime(String userTime) {
+		this.userTime = userTime;
+	}
 	public UserBean(int userId, int deptId, String userCode, String loginName, String password, String userName,
 			String sex, String idCard, String phone, String mobilePhone, String userEmail, String address,
 			String userImg, String userRemark, String loginCount, String userDel, DeptBean db, RoleBean rb) {

@@ -54,7 +54,7 @@
 								<img height=9 src="./img/menu_icon.gif" width=9>
 							</td>
                             <td>
-								<a class=menuchild  href="msg.html"  target="right">个人信息修改</a>
+								<a class=menuchild  href="left"  target="right">个人信息修改</a>
 							</td>
 						</tr>
                         <tr height=20>
