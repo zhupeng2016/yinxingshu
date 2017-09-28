@@ -3,6 +3,7 @@ package com.xhhy.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.xhhy.bean.RoleBean;
 import com.xhhy.bean.UserBean;
 import com.xhhy.dao.UserDao;
 
@@ -20,4 +21,10 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		ud.update(userId);
 	}
+
+	public boolean UpdateById(UserBean userId) {
+		// TODO Auto-generated method stub
+		return ud.UpdateById(userId);
+	}
+
 }
