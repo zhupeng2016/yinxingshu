@@ -168,7 +168,7 @@
 								<img height=9  src="./img/menu_icon.gif" width=9>
 							</td>
                             <td>
-								<a class=menuchild  href="zhaopin/demo1/list.html"   target="right">职位发布管理</a>
+								<a class=menuchild  href="../yinxingshu/rec/demo1"   target="right">职位发布管理</a>
 							</td>
 						</tr>
                         <tr height=20>
@@ -176,7 +176,7 @@
 								<img height=9 src="./img/menu_icon.gif" width=9>
 							</td>
                             <td>
-								<a class=menuchild  href="zhaopin/demo2/list.html"  target="right">简历管理</a>
+								<a class=menuchild  href="../yinxingshu/res/eg"  target="right">简历管理</a>
 							</td>
 						</tr>
 						<tr height=20>
