@@ -15,7 +15,7 @@ public class RoleMenuServiceImpl implements RoleMenuService {
 	@Autowired
 	private RoleMenuDao rmd;
 	 //根据roleId得到对应菜单信息
-	@Override
+	
 	public List<MenuBean> getMenuList(int roleId) {
 		// TODO Auto-generated method stub
 		return rmd.getMenuList(roleId);
