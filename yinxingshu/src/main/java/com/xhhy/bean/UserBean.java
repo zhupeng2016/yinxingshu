@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class UserBean implements Serializable {
 
-	private int userId;// id
+	private int userId;// 
 	private int deptId;// 外键
 	private String userCode;// 部门编号
 	private String loginName;// 登录帐号

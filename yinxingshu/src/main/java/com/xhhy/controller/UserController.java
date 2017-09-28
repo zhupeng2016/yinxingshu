@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -20,7 +21,7 @@ import com.xhhy.bean.UserBean;
 import com.xhhy.service.UserService;
 
 @Controller
-@SessionAttributes({"ub","ipAddress","u"})
+@SessionAttributes({"ub","ipAddress"})
 public class UserController {
 	@Autowired
 	private UserService us;
@@ -80,7 +81,7 @@ public class UserController {
 	            	us.update(ub.getUserId());
 	            	m.addAttribute("ub", ub);
 	            	sc.setAttribute("uon", l);
-	            	return "/index.jsp";
+	            	return "home/index";
 	            }else{
 	            	m.addAttribute("msg","该帐号已登录");
 	    			return "/login.jsp";
@@ -91,18 +92,13 @@ public class UserController {
 			return "/login.jsp";
 		}
 	}
-	@RequestMapping("/left")
-	public String msg(Model m,HttpServletRequest request){
-		UserBean u=(UserBean)request.getSession().getAttribute("ub");
-		if(u !=null){
-			m.addAttribute("u", u);
-		}
-		return "/msg.jsp";
-	}
 	@RequestMapping("/msg")
-	public String index(Model m,int userId,UserBean ub){
-		ub.setUserId(userId);
-		boolean is=us.UpdateById(ub);
-		return "/right.jsp";
+	public String index(Model m,UserBean u){
+		boolean is=us.UpdateById(u);
+		if(is){
+			return "/right.jsp";
+		}else{
+			return "/msg.jsp";
+		}
 	}
 }
