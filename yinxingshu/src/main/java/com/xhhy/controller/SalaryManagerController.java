@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.github.pagehelper.PageInfo;
@@ -112,8 +113,12 @@ public class SalaryManagerController {
 	 * 删除薪酬标准信息
 	 */
 	@RequestMapping("/delete")
-	public String delete(int salaryId,int pageNum,Model m){
+	public String delete(int salaryId,int pageNum,@RequestParam(value="flag",required=false)int flag,Model m){
 		salaryManagerService.delete(salaryId);
+		System.out.println(flag);
+		if(flag == 1){
+			//修改审核状态为审核中
+		}
 		return findAll(pageNum,m);
 	}
 	
