@@ -25,7 +25,7 @@
             <span>
                 <span style="float: left;">当前位置是：招聘管理-》简历管理</span>
                 <span style="float: right; margin-right: 8px; font-weight: bold;">
-                    <a style="text-decoration: none;" href="add.html">【添加】</a>
+                    <a style="text-decoration: none;" href="zhaopin/demo2/add.jsp">【添加】</a>
                 </span>
             </span>
         </div>
@@ -65,19 +65,20 @@
                     </tr>
                     <c:forEach items="${resumeList }" var="re"> 
                     <tr id="product1">
-                        <td><a href="view.html">${roleList.roleName }</a></td>
+                    	<%-- <c:if test="${ub.userId }"><td><a href="view.html">${ub.userName }</a></td></c:if> --%>
+                    	<td><a href="zhaopin/demo2/view.jsp">朱鹏</a></td>
                         <c:if test="${re.resumeSex==0 }"><td>男</td></c:if>
                         <c:if test="${re.resumeSex==1 }"><td>女</td></c:if>
 						<td>${re.graduateSchool }</td>
 						<c:if test="${re.education==0 }"><td>本科</td></c:if>
                          <c:if test="${re.education==1 }"><td>专科</td></c:if>
 						<td>${re.major }</td> 						
-                        <td>${roleList.roleName }</td>
-						<td>${roleList.workYear }</td>
-						<td>${roleList.startTime }</td>
+                        <td>${role.roleName }</td>
+						<td>${re.workYear }</td>
+						<td>${role.startTime }</td>
 						
                         <td>
-							<a href="edit.html">修改</a>						   
+							<a href="zhaopin/demo2/edit.jsp">修改</a>						   
 							<a href="#">删除</a>
 							<select>
 							<option>存档</option>

@@ -14,7 +14,6 @@ import com.xhhy.service.DeptService;
 import com.xhhy.service.RoleService;
 
 @Controller
-@SessionAttributes({"roleList"})
 @RequestMapping("/rec")
 public class RoleController {
 
@@ -28,7 +27,7 @@ public class RoleController {
 	public String getRoles(Model m) {
 
 		List<RoleBean> roleList = rs.getRoles();
-		for (RoleBean roleBean : roleList) {
+		/*for (RoleBean roleBean : roleList) {
 			System.out.println(roleBean.toString() + "----");
 
 			List<RoleBean> list = rs.getRoles();
@@ -40,7 +39,7 @@ public class RoleController {
 				m.addAttribute("list", list);
 
 			}
-		}
+		}*/
 		m.addAttribute("roleList", roleList);
 
 		return "/zhaopin/demo1/list.jsp";
@@ -99,4 +98,7 @@ public class RoleController {
 			return "rec/demo1";
 		}
 	}
+	
+	
+	
 }

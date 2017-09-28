@@ -28,7 +28,12 @@
 		<result column="interview_result" property="interviewResult" />
 		<result column="interview_time"  property="interviewTime" />
 		<result column="resolution_time"  property="resolutionTime" />
-		
+		<result column="role_id" property="roleId"/>
+		<result column="user_id" property="userId"/>
+		<result column="role_name" property="role.roleName"/>
+		<result column="starttime" property="role.startTime"/>
+		<collection property="role" javaType="com.xhhy.bean.RoleBean" column="role_id" select="com.xhhy.Dao.RoleDao.getRole"></collection>
+		<!-- <association property="user" javaType="com.xhhy.bean.UserBean" column="user_id" select="com.xhhy.Dao."></association> -->
 	</resultMap>
 	<sql id="selectResume">
 		SELECT

@@ -68,4 +68,12 @@ public class RoleServiceImpl implements RoleService {
 	}
 
 
+	//删除职位
+	@Override
+	public boolean deleteRole(Integer roleId) {
+		// TODO Auto-generated method stub
+		return rd.deleteRole(roleId);
+	}
+
+
 }
