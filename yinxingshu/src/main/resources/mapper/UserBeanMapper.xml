@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xhhy.dao.UserDao">
+	<resultMap type="com.xhhy.bean.UserBean" id="myuser">
+		<id column="userId_id" jdbcType="INTEGER" property="userId" />
+		<result column="dept_id" jdbcType="INTEGER" property="deptId" />
+		<result column="user_code" jdbcType="VARCHAR" property="userCode" />
+		<result column="loginname" jdbcType="VARCHAR" property="loginName" />
+		<result column="password" jdbcType="VARCHAR" property="password" />
+		<result column="user_name" jdbcType="VARCHAR" property="userName" />
+		<result column="sex" jdbcType="VARCHAR" property="sex" />
+		<result column="id_card" jdbcType="VARCHAR" property="idCard" />
+		<result column="phone" jdbcType="VARCHAR" property="phone" />
+		<result column="mobile_phone" jdbcType="VARCHAR" property="mobilePhone" />
+		<result column="user_email" jdbcType="VARCHAR" property="userEmail" />
+		<result column="address" jdbcType="VARCHAR" property="address" />
+		<result column="user_img" jdbcType="VARCHAR" property="userImg" />
+		<result column="user_remark" jdbcType="VARCHAR" property="userRemark" />
+		<result column="login_count" jdbcType="VARCHAR" property="loginCount" />
+		<result column="user_del" jdbcType="INTEGER" property="userDel" />
+		<result column="user_time" jdbcType="VARCHAR" property="userTime"/>
+		<association property="db" javaType="com.xhhy.bean.DeptBean"
+			column="dept_id" select="com.xhhy.dao.DeptDao.getDeptById"></association>
+		<!-- <association property="rb" javaType="com.xhhy.bean.RoleBean"
+		     column="dept_id" select="com.xhhy.dao.RoleDao.getRoles"></association> -->
+	</resultMap>
+	<sql id="selectUser">
+		select
+		user_id,dept_id,user_code,loginname,password,user_name,sex,id_card,phone,mobile_phone,user_email,address,user_img,user_remark,login_count,user_del,user_time
+		from user_tb
+	</sql>
+	<select id="login" resultMap="myuser">
+		<include refid="selectUser" />
+		where loginname=#{ln} and password=#{ps} 
+	</select>
+	<update id="update">
+	    update user_tb set login_count=login_count+1 where user_id=#{userId}
+	</update>
+	<update id="UpdateById">
+	    Update user_tb set dept_id=#{deptId},user_code=#{userCode}loginname=#{loginName},password=#{password},user_name=#{userName},sex=#{sex},id_card=#{idCard},phone=#{phone},mobile_phone=#{mobilePhone},user_email=#{userEmail},address=#{address},user_img=#{userImg},user_remark=#{userRemark},login_count=#{loginCount},user_del=#{userDel},user_time=#{userTime}
+	     where  user_id=#{userId}
+	</update>
+</mapper>

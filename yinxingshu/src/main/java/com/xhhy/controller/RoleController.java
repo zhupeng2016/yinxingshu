@@ -23,7 +23,7 @@ public class RoleController {
 	@Autowired
 	private DeptService ds;
 	@RequestMapping("/demo1")
-	public String getRoles(Model m) {
+	public String getRoles(int pageNum,Model m) {
 
 		List<RoleBean> roleList = rs.getRoles();
 		
