@@ -31,7 +31,7 @@ public interface SalaryManagerService {
 	/**
 	 * 修改薪酬信息
 	 */
-	public void update(SalaryBean sb);
+	public void update(SalaryBean sb,int flag);
 	
 	/**
 	 * 删除薪酬信息

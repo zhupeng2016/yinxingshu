@@ -64,4 +64,8 @@
 		PHONE_PAY=#{phonePay},FOOD_PAY=#{foodPay},HOUSE_PAY=#{housePay},AWAY_PAY=#{awayPay},OVERTIME_PAY=#{overtimePay},
 		ALLSALARY=#{allSalary},SALARY_REMARK=#{salaryRemark} where salary_id=#{salaryId}
 	</update>
+	
+	<update id="updateState">
+		update salary_tb set salary_state = #{st} where salary_id=#{si}
+	</update>
 </mapper>

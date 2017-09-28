@@ -103,22 +103,20 @@ public class SalaryManagerController {
 	 * 修改薪酬信息
 	 */
 	@RequestMapping("/update")
-	public String update(SalaryBean sb,int pageNum,Model map){
-		salaryManagerService.update(sb);	
+	public String update(SalaryBean sb,int pageNum,@RequestParam("flag")int flag,Model map){
+		//flag是1 是修改
+		//flag是2 是先修改 后提交审核  需要修改薪酬的状态
+		System.out.println(sb);
+		salaryManagerService.update(sb,flag);
 		return findAll(pageNum, map);
-		
 	}
 	
 	/**
 	 * 删除薪酬标准信息
 	 */
 	@RequestMapping("/delete")
-	public String delete(int salaryId,int pageNum,@RequestParam(value="flag",required=false)int flag,Model m){
+	public String delete(int salaryId,int pageNum,Model m){
 		salaryManagerService.delete(salaryId);
-		System.out.println(flag);
-		if(flag == 1){
-			//修改审核状态为审核中
-		}
 		return findAll(pageNum,m);
 	}
 	

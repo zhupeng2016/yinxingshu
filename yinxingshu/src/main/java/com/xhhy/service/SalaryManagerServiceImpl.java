@@ -9,11 +9,13 @@ import org.springframework.stereotype.Service;
  * @author 强悦
  * 薪酬标准管理service层
  */
+import org.springframework.transaction.annotation.Transactional;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.xhhy.bean.SalaryBean;
 import com.xhhy.dao.SalaryManagerDao;
+import com.xhhy.util.State;
 @Service
 public class SalaryManagerServiceImpl implements SalaryManagerService {
 
@@ -72,9 +74,15 @@ public class SalaryManagerServiceImpl implements SalaryManagerService {
 	/**
 	 * 修改薪酬详情
 	 */
-	public void update(SalaryBean sb) {
+	/*@Transactional*/
+	public void update(SalaryBean sb,int flag) {
 		// TODO Auto-generated method stub
+		//flag是1只修改
+		//flag是2除了修改还得修改审核状态
 		salaryManagerDao.update(sb);
+		if(flag == 2){
+			salaryManagerDao.updateState(State.SALARY_SHENHEZHONG,sb.getSalaryId());
+		}
 	}
 	
 	

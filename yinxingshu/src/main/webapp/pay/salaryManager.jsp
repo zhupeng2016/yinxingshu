@@ -25,10 +25,11 @@
 			$("input[name='chosen']").prop("checked", $(this).prop("checked"));
 		});
 	});
-	function del(salaryId){
+	function del(salaryId) {
 		var is = confirm("确认删除吗?");
-		if(is){
-			location.href="salary/delete?salaryId="+salaryId+"&pageNum=${requestScope.page.pageNum}";
+		if (is) {
+			location.href = "salary/delete?salaryId=" + salaryId
+					+ "&pageNum=${requestScope.page.pageNum}";
 		}
 	}
 </script>
@@ -87,14 +88,19 @@ body
 					<c:if test="${sl.salaryState==2}">
 						<td>已通过</td>
 					</c:if>
+					<c:if test="${sl.salaryState==3}">
+						<td>驳回</td>
+					</c:if>
 					<td>${fn:substring(sl.registerTime,0,16)}</td>
-					<td><a href="salary/updateMessage?salaryId=${sl.salaryId}&pageNum=${requestScope.page.pageNum}">修改</a> <a href="javascript:del(${sl.salaryId})" >删除</a></td>
+					<td><a
+						href="salary/updateMessage?salaryId=${sl.salaryId}&pageNum=${requestScope.page.pageNum}">修改</a>
+						<a href="javascript:del(${sl.salaryId})">删除</a></td>
 				</tr>
 			</c:forEach>
 
 			<tr>
-				<td colspan="20" style="text-align: center;">
-			<span> <a href="salary/findAll?pageNum=1">首页</a> <c:if
+				<td colspan="20" style="text-align: center;"><span> <a
+						href="salary/findAll?pageNum=1">首页</a> <c:if
 							test="${requestScope.page.getPageNum() == 1 }">
 				上一页
 			</c:if> <c:if test="${requestScope.page.getPageNum() > 1 }">
@@ -115,8 +121,7 @@ body
 								href="salary/findAll?pageNum=${requestScope.page.getPageNum()+1 }">下一页</a>
 						</c:if> <a href="salary/findAll?pageNum=${requestScope.page.getPages() }">尾页</a>
 						<span>总共${requestScope.page.getPages()}页
-							总共${requestScope.page.getTotal() }条 </span>
-				</td>
+							总共${requestScope.page.getTotal() }条 </span></td>
 			</tr>
 		</tbody>
 	</table>
