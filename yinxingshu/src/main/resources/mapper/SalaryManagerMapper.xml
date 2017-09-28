@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xhhy.dao.SalaryManagerDao">
+<!-- 数据库列名和bean的属性名称不相同  所以配置resultMap -->
+<resultMap type="com.xhhy.bean.SalaryBean" id="Salary">
+	<id column="SALARY_ID" jdbcType="INTEGER" property="salaryId"/>
+	<result column="SALARY_CODE" jdbcType="VARCHAR" property="salaryCode"/>
+	<result column="SALARY_NAME" jdbcType="VARCHAR" property="salaryName"/>
+	<result column="SALARY_MAKER" jdbcType="VARCHAR" property="salaryMaker"/>
+	<result column="SALARY_REGISTER" jdbcType="VARCHAR" property="salaryRegister"/>
+	<result column="REGISTER_TIME" jdbcType="TIMESTAMP" property="registerTime"/>
+	<result column="BASE_PAY" jdbcType="VARCHAR" property="basePay"/>
+	<result column="ADD_PAY" jdbcType="VARCHAR" property="addPay"/>
+	<result column="TRAFFIC_PAY" jdbcType="VARCHAR" property="trafficPay"/>
+	<result column="PHONE_PAY" jdbcType="VARCHAR" property="phonePay"/>
+	<result column="FOOD_PAY" jdbcType="VARCHAR" property="foodPay"/>
+	<result column="HOUSE_PAY" jdbcType="VARCHAR" property="housePay"/>
+	<result column="AWAY_PAY" jdbcType="VARCHAR" property="awayPay"/>
+	<result column="OVERTIME_PAY" jdbcType="VARCHAR" property="overtimePay"/>
+	<result column="SALARY_REMARK" jdbcType="VARCHAR" property="salaryRemark"/>
+	<result column="SALARY_STATE" jdbcType="INTEGER" property="salaryState"/>
+	<result column="SALARY_DEL" jdbcType="INTEGER" property="salaryDel"/>
+	<result column="ALLSALARY" jdbcType="VARCHAR" property="allSalary"/>
+	<result column="SALARY_3" jdbcType="VARCHAR" property="salary3"/>
+	<result column="SALARY_4" jdbcType="VARCHAR" property="salary4"/>
+	
+</resultMap>
+	
+	<select id="findAll" resultMap="Salary" >
+		select SALARY_ID,SALARY_CODE,SALARY_NAME,SALARY_MAKER,SALARY_REGISTER,REGISTER_TIME,BASE_PAY,ADD_PAY,
+		TRAFFIC_PAY,PHONE_PAY,FOOD_PAY,HOUSE_PAY,AWAY_PAY,OVERTIME_PAY,SALARY_REMARK,SALARY_STATE,SALARY_DEL,
+		ALLSALARY,SALARY_3,SALARY_4 from SALARY_TB where SALARY_DEL=1 order by salary_code desc
+	</select>
+	
+	<insert id="addSalary" >
+		<selectKey keyProperty="salaryId" order="BEFORE" resultType="int">
+			select salary_seq.nextval from dual
+		</selectKey>
+		insert into salary_tb( SALARY_ID,SALARY_CODE,SALARY_NAME,SALARY_MAKER,SALARY_REGISTER,REGISTER_TIME,BASE_PAY,ADD_PAY,
+		TRAFFIC_PAY,PHONE_PAY,FOOD_PAY,HOUSE_PAY,AWAY_PAY,OVERTIME_PAY,SALARY_REMARK,SALARY_STATE,SALARY_DEL,
+		ALLSALARY,SALARY_3,SALARY_4 )
+		values(#{salaryId},#{salaryCode},#{salaryName},#{salaryMaker},#{salaryRegister},
+		to_date(#{registerTime},'yyyy-mm-dd hh24:mi'),#{basePay},#{addPay},#{trafficPay},#{phonePay},#{foodPay},
+		#{housePay},#{awayPay},#{overtimePay},#{salaryRemark},#{salaryState},
+		#{salaryDel},#{allSalary},#{salary3},#{salary4})
+	</insert>
+	
+	<select id="prepareCode" resultType="int">
+		select "NVL"(max(salary_code), 10001)   from SALARY_TB
+	</select>
+	
+	<select id="message" resultMap="Salary">
+		SELECT SALARY_ID,SALARY_CODE,SALARY_NAME,SALARY_MAKER,SALARY_REGISTER,REGISTER_TIME,BASE_PAY,ADD_PAY,
+		TRAFFIC_PAY,PHONE_PAY,FOOD_PAY,HOUSE_PAY,AWAY_PAY,OVERTIME_PAY,SALARY_REMARK,SALARY_STATE,SALARY_DEL,
+		ALLSALARY,SALARY_3,SALARY_4 from SALARY_TB WHERE SALARY_ID = #{salaryId}
+	</select>
+	
+	<delete id="delete">
+		update SALARY_TB set SALARY_DEL = 0 where salary_id=#{salaryId}
+	</delete>
+	
+	<update id="update">
+		update salary_tb set salary_name=#{salaryName},BASE_PAY=#{basePay},ADD_PAY=#{addPay},TRAFFIC_PAY=#{trafficPay},
+		PHONE_PAY=#{phonePay},FOOD_PAY=#{foodPay},HOUSE_PAY=#{housePay},AWAY_PAY=#{awayPay},OVERTIME_PAY=#{overtimePay},
+		ALLSALARY=#{allSalary},SALARY_REMARK=#{salaryRemark} where salary_id=#{salaryId}
+	</update>
+</mapper>
