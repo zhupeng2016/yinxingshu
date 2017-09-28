@@ -27,10 +27,9 @@
 	<div></div>
 
 	<div style="font-size: 13px; margin: 10px 5px">
-		<form action="peixun/shenhe?tarId=tarId&pageNum=pageNum" method="post"
+		<form action="peixun/shenhe?pageNum=pageNum" method="post"
 			enctype="multipart/form-data">
 			<input type="hidden" name="pageNum" value="${requestScope.pageNum }">
-			<input type="hidden" name="tarId" value="${requestScope.tb.tarId }">
 			<table border="1" width="100%" class="table_a">
 				<tr>
 					<td width="120px;">培训名称<span style="color: red">*</span>：
@@ -93,7 +92,7 @@
 
 				<tr>
 					<td colspan="2" align="center"><input type="submit"
-						value="审核通过"> <input type="botton" value="驳回"></td>
+						value="审核通过"> <input type="button" value="驳回"></td>
 				</tr>
 			</table>
 		</form>

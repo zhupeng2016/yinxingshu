@@ -47,11 +47,13 @@
 	<div></div>
 	<div class="div_search">
 		<span>
-			<form action="peixun/fuhe" method="post">
-				培训名称: <input type="text" /> 培训时间： <input type="text" id="st"
-					onclick="WdatePicker()" onchange="checkTime()" />至<input
-					type="text" id="et" onclick="WdatePicker()" onchange="checkTime()" />
+			<form action="peixun/fuhe?pageNum=pageNum" method="post">
+			<input type="hidden" name=pageNum value="1">
+				培训名称: <input type="text" name="tarName" /> 培训时间： <input type="text" id="st"
+					onclick="WdatePicker()" onchange="checkTime()" name="tarStartTime" />至<input
+					type="text" id="et" onclick="WdatePicker()" onchange="checkTime()" name="tarEddTime"/>
 				<input value="查询" type="submit" />
+				<input value="清空" type="button" id="btn"/>
 
 			</form>
 		</span>
@@ -67,17 +69,17 @@
 					<td align="center" width="15%">操作</td>
 				</tr>
 
-				<tr id="product1">
 				<c:forEach items="${requestScope.l }" var="li">
+				<tr id="product1">
 					<td>${li.tarName }</td>
 					<td>${li.tarTeacher }</td>
 					<td>${li.tarStartTime }</td>
-					<c:if test="${li.tarStartTime==1 }">
+					<c:if test="${li.tarState==1 }">
 					<td>审核中</td>
 					</c:if>
-					<td><a href="peixun/hefu?tarId=${li.tarId }&pageNum=${requestScope.page.pageNum}">培训复核</a></td>
-				</c:forEach>
+					<td><a href="peixun/hefu?tarId=${li.tarId }&pageNum=${requestScope.page.getPageNum()}">培训复核</a></td>
 				</tr>
+				</c:forEach>
 				
 				<tr>
 					<td colspan="20" style="text-align: center;">
