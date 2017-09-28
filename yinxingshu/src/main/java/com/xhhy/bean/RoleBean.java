@@ -4,19 +4,22 @@ import java.io.Serializable;
 
 public class RoleBean implements Serializable {
 
-	private Integer roleId;// ְλid
-	private Integer deptId;// ����id
-	private String roleCode;// ְλ���
-	private String roleName;// ְλ����
-	private Integer roleKind;// ְλ����
-	private Integer roleNum;// ��Ƹ�˔�
-	private String startTime;// �Ǽ�ʱ��
-	private String eddTime;// ��ֹʱ��
-	private String roleIntro;// ְλ�����е�ְλ����
-	private String roleRemark;// ְλ����
-	private String roleRequired;// λҪ��
-	private Integer roleState;// ְλ״̬
-	private Integer roleDel;// ְλ��ɾ��״̬
+	private Integer roleId;// 职位id
+	private Integer deptId;// 部门id
+	private String roleCode;// 职位编号
+	private String roleName;// 职位名称
+	private Integer roleKind;// 职位分类
+	private Integer roleNum;// 招聘人數
+	private String startTime;// 登记时间
+	private String eddTime;// 截止时间
+	private String roleIntro;// 职位设置中的职位描述
+	private String roleRemark;// 职位描述
+	private String roleRequired;// 职位要求
+	private Integer roleState;// 职位状态
+	private Integer roleDel;// 职位的删除状态
+	private String roleRecritType;// 招聘类型
+	private DeptBean dept; // 部门对象
+	private String deptName;//部门名称
 
 	public RoleBean() {
 		super();
@@ -24,27 +27,34 @@ public class RoleBean implements Serializable {
 	}
 
 	
-
-	public RoleBean(Integer roleId, Integer deptId, String roleCode, String roleName, Integer roleKind, Integer roleNum,
-			String startTime, String eddTime, String roleIntro, String roleRemark, String roleRequired,
-			Integer roleState, Integer roleDel) {
-		super();
-		this.roleId = roleId;
-		this.deptId = deptId;
-		this.roleCode = roleCode;
-		this.roleName = roleName;
-		this.roleKind = roleKind;
-		this.roleNum = roleNum;
-		this.startTime = startTime;
-		this.eddTime = eddTime;
-		this.roleIntro = roleIntro;
-		this.roleRemark = roleRemark;
-		this.roleRequired = roleRequired;
-		this.roleState = roleState;
-		this.roleDel = roleDel;
+	
+	public String getDeptName() {
+		return deptName;
 	}
 
 
+
+	public void setDeptName(String deptName) {
+		this.deptName = deptName;
+	}
+
+
+
+	public String getRoleRecritType() {
+		return roleRecritType;
+	}
+
+	public void setRoleRecritType(String roleRecritType) {
+		this.roleRecritType = roleRecritType;
+	}
+
+	public DeptBean getDept() {
+		return dept;
+	}
+
+	public void setDept(DeptBean dept) {
+		this.dept = dept;
+	}
 
 	public String getRoleRequired() {
 		return roleRequired;
@@ -93,8 +103,6 @@ public class RoleBean implements Serializable {
 	public void setRoleName(String roleName) {
 		this.roleName = roleName;
 	}
-
-	
 
 	public Integer getRoleKind() {
 		return roleKind;
@@ -152,8 +160,6 @@ public class RoleBean implements Serializable {
 		this.roleDel = roleDel;
 	}
 
-
-
 	@Override
 	public String toString() {
 		return "RoleBean [roleId=" + roleId + ", deptId=" + deptId + ", roleCode=" + roleCode + ", roleName=" + roleName
@@ -161,7 +167,5 @@ public class RoleBean implements Serializable {
 				+ eddTime + ", roleIntro=" + roleIntro + ", roleRemark=" + roleRemark + ", roleRequired=" + roleRequired
 				+ ", roleState=" + roleState + ", roleDel=" + roleDel + "]";
 	}
-
-	
 
 }

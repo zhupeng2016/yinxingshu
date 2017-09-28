@@ -13,6 +13,7 @@ public class DeptBean implements Serializable {
 	private String deptRemark;
 	private int deptState;
 	private int deptDel;
+
 	public DeptBean() {
 		super();
 		// TODO Auto-generated constructor stub
