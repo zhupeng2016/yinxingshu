@@ -80,7 +80,7 @@ public class UserController {
 	            	us.update(ub.getUserId());
 	            	m.addAttribute("ub", ub);
 	            	sc.setAttribute("uon", l);
-	            	return "/index.jsp";
+	            	return "home/index";
 	            }else{
 	            	m.addAttribute("msg","该帐号已登录");
 	    			return "/login.jsp";
