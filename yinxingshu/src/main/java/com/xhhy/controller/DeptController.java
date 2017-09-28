@@ -28,7 +28,7 @@ public class DeptController {
 		
 		List<DeptBean> deptlist=ds.getAllDept();
 		m.addAttribute("deptlist",deptlist);
-		return "/resource/demo1/ifm.jsp";
+		return "/resource/demo1/list.jsp";
 	}
 	
 	@RequestMapping("/add")

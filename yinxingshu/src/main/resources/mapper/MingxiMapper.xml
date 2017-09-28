@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xhhy.dao.MingxiDao">
+	<cache type="org.mybatis.caches.ehcache.EhcacheCache" />
+	<resultMap type="com.xhhy.bean.MingxiBean" id="mymingxi">
+		<result column="DEPT_NAME" property="deptName" />
+		<result column="ARCHIVE_CODE" property="archiveCode" />
+		<result column="USER_NAME" property="userName" />
+		<result column="SEX" property="sex" />
+		<result column="ROLE_NAME" property="roleName" />
+		<result column="salary_name" property="salaryName" />
+		<result column="MOBILE_PHONE" property="mobilePhone" />
+		<result column="ARCHIVE_STATE" property="archiveState" />
+		<result column="ARCHIVETIME" property="archivetime" />
+		<result column="DEPT_ID" property="deptId" />
+	</resultMap>
+	<resultMap type="com.xhhy.bean.ResumeBean" id="myresume">
+		<id column="resume_id" property="resumeId" />
+		<result column="user_id" property="userId" />
+		<result column="name" property="name" />
+		<result column="resume_sex" property="resumeSex" />
+		<result column="resume_email" property="resumeEmail" />
+		<result column="resume_phone" property="resumePhone" />
+		<result column="local_address" property="localAddress" />
+		<result column="home_address" property="homeAddress" />
+		<result column="political" property="political" />
+		<result column="card_id" property="cardId" />
+		<result column="salary_require" javaType="String" property="salaryRequire" />
+		<result column="graduate_school" property="graduateSchool" />
+		<result column="education" property="education" />
+		<result column="major" property="major" />
+		<result column="jobstate" property="jobState" />
+		<result column="fresh_student" property="freshStudent" />
+		<result column="work_year" property="workYear" />
+		<result column="person_resume" property="personResume" />
+		<result column="person_file" property="personFile" />
+		<result column="recommend_state" property="recommendState" />
+		<result column="recommend_time" property="recommendTime" />
+		<result column="recommend_idea" property="recommendIdea" />
+		<result column="interview_result" property="interviewResult" />
+		<result column="interview_time" property="interviewTime" />
+		<result column="resolution_time" property="resolutionTime" />
+		<result column="role_id" property="roleId" />
+		<result column="user_id" property="userId" />
+		<result column="ATTRIBUTE_MIANSHI" property="attributeMianshi" />
+	</resultMap>
+	<select id="getqueryAll" resultMap="myresume">
+		SELECT
+		"NAME",RESUME_SEX,CARD_ID,EDUCATION,GRADUATE_SCHOOL,WORK_YEAR,ATTRIBUTE_MIANSHI,RESUME_PHONE,MAJOR
+		FROM RESUME_TB
+		where 1=1
+		<if test="user != null and user != &quot;&quot;">
+			and name like concat(concat('%',#{user}),'%')
+		</if>
+	</select>
+	<select id="queryAll" resultMap="mymingxi">
+
+		SELECT
+		a.DEPT_NAME,b.ARCHIVE_CODE,c.USER_NAME,c.SEX,d.ROLE_NAME,f.salary_name,
+		c.MOBILE_PHONE,b.ARCHIVE_STATE,b.ARCHIVETIME
+		from DEPT_TB a,ARCHIVE_TB
+		b,USER_TB c,ROLE_TB d,RESUME_TB e,SALARY_TB f,USER_ROLE h
+		where
+		a.dept_id=c.dept_id and c.user_id=b.user_id and a.dept_id=d.dept_id
+		and c.USER_ID = h.USER_ID and d.ROLE_ID = h.ROLE_ID
+		and
+		c.user_id=e.USER_ID and b.SALARY_ID=f.SALARY_ID
+		<if test="deptId != null and deptId != &quot;&quot; and deptId!=999 ">
+			and a.dept_id=#{deptId}
+		</if>
+		<if test="userName != null and userName != &quot;&quot;">
+			and c.USER_NAME like concat(concat('%',#{userName}),'%')
+		</if>
+		<if test="archiveState != null and archiveState != 999">
+			and b.ARCHIVE_STATE = #{archiveState}
+		</if>
+		<if test="oneTime != null and oneTime != &quot;&quot;">
+			and b.ARCHIVETIME <![CDATA[>=]]>
+			to_date (#{oneTime},'yyyy-mm-dd')
+		</if>
+
+		<if test="stateTime != null and stateTime != &quot;&quot;">
+			and b.ARCHIVETIME <![CDATA[<=]]>
+			to_date (#{stateTime},'yyyy-mm-dd')
+		</if>
+		order by a.dept_id
+
+	</select>
+</mapper>

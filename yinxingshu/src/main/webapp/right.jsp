@@ -62,7 +62,7 @@
                 <td style="color: #880000">${ub.userName}</td></tr>
             <tr>
                 <td align=right>注册时间：</td>
-                <td style="color: #880000">2007-7-25 15:02:04</td></tr>
+                <td style="color: #880000">${ub.userTime}</td></tr>
             <tr>
                 <td align=right>登陆次数：</td>
                 <td style="color: #880000">${ub.loginCount}</td></tr>
@@ -71,7 +71,7 @@
                 <td style="color: #880000"><fmt:formatDate value="<%=new Date() %>" pattern="yyyy-MM-dd HH:mm:ss"/></td></tr>
             <tr>
                 <td align=right>ip地址：</td>
-                <td style="color: #880000">222.240.172.117</td></tr>
+                <td style="color: #880000">${ipAddress}</td></tr>
             <tr>
                 <td align=right>身份过期：</td>
                 <td style="color: #880000">30分钟</td>

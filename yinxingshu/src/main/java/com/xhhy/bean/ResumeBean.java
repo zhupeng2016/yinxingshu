@@ -26,18 +26,25 @@ public class ResumeBean implements Serializable {
 	private String personFile; // 家庭关系信息
 	private Integer recommendState; // 推荐状态 0:推荐； 1:不推荐
 	private String recommendTime; // 推荐时间
-	private String recommendIdea; // 推荐意见
+	private String recommendIdea; // 推荐意见F
 	private String interviewResult; // 录用结果
 	private String interviewTime; // 面试时间
 	private String resolutionTime; // 决议时间
+	private String attributeMianshi;// 是否面试过
 	private Integer roleId;// 职位主键
 	private List<RoleBean> role; // 职位对象
 	private UserBean user; // 职员对象
 	private String roleName;// 职位名称
 	private String startTime;// 登记时间
 
-	
-	
+	public String getAttributeMianshi() {
+		return attributeMianshi;
+	}
+
+	public void setAttributeMianshi(String attributeMianshi) {
+		this.attributeMianshi = attributeMianshi;
+	}
+
 	public String getRoleName() {
 		return roleName;
 	}
@@ -63,7 +70,6 @@ public class ResumeBean implements Serializable {
 		this.roleId = roleId;
 	}
 
-	
 	public List<RoleBean> getRole() {
 		return role;
 	}
@@ -279,7 +285,5 @@ public class ResumeBean implements Serializable {
 	public void setResolutionTime(String resolutionTime) {
 		this.resolutionTime = resolutionTime;
 	}
-
-	
 
 }
