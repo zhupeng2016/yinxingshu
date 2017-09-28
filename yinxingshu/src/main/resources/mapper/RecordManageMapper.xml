@@ -34,6 +34,23 @@
 		ARCHIVE_DUTY,ARCHIVE_TITLE,ARCHIVETIME,AUDIT_STATE,ARCHIVE_STATE
 		FROM ARCHIVE_TB  
 	</select>
+	<!-- 添加档案 -->
+	<insert id="insertRecord"  parameterType="RecordBean">
+	INSERT INTO ARCHIVE_TB 
+	(ARCHIVE_ID,ARCHIVE_CODE,ARCHIVE_DEPT,ARCHIVE_STATE,ARCHIVE_DUTY,ARCHIVE_TITLE,ARCHIVE_DUTYCODE,
+	 ARCHIVE_NAME,ARCHIVE_SEX,ARCHIVE_EMAIL,ARCHIVE_PHONE,
+	 ARCHIVE_ADDRESS,ARCHIVE_CARDID,ARCHIVE_HOME_ADDRESS,ARCHIVE_POLITICS,
+	 ARCHIVE_GRADUATE_SCHOOL,ARCHIVE_EDUCATION,ARCHIVE_MAJOR,
+	 BANK,BANK_CARD,ARCHIVETIME,FAMILY_INFOR,ARCHIVE_REMARK) 
+	 values
+	 (AAA.NEXTVAL,#{archiveCode},#{archiveDept},#{archiveState},#{archiveDuty},#{archiveTitle},#{archiveDutyCode},
+	 #{archiveName},#{archiveSex},#{archiveEmail},#{archivePhone},
+	 #{archiveAddress},#{archiveCardId},#{archiveHomeAddress},#{archivePolitics},
+	 #{archiveGraduateSchool},#{archiveEducation},#{archiveMajor},
+	 #{bank},#{bankCard},to_date(#{archiveTime},'yyyy-mm-dd hh24:mi'),#{familyInfo},#{archiveRemark}
+	 )
+	
+	</insert>
 	<!--明细===== 貌似是职位编码是没有的-->
 	<!-- <select id="" >
 	 SELECT
@@ -44,22 +61,5 @@
 	 BANK,BANK_CARD,ARCHIVE_TIME,FAMILY_INFOR,ARCHIVE_REMARK
 	 FROM ARCHIVE_TB 
 	</select> -->
-	<!-- 添加档案 -->
-	<insert id="insertRecord"  parameterType="RecordBean">
-	INSERT INTO ARCHIVE_TB 
-	(ARCHIVE_ID,ARCHIVE_CODE,ARCHIVE_DEPT,ARCHIVE_STATE,ARCHIVE_DUTY,ARCHIVE_DUTYCODE,
-	 ARCHIVE_NAME,ARCHIVE_SEX,ARCHIVE_EMAIL,ARCHIVE_PHONE,
-	 ARCHIVE_ADDRESS,ARCHIVE_CARDID,ARCHIVE_HOME_ADDRESS,ARCHIVE_POLITICS,
-	 ARCHIVE_GRADUATE_SCHOOL,ARCHIVE_EDUCATION,ARCHIVE_MAJOR,
-	 BANK,BANK_CARD,ARCHIVETIME,FAMILY_INFOR,ARCHIVE_REMARK) 
-	 values
-	 (AAA.NEXTVAL,#{archiveCode},#{archiveDept},#{archiveState},#{archiveDuty},#{archiveDutyCode},
-	 #{archiveName},#{archiveSex},#{archiveEmail},#{archivePhone},
-	 #{archiveAddress},#{archiveCardId},#{archiveHomeAddress},#{archivePolitics},
-	 #{archiveGraduateSchool},#{archiveEducation},#{archiveMajor},
-	 #{bank},#{bankCard},to_date(#{archiveTime},'yyyy-mm-dd hh24:mi'),#{familyInfo},#{archiveRemark}
-	 )
-	
-	</insert>
-	
+	<!-- 修改 -->
 </mapper>

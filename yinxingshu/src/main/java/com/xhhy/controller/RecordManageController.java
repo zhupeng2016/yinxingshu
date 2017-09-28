@@ -15,8 +15,10 @@ import org.springframework.web.servlet.ModelAndView;
 import com.github.pagehelper.PageInfo;
 import com.xhhy.bean.DeptBean;
 import com.xhhy.bean.RecordBean;
+import com.xhhy.bean.SalaryBean;
 import com.xhhy.service.DeptService;
 import com.xhhy.service.RecordManageService;
+import com.xhhy.service.SalaryManagerService;
 
 @Controller
 @SessionAttributes({ "recordList" })
@@ -27,6 +29,8 @@ public class RecordManageController {
 	private RecordManageService rms;
 	@Autowired
 	private DeptService ds;
+	@Autowired
+	private SalaryManagerService sms;
 
 	// 展现列表
 	@RequestMapping("/RecordManage")
@@ -51,26 +55,28 @@ public class RecordManageController {
 
 	// 添加档案
 	@RequestMapping("/insertRecord")
-	public String insertRecord(@RequestParam(value = "pageNum", required = false) int pageNum, Model m,
-			RecordBean rb,
-			@RequestParam(value="query",required=false)String query,HttpServletRequest request) {
+	public String insertRecord(Model m,RecordBean rb,HttpServletRequest request) {
 		rms.insertRecord(rb);
-		// 调用部门表的展现列表的方法
-		List<DeptBean> deptList = ds.getAllDept();
-		// 把deptList存上，在页面中取值
-		m.addAttribute("deptList", deptList);
 		return showAllRecord(1, m,rb,"query",request);
 	}
 
 	// 从list页面先跳到这里，然后跳到添加页面
 	@RequestMapping("/prepareData")
 	public String prepareRecord(RecordBean rb, Model m) {
+		// 调用部门表的展现列表的方法
+		List<DeptBean> deptList = ds.getAllDept();
+		// 把deptList存上，在页面中取值
+		m.addAttribute("deptList", deptList);
+		//调用薪资表的展现列表的方法
+		List<SalaryBean> salaryList = sms.findAll();
+		m.addAttribute("salaryList",salaryList );
 		return "/pmag/demo1/add.jsp";
 	}
 	
 	/*
 	 * 明细
 	 */
+	@RequestMapping("/queryOneRecord")
 	public String queryOneRecord(int archiveId,Model m){
 		RecordBean rb = rms.queryOneRecord(archiveId);
 		m.addAttribute("recordBean", rb);

@@ -29,10 +29,13 @@ public class RecordBean implements Serializable{
 	private String archiveGraduateSchool;//毕业院校
 	private String archiveMajor;//专业
 	private String archiveEducation;//学历
+	private String archiveSalary;//薪酬标准
+	private String archiveResume;//个人简历
 	private String archiveDuty;//职位
 	private String archiveDutyCode;//职位编码
 	private String archiveTitle;//职称
 	private String archiveRemark;//备注
+	private String archiveLoginName;//登记人
 	//模糊查询的两个字段
 	private String startTime;//模糊查询开始时间
 	private String endTime;//模糊查询结束时间
@@ -174,6 +177,18 @@ public class RecordBean implements Serializable{
 	public void setArchiveEducation(String archiveEducation) {
 		this.archiveEducation = archiveEducation;
 	}
+	public String getArchiveSalary() {
+		return archiveSalary;
+	}
+	public void setArchiveSalary(String archiveSalary) {
+		this.archiveSalary = archiveSalary;
+	}
+	public String getArchiveResume() {
+		return archiveResume;
+	}
+	public void setArchiveResume(String archiveResume) {
+		this.archiveResume = archiveResume;
+	}
 	public String getArchiveDuty() {
 		return archiveDuty;
 	}
@@ -238,9 +253,9 @@ public class RecordBean implements Serializable{
 			String archiveTime, String familyInfo, String bank, String bankCard, String socialCard, String archiveName,
 			String archiveSex, String archiveDept, String archiveEmail, String archivePhone, String archiveAddress,
 			String archiveCardId, String archiveHomeAddress, String archivePolitics, String archiveGraduateSchool,
-			String archiveMajor, String archiveEducation, String archiveDuty, String archiveDutyCode,
-			String archiveTitle, String archiveRemark, String startTime, String endTime, DeptBean db, ResumeBean rb,
-			UserBean ub, SalaryBean sb) {
+			String archiveMajor, String archiveEducation, String archiveSalary, String archiveResume,
+			String archiveDuty, String archiveDutyCode, String archiveTitle, String archiveRemark, String startTime,
+			String endTime, DeptBean db, ResumeBean rb, UserBean ub, SalaryBean sb) {
 		super();
 		this.archiveId = archiveId;
 		this.archiveState = archiveState;
@@ -264,6 +279,8 @@ public class RecordBean implements Serializable{
 		this.archiveGraduateSchool = archiveGraduateSchool;
 		this.archiveMajor = archiveMajor;
 		this.archiveEducation = archiveEducation;
+		this.archiveSalary = archiveSalary;
+		this.archiveResume = archiveResume;
 		this.archiveDuty = archiveDuty;
 		this.archiveDutyCode = archiveDutyCode;
 		this.archiveTitle = archiveTitle;
@@ -279,7 +296,6 @@ public class RecordBean implements Serializable{
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
 	
 	 
 	
