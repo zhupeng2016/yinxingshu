@@ -16,8 +16,7 @@
 
 <link href="css/mine.css" type="text/css" rel="stylesheet" />
 <script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript"
-	src="js/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="js/My97DatePicker/WdatePicker.js"></script>
 <script type="text/javascript">
 	function checkTime() {
 		var st = document.getElementById("st");
@@ -52,7 +51,7 @@
 	<div></div>
 	<div class="div_search">
 		<span>
-			<form action="peixun/shenhe?pageNum=pageNum" method="post">
+			<form action="peixun/shenhe?" method="post">
 			<input type="hidden" name=pageNum value="1">
 				培训名称: <input type="text" name="tarName" /> 培训时间： <input type="text" id="st"
 					onclick="WdatePicker()" onchange="checkTime()" name="tarStartTime" />至<input
@@ -67,9 +66,9 @@
 		<table class="table_a" border="1" width="100%">
 			<tbody>
 				<tr style="font-weight: bold;">
-					<td width="">培训名称</td>
+					<td width="15%">培训名称</td>
 					<td width="15%">培训讲师</td>
-					<td width="15%">培训时间</td>
+					<td width="20%">培训时间</td>
 					<td width="15%">审核状态</td>
 					<td align="center" width="15%">操作</td>
 				</tr>

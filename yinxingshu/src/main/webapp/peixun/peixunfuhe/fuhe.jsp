@@ -30,15 +30,16 @@ $(function(){
 	<div class="div_head">
 		<span> <span style="float: left">当前位置是：-》培训管理 -》培训复核</span> <span
 			style="float: right; margin-right: 8px; font-weight: bold"> <a
-				style="text-decoration: none" href="peixun/fuList?pageNum=${requestScope.pageNum }">【返回】</a>
+				style="text-decoration: none" href="peixun/shenhe?pageNum=${requestScope.pageNum }">【返回】</a>
 		</span>
 		</span>
 	</div>
 	<div></div>
 
 	<div style="font-size: 13px; margin: 10px 5px">
-		<form action="peixun/tijiao?pageNum=pageNum" method="post"
+		<form action="peixun/tijiao?" method="post"
 			enctype="multipart/form-data">
+			<input type="hidden" name="tarId" value="${requestScope.tb.tarId }">
 			<input type="hidden" name="pageNum" value="${requestScope.pageNum }">
 			<table border="1" width="100%" class="table_a">
 				<tr>
@@ -87,14 +88,14 @@ $(function(){
 
 				<tr>
 					<td>培训资料：</td>
-					<td><input type="test" name="tarFile" value="${requestScope.tb.tarFile}" /></td>
+					<td><input type="file" name="tarimgs"  value="${requestScope.tb.tarFile}"/></td>
 				</tr>
 
-				<tr>
+				<!-- <tr>
 					<td></td>
 					<td><a href="">技术专家和教学专家的合作.zip</a> &nbsp;&nbsp;<a href="">删除</a>
 					</td>
-				</tr>
+				</tr> -->
 				<tr>
 					<td>审核意见：</td>
 					<td><textarea name="tarOpinion" value="${requestScope.tb.tarOpinion}"></textarea></td>

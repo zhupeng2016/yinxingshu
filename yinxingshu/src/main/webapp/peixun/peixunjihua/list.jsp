@@ -90,9 +90,9 @@
 		<table class="table_a" border="1" width="100%">
 			<tbody>
 				<tr style="font-weight: bold;">
-					<td width="">培训名称</td>
+					<td width="15%">培训名称</td>
 					<td width="15%">培训讲师</td>
-					<td width="15%">培训时间</td>
+					<td width="20%">培训时间</td>
 					<td>培训反馈</td>
 					<td width="15%">审核状态</td>
 					<td align="center" width="15%">操作</td>

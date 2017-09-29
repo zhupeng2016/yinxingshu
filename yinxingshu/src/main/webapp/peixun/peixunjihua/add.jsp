@@ -21,8 +21,8 @@
 <script type="text/javascript" src="js/jquery.validate.js"></script>
 <script type="text/javascript" src="js/jquery.validate.defined.js"></script>
 <script type="text/javascript" src="js/tarjqueryz.js">
-	<script type="text/javascript" src="js/My97DatePicker/WdatePicker.js">
 </script>
+<script type="text/javascript" src="js/My97DatePicker/WdatePicker.js"></script>
 <script type="text/javascript">
 	function checkTime() {
 		var st = document.getElementById("st");
@@ -36,18 +36,16 @@
 			}
 		}
 	}
-	$(function(){
-		$("#bnt").click(function(){
+	$(function() {
+		$("#bnt").click(function() {
 			var is = confirm("确定添加吗？");
-			if(is){
+			if (is) {
 				$("#myForm").submit();
 			}
 		})
-		});
+	});
 </script>
-<script type="text/javascript">
-	
-</script>
+
 </head>
 
 <body>
@@ -62,8 +60,8 @@
 	<div></div>
 
 	<div style="font-size: 13px; margin: 10px 5px">
-		<form action="peixun/add?" method="post"
-			enctype="multipart/form-data" id="myForm">
+		<form action="peixun/add?" method="post" enctype="multipart/form-data"
+			id="myForm">
 			<input type="hidden" name=pageNum value="${param.pageNum }">
 			<table border="1" width="100%" class="table_a">
 				<tr>
@@ -86,8 +84,7 @@
 				<tr>
 					<td>至</td>
 					<td><input type="text" name="tarEddTime" id="et"
-						onclick="WdatePicker()" onchange="checkTime()"/>
-						<span></span></td>
+						onclick="WdatePicker()" onchange="checkTime()" /> <span></span></td>
 				</tr>
 				<tr>
 					<td>培训目的<span style="color: red">*</span>：
@@ -110,7 +107,7 @@
 
 				<tr>
 					<td>培训资料：</td>
-					<td><input type="text" name="tarFile" value="" /> <span></span></td>
+					<td><input type="file" name="tarimgs" value="" /> <span></span></td>
 				</tr>
 
 				<tr>
