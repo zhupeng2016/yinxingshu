@@ -27,4 +27,9 @@ public class UserServiceImpl implements UserService {
 		return ud.UpdateById(u);
 	}
 
+	public boolean getUpdate(UserBean u) {
+		// TODO Auto-generated method stub
+		return ud.getUpdate(u);
+	}
+
 }

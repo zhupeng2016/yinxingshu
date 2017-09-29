@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -9,96 +9,164 @@
 <!DOCTYPE html PUBLIC >
 <html>
 <base href="<%=basePath%>">
-    <head>
-        <title>个人信息</title>
-        <meta http-equiv="content-type" content="text/html;charset=utf-8">
-        <link href="css/mine.css" type="text/css" rel="stylesheet">
-    </head>
+<head>
+<title>个人信息</title>
+<meta http-equiv="content-type" content="text/html;charset=utf-8">
+<link href="css/mine.css" type="text/css" rel="stylesheet">
+<script src="js/jquery.validate.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery.validate.js"></script>
+<style type="text/css">
+  .c1 {
+	color: red;
+	font-size: 10px
+}
+</style>
+<script type="text/javascript">
+	$(function() {
+		result = $("#myForm").validate({
+			rules : {
+				"userName" : {
+					required : true
+				},
+				"idCard" : {
+					required : true,
+					number : true,
+				},
 
-    <body>
+				"phone" : {
+					required : true,
+				//范围
+				},
+				"mobilePhone" : {
+					required : true,
+					mobilePhone : true
+				},
+				"userEmail" : {
+					required : true,
+					email : true
+				},
+				"userRemark" : {
+					required : true
+				}
+			}, //验证规则
+			messages : {
+				"userName" : {
+					required : "姓名不能为空!"
+				},
+				"idCard" : {
+					required : "身份证号不能为空!",
+					number : "请输入数字!",
+				},
+				"phone" : {
+					required : "座机号不能为空",
+				//范围
+				},
+				"mobilePhone" : {
+					required : "手机号不能为空!",
+					mobilePhone : "请输入正确的手机号码!"
+				},
+				"userEmail" : {
+					required : "请输入邮箱!",
+					email : "请输入与正确的邮箱!"
+				},
+				"userRemark" : {
+					required : "不能为空"
+				}
+			}, //提示信息
+			errorPlacement : function(error, element) { //提示信息的位置
+				element.next().html(error.text());
+			},
+			success : function(label) {
+				label.html();
+			}
+		});
+	});
+</script>
 
-        <div class="div_head">
-            <span>
-                <span style="float:left">当前位置是：工作平台-》个人信息</span>
-                <span style="float:right;margin-right: 8px;font-weight: bold">
-                    <a style="text-decoration: none" href="right.jsp">【返回】</a>
-                </span>
-            </span>
-        </div>
-        <div></div>
+<script type="text/javascript">
+	$(function() {
+		$("#bt").click(function() {
+			var is = confirm("是否提交?");
+			if (is) {
+				$("#myForm").submit();
+			}
+		});
+	});
+</script>
+</head>
 
-        <div style="font-size: 13px;margin: 10px 5px">
-            <form action="msg" method="post" enctype="multipart/form-data">
-            <table border="1" width="100%" class="table_a">
-            <input type="hidden" name="userId" value="${sessionScope.ub.userId}"/>
-                <tr>
-                    <td width="120px">姓名</td>
-                    <td>
-						<input type="text" name="userName" value="${sessionScope.ub.userName}" />
-					</td>
-                </tr>
-                <tr>
-                    <td>性别</td>
-                    <td>
-                    	<c:if test="${sessionScope.ub.sex==0}">
-                    	<input type="radio" name="sex" value="0" checked="checked" /> 男
+<body>
+
+	<div class="div_head">
+		<span> <span style="float: left">当前位置是：工作平台-》个人信息</span> <span
+			style="float: right; margin-right: 8px; font-weight: bold"> <a
+				style="text-decoration: none" href="right.jsp">【返回】</a>
+		</span>
+		</span>
+	</div>
+	<div></div>
+
+	<div style="font-size: 13px; margin: 10px 5px">
+		<form action="msg" method="post" enctype="multipart/form-data"
+			id="myForm">
+			<table border="1" width="100%" class="table_a">
+				<input type="hidden" name="userId" value="${sessionScope.ub.userId}" />
+				<tr>
+					<td width="120px">姓名</td>
+					<td><input type="text" name="userName" id="userName"
+						value="${sessionScope.ub.userName}" /> <span calss="c1"></span></td>
+				</tr>
+				<tr>
+					<td>性别</td>
+					<td><c:if test="${sessionScope.ub.sex==0}">
+							<input type="radio" name="sex" value="0" checked="checked" /> 男
                     	<input type="radio" name="sex" value="1" /> 女
-                    	</c:if>
-                       
-                       <c:if test="${sessionScope.ub.sex==1}">
-                       <input type="radio" name="sex" value="0"  /> 男
-                       <input type="radio" name="sex" value="1" checked="checked" /> 女
-                       </c:if>
-                      
-                    </td>
-                </tr>
-              
-                <tr>
-                    <td>身份证号：</td>
-                    <td>
-						<input type="text" name="idCard" value="${sessionScope.ub.idCard}" />
-					</td>
-                </tr>
-                <tr>
-                    <td>办公电话：</td>
-                    <td>
-						<input type="text" name="phone" value="${sessionScope.ub.phone}" />
-					</td>
-                </tr>
-                <tr>
-                    <td>手机：</td>
-                    <td>
-                       	<input type="text" name="mobilePhone" value="${sessionScope.ub.mobilePhone}" />
-                    </td>
-                </tr>
+                    	</c:if> <c:if test="${sessionScope.ub.sex==1}">
+							<input type="radio" name="sex" value="0" /> 男
+                       <input type="radio" name="sex" value="1"
+								checked="checked" /> 女
+                       </c:if></td>
+				</tr>
+
 				<tr>
-                    <td>邮箱：</td>
-                    <td>
-                        	<input type="text" name="userEmail" value="${sessionScope.ub.userEmail}"/>
-                    </td>
-                </tr>
+					<td>身份证号：</td>
+					<td><input type="text" name="idCard" id="idCard"
+						value="${sessionScope.ub.idCard}" /> <span calss="c1">请输入</span></td>
+				</tr>
 				<tr>
-                    <td>更换头像：</td>
-                    <td>
-						<input type="file" name="" />
-					</td>
-                </tr>
+					<td>办公电话：</td>
+					<td><input type="text" name="phone" id="phone"
+						value="${sessionScope.ub.phone}" /> <span calss="c1"></span></td>
+				</tr>
 				<tr>
-                    <td>备注：</td>
-                    <td>
-                        <input name="userRemark"  value="${sessionScope.ub.userRemark}" />
-                    </td> 
-                </tr>
-                
-				
-				
-                <tr>
-                    <td colspan="2" align="center">
-                        <input type="submit" value="修改">
-                    </td>
-                </tr>  
-            </table>
-            </form>
-        </div>
-    </body>
+					<td>手机：</td>
+					<td><input type="text" name="mobilePhone" id="mobilePhonemp"
+						value="${sessionScope.ub.mobilePhone}" /> <span calss="c1"></span></td>
+				</tr>
+				<tr>
+					<td>邮箱：</td>
+					<td><input type="text" name="userEmail" id="userEmail"
+						value="${sessionScope.ub.userEmail}" /> <span calss="c1"></span></td>
+				</tr>
+				<tr>
+					<td>更换头像：</td>
+					<td><input type="file" name="" /></td>
+				</tr>
+				<tr>
+					<td>备注：</td>
+					<td><input name="userRemark" id="userRemark"
+						value="${sessionScope.ub.userRemark}" /> <span calss="c1"></span></td>
+				</tr>
+
+
+
+				<tr>
+					<td colspan="2" align="center"><input type="button" id="bt"
+						value="修改"></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
 </html>

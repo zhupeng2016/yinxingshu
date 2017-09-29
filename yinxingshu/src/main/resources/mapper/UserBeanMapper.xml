@@ -40,4 +40,7 @@
 	    update user_tb set user_name=#{userName},sex=#{sex},id_card=#{idCard},phone=#{phone},mobile_phone=#{mobilePhone},user_email=#{userEmail},user_img=#{userImg},user_remark=#{userRemark}
 	     where  user_id=#{userId}
 	</update>
+	<update id="getUpdate">
+	    update user_tb set password=#{password} where user_id=#{userId}
+	</update>
 </mapper>

@@ -34,9 +34,7 @@ public class HomeController {
 		//根据roleid得到对应的菜单及菜单名称。。。
 		List<MenuBean> ml=rms.getMenuList(roleId);
 		m.addAttribute("ml",ml);
-		
 		return "/index.jsp";
-		
 	}
 	
 

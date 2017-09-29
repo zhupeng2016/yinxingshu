@@ -19,32 +19,29 @@ public class RoleServiceImpl implements RoleService {
 
 	@Autowired
 	private RoleDao rd;
+
+	
+	@Override
+	public List<RoleBean> getRoles() {
+		// TODO Auto-generated method stub
+		return rd.getRoles();
+	}
 	
 	public PageInfo getRoles(int pageNum,int pageSize,int num) {
-		// TODO Auto-generated method stub
-		
 		List<RoleBean> l = null;
 		PageInfo<Object> info = null;
 		PageHelper.startPage(pageNum, pageSize);
-		l=rd.getRoles();
-		info=new PageInfo(l,num);
+		l = rd.getRoles();
+		info = new PageInfo(l, num);
 		int c = info.getPages();
 		if(pageNum > c){
-			PageHelper.startPage(c, 
-
-pageSize);
+			PageHelper.startPage(c, pageSize);
 			l = rd.getRoles();
-			info = new PageInfo(l,num);
+			info = new PageInfo(l, num);
 		}
 		return info;
 	}
-    //根据用户id得到roleid
-	public int getRoleId(int userId) {
-		// TODO Auto-generated method stub
-		return rd.getRoleId(userId);
-	}
 
-	
 
 	// 查看职位信息
 	public RoleBean getRole(Integer roleId) {
@@ -58,7 +55,7 @@ pageSize);
 		return rd.pupdateRole(roleId);
 	}
 
-	//修改职位发布信息
+	// 修改职位发布信息
 	public boolean updateRole(Integer roleId, String
 
 	roleNum, String roleRemark, String roleRequired) {
@@ -68,29 +65,52 @@ pageSize);
 		(roleId, roleNum, roleRemark, roleRequired);
 	}
 
-	
-	/*//预添加
-	@Override
-	public List<RoleBean> paddRole() {
-		// TODO Auto-generated method stub
-		return rd.paddRole();
-	}*/
-	
-	
-	//添加职位信息
+	/*
+	 * //预添加
+	 * 
+	 * @Override public List<RoleBean> paddRole() { // TODO Auto-generated
+	 * method stub return rd.paddRole(); }
+	 */
+
+	// 添加职位信息
 	public boolean addRole(RoleBean role) {
 		// TODO Auto-generated method stub
 		return rd.addRole(role);
 	}
 
+	
+	
+// -----葛大龙------------
+	 //根据用户id得到roleid
+		@Override
+		public int getRoleId(int userId) {
+			// TODO Auto-generated method stub
+			return rd.getRoleId(userId);
+		}
 
-	//删除职位
-	public boolean deleteRole(Integer roleId) {
+	//状态删除职位
+	public boolean delRole(Integer roleId) {
 		// TODO Auto-generated method stub
-		return rd.deleteRole(roleId);
+		return rd.delRole(roleId);
 	}
-	public List<RoleBean> getRoles() {
+
+	//修改职位信息
+	
+	public boolean updateRoleBy(RoleBean rb) {
 		// TODO Auto-generated method stub
-		return null;
+		return rd.updateRoleBy(rb);
 	}
+	//得到所有职位信息
+public List<RoleBean> getAllRole(RoleBean rb) {
+	// TODO Auto-generated method stub
+	return rd.getAllRole(rb);
+}
+
+
+
+	
+// -----葛大龙------------	
+	
+
+	
 }

@@ -25,7 +25,7 @@
 	<result column="SALARY_4" jdbcType="VARCHAR" property="salary4"/>
 	
 </resultMap>
-	
+	<!-- 薪酬管理的展现 -->
 	<select id="findAll" resultMap="Salary" >
 		select SALARY_ID,SALARY_CODE,SALARY_NAME,SALARY_MAKER,SALARY_REGISTER,REGISTER_TIME,BASE_PAY,ADD_PAY,
 		TRAFFIC_PAY,PHONE_PAY,FOOD_PAY,HOUSE_PAY,AWAY_PAY,OVERTIME_PAY,SALARY_REMARK,SALARY_STATE,SALARY_DEL,
@@ -38,8 +38,9 @@
 		</if>
 		order by salary_code desc
 	</select>
-	
+	<!-- 薪酬管理的增加信息 -->
 	<insert id="addSalary" >
+		<!-- 查询主键 -->
 		<selectKey keyProperty="salaryId" order="BEFORE" resultType="int">
 			select salary_seq.nextval from dual
 		</selectKey>
@@ -51,28 +52,51 @@
 		#{housePay},#{awayPay},#{overtimePay},#{salaryRemark},#{salaryState},
 		#{salaryDel},#{allSalary},#{salary3},#{salary4})
 	</insert>
-	
+	<!-- 查询薪酬编码 -->
 	<select id="prepareCode" resultType="int">
 		select "NVL"(max(salary_code), 10001)   from SALARY_TB
 	</select>
-	
+	<!-- 查询薪酬标准的详细信息 -->
 	<select id="message" resultMap="Salary">
 		SELECT SALARY_ID,SALARY_CODE,SALARY_NAME,SALARY_MAKER,SALARY_REGISTER,REGISTER_TIME,BASE_PAY,ADD_PAY,
 		TRAFFIC_PAY,PHONE_PAY,FOOD_PAY,HOUSE_PAY,AWAY_PAY,OVERTIME_PAY,SALARY_REMARK,SALARY_STATE,SALARY_DEL,
 		ALLSALARY,SALARY_3,SALARY_4 from SALARY_TB WHERE SALARY_ID = #{salaryId}
 	</select>
 	
+	<!-- 查询薪酬标准为审核的详细信息 -->
+	<select id="shMessage" resultMap="Salary">
+		SELECT SALARY_ID,SALARY_CODE,SALARY_NAME,SALARY_MAKER,SALARY_REGISTER,REGISTER_TIME,BASE_PAY,ADD_PAY,
+		TRAFFIC_PAY,PHONE_PAY,FOOD_PAY,HOUSE_PAY,AWAY_PAY,OVERTIME_PAY,SALARY_REMARK,SALARY_STATE,SALARY_DEL,
+		ALLSALARY,SALARY_3,SALARY_4 from SALARY_TB WHERE SALARY_ID = #{salaryId} SALARY_STATE=2
+	</select>
+	
+	<!-- 删除薪酬标准 -->
 	<delete id="delete">
 		update SALARY_TB set SALARY_DEL = 0 where salary_id=#{salaryId}
 	</delete>
-	
+	<!-- 修改薪酬信息 -->
 	<update id="update">
 		update salary_tb set salary_name=#{salaryName},BASE_PAY=#{basePay},ADD_PAY=#{addPay},TRAFFIC_PAY=#{trafficPay},
 		PHONE_PAY=#{phonePay},FOOD_PAY=#{foodPay},HOUSE_PAY=#{housePay},AWAY_PAY=#{awayPay},OVERTIME_PAY=#{overtimePay},
 		ALLSALARY=#{allSalary},SALARY_REMARK=#{salaryRemark} where salary_id=#{salaryId}
 	</update>
-	
+	<!-- 修改薪酬标准的审核状态 -->
 	<update id="updateState">
 		update salary_tb set salary_state = #{st} where salary_id=#{si}
 	</update>
+ 	<!-- 展现审核中的信息 -->
+	<select id="findSp" resultMap="Salary">
+		select SALARY_ID,SALARY_CODE,SALARY_NAME,SALARY_MAKER,SALARY_REGISTER,REGISTER_TIME,BASE_PAY,ADD_PAY,
+		TRAFFIC_PAY,PHONE_PAY,FOOD_PAY,HOUSE_PAY,AWAY_PAY,OVERTIME_PAY,SALARY_REMARK,SALARY_STATE,SALARY_DEL,
+		ALLSALARY,SALARY_3,SALARY_4 from SALARY_TB where SALARY_STATE=2
+		<if test="salaryName != null and salaryName != &quot;&quot;">
+			and SALARY_NAME like concat(concat('%',#{salaryName}),'%')
+		</if>
+		order by salary_code desc
+	</select>
+	
+	<!-- 展现发放工资数据 -->
+	<select id="findFf" resultMap="Salary">
+		
+	</select>
 </mapper>
