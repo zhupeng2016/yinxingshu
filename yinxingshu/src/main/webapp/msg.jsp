@@ -30,56 +30,63 @@
         <div style="font-size: 13px;margin: 10px 5px">
             <form action="msg" method="post" enctype="multipart/form-data">
             <table border="1" width="100%" class="table_a">
+            <input type="hidden" name="userId" value="${sessionScope.ub.userId}"/>
                 <tr>
                     <td width="120px">姓名</td>
                     <td>
-						<input type="text" name="userName" value="${u.userName}" />
+						<input type="text" name="userName" value="${sessionScope.ub.userName}" />
 					</td>
                 </tr>
                 <tr>
                     <td>性别</td>
                     <td>
-                    	
-						
-                       <c:if test="${u.sex==0}">	<input type="radio" name="sex" value="0" checked="checked"/>男 </c:if>
-                      <c:if test="${u.sex==1}"> <input type="radio" name="sex" value="1"/>女 </c:if>
+                    	<c:if test="${sessionScope.ub.sex==0}">
+                    	<input type="radio" name="sex" value="0" checked="checked" /> 男
+                    	<input type="radio" name="sex" value="1" /> 女
+                    	</c:if>
+                       
+                       <c:if test="${sessionScope.ub.sex==1}">
+                       <input type="radio" name="sex" value="0"  /> 男
+                       <input type="radio" name="sex" value="1" checked="checked" /> 女
+                       </c:if>
+                      
                     </td>
                 </tr>
               
                 <tr>
                     <td>身份证号：</td>
                     <td>
-						<input type="text" name="idCard" value="${u.idCard}" />
+						<input type="text" name="idCard" value="${sessionScope.ub.idCard}" />
 					</td>
                 </tr>
                 <tr>
                     <td>办公电话：</td>
                     <td>
-						<input type="text" name="phone" value="${u.phone}" />
+						<input type="text" name="phone" value="${sessionScope.ub.phone}" />
 					</td>
                 </tr>
                 <tr>
                     <td>手机：</td>
                     <td>
-                       	<input type="text" name="mobilePhone" value="${u.mobilePhone}" />
+                       	<input type="text" name="mobilePhone" value="${sessionScope.ub.mobilePhone}" />
                     </td>
                 </tr>
 				<tr>
                     <td>邮箱：</td>
                     <td>
-                        	<input type="text" name="userEmail" value="${u.userEmail}"/>
+                        	<input type="text" name="userEmail" value="${sessionScope.ub.userEmail}"/>
                     </td>
                 </tr>
 				<tr>
                     <td>更换头像：</td>
                     <td>
-						<input type="file" name="f_goods_image" />
+						<input type="file" name="" />
 					</td>
                 </tr>
 				<tr>
                     <td>备注：</td>
                     <td>
-                        <input name="userRemark"  value="${u.userRemark}" />
+                        <input name="userRemark"  value="${sessionScope.ub.userRemark}" />
                     </td> 
                 </tr>
                 

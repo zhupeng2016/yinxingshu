@@ -14,10 +14,10 @@
 
 <title>培训管理</title>
 
-<link href="../../css/mine.css" type="text/css" rel="stylesheet" />
-<script type="text/javascript" src="../../js/jquery.js"></script>
+<link href="css/mine.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript"
-	src="../../js/My97DatePicker/WdatePicker.js"></script>
+	src="js/My97DatePicker/WdatePicker.js"></script>
 <script type="text/javascript">
 	function checkTime() {
 		var st = document.getElementById("st");
@@ -31,6 +31,11 @@
 			}
 		}
 	}
+	$(function(){
+		$("#btn").click(function(){
+			location.href="peixun/fankui?pageNum=1&flag=clear";
+		});
+	});
 </script>
 </head>
 <body>
@@ -47,7 +52,7 @@
 	<div></div>
 	<div class="div_search">
 		<span>
-			<form action="peixun/fankui?pageNum=pageNum" method="post">
+			<form action="peixun/fankui?" method="post">
 			<input type="hidden" name="pageNum" value="1">
 				培训名称: <input type="text" name="tarName" /> 培训时间： <input type="text" id="st"
 					onclick="WdatePicker()" onchange="checkTime()" name="tarStartTime">至<input
@@ -76,7 +81,7 @@
 					<c:if test="${li.tarState==2}">
 					<td>审核通过</td>
 					</c:if>
-					<td><a href="peixun/kuifan?tarId="${li.tarId }&pageNum="${requestScope.page.getPageNum() }">培训反馈</a></td>
+					<td><a href="peixun/fankan?tarId=${li.tarId }&pageNum=${requestScope.page.getPageNum()}">培训反馈</a></td>
 				</tr>
 				</c:forEach>
 				
