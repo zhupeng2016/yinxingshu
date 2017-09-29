@@ -31,12 +31,17 @@
 	 alert(msg);
 	 }
  }
+
+ 
  $(function() {
+	 
 		$("#sname").AutoComplete({
 			'data' : 'menu/autoComplete', //去服务器获得所有的提示信息
 			'width' : "auto",//提示框宽度
 			'itemheight' : 30//每个补全信息的高度
 		});
+		
+	
 	});
 </script>
 </head>
@@ -52,16 +57,16 @@
 	<div></div>
 	<div class="div_search">
 		<span>
-			<form action="menu/menulist?method=search" method="post" >
-				菜单名称: <input type="text" name="menuname" id="mn" /> 
-				状态: <select name="menustate" id="mstate">
+			<form action="menu/menulist?pageNum=${page.getPageNum()}" method="post" >
+				菜单名称: <input type="text" name="menuName" id="mn" value="${menuBean.menuName }" /> 
+				状态: <select name="menuState" id="mstate">
 					<option value="999">-请选择-</option>
-					<option value="0">启用</option>
-					<option value="1">禁用</option>
-
+					<option value="0" <c:if test="${menuBean.menuState==0}">selected</c:if> >启用</option>
+					<option value="1" <c:if test="${menuBean.menuState==1}">selected</c:if>>禁用</option>
 				</select>&nbsp;&nbsp;&nbsp;
+				
 				 <input value="查询" type="submit" />&nbsp;
-                <a href="menu/menulist"> <input type="button" value="清空"  /></a>
+                <a href="menu/menulist?method=clear"> <input type="button" value="清空"  /></a>
 			</form>
 		</span>
 	</div>

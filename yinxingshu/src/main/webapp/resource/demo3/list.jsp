@@ -62,12 +62,12 @@ function show(){
 					<td align="center" width="100px;">操作</td>
 				</tr>
 				
-<c:forEach items="${rls }" var="rl" varStatus="st">
+               <c:forEach items="${rls }" var="rl" varStatus="st">
 				<tr id="product1">
 					<td><input type="checkbox" /></td>
 					<td>${st.index+1 }</td>
 					<td>${rl.roleCode }</td>
-					<td><a href="role/look?roleId=${rl.roleId }">${rl.roleName }</a></td>
+					<td><a href="role/look?roleId=${rl.roleId }&pageNum=${page.getPageNum() }">${rl.roleName }</a></td>
 					<td>
 					<c:if test="${rl.roleKind==0 }">管理</c:if>
 					<c:if test="${rl.roleKind==1 }">技术</c:if>
@@ -76,12 +76,12 @@ function show(){
 					</td>
 					<td>${rl.dept.deptName }</td>
 					<td>
-					<c:if test="${rl.roleKind==0 }">启用</c:if>
-					<c:if test="${rl.roleKind==1 }">禁用</c:if>
+					<c:if test="${rl.roleState==0 }">启用</c:if>
+					<c:if test="${rl.roleState==1 }">禁用</c:if>
                    </td>
-					<td><a href="role/pupdate?roleId=${rl.roleId }">修改</a> <a href="role/delete?roleId=${rl.roleId }">删除</a></td>
+					<td><a href="role/pupdate?roleId=${rl.roleId }&pageNum=${page.getPageNum() }">修改</a> <a href="role/delete?roleId=${rl.roleId }&pagenum=${page.getPageNum() }">删除</a></td>
 				</tr>
-</c:forEach>
+            </c:forEach>
 
 
 

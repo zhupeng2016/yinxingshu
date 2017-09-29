@@ -83,8 +83,17 @@
 	<select id="getRoleId" resultType="int">
 		select role_id from user_role where user_id=#{userId}
 	</select>
-   <update id="updateRoleBy">
-       update role_tb set role_name=#{roleName},dept_id=#{deptId},role_kind=#{roleKind},role_intro=#{roleIntro},role_remark=#{roleRemark},role_state=#{roleState}
+	<!-- 查询所有职位信息 -->
+	<select id="getAllRole" resultMap="myrole">
+	     <include refid="selectRole"/>
+	</select>
+	<!-- 状态删除职位 -->
+	<update id="delRole">
+	    update role_tb set role_del=1 where role_id=#{roleId}
+	</update>
+	<!-- 修改职位 信息-->
+   <update id="updateRoleBy" >
+       update role_tb set role_name=#{roleName},dept_id=#{deptId},role_intro=#{roleIntro},role_remark=#{roleRemark},role_state=#{roleState}<!-- ,role_kind=#{roleKind} -->  where role_id=#{roleId} 
    </update>
 
 <!--         葛大龙            -->

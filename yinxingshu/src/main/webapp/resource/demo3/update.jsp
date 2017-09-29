@@ -15,19 +15,15 @@
 <link href="css/mine.css" type="text/css" rel="stylesheet">
 <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
  <script type="text/javascript">
-    $(function(){
+     $(function(){
     	
         $("#bt").click(function(){
-        	
-        	$.ajax({
-        		url:'emp/ajax2',
-        		aysnc:true,
-        		type:'get',
-        	datatype:'json',
-        	data:$("#myForm").serialize(),
-        	success:function(res){}
-        	});
+        	var is=confirm("确认修改吗？");
+        	if(is){
         	$("#myForm").submit();
+        		
+        	}
+        	
         });
     }); 
     
@@ -41,14 +37,14 @@
 	<div class="div_head">
 		<span> <span style="float: left">当前位置是：-》职位管理</span> <span
 			style="float: right; margin-right: 8px; font-weight: bold"> <a
-				style="text-decoration: none" href="rec/rolelist">【返回】</a>
+				style="text-decoration: none" href="role/rolelist?pageNum=${sessionScope.pageNum }">【返回】</a>
 		</span>
 		</span>
 	</div>
 	<div></div>
 
 	<div style="font-size: 13px; margin: 10px 5px">
-		<form action="rec/update?roleId=${rb.roleId }" method="post" id="myForm" 
+		<form action="role/update?roleId=${rb.roleId }" method="post" id="myForm" 
 			enctype="multipart/form-data">
 			<table border="1" width="100%" class="table_a">
 				<tr>
@@ -94,13 +90,12 @@
 					<td>菜单权限<span style="color: red">*</span>：
 					</td>
 					<td > 
-					
-					<c:forEach items="${ml }" var="m">
+				
+			<c:forEach items="${ml }" var="m">
 						<c:if test="${m.parentMenu !=0 }"> &nbsp;&nbsp;&nbsp;</c:if>
-						<input type="checkbox" name="menuIds" value="${m.menuId }" <c:if test="${m.is }">checked</c:if> />
+						<input type="checkbox"  name="menuIds"  value="${m.menuId }" <c:if test="${m.is }">checked</c:if> />
 						${m.menuName }<br />
-					</c:forEach>
-					
+			</c:forEach>
 					</td>   
 					      <!-- <input type="checkbox" />个人信息修改  <br /> 
 					       &nbsp;&nbsp;&nbsp;<input type="checkbox" />密码修改<br /> 
@@ -119,14 +114,14 @@
 
 				<tr>
 					<td>备 注：</td>
-					<td><textarea name="roleRemark">${rb.roleRemark }</textarea></td>
+					<td><textarea name="roleRemark" width=100 height=30>${rb.roleRemark }</textarea></td>
 				</tr>
 				<tr>
 					<td>是否启用：</td>
 					<td><select name="roleState">
-							<option value="0"
+							<option value="0" 
 								<c:if test="${rb.roleState == 0 }">selected</c:if>>启用</option>
-							<option value="1"
+							<option value="1" 
 								<c:if test="${rb.roleState == 1 }">selected</c:if>>禁用</option>
 					</select></td>
 				</tr>

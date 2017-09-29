@@ -12,9 +12,9 @@
 	</resultMap>
 
 	<select id="getMenuList" resultType="com.xhhy.bean.MenuBean">
-		select
-		m.menu_id,m.menu_name,m.parent_menu,m.url,m.menu_state,m.menu_remark
-		from menu_tb m,role_menu rm where m.menu_id=rm.menu_id and
+		select 
+		m.menu_id,m.menu_name,m.parent_menu,m.url,m.menu_state,m.menu_remark 
+		from menu_tb m,role_menu rm where m.menu_id=rm.menu_id and 
 		rm.role_id=#{roleId}
 	</select>
 
@@ -24,10 +24,17 @@
 	</delete>
 	<!-- //根据roleId添加菜单项 -->
 	<insert id="addMenu">
-	    insert into role_menu  
-	    <foreach collection="menuIds" item="menuId" separator=" union all " >
-	      select  #{roleId},#{menuId} from dual 
+	    <!-- insert into role_menu  
+	    <foreach collection="ls" item="menuId" separator=" union all " >
+	      select  #{roleId},#{menuId} from  dual 
+	    </foreach> -->
+	    
+	    insert all
+	    <foreach collection="ls" item="menuId">
+	        into role_menu(role_id,menu_id) values(#{roleId},#{menuId})
+	        
 	    </foreach>
+	    select * from dual
 	</insert>
 	
 

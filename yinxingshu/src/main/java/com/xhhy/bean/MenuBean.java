@@ -28,6 +28,20 @@ public class MenuBean implements Serializable {
 		this.menuRemark = menuRemark;
 	}
 	
+	
+	public MenuBean(int menuId, String menuName, int parentMenu, String url, int menuState, int menuDel,
+			String menuRemark, boolean is) {
+		super();
+		this.menuId = menuId;
+		this.menuName = menuName;
+		this.parentMenu = parentMenu;
+		this.url = url;
+		this.menuState = menuState;
+		this.menuDel = menuDel;
+		this.menuRemark = menuRemark;
+		this.is = is;
+	}
+
 	public int getMenuId() {
 		return menuId;
 	}

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.xhhy.bean.DeptBean;
 import com.xhhy.service.DeptService;
 
-@RequestMapping("/dept")
+@RequestMapping("dept")
 @Controller
 @SessionAttributes({"deptlist"})
 public class DeptController {
@@ -28,7 +28,7 @@ public class DeptController {
 		
 		List<DeptBean> deptlist=ds.getAllDept();
 		m.addAttribute("deptlist",deptlist);
-		return "/resource/demo1/list.jsp";
+		return "/resource/demo1/ifm.jsp";
 	}
 	
 	@RequestMapping("/add")

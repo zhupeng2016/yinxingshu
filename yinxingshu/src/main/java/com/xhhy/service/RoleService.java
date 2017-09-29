@@ -9,10 +9,8 @@ public interface RoleService {
 
 	// 展现职位发布
 
-	public List<RoleBean> getRoles();
-    
-
-	public PageInfo getRoles(int nowPage,int pageSize,int num);
+	
+	public  List<RoleBean> getRoles();
 
 
 	// 查看职位信息
@@ -41,13 +39,16 @@ public interface RoleService {
 	
 	
 // -----葛大龙------------
+	//得到所有职位信息
+	public List<RoleBean> getAllRole(RoleBean rb);
 	//根据用户id得到roleid
 		public int getRoleId(int userId);
 	//状态删除职位
-	public boolean deleteRole(Integer roleId);
+	public boolean delRole(Integer roleId);
 	//修改职位信息
 	public boolean updateRoleBy(RoleBean rb);
-	
+
+
 	
 // -----葛大龙------------
 	

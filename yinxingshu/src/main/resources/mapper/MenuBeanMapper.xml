@@ -17,27 +17,17 @@
   </resultMap>
   
 	<select id="getAllMenu" resultMap="mymenu"  >
-		select menu_id,menu_name,parent_menu,url,menu_state,menu_del,menu_remark
+		select menu_id,menu_name,parent_menu,url,menu_state,menu_del,menu_remark 
 		 from menu_tb  where menu_del=0 
-		 <!-- <trim prefix="where" prefixOverrides="and" >
-    <if test="empId!=0">
-      empid like concat('%',#{empId},'%')
-     </if>
-      <if test="empName != null and empName != '' ">
-      and  name like concat('%',#{empName},'%')
+       <!-- <if test="menuName != null and menuName != &quot;&quot; ">
+       and  menu_name like concat(concat('%',#{menuName}),'%') 
       </if>
-      <if test="sex !=null and sex != '' ">
-       and sex = #{sex}
-      </if>
-      <if test="title != null and title!=''">
-      and title like concat('%',#{title},'%')
-      </if>
-       <if test="deptId !=0">
-       and deptid like concat('%',#{deptId},'%')
-    </if>
-    </trim> -->
-		  order by menu_id desc
+       <if test="menuState !=999">
+        and menu_state=#{menuState} 
+       </if> -->
+		  order by menu_id 
 	</select>
+	
 	<select id="getMenuById"  resultMap="mymenu" >
 	    select menu_id,menu_name,parent_menu,url,menu_state,menu_remark
 		 from menu_tb  where menu_id=#{menuId} 

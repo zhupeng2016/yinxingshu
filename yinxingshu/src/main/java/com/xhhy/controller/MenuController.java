@@ -30,7 +30,7 @@ import com.xhhy.util.State;
 
 @Controller
 @RequestMapping("menu")
-@SessionAttributes({"mls","pageNum"})
+@SessionAttributes({"mls","pageNum","menuBean"})
 public class MenuController {
 	
 	@Autowired
@@ -38,7 +38,7 @@ public class MenuController {
 	
 	
 	@RequestMapping("menulist")
-	public String getAllMenu(Model m,String pageNum,String method,MenuBean mb) {
+	public String getAllMenu(Model m,String pageNum,String method,MenuBean mb,HttpSession session) {
 		// TODO Auto-generated method stub
 		int pagenum=0;
 		if(State.NOTNULL(pageNum)){
@@ -48,11 +48,13 @@ public class MenuController {
 		}
 		 PageHelper.startPage(pagenum, State.PAGESIZE);
 		 List<MenuBean> mls=new ArrayList<MenuBean>();
-		 if(State.NOTNULL(method)){
-			 mls=ms.getAllMenu(mb);
-		 }else{
-			 mls=ms.getAllMenu();
+		 if("clear".equals(method)){
+			 mb.setMenuName(null);
+			 mb.setMenuState(999);
+            session.removeAttribute("menuBean");
 		 }
+		 m.addAttribute("menuBean",mb);
+		 mls=ms.getAllMenu(mb);
 		PageInfo<Object> pl=new PageInfo(mls,State.NUM);
 		m.addAttribute("mls",mls);
 		m.addAttribute("page",pl);

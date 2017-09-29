@@ -20,6 +20,12 @@ public class RoleServiceImpl implements RoleService {
 	@Autowired
 	private RoleDao rd;
 	
+	@Override
+	public List<RoleBean> getRoles() {
+		// TODO Auto-generated method stub
+		return rd.getRoles();
+	}
+	
 	public PageInfo getRoles(int pageNum,int pageSize,int num) {
 		// TODO Auto-generated method stub
 		
@@ -30,9 +36,7 @@ public class RoleServiceImpl implements RoleService {
 		info=new PageInfo(l,num);
 		int c = info.getPages();
 		if(pageNum > c){
-			PageHelper.startPage(c, 
-
-pageSize);
+			PageHelper.startPage(c, pageSize);
 			l = rd.getRoles();
 			info = new PageInfo(l,num);
 		}
@@ -88,9 +92,9 @@ pageSize);
 		}
 
 	//状态删除职位
-	public boolean deleteRole(Integer roleId) {
+	public boolean delRole(Integer roleId) {
 		// TODO Auto-generated method stub
-		return rd.deleteRole(roleId);
+		return rd.delRole(roleId);
 	}
 
 	//修改职位信息
@@ -99,11 +103,14 @@ pageSize);
 		// TODO Auto-generated method stub
 		return rd.updateRoleBy(rb);
 	}
-
-public List<RoleBean> getRoles() {
+	//得到所有职位信息
+public List<RoleBean> getAllRole(RoleBean rb) {
 	// TODO Auto-generated method stub
-	return null;
+	return rd.getAllRole(rb);
 }
+
+
+
 	
 // -----葛大龙------------	
 	
