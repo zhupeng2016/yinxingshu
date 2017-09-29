@@ -75,7 +75,7 @@
 	<update id="fuheTar">
 	    update TRAIN_TB set TRA_STATE = 1 where TRA_ID = #{0}
 	</update>
-	<!-- 培训复核 -->
+	<!-- 培训复核展现 -->
 	<select id="fuList" resultMap="mytar">
 	    <include refid="selectTar" /> where TRA_RESULT=0 and TRA_STATE=1
 		<if test="tarName!=null and tarName != &quot;&quot;">
@@ -99,5 +99,27 @@
 	<!--培训复核驳回  -->
 	<update id="bohui">
 	    update TRAIN_TB set TRA_STATE = 3 where TRA_ID = #{tarId}
+	</update>
+	<!--培训反馈展现  -->
+	<select id="fanList" resultMap="mytar">
+		<include refid="selectTar" /> where TRA_RESULT=0 and TRA_STATE=2
+		<if test="tarName!=null and tarName != &quot;&quot;">
+		    and TRA_NAME like concat('%',#{tarName},'%')
+		</if>
+		<if test="tarStartTime !=null and tarStartTime != &quot;&quot;">
+		    and TRA_STARTTIME = #{tarStartTime}
+		</if>
+		<if test="tarEddTime !=null and tarEddTime != &quot;&quot;">
+		    and TRA_EDDTIME = #{tarEddTime}
+		</if>
+	</select>
+	<!-- 培训反馈查看 -->
+	<select id="fanLook" resultMap="mytar">
+		<include refid="selectTar" /> where TRA_ID=#{0}
+	</select>
+	<!-- 培训反馈提交 -->
+	<update id="fanTi">
+	    update TRAIN_TB set TRA_REQUIRED = #{tarRequired},TRA_SUMMARY=#{tarSummary},
+	    EVALUTION_RESULT=#{evalutionResult} where TRA_ID = #{tarId}
 	</update>
 </mapper>

@@ -95,7 +95,7 @@
 						<td>${roleList.roleNum }</td> 						
                         <td>${roleList.startTime }</td>
 						<td>${roleList.eddTime }</td>
-                        <td><a href="rec/viewtwo?roleId=${roleList.roleId }">变更</a> &nbsp;&nbsp;<a href="dell?">删除</a> </td>                        
+                        <td><a href="rec/viewtwo?roleId=${roleList.roleId }&pageNum=${requestScope.page.pageNum}">变更</a> &nbsp;&nbsp;<a href="dell?">删除</a> </td>                        
                     </tr> 
                     </c:forEach>
 					 <!-- <tr id="product1">
@@ -109,12 +109,32 @@
                         <td><a href="edit.html">变更</a> &nbsp;&nbsp;<a href="#">删除</a> </td>                        
                     </tr>  -->
 					
-                    <tr>
-                        <td colspan="8" style="text-align: center;">						
-						<a style="text-decoration: none;" href="#">
-                            首页 上一页  ... 7 8 9 10 11 12 ... 下一页 尾页 共1234条 每页显示 10/23 </a>
-                        </td>
-                    </tr>
+                   <tr>
+				<td colspan="20" style="text-align: center;">
+			<span> <a href="rec/demo1?pageNum=1">首页</a> <c:if
+							test="${requestScope.page.getPageNum() == 1 }">
+				上一页
+			</c:if> <c:if test="${requestScope.page.getPageNum() > 1 }">
+							<a
+								href="rec/demo1?pageNum=${requestScope.page.getPageNum()-1 }">上一页</a>
+						</c:if> <c:forEach items="${requestScope.page.getNavigatepageNums()}"
+							var="num">
+							<c:if test="${requestScope.page.getPageNum()==num }">${num }</c:if>
+							<c:if test="${requestScope.page.getPageNum()!=num }">
+								<a href="rec/demo1?pageNum=${num }">${num }</a>
+							</c:if>
+						</c:forEach> <c:if
+							test="${requestScope.page.getPageNum()==requestScope.page.getPages()}">
+				下一页
+			</c:if> <c:if
+							test="${requestScope.page.getPageNum() < requestScope.page.getPages() }">
+							<a
+								href="rec/demo1?pageNum=${requestScope.page.getPageNum()+1 }">下一页</a>
+						</c:if> <a href="rec/demo1?pageNum=${requestScope.page.getPages() }">尾页</a>
+						<span>总共${requestScope.page.getPages()}页
+							总共${requestScope.page.getTotal() }条 </span>
+				</td>
+			</tr>
                 </tbody>
             </table>
         </div>

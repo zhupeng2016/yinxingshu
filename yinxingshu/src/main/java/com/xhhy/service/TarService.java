@@ -28,4 +28,10 @@ public interface TarService {
 	public void fuUpdate(TarBean tb);
 	//培训复核驳回
 	public void bohui(TarBean tb);
+	//培训反馈展现
+	public PageInfo fanList(int nowPage,int pageSize,int num,TarBean tb);
+	//培训反馈查看
+	public TarBean fanLook(int tarId);
+	//培训反馈提交
+	public void fanTi(TarBean tb);
 }

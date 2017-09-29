@@ -1,18 +1,26 @@
-<!DOCTYPE>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
     <head>
-        <title>复审档案</title>
+     <base href="<%=basePath%>">
+        <title>入职办理</title>
         <meta http-equiv="content-type" content="text/html;charset=utf-8">
         <link href="../../css/mine.css" type="text/css" rel="stylesheet">
-        <script type="text/javascript" src="../../js/jquery.js"></script>
-        <script type="text/javascript" src="../../js/My97DatePicker/WdatePicker.js"></script>
     </head>
 
     <body>
 
         <div class="div_head">
             <span>
-                <span style="float:left">当前位置是： -》人事档案管理 -》复审档案</span>
+                <span style="float:left">当前位置是：-》 录用管理 -》入职办理</span>
                 <span style="float:right;margin-right: 8px;font-weight: bold">
                     <a style="text-decoration: none" href="list.html">【返回】</a>
                 </span>
@@ -25,13 +33,19 @@
             <table border="1" width="100%" class="table_a">
                 <tr>
                     <td width="120px;">档案编码<span style="color:red">*</span>：</td>
-                    <td><input type="text" name="f_goods_name" value="BDQN000001" /></td>
+                    <td><input type="text" name="f_goods_name" value="CWB000001" /></td>
                 </tr>
                 <tr>
                     <td>所属部门<span style="color:red">*</span>：</td>
-                    <td>
-                       <input type="text" name="f_goods_name" value="产品设计中心" /> 
-                    </td>
+						<td>
+							<select>
+								<option>--请选择--</option>
+								<option>--人事部--</option>
+								<option selected="selected">--财务部--</option>
+								<option >--技术部--</option>
+								<option>--研发部--</option>
+							</select>
+						</td>
                 </tr>
                
                 <tr>
@@ -41,7 +55,6 @@
 							<option>--请选择--</option>
 							<option>试用期</option>
 							<option>正式员工</option>
-							<option>离职</option>
 							<option>实习员工</option>
 						</select>
 					</td>
@@ -114,7 +127,7 @@
                 </tr>	
 
 				<tr>
-                    <td>毕业院校<span style="color:red">*</span>：</td>
+                    <td>毕业院校：</td>
                     <td>
 						 <input type="text" readonly name="f_goods_name" value="北京航空航天大学" />
                     </td>
@@ -122,13 +135,13 @@
 
 
 				<tr>
-                    <td>专业<span style="color:red">*</span>：</td>
+                    <td>专业：</td>
                     <td>
                         <input type="text" name="f_goods_image" value="计算机应用与科学"/>
                     </td>                
                 </tr>
 				<tr>
-                    <td>学历<span style="color:red">*</span>：</td>
+                    <td>学历：</td>
                     <td>
                         <select>
 							<option>--请选择--</option>
@@ -140,7 +153,7 @@
                     </td>                
                 </tr>
 				<tr>
-                    <td>薪酬标准<span style="color:red">*</span>：</td>
+                    <td>薪酬标准：</td>
                     <td>
                         <select>
 							<option>--请选择--</option>
@@ -171,13 +184,13 @@
 				<tr>
                     <td>登记人：</td>
                     <td>
-                        <input type="text" readonly name="f_goods_image" value="当前登录人" />
+                        <input type="text" name="f_goods_image" value="当前登录人"  readonly="readonly"/>
                     </td>                
                 </tr>
 				<tr>
                     <td>建档时间：</td>
                     <td>
-                        <input type="text" readonly name="f_goods_image" value="当前系统时间  年月日"/>
+                        <input type="text" readonly="readonly" name="f_goods_image" value="当前系统时间 年月日"/>
                     </td>                
                 </tr>
 				<tr>
@@ -201,14 +214,14 @@
 				<tr>
                     <td>简历附件：</td>
                     <td>
-                        <input type="file" name="f_goods_image" value=""/>
+                        <a href="">***的简历.zip</a>
                     </td>                
                 </tr>
 				
                 <tr>
                     <td colspan="2" align="center">
-                        <input type="button" value="复核">
-						<input type="reset" value="重置">
+                        <input type="submit" value="添加">
+						<input type="reset" value="清空">
                     </td>
                 </tr>  
             </table>
