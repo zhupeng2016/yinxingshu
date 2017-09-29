@@ -57,6 +57,7 @@ public interface SalaryManagerDao {
 	 * @param state
 	 */
 	public void updateState(@Param("st")int state,@Param("si")int salaryId);
+
 	
 	/**
 	 * 查询审核中的数据
@@ -69,5 +70,11 @@ public interface SalaryManagerDao {
 	 * 展现发放工资数据
 	 */
 	
+
+	/*
+	 * wuzhanxi添加的查询方法
+	 */
+	public List<SalaryBean> findAll();
+
 }
 

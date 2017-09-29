@@ -85,6 +85,7 @@ public class SalaryManagerServiceImpl implements SalaryManagerService {
 		salaryManagerDao.delete(salaryId);
 	}
 
+
 	/**
 	 * 修改薪酬的状态
 	 */
@@ -114,6 +115,14 @@ public class SalaryManagerServiceImpl implements SalaryManagerService {
 	/**
 	 * 展现发放工资数据
 	 */
+
+
+	public List<SalaryBean> findAll() {
+		return salaryManagerDao.findAll();
+	
+	}
+
+	
 
 	
 	

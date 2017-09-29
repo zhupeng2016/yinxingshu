@@ -1,5 +1,7 @@
 package com.xhhy.service;
 
+import java.util.List;
+
 import com.github.pagehelper.PageInfo;
 import com.xhhy.bean.RecordBean;
 import com.xhhy.bean.SalaryBean;
@@ -46,6 +48,7 @@ public interface SalaryManagerService {
 	 * 删除薪酬信息
 	 */
 	public void delete(int salaryId);
+
 	
 
 	/**
@@ -56,6 +59,12 @@ public interface SalaryManagerService {
 	/**
 	 * 展现发放工资数据
 	 */
+
+	/*
+	 * 吴占喜加finall()方法
+	 */
+	public List<SalaryBean> findAll();
+
 }
 
 	

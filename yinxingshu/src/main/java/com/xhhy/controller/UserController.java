@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -19,7 +20,7 @@ import com.xhhy.bean.UserBean;
 import com.xhhy.service.UserService;
 
 @Controller
-@SessionAttributes({ "ub", "ipAddress", "u" })
+@SessionAttributes({"ub","ipAddress"})
 public class UserController {
 	@Autowired
 	private UserService us;
@@ -76,6 +77,7 @@ public class UserController {
 						break;
 					}
 				}
+
 				if (is) {
 					l.add(ub);
 					us.update(ub.getUserId());
@@ -103,9 +105,12 @@ public class UserController {
 	}
 
 	@RequestMapping("/msg")
-	public String index(Model m, int userId, UserBean ub) {
-		ub.setUserId(userId);
-		boolean is = us.UpdateById(ub);
-		return "/right.jsp";
-	}
+	public String index(Model m,UserBean u){
+		boolean is=us.UpdateById(u);
+		if(is){
+			return "/right.jsp";
+		}else{
+			return "/msg.jsp";
+		}
+}
 }

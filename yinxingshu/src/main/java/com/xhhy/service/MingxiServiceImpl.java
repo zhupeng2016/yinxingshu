@@ -14,10 +14,14 @@ import com.xhhy.dao.MingxiDao;
 @Service
 public class MingxiServiceImpl implements MingxiService {
 	@Autowired
+
+    
+
 	private MingxiDao md;
 
 	public PageInfo queryAll(int pageNum, int pageSize, int num, MingxiBean mb) {
 		PageHelper.startPage(pageNum, pageSize);
+
 		List<MingxiBean> l = md.queryAll(mb);
 		PageInfo<Object> info = new PageInfo(l, num);
 		return info;
