@@ -32,9 +32,9 @@
 					+ "&pageNum=${requestScope.page.pageNum}";
 		}
 	}
-	$(function(){
-		$("#btn").click(function(){
-			location.href="salary/findAll?pageNum=1&flag=clear";
+	$(function() {
+		$("#btn").click(function() {
+			location.href = "salary/findAll?pageNum=1&flag=clear";
 		});
 	});
 </script>
@@ -72,7 +72,8 @@
 					<option value="4"
 						<c:if test="${sessionScope.salaryBean.salaryState == 4 }">selected</c:if>>--
 						驳回--</option>
-				</select> <input value="查询" type="submit" /> <input value="清空" type="button" id="btn" />
+				</select> <input value="查询" type="submit" /> <input value="清空" type="button"
+					id="btn" />
 			</form>
 		</span>
 	</div>
@@ -88,31 +89,43 @@
 					<td width="120px;">时间</td>
 					<td align="center" width="100px;">操作</td>
 				</tr>
-				<c:forEach items="${requestScope.salarylist}" var="sl"
-					varStatus="li">
-					<tr id="product1">
-						<td>${li.index+1}</td>
-						<td><input type="checkbox" name="chosen" /></td>
-						<td>${sl.salaryCode}</td>
-						<td><a href="salary/message?salaryId=${sl.salaryId}">${sl.salaryName}</a></td>
-						<c:if test="${sl.salaryState==1}">
-							<td>起草</td>
-						</c:if>
-						<c:if test="${sl.salaryState==2}">
-							<td>审核中</td>
-						</c:if>
-						<c:if test="${sl.salaryState==3}">
-							<td>已通过</td>
-						</c:if>
-						<c:if test="${sl.salaryState==4}">
-							<td>驳回</td>
-						</c:if>
-						<td>${fn:substring(sl.registerTime,0,16)}</td>
-						<td><a
-							href="salary/updateMessage?salaryId=${sl.salaryId}&pageNum=${requestScope.page.pageNum}">修改</a>
-							<a href="javascript:del(${sl.salaryId})">删除</a></td>
+				<c:if test="${empty requestScope.salarylist}">
+					<tr>
+						<td colspan="7" style="color:red;font-size: 20px;text-align: center;">没有符合条件的数据!</td>
 					</tr>
-				</c:forEach>
+				</c:if>
+				<c:if test="${!empty requestScope.salarylist}">
+					<c:forEach items="${requestScope.salarylist}" var="sl"
+						varStatus="li">
+						<tr id="product1">
+							<td>${li.index+1}</td>
+							<td><input type="checkbox" name="chosen" /></td>
+							<td>${sl.salaryCode}</td>
+							<td><a href="salary/message?salaryId=${sl.salaryId}">${sl.salaryName}</a></td>
+							<c:if test="${sl.salaryState==1}">
+								<td>起草</td>
+							</c:if>
+							<c:if test="${sl.salaryState==2}">
+								<td>审核中</td>
+							</c:if>
+							<c:if test="${sl.salaryState==3}">
+								<td>已通过</td>
+							</c:if>
+							<c:if test="${sl.salaryState==4}">
+								<td>驳回</td>
+							</c:if>
+							<td>${fn:substring(sl.registerTime,0,16)}</td>
+							<td><c:if test="${sl.salaryState==1 || sl.salaryState==4 }">
+									<a
+										href="salary/updateMessage?salaryId=${sl.salaryId}&pageNum=${requestScope.page.pageNum}">修改</a>
+									<a href="javascript:del(${sl.salaryId})">删除</a>
+								</c:if></td>
+						</tr>
+					</c:forEach>
+				</c:if>
+
+
+
 
 				<tr>
 					<td colspan="20" style="text-align: center;"><span> <a
