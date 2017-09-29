@@ -1,8 +1,7 @@
 package com.xhhy.service;
 
-import java.util.List;
-
 import com.github.pagehelper.PageInfo;
+import com.xhhy.bean.RecordBean;
 import com.xhhy.bean.SalaryBean;
 
 public interface SalaryManagerService {
@@ -11,7 +10,17 @@ public interface SalaryManagerService {
 	/**
 	 * 薪酬管理  分页
 	 */
-	public PageInfo getSalarys(SalaryBean sb,int nowPage,int pageSize,int num);
+	public PageInfo getSalarys(SalaryBean sb,int pageNum,int pageSize,int num);
+	
+	/**
+	 * 展示审核中的数据
+	 * @param sb
+	 * @param nowPage
+	 * @param pageSize
+	 * @param num
+	 * @return
+	 */
+	public PageInfo getSalarySp(SalaryBean sb,int pageNum,int pageSize,int num);
 	
 	/**
 	 * 增加薪酬信息
@@ -37,4 +46,16 @@ public interface SalaryManagerService {
 	 * 删除薪酬信息
 	 */
 	public void delete(int salaryId);
+	
+
+	/**
+	 * 修改薪酬的状态
+	 */
+	public void updateState(int state,int salaryId);
+	
+	/**
+	 * 展现发放工资数据
+	 */
 }
+
+	

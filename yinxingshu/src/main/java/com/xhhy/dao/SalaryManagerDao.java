@@ -5,7 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
-import com.github.pagehelper.PageInfo;
+import com.xhhy.bean.RecordBean;
 import com.xhhy.bean.SalaryBean;
 
 /**
@@ -57,4 +57,17 @@ public interface SalaryManagerDao {
 	 * @param state
 	 */
 	public void updateState(@Param("st")int state,@Param("si")int salaryId);
+	
+	/**
+	 * 查询审核中的数据
+	 * @param sb
+	 */
+	public List<SalaryBean> findSp(SalaryBean sb);
+	
+	
+	/**
+	 * 展现发放工资数据
+	 */
+	
 }
+

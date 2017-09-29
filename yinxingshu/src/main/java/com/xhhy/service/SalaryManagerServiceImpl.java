@@ -4,15 +4,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-/**
- * 
- * @author 强悦
- * 薪酬标准管理service层
- */
-import org.springframework.transaction.annotation.Transactional;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.xhhy.bean.RecordBean;
 import com.xhhy.bean.SalaryBean;
 import com.xhhy.dao.SalaryManagerDao;
 import com.xhhy.util.State;
@@ -22,10 +17,6 @@ public class SalaryManagerServiceImpl implements SalaryManagerService {
 	@Autowired
 	private SalaryManagerDao salaryManagerDao;
 
-	/*public List<SalaryBean> findAll() {
-		// TODO Auto-generated method stub
-		return salaryManagerDao.findAll();
-	}*/
 	/**
 	 * 薪酬管理 分页
 	 */
@@ -93,6 +84,37 @@ public class SalaryManagerServiceImpl implements SalaryManagerService {
 		// TODO Auto-generated method stub
 		salaryManagerDao.delete(salaryId);
 	}
+
+	/**
+	 * 修改薪酬的状态
+	 */
+	public void updateState(int state, int salaryId) {
+		// TODO Auto-generated method stub
+		salaryManagerDao.updateState(state, salaryId);
+	}
+
+	/**
+	 * 展示审核中的信息
+	 */
+	public PageInfo getSalarySp(SalaryBean sb, int pageNum, int pageSize, int num) {
+		List<SalaryBean> l = null;
+		PageInfo<Object> info = null;
+		PageHelper.startPage(pageNum, pageSize);
+		l = salaryManagerDao.findSp(sb);
+		info = new PageInfo(l,num);
+		int c = info.getPages();
+		if(pageNum > c){
+			PageHelper.startPage(c, pageSize);
+			l = salaryManagerDao.findSp(sb);
+			info = new PageInfo(l,num);
+		}
+		return info;
+	}
+
+	/**
+	 * 展现发放工资数据
+	 */
+
 	
 	
 	
