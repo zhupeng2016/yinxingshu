@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -105,12 +106,18 @@ public class UserController {
 	}
 
 	@RequestMapping("/msg")
-	public String index(Model m,UserBean u){
-		boolean is=us.UpdateById(u);
-		if(is){
-			return "/right.jsp";
-		}else{
-			return "/msg.jsp";
-		}
-}
+		public String index(Model m,UserBean u){
+			boolean is=us.UpdateById(u);
+			if(is){
+				return "/right.jsp";
+			}else{
+				return "/msg.jsp";
+			}
+		}	
+	@RequestMapping("/password")
+	public String password(Model m,UserBean u,HttpServletRequest request){
+		UserBean u2=(UserBean)request.getSession().getAttribute("ub");
+		boolean is = us.getUpdate(u);
+		return "/head";
+	}
 }

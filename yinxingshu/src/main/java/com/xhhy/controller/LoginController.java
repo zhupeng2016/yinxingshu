@@ -26,12 +26,14 @@ public class LoginController {
 		UserBean ub = (UserBean)session.getAttribute("ub");
 		ServletContext sc = request.getSession().getServletContext();
 		List<UserBean> l = (List)sc.getAttribute("uon");
+		if(ub !=null){
 		for(int i=0;i<l.size();i++){
 			UserBean u = l.get(i);
 			if(u != null && ub!=null && u.getUserId() == ub.getUserId()){
 				l.remove(i);
 				break;
 			}
+		}
 		}
 		sc.setAttribute("uon", l);
 		session.invalidate();
