@@ -57,4 +57,9 @@ public interface SalaryManagerDao {
 	 * @param state
 	 */
 	public void updateState(@Param("st")int state,@Param("si")int salaryId);
+	/*
+	 * wuzhanxi添加的查询方法
+	 */
+	public List<SalaryBean> findAll();
 }
+	
