@@ -9,6 +9,7 @@ import com.xhhy.bean.SalaryBean;
 public interface SalaryManagerService {
 
 
+
 	/**
 	 * 薪酬管理  分页
 	 */
@@ -48,7 +49,6 @@ public interface SalaryManagerService {
 	 * 删除薪酬信息
 	 */
 	public void delete(int salaryId);
-
 	
 
 	/**

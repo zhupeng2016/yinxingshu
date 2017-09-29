@@ -24,6 +24,7 @@ import com.xhhy.util.State;
 @SessionAttributes({ "salaryBean" })
 public class SalaryManagerController {
 
+
 	@Autowired
 	private SalaryManagerService salaryManagerService;
 

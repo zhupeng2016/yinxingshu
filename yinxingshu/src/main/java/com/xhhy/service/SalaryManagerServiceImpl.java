@@ -85,7 +85,6 @@ public class SalaryManagerServiceImpl implements SalaryManagerService {
 		salaryManagerDao.delete(salaryId);
 	}
 
-
 	/**
 	 * 修改薪酬的状态
 	 */

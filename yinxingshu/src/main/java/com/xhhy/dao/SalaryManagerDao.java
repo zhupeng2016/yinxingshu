@@ -16,6 +16,7 @@ import com.xhhy.bean.SalaryBean;
 @Repository
 public interface SalaryManagerDao {
 
+
 	/**
 	 * 查询所有薪酬标准
 	 * @return
@@ -57,7 +58,6 @@ public interface SalaryManagerDao {
 	 * @param state
 	 */
 	public void updateState(@Param("st")int state,@Param("si")int salaryId);
-
 	
 	/**
 	 * 查询审核中的数据
@@ -66,13 +66,9 @@ public interface SalaryManagerDao {
 	public List<SalaryBean> findSp(SalaryBean sb);
 	
 	
-	/**
-	 * 展现发放工资数据
-	 */
-	
 
 	/*
-	 * wuzhanxi添加的查询方法
+	 * 添加的查询方法
 	 */
 	public List<SalaryBean> findAll();
 
