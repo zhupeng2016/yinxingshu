@@ -19,6 +19,7 @@ public class RoleServiceImpl implements RoleService {
 
 	@Autowired
 	private RoleDao rd;
+
 	
 	@Override
 	public List<RoleBean> getRoles() {
@@ -27,18 +28,16 @@ public class RoleServiceImpl implements RoleService {
 	}
 	
 	public PageInfo getRoles(int pageNum,int pageSize,int num) {
-		// TODO Auto-generated method stub
-		
 		List<RoleBean> l = null;
 		PageInfo<Object> info = null;
 		PageHelper.startPage(pageNum, pageSize);
-		l=rd.getRoles();
-		info=new PageInfo(l,num);
+		l = rd.getRoles();
+		info = new PageInfo(l, num);
 		int c = info.getPages();
 		if(pageNum > c){
 			PageHelper.startPage(c, pageSize);
 			l = rd.getRoles();
-			info = new PageInfo(l,num);
+			info = new PageInfo(l, num);
 		}
 		return info;
 	}
@@ -56,7 +55,7 @@ public class RoleServiceImpl implements RoleService {
 		return rd.pupdateRole(roleId);
 	}
 
-	//修改职位发布信息
+	// 修改职位发布信息
 	public boolean updateRole(Integer roleId, String
 
 	roleNum, String roleRemark, String roleRequired) {
@@ -66,16 +65,14 @@ public class RoleServiceImpl implements RoleService {
 		(roleId, roleNum, roleRemark, roleRequired);
 	}
 
-	
-	/*//预添加
-	@Override
-	public List<RoleBean> paddRole() {
-		// TODO Auto-generated method stub
-		return rd.paddRole();
-	}*/
-	
-	
-	//添加职位信息
+	/*
+	 * //预添加
+	 * 
+	 * @Override public List<RoleBean> paddRole() { // TODO Auto-generated
+	 * method stub return rd.paddRole(); }
+	 */
+
+	// 添加职位信息
 	public boolean addRole(RoleBean role) {
 		// TODO Auto-generated method stub
 		return rd.addRole(role);

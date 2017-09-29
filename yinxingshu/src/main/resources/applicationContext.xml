@@ -109,7 +109,7 @@
                 <value>application/json;charset=UTF-8</value>
             </list>
         </property>
-    </bean>
+    </bean> 
 	
 
 	  <!-- 上传文件的配置 -->

@@ -27,7 +27,7 @@ public class RoleController {
 	@Autowired
 	private DeptService ds;
 	
-	@RequestMapping("/demo1")
+	/*@RequestMapping("/demo1")
 	public String getRoles(Integer pageNum,Model map) {
 		
 		if(pageNum==null){
@@ -39,7 +39,7 @@ public class RoleController {
 		map.addAttribute("roleList", roleList);
         map.addAttribute("page",page); 
 		return "/zhaopin/demo1/list.jsp";
-	}
+	}*/
 
 	// 查看职员信息
 	@RequestMapping("/view")
