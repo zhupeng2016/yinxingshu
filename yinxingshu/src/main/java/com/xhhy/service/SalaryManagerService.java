@@ -3,15 +3,27 @@ package com.xhhy.service;
 import java.util.List;
 
 import com.github.pagehelper.PageInfo;
+import com.xhhy.bean.RecordBean;
 import com.xhhy.bean.SalaryBean;
 
 public interface SalaryManagerService {
 
 
+
 	/**
 	 * 薪酬管理  分页
 	 */
-	public PageInfo getSalarys(int nowPage,int pageSize,int num);
+	public PageInfo getSalarys(SalaryBean sb,int pageNum,int pageSize,int num);
+	
+	/**
+	 * 展示审核中的数据
+	 * @param sb
+	 * @param nowPage
+	 * @param pageSize
+	 * @param num
+	 * @return
+	 */
+	public PageInfo getSalarySp(SalaryBean sb,int pageNum,int pageSize,int num);
 	
 	/**
 	 * 增加薪酬信息
@@ -31,10 +43,28 @@ public interface SalaryManagerService {
 	/**
 	 * 修改薪酬信息
 	 */
-	public void update(SalaryBean sb);
+	public void update(SalaryBean sb,int flag);
 	
 	/**
 	 * 删除薪酬信息
 	 */
 	public void delete(int salaryId);
+	
+
+	/**
+	 * 修改薪酬的状态
+	 */
+	public void updateState(int state,int salaryId);
+	
+	/**
+	 * 展现发放工资数据
+	 */
+
+	/*
+	 * 吴占喜加finall()方法
+	 */
+	public List<SalaryBean> findAll();
+
 }
+
+	

@@ -15,7 +15,6 @@ public class DeptServiceImpl implements DeptService {
 	public DeptDao dd;
 	
 	//查询所有部门信息
-	
 	public List<DeptBean> getAllDept() {
 		// TODO Auto-generated method stub
 		return dd.getAllDept();

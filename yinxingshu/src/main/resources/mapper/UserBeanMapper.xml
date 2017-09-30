@@ -32,12 +32,15 @@
 	<select id="login" resultMap="myuser">
 		<include refid="selectUser" />
 		where loginname=#{ln} and password=#{ps} 
-	</select>
+	</select>	
 	<update id="update">
 	    update user_tb set login_count=login_count+1 where user_id=#{userId}
 	</update>
 	<update id="UpdateById">
-	    Update user_tb set dept_id=#{deptId},user_code=#{userCode}loginname=#{loginName},password=#{password},user_name=#{userName},sex=#{sex},id_card=#{idCard},phone=#{phone},mobile_phone=#{mobilePhone},user_email=#{userEmail},address=#{address},user_img=#{userImg},user_remark=#{userRemark},login_count=#{loginCount},user_del=#{userDel},user_time=#{userTime}
+	    update user_tb set user_name=#{userName},sex=#{sex},id_card=#{idCard},phone=#{phone},mobile_phone=#{mobilePhone},user_email=#{userEmail},user_img=#{userImg},user_remark=#{userRemark}
 	     where  user_id=#{userId}
+	</update>
+	<update id="getUpdate">
+	    update user_tb set password=#{password} where user_id=#{userId}
 	</update>
 </mapper>

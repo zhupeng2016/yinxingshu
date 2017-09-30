@@ -36,7 +36,7 @@
 	<div></div>
 
 	<div style="font-size: 13px; margin: 10px 5px">
-		<form action="peixun/update?pageNum=pageNum" method="get"
+		<form action="peixun/update" method="post"
 			enctype="multipart/form-data"> 
 			<input type="hidden" name=tarId value=${requestScope.tb.tarId }>
 			<input type="hidden" name=pageNum value=${requestScope.pageNum }>
@@ -85,7 +85,7 @@
 
 				<tr>
 					<td>培训资料：</td>
-					<td><input type="file" name="tarFile" value="${requestScope.tb.tarFile }" /></td>
+					<td><input type="file"  value="${requestScope.tb.tarFile }" /></td>
 				</tr>
 				<tr>
                     <td colspan="2" align="center">

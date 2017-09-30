@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -35,12 +36,17 @@
 			}
 		}
 	}
-	$(function() {
+	/* $(function() {
 		$("#n").AutoComplete({
 			'data' : 'peixun/auto', //去服务器获得所有的提示信息
 			'width' : "auto",//提示框宽度
 			'itemheight' : 30
 		//每个补全信息的高度
+		});
+	}); */
+	$(function(){
+		$("#btn").click(function(){
+			location.href="peixun/info?pageNum=1&flag=clear";
 		});
 	});
 </script>
@@ -61,11 +67,11 @@
 	</div>
 	<div></div>
 	<div class="div_search">
+		<form action="peixun/info" method="post" >
 		<span>
-			<form action="peixun/auto?pageNum=pageNum" method="post" id="myForm">
-			<input type="hidden" name="pageNum" value="${requestScope.page.pageNum }">
+			<input type="hidden" name="pageNum" value="1">
 				培训名称: <input type="text" id="n" name="tarName" value=""/> 审核状态: <select name="tarState" value="">
-					<option>--请选择--</option>
+					<option value="999">--请选择--</option>
 					<option value="0">起草</option>
 					<option value="1">审核中</option>
 					<option value="2">审核通过</option>
@@ -74,17 +80,19 @@
 					onchange="checkTime()" name="tarStartTime" value="" />至<input type="text" id="et"
 					onclick="WdatePicker()" onchange="checkTime()" name="tarEddTime" value="" /> <input
 					value="查询" type="submit" />
+					<input
+					value="清空" type="button" id="btn"/>
 
-			</form>
 		</span>
+			</form>
 	</div>
 	<div style="font-size: 13px; margin: 10px 5px;">
 		<table class="table_a" border="1" width="100%">
 			<tbody>
 				<tr style="font-weight: bold;">
-					<td width="">培训名称</td>
+					<td width="15%">培训名称</td>
 					<td width="15%">培训讲师</td>
-					<td width="15%">培训时间</td>
+					<td width="20%">培训时间</td>
 					<td>培训反馈</td>
 					<td width="15%">审核状态</td>
 					<td align="center" width="15%">操作</td>
