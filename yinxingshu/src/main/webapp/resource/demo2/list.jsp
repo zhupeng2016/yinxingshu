@@ -9,7 +9,8 @@
 <!DOCTYPE html PUBLIC >
 <html>
 <base href="<%=basePath%>">
- <head>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>用户管理</title>
 <link href="css/mine.css" type="text/css" rel="stylesheet" />
 <link type="text/css" rel="stylesheet"
@@ -17,25 +18,25 @@
 <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="js/jquery.autocomplete.min.js"></script>
 <script type="text/javascript">
-$(function() {
-	//全选   全不选
-	$("#checkedAll").click(function() {
-		$("input[name='chosen']").prop("checked", $(this).prop("checked"));
+	$(function() {
+		//全选   全不选
+		$("#checkedAll").click(function() {
+			$("input[name='chosen']").prop("checked", $(this).prop("checked"));
+		});
 	});
-});
 
-function show(){
-	var msg="${msg}";
-	if(msg!=null && msg!=""){
-		alert(msg);
+	function show() {
+		var msg = "${msg}";
+		if (msg != null && msg != "") {
+			alert(msg);
+		}
 	}
-}
-function del(userId){
-	var is=confirm("确定删除吗？");
-	if(is){
-		location.href="user/delete?userId="+userId+"";
+	function del(userId) {
+		var is = confirm("确定删除吗？");
+		if (is) {
+			location.href = "user/delete?userId=" + userId + "&pageNum=${page.getPageNum()}";
+		}
 	}
-}
 </script>
 </head>
 <body onload="show()">
@@ -54,10 +55,12 @@ function del(userId){
 	<div></div>
 	<div class="div_search">
 		<span>
-			<form action="#" method="get">
-				姓名： <input type="text" /> 角色: <input type="text" /> 所属部门: <input
-					type="text" /> <input value="查询" type="submit" />
-
+			<form action="user/userlist?pageNum=${page.getPageNum()}" method="post">
+				姓名： <input type="text" name="userName" value="${sessionScope.userName }" /> 
+				角色: <input type="text" name="roleName" value="${sessionScope.roleName }"/> 
+				所属部门: <input	type="text" name="deptName" value="${sessionScope.deptName }" /> 
+			<input value="查询" type="submit" />
+ <a href="menu/menulist?method=clear"> <input type="button" value="清空"  /></a>
 			</form>
 		</span>
 	</div>
@@ -79,22 +82,43 @@ function del(userId){
 						<td><input type="checkbox" /></td>
 						<td>${st.index+1 }</td>
 						<td>${ub.loginName }</td>
-						<td><a href="user/look?userId=${ub.userId }">${ub.userName }</a></td>
+						<td><a href="user/look?userId=${ub.userId }&pageNum=${page.getPageNum()}">${ub.userName }</a></td>
 						<td>${ub.rb.roleName }</td>
 						<td>${ub.db.deptShortName }</td>
-						<td><a href="user/pupdate?userId=${ub.userId }">修改</a> <a
-							href="javascript:del(${ub.userId })" >删除</a></td>
+						<td><a href="user/pupdate?userId=${ub.userId }&pageNum=${page.getPageNum()}">修改</a> <a
+							href="javascript:del(${ub.userId })">删除</a></td>
 					</tr>
 
 				</c:forEach>
 				<tr>
-					<td colspan="20" style="text-align: center;"><a
-						style="text-decoration: none;" href="#"> 首页 上一页 ... 7 8 9 10
-							11 12 ... 下一页 尾页 共1234条 每页显示 10/23 </a></td>
+				 <td colspan="20" style="text-align: center;">
+					<span> <a href="user/userlist?pageNum=1">首页</a> <c:if
+							test="${requestScope.page.getPageNum() == 1 }">
+				上一页
+			</c:if> <c:if test="${requestScope.page.getPageNum() > 1 }">
+							<a
+								href="user/userlist?pageNum=${requestScope.page.getPageNum()-1 }">上一页</a>
+						</c:if> &nbsp;&nbsp; <c:forEach
+							items="${requestScope.page.getNavigatepageNums()}" var="num">
+							<c:if test="${requestScope.page.getPageNum()==num }">&nbsp;${num }&nbsp;</c:if>
+							<c:if test="${requestScope.page.getPageNum()!=num }">
+								<a href="user/userlist?pageNum=${num }">${num }</a>
+							</c:if>
+						</c:forEach> &nbsp;&nbsp; <c:if
+							test="${requestScope.page.getPageNum()==requestScope.page.getPages()}">
+				下一页
+			</c:if> <c:if
+							test="${requestScope.page.getPageNum() < requestScope.page.getPages() }">
+							<a
+								href="user/userlist?pageNum=${requestScope.page.getPageNum()+1 }">下一页</a>
+						</c:if> <a href="user/userlist?pageNum=${requestScope.page.getPages() }">尾页</a>
+						<span>总共${requestScope.page.getPages()}页
+							总共${requestScope.page.getTotal() }条 </span>
+							</td> 
 				</tr>
 			</tbody>
 		</table>
 	</div>
-	
+
 </body>
 </html>

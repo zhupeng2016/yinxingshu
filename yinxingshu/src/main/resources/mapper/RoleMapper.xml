@@ -24,8 +24,7 @@
 	<sql id="selectRole">
 		select
 		ROLE_ID,DEPT_ID,ROLE_CODE,ROLE_NAME,ROLE_KIND,ROLE_NUM,STARTTIME,EDDTIME,ROLE_INTRO,ROLE_REMARK,ROLE_REQUIRED,ROLE_STATE,ROLE_DEL,ROLE_RECRITTYPE
-		from role_tb
-		where role_del = 0
+		from role_tb where role_del=0
 	</sql>
 
 	<select id="getRoles" resultMap="myrole">
@@ -33,7 +32,7 @@
 	   <!--  <trim prefix="where" prefixOverrides="and">
 	       <if test="roleDel==0">role_id=#{roleId}</if>
 	    </trim> -->
-		<include refid="selectRole" />
+	<!-- 	<include refid="selectRole" /> -->
 	</select>
 	
 	<select id="getRole" resultMap="myrole">
@@ -86,9 +85,15 @@
 	<!-- 查询所有职位信息 -->
 	<select id="getAllRole" resultMap="myrole">
 	     <include refid="selectRole"/>
-	     <if test="${rb!=null}">
-	         
-	     </if>
+	    <if test="roleName != null and roleName != &quot;&quot; ">
+       and  role_name like concat(concat('%',#{roleName}),'%') 
+      </if>
+       <if test="deptName != null and deptName != &quot;&quot; ">
+       and  dept_name like concat(concat('%',#{deptName}),'%') 
+      </if>
+       <if test="roleState !=999">
+        and roel_state=#{roleState} 
+       </if> 
 	</select>
 	<!-- 状态删除职位 -->
 	<update id="delRole">

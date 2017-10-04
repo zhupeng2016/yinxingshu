@@ -13,32 +13,45 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>用户管理</title>
 <link href="css/mine.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
 
+
+  $(function(){
+	  $("#bt").click(function(){
+		  var is=confirm("确认修改吗？");
+		  if(is){
+			  
+		  $("#myForm").submit();
+		  }
+	  });
+  })
+</script>
 </head>
 
-<body>
+<body >
 
 	<div class="div_head">
 		<span> <span style="float: left">当前位置是：-》资源管理》用户管理</span> <span
 			style="float: right; margin-right: 8px; font-weight: bold"> <a
-				style="text-decoration: none" href="user/userlist">【返回】</a>
+				style="text-decoration: none" href="user/userlist?pageNum=${pageNum}">【返回】</a>
 		</span>
 		</span>
 	</div>
 	<div></div>
 
 	<div style="font-size: 13px; margin: 10px 5px">
-		<form action="user/update?userId=${user.userId }" method="post" enctype="multipart/form-data">
+		<form action="user/update?userId=${user.userId }&pageNum=${pageNum}" id="myForm" method="post" enctype="multipart/form-data">
 			<table border="1" width="100%" class="table_a">
 				<tr>
 					<td width="120px;">用户编号<span style="color: red">*</span>：
 					</td>
-					<td><input type="text" name="userCode" value="${user.userCode }" /></td>
+					<td><input type="text" name="userCode" readonly value="${user.userCode }" /></td>
 				</tr>
 				<tr>
 					<td>登录账号<span style="color: red">*</span>：
 					</td>
-					<td><input type="text" name="loginName" value="${user.loginName }" />
+					<td><input type="text" name="loginName"  value="${user.loginName }" />
 					</td>
 				</tr>
 
@@ -70,6 +83,7 @@
 					<td>
 					<select name="roleId">
 					<c:forEach items="${rls }" var="rb" >
+					
 					  <option  <c:if test="${rb.roleId==user.roleId }">selected="selected"</c:if> value="${rb.roleId }">${rb.roleName }</option>
 					</c:forEach>
 					</select></td>

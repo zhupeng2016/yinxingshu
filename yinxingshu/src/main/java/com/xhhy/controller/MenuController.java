@@ -55,9 +55,9 @@ public class MenuController {
 		 }
 		 m.addAttribute("menuBean",mb);
 		 mls=ms.getAllMenu(mb);
-		PageInfo<Object> pl=new PageInfo(mls,State.NUM);
+		PageInfo<Object> info=new PageInfo(mls,State.NUM);
 		m.addAttribute("mls",mls);
-		m.addAttribute("page",pl);
+		m.addAttribute("page",info);
 		return "/resource/demo8/list.jsp";
 	}
 	@RequestMapping("/padd")

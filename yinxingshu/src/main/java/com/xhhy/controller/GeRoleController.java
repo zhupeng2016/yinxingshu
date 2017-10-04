@@ -26,7 +26,7 @@ import com.xhhy.util.State;
 
 @Controller
 @RequestMapping("/role")
-@SessionAttributes({"pageNum"})
+@SessionAttributes({"pageNum","roleBean"})
 public class GeRoleController {
 
 	@Autowired
@@ -42,14 +42,17 @@ public class GeRoleController {
 	@RequestMapping("/rolelist")
 	public String roleList(Model m,String pageNum,String method,RoleBean rb,HttpSession session) {
 		int pagenum=0;
-//		System.out.println(pageNum);
 		if(State.NOTNULL(pageNum)){
 			pagenum=Integer.parseInt(pageNum);
 		}else{
 			pagenum=1;
 		}
 		 PageHelper.startPage(pagenum, State.PAGESIZE);
-		 
+		 if("clear".equals(method)){
+			rb.setRoleName(null);
+			rb.setDeptName(null);
+		 }
+		 m.addAttribute("roleBean",rb);
         List<RoleBean> rolelist = rs.getAllRole(rb);
 		m.addAttribute("rls", rolelist);
 		PageInfo<Object> pl=new PageInfo(rolelist,State.NUM);

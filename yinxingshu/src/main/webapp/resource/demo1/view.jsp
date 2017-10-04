@@ -28,7 +28,7 @@
 			style="float: right; margin-right: 8px; font-weight: bold"> <a
 				style="text-decoration: none" href="dept/pupdate/${db.deptId}">【修改】</a> <c:if
 					test="${db.parentDept==0 }">
-					<a style="text-decoration: none" href="dept/addChildDept/${db.deptId}">【添加子部门】</a>
+					<%-- <a style="text-decoration: none" href="dept/addChildDept/${db.deptId}">【添加子部门】</a> --%>
 				</c:if> <a style="text-decoration: none"  href="dept/delete/${db.deptId}" >【删除】</a>
 		</span>
 		</span>
@@ -55,7 +55,7 @@
 					<td>上级部门：</td>
 					<td>
 					   <c:if test="${db.parentDept==0 }">
-						<input type="text"  name="parentDept" value="银杏树信息管理公司" />
+						<input type="text"  name="parentDept" readonly value="银杏树信息管理公司" />
 					    </c:if>
 				<%-- 	<c:forEach items="${deptlist }" var="dbs" >
 					   <c:if test="${dbs.deptId==${db.parentDept }">

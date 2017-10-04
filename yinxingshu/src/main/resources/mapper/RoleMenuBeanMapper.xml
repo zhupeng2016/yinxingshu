@@ -32,7 +32,6 @@
 	    insert all
 	    <foreach collection="ls" item="menuId">
 	        into role_menu(role_id,menu_id) values(#{roleId},#{menuId})
-	        
 	    </foreach>
 	    select * from dual
 	</insert>

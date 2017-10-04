@@ -9,7 +9,7 @@
 <html>
 <base href="<%=basePath%>">
 <title>职位管理</title>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="css/mine.css" type="text/css" rel="stylesheet" />
 <link type="text/css" rel="stylesheet" href="css/jquery.autocomplete.css"/>
 <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
@@ -39,12 +39,13 @@ function show(){
 	<div></div>
 	<div class="div_search">
 		<span>
-			<form action="role/rolelist?method=search" method="post">
-				职位名称: <input type="text" name="roleName" /> 所属部门: <input type="text"  name="dept.deptName"/> 
+			<form action="role/rolelist?pageNum=${page.getPageNum()}" method="post">
+				职位名称: <input type="text" name="roleName" value="${sessionScope.roleBean.roleName }"/> 
+				所属部门: <input type="text"  name="dept.deptName" value="${sessionScope.roleBean.dept.deptName }"/> 
 				是否启用: <select name="roleState">
 					<option value="999">---请选择---</option>
-					<option value="0">是</option>
-					<option value="1">否</option>
+					<option value="0" <c:if test="${sessionScope.menuBean.menuState==0}">selected</c:if> >是</option>
+					<option value="1"  <c:if test="${sessionScope.menuBean.menuState==1}">selected</c:if> >否</option>
 				</select> <input value="查询" type="submit" />
 
 			</form>

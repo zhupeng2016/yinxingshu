@@ -19,7 +19,7 @@
 	<div class="div_head">
 		<span> <span style="float: left">当前位置是：-》薪酬标准管理</span> <span
 			style="float: right; margin-right: 8px; font-weight: bold"> <a
-				style="text-decoration: none" href="user/userlist">【返回】</a>
+				style="text-decoration: none" href="user/userlist?pageNum=${pageNum}">【返回】</a>
 		</span>
 		</span>
 	</div>

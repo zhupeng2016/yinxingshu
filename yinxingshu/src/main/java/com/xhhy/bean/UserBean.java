@@ -6,7 +6,7 @@ public class UserBean implements Serializable {
 
 	private int userId;// 
 	private int deptId;// 外键
-	private String userCode;// 部门编号
+	private String userCode;// 用户编号
 	private String loginName;// 登录帐号
 	private String password;// 密码
 	private String userName;// 登陆人
@@ -23,7 +23,7 @@ public class UserBean implements Serializable {
 	private String userTime;
 	private DeptBean db;// 链表
 	private RoleBean rb;
-	
+	private int roleId;  // 职位id
 
 	public String getUserTime() {
 		return userTime;
@@ -199,6 +199,14 @@ public class UserBean implements Serializable {
 
 	public void setRb(RoleBean rb) {
 		this.rb = rb;
+	}
+
+	public int getRoleId() {
+		return roleId;
+	}
+
+	public void setRoleId(int roleId) {
+		this.roleId = roleId;
 	}
 
 

@@ -58,11 +58,11 @@
 	<div class="div_search">
 		<span>
 			<form action="menu/menulist?pageNum=${page.getPageNum()}" method="post" >
-				菜单名称: <input type="text" name="menuName" id="mn" value="${menuBean.menuName }" /> 
+				菜单名称: <input type="text" name="menuName" id="mn" value="${sessionScope.menuBean.menuName }" /> 
 				状态: <select name="menuState" id="mstate">
 					<option value="999">-请选择-</option>
-					<option value="0" <c:if test="${menuBean.menuState==0}">selected</c:if> >启用</option>
-					<option value="1" <c:if test="${menuBean.menuState==1}">selected</c:if>>禁用</option>
+					<option value="0" <c:if test="${sessionScope.menuBean.menuState==0}">selected</c:if> >启用</option>
+					<option value="1" <c:if test="${sessionScope.menuBean.menuState==1}">selected</c:if>>禁用</option>
 				</select>&nbsp;&nbsp;&nbsp;
 				
 				 <input value="查询" type="submit" />&nbsp;

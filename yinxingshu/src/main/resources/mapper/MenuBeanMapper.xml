@@ -19,12 +19,12 @@
 	<select id="getAllMenu" resultMap="mymenu"  >
 		select menu_id,menu_name,parent_menu,url,menu_state,menu_del,menu_remark 
 		 from menu_tb  where menu_del=0 
-       <!-- <if test="menuName != null and menuName != &quot;&quot; ">
+      <if test="menuName != null and menuName != &quot;&quot; ">
        and  menu_name like concat(concat('%',#{menuName}),'%') 
       </if>
        <if test="menuState !=999">
         and menu_state=#{menuState} 
-       </if> -->
+       </if> 
 		  order by menu_id 
 	</select>
 	
