@@ -23,6 +23,7 @@ public class UserBean implements Serializable {
 	private String userTime;
 	private DeptBean db;// 链表
 	private RoleBean rb;
+	
 
 	public String getUserTime() {
 		return userTime;
@@ -199,5 +200,12 @@ public class UserBean implements Serializable {
 	public void setRb(RoleBean rb) {
 		this.rb = rb;
 	}
+
+
+
+	
+	
+
+	
 
 }

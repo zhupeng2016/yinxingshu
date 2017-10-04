@@ -10,12 +10,13 @@
 <base href="<%=basePath%>">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta http-equiv=content-type content="text/html; charset=utf-8" />
 <meta http-equiv=pragma content=no-cache />
 <meta http-equiv=cache-control content=no-cache />
 <meta http-equiv=expires content=-1000 />
-
 <title>银杏树人力资源管理V1.0</title>
+<link type="text/css" rel="stylesheet" href="css/jquery.autocomplete.css"/>
+<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="js/jquery.autocomplete.min.js"></script>
 <script type="text/javascript">
 	function show(){
 		var msg = "${msg}";

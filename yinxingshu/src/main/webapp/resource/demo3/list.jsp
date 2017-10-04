@@ -11,6 +11,9 @@
 <title>职位管理</title>
 
 <link href="css/mine.css" type="text/css" rel="stylesheet" />
+<link type="text/css" rel="stylesheet" href="css/jquery.autocomplete.css"/>
+<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="js/jquery.autocomplete.min.js"></script>
 <script type="text/javascript">
 function show(){
 	 var msg="${msg}";

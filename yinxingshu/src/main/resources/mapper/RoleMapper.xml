@@ -80,12 +80,15 @@
 <!--         葛大龙            -->
 
     <!-- 根据用户id得到roleid -->
-	<select id="getRoleId" resultType="int">
+	<select id="getRoleId" resultType="Integer" >
 		select role_id from user_role where user_id=#{userId}
 	</select>
 	<!-- 查询所有职位信息 -->
 	<select id="getAllRole" resultMap="myrole">
 	     <include refid="selectRole"/>
+	     <if test="${rb!=null}">
+	         
+	     </if>
 	</select>
 	<!-- 状态删除职位 -->
 	<update id="delRole">
