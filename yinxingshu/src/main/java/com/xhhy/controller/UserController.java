@@ -1,4 +1,4 @@
-package com.xhhy.controller;
+	package com.xhhy.controller;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -78,17 +78,17 @@ public class UserController {
 						break;
 					}
 				}
+	            if(is){
+	            	l.add(ub);
+	            	us.update(ub.getUserId());
+	            	m.addAttribute("ub", ub);
+	            	sc.setAttribute("uon", l);
+	            	return "home/index";
+	            }else{
+	            	m.addAttribute("msg","该帐号已登录");
+	    			return "/login.jsp";
+	            }
 
-				if (is) {
-					l.add(ub);
-					us.update(ub.getUserId());
-					m.addAttribute("ub", ub);
-					sc.setAttribute("uon", l);
-					return "home/index";
-				} else {
-					m.addAttribute("msg", "该帐号已登录");
-					return "/login.jsp";
-				}
 			}
 		} else {
 			m.addAttribute("msg", "账号或密码错误");

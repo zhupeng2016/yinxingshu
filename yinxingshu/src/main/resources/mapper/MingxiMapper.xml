@@ -15,45 +15,6 @@
 		<result column="ARCHIVETIME" property="archivetime" />
 		<result column="DEPT_ID" property="deptId" />
 	</resultMap>
-	<resultMap type="com.xhhy.bean.ResumeBean" id="myresume">
-		<id column="resume_id" property="resumeId" />
-		<result column="user_id" property="userId" />
-		<result column="name" property="name" />
-		<result column="resume_sex" property="resumeSex" />
-		<result column="resume_email" property="resumeEmail" />
-		<result column="resume_phone" property="resumePhone" />
-		<result column="local_address" property="localAddress" />
-		<result column="home_address" property="homeAddress" />
-		<result column="political" property="political" />
-		<result column="card_id" property="cardId" />
-		<result column="salary_require" javaType="String" property="salaryRequire" />
-		<result column="graduate_school" property="graduateSchool" />
-		<result column="education" property="education" />
-		<result column="major" property="major" />
-		<result column="jobstate" property="jobState" />
-		<result column="fresh_student" property="freshStudent" />
-		<result column="work_year" property="workYear" />
-		<result column="person_resume" property="personResume" />
-		<result column="person_file" property="personFile" />
-		<result column="recommend_state" property="recommendState" />
-		<result column="recommend_time" property="recommendTime" />
-		<result column="recommend_idea" property="recommendIdea" />
-		<result column="interview_result" property="interviewResult" />
-		<result column="interview_time" property="interviewTime" />
-		<result column="resolution_time" property="resolutionTime" />
-		<result column="role_id" property="roleId" />
-		<result column="user_id" property="userId" />
-		<result column="ATTRIBUTE_MIANSHI" property="attributeMianshi" />
-	</resultMap>
-	<select id="getqueryAll" resultMap="myresume">
-		SELECT
-		"NAME",RESUME_SEX,CARD_ID,EDUCATION,GRADUATE_SCHOOL,WORK_YEAR,ATTRIBUTE_MIANSHI,RESUME_PHONE,MAJOR
-		FROM RESUME_TB
-		where 1=1
-		<if test="user != null and user != &quot;&quot;">
-			and name like concat(concat('%',#{user}),'%')
-		</if>
-	</select>
 	<select id="queryAll" resultMap="mymingxi">
 
 		SELECT
@@ -87,4 +48,125 @@
 		order by a.dept_id
 
 	</select>
+	<resultMap type="com.xhhy.bean.ResumeBean" id="myresume">
+		<id column="resume_id" property="resumeId" />
+		<result column="user_id" property="userId" />
+		<result column="name" property="name" />
+		<result column="resume_sex" property="resumeSex" />
+		<result column="resume_email" property="resumeEmail" />
+		<result column="resume_phone" property="resumePhone" />
+		<result column="local_address" property="localAddress" />
+		<result column="home_address" property="homeAddress" />
+		<result column="political" property="political" />
+		<result column="card_id" property="cardId" />
+		<result column="salary_require" javaType="String" property="salaryRequire" />
+		<result column="graduate_school" property="graduateSchool" />
+		<result column="education" property="education" />
+		<result column="major" property="major" />
+		<result column="jobstate" property="jobState" />
+		<result column="fresh_student" property="freshStudent" />
+		<result column="work_year" property="workYear" />
+		<result column="person_resume" property="personResume" />
+		<result column="person_file" property="personFile" />
+		<result column="recommend_state" property="recommendState" />
+		<result column="recommend_time" property="recommendTime" />
+		<result column="recommend_idea" property="recommendIdea" />
+		<result column="interview_result" property="interviewResult" />
+		<result column="interview_time" property="interviewTime" />
+		<result column="resolution_time" property="resolutionTime" />
+		<result column="role_id" property="roleId" />
+		<result column="user_id" property="userId" />
+		<result column="ATTRIBUTE_MIANSHI" property="attributeMianshi" />
+	</resultMap>
+
+	<select id="getqueryAll" resultMap="myresume">
+		SELECT
+		"NAME",RESUME_SEX,CARD_ID,EDUCATION,GRADUATE_SCHOOL,WORK_YEAR,ATTRIBUTE_MIANSHI,RESUME_PHONE,MAJOR
+		FROM RESUME_TB
+		where 1=1
+		<if test="user != null and user != &quot;&quot;">
+			and name like concat(concat('%',#{user}),'%')
+		</if>
+	</select>
+
+
+
+
+
+
+
+	<resultMap type="com.xhhy.bean.EducationBean" id="myeducation">
+		<result column="EDUCATION_ID" property="educationId" />
+		<result column="LEARNED" property="learned" />
+		<result column="MASTER" property="master" />
+		<result column="REGULAR" property="regular" />
+		<result column="JUNIOR" property="junior" />
+		<result column="TIME" property="time" />
+		<result column="AMOUNT" property="amount" />
+	</resultMap>
+	<select id="geteducation" resultMap="myeducation">
+		SELECT EDUCATION_ID,LEARNED,"MASTER",REGULAR,JUNIOR,"TIME",AMOUNT from
+		EDUCATION_TB
+		where 1=1
+		<if test="educationId!=0  and educationId!=999">
+			and EDUCATION_ID=#{educationId}
+		</if>
+	</select>
+	<select id="geteducationa" resultMap="myeducation">
+		SELECT EDUCATION_ID,LEARNED,"MASTER",REGULAR,JUNIOR,"TIME",AMOUNT from
+		EDUCATION_TB
+		where 1=1 ORDER BY time
+	</select>
+	<select id="gettongji" resultType="com.xhhy.bean.EducationBean">
+		select
+		(SELECT "COUNT"(archive_state) FROM ARCHIVE_TB where archive_state='0' or
+		archive_state=1) as amount,
+		(SELECT "COUNT"(*) from (SELECT * FROM ARCHIVE_TB where ARCHIVE_EDUCATION='0'
+		) a where a.archive_state=0 or a.archive_state=1) as junior,
+		(SELECT "COUNT"(*) from (SELECT * FROM ARCHIVE_TB where ARCHIVE_EDUCATION='1'
+		) a where a.archive_state=0 or a.archive_state=1) as regular,
+		(SELECT "COUNT"(*) from (SELECT * FROM ARCHIVE_TB where ARCHIVE_EDUCATION='2'
+		) a where a.archive_state=0 or a.archive_state=1) as master,
+		(SELECT "COUNT"(*) from (SELECT * FROM ARCHIVE_TB where ARCHIVE_EDUCATION='3'
+		) a where a.archive_state=0 or a.archive_state=1) as learned,
+		(select "TO_CHAR"(sysdate,'yyyy') from dual) as time
+		from dual
+	</select>
+	<insert id="getinsert" parameterType="com.xhhy.bean.EducationBean">
+		<selectKey keyProperty="educationId" order="BEFORE"
+			resultType="int">
+			select mingxi_seq.nextval from dual
+		</selectKey>
+		insert into EDUCATION_TB
+		values(#{educationId},#{learned},#{master},#{regular},#{junior},#{time},#{amount})
+	</insert>
+	<update id="getupdete" parameterType="com.xhhy.bean.EducationBean">
+		update EDUCATION_TB set
+		LEARNED=#{learned},MASTER=#{master},REGULAR=#{regular},JUNIOR=#{junior},AMOUNT=#{amount}
+		where TIME=#{time}
+	</update>
+
+	<resultMap type="com.xhhy.bean.YearBean" id="myyear">
+		<result column="YEAR_ID" property="yearId" />
+		<result column="DEPT_ID" property="deptId" />
+		<result column="EDUCATION_ID" property="educationId" />
+		<result column="LEARNED" property="loarned" />
+		<result column="MASTER" property="master" />
+		<result column="REGULAR" property="regular" />
+		<result column="JUNIOR" property="junior" />
+		<result column="AMOUNT" property="amount" />
+		<result column="dept_name" property="deptName" />
+	</resultMap>
+	<select id="getyear" resultMap="myyear">
+		SELECT
+		a.YEAR_ID,b.DEPT_NAME,a.EDUCATION_ID,a.LEARNED,a."MASTER",a.REGULAR,a.JUNIOR,a.AMOUNT
+		from YEAR_TB a,DEPT_TB b,EDUCATION_TB c where a.DEPT_ID=b.DEPT_ID and
+		a.EDUCATION_ID=c.EDUCATION_ID
+		and a.EDUCATION_ID=${educationId}
+		<if test="deptId!=0 and deptId!=999">
+			and a.dept_id=#{deptId}
+		</if>
+	</select>
+
+
 </mapper>

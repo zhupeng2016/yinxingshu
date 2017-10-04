@@ -76,7 +76,7 @@
 
 				<tr>
 					<td>培训资料：</td>
-					<td><input type="file" name="tarFile" value="${requestScope.tb.tarFile }" /></td>
+					<td><input type="text" name="tarFile" value="${requestScope.tb.tarFile }" /></td>
 				</tr>
 			</table>
 		<!-- </form> -->
