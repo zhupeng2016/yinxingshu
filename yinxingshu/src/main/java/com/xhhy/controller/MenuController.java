@@ -62,7 +62,7 @@ public class MenuController {
 	}
 	@RequestMapping("/padd")
 	public String paddDept(Model m){
-		 List<MenuBean> mls=ms.getAllMenu();
+		 List<MenuBean> mls=ms.getMenus();
 		 m.addAttribute("mls",mls);
 		return "/resource/demo8/add.jsp";
 	}
@@ -71,12 +71,12 @@ public class MenuController {
 		if(ms.addMenu(mb)){
 			m.addAttribute("msg","添加成功。");
 		}
-		return "menulist";
+		return "menulist?method=clear&pageNum=1";
 	}
 	@RequestMapping("/look")
 	public String lookMenu(Model m,String menuId,String pageNum){
 		MenuBean mb=ms.getMenuById(menuId);
-		List<MenuBean> mls=ms.getAllMenu();
+		List<MenuBean> mls=ms.getMenus();
 		 m.addAttribute("mls",mls);
 		m.addAttribute("mb",mb);
 		m.addAttribute("pageNum",pageNum);
@@ -88,7 +88,7 @@ public class MenuController {
 		if(ms.deleteMenu(menuId)){
 			m.addAttribute("msg","删除成功。");
 		}
-		return "menulist";
+		return "menulist?method=clear";
 	}
 	
 	@RequestMapping("/pupdate")
@@ -104,7 +104,7 @@ public class MenuController {
 	@RequestMapping("update")
 	public String updateDept(Model m,MenuBean mb,HttpSession session){
 		ms.updateMenu(mb);
-		return "menulist?pageNum="+(String)session.getAttribute("pageNum")+"";
+		return "menulist?pageNum="+(String)session.getAttribute("pageNum")+"&method=clear";
 	}
 	
 	/*public Set<String> autoComplete(Model m,@RequestParam("str")String menuname){

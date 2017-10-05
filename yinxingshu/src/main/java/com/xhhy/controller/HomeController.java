@@ -29,6 +29,8 @@ public class HomeController {
 	@RequestMapping("/index")
 	public String showMenu(Model m,HttpSession session){
 		UserBean ub=(UserBean)session.getAttribute("ub");
+		System.out.println(ub);
+		System.out.println(ub.getUserId());
 		//根据用户id得到对应 的roleid
 		int roleId=rs.getRoleId(ub.getUserId());
 		//根据roleid得到对应的菜单及菜单名称。。。

@@ -39,15 +39,15 @@ function show(){
 	<div></div>
 	<div class="div_search">
 		<span>
-			<form action="role/rolelist?pageNum=${page.getPageNum()}" method="post">
+			<form action="role/rolelist?pageNum=1" method="post">
 				职位名称: <input type="text" name="roleName" value="${sessionScope.roleBean.roleName }"/> 
-				所属部门: <input type="text"  name="dept.deptName" value="${sessionScope.roleBean.dept.deptName }"/> 
+				所属部门: <input type="text"  name="deptName" value="${sessionScope.roleBean.deptName }"/> 
 				是否启用: <select name="roleState">
 					<option value="999">---请选择---</option>
-					<option value="0" <c:if test="${sessionScope.menuBean.menuState==0}">selected</c:if> >是</option>
-					<option value="1"  <c:if test="${sessionScope.menuBean.menuState==1}">selected</c:if> >否</option>
+					<option value="0" <c:if test="${sessionScope.roleBean.roleState==0}">selected</c:if> >启用</option>
+					<option value="1"  <c:if test="${sessionScope.roleBean.roleState==1}">selected</c:if> >禁用</option>
 				</select> <input value="查询" type="submit" />
-
+  <a href="role/rolelist?method=clear"> <input type="button" value="清空"  /></a>
 			</form>
 		</span>
 	</div>

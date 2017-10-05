@@ -23,6 +23,11 @@
 		$("#checkedAll").click(function() {
 			$("input[name='chosen']").prop("checked", $(this).prop("checked"));
 		});
+		$("#username").AutoComplete({
+			'data' : 'user/auto', //去服务器获得所有的提示信息
+			'width' : "auto",//提示框宽度
+			'itemheight' : 30//每个补全信息的高度
+		});
 	});
 
 	function show() {
@@ -34,7 +39,8 @@
 	function del(userId) {
 		var is = confirm("确定删除吗？");
 		if (is) {
-			location.href = "user/delete?userId=" + userId + "&pageNum=${page.getPageNum()}";
+			location.href = "user/delete?userId=" + userId
+					+ "&pageNum=${page.getPageNum()}";
 		}
 	}
 </script>
@@ -55,12 +61,17 @@
 	<div></div>
 	<div class="div_search">
 		<span>
-			<form action="user/userlist?pageNum=${page.getPageNum()}" method="post">
-				姓名： <input type="text" name="userName" value="${sessionScope.userName }" /> 
-				角色: <input type="text" name="roleName" value="${sessionScope.roleName }"/> 
-				所属部门: <input	type="text" name="deptName" value="${sessionScope.deptName }" /> 
-			<input value="查询" type="submit" />
- <a href="menu/menulist?method=clear"> <input type="button" value="清空"  /></a>
+			<form action="user/userlist?pageNum=1"
+				method="post">
+				姓名： <input type="text" name="userName" id="username"
+					value="${sessionScope.userBean.userName }" /> 角色: <input
+					type="text" name="roleName"
+					value="${sessionScope.userBean.roleName }" /> 所属部门: <input
+					type="text" name="deptName"
+					value="${sessionScope.userBean.deptName }" /> <input value="查询"
+					type="submit" /> <a href="user/userlist?method=clear&pageNum=1">
+					<input type="button" value="清空" />
+				</a>
 			</form>
 		</span>
 	</div>
@@ -82,39 +93,40 @@
 						<td><input type="checkbox" /></td>
 						<td>${st.index+1 }</td>
 						<td>${ub.loginName }</td>
-						<td><a href="user/look?userId=${ub.userId }&pageNum=${page.getPageNum()}">${ub.userName }</a></td>
+						<td><a
+							href="user/look?userId=${ub.userId }&pageNum=${page.getPageNum()}">${ub.userName }</a></td>
 						<td>${ub.rb.roleName }</td>
 						<td>${ub.db.deptShortName }</td>
-						<td><a href="user/pupdate?userId=${ub.userId }&pageNum=${page.getPageNum()}">修改</a> <a
-							href="javascript:del(${ub.userId })">删除</a></td>
+						<td><a
+							href="user/pupdate?userId=${ub.userId }&pageNum=${page.getPageNum()}">修改</a>
+							<a href="javascript:del(${ub.userId })">删除</a></td>
 					</tr>
 
 				</c:forEach>
 				<tr>
-				 <td colspan="20" style="text-align: center;">
-					<span> <a href="user/userlist?pageNum=1">首页</a> <c:if
-							test="${requestScope.page.getPageNum() == 1 }">
+					<td colspan="20" style="text-align: center;"><span> <a
+							href="user/userlist?pageNum=1">首页</a> <c:if
+								test="${requestScope.page.getPageNum() == 1 }">
 				上一页
 			</c:if> <c:if test="${requestScope.page.getPageNum() > 1 }">
-							<a
-								href="user/userlist?pageNum=${requestScope.page.getPageNum()-1 }">上一页</a>
-						</c:if> &nbsp;&nbsp; <c:forEach
-							items="${requestScope.page.getNavigatepageNums()}" var="num">
-							<c:if test="${requestScope.page.getPageNum()==num }">&nbsp;${num }&nbsp;</c:if>
-							<c:if test="${requestScope.page.getPageNum()!=num }">
-								<a href="user/userlist?pageNum=${num }">${num }</a>
-							</c:if>
-						</c:forEach> &nbsp;&nbsp; <c:if
-							test="${requestScope.page.getPageNum()==requestScope.page.getPages()}">
+								<a
+									href="user/userlist?pageNum=${requestScope.page.getPageNum()-1 }">上一页</a>
+							</c:if> &nbsp;&nbsp; <c:forEach
+								items="${requestScope.page.getNavigatepageNums()}" var="num">
+								<c:if test="${requestScope.page.getPageNum()==num }">&nbsp;${num }&nbsp;</c:if>
+								<c:if test="${requestScope.page.getPageNum()!=num }">
+									<a href="user/userlist?pageNum=${num }">${num }</a>
+								</c:if>
+							</c:forEach> &nbsp;&nbsp; <c:if
+								test="${requestScope.page.getPageNum()==requestScope.page.getPages()}">
 				下一页
 			</c:if> <c:if
-							test="${requestScope.page.getPageNum() < requestScope.page.getPages() }">
-							<a
-								href="user/userlist?pageNum=${requestScope.page.getPageNum()+1 }">下一页</a>
-						</c:if> <a href="user/userlist?pageNum=${requestScope.page.getPages() }">尾页</a>
-						<span>总共${requestScope.page.getPages()}页
-							总共${requestScope.page.getTotal() }条 </span>
-							</td> 
+								test="${requestScope.page.getPageNum() < requestScope.page.getPages() }">
+								<a
+									href="user/userlist?pageNum=${requestScope.page.getPageNum()+1 }">下一页</a>
+							</c:if> <a href="user/userlist?pageNum=${requestScope.page.getPages() }">尾页</a>
+							<span>总共${requestScope.page.getPages()}页
+								总共${requestScope.page.getTotal() }条 </span></td>
 				</tr>
 			</tbody>
 		</table>

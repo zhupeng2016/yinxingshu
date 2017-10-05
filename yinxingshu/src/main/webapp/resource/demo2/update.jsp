@@ -51,7 +51,7 @@
 				<tr>
 					<td>登录账号<span style="color: red">*</span>：
 					</td>
-					<td><input type="text" name="loginName"  value="${user.loginName }" />
+					<td><input type="text" name="loginName" readonly  value="${user.loginName }" />
 					</td>
 				</tr>
 
@@ -83,7 +83,6 @@
 					<td>
 					<select name="roleId">
 					<c:forEach items="${rls }" var="rb" >
-					
 					  <option  <c:if test="${rb.roleId==user.roleId }">selected="selected"</c:if> value="${rb.roleId }">${rb.roleName }</option>
 					</c:forEach>
 					</select></td>

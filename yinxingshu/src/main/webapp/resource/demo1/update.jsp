@@ -29,7 +29,7 @@
 
         <div style="font-size: 13px;margin: 10px 5px">
         
-            <form action="dept/update/${db.deptId }" method="post" enctype="multipart/form-data">
+            <form action="dept/update?deptId=${db.deptId }" method="post" enctype="multipart/form-data">
             <table border="1" width="100%" class="table_a">
                 <tr>
                     <td width="120px;">部门编码：<span style="color:red">*</span>：</td>
@@ -50,28 +50,15 @@
                 <tr>
                     <td>上级部门：<span style="color:red">*</span>：</td>
                     <td>
-                    <%-- <c:if test="${db.parentDept==0 }">
-						<input type="text"  name="parentDept" readonly value="银杏树信息管理公司" />
-					</c:if> --%>
-					<%-- <c:forEach items="${deptlist }" var="dbs" >
-					   <c:if test="${dbs.deptId==${db.parentDept }">
-					   <input type="text"  name="parentDept" readonly value="${dbs.deptName }" />
-					   </c:if>
-					</c:forEach> --%>
-					
-					
-					
+                    
 					<select name="parentDept" >
 					<c:forEach items="${deptlist }" var="dbs" >
-					   <option value="${dbs.deptId }" >
-					 <c:if test="${dbs.deptId==db.parentDept }"></c:if>
+					 <option  value="${dbs.deptId }"  <c:if test="${dbs.deptId==db.parentDept }">selected="selected"</c:if> >
 					     ${dbs.deptName }
 					   </option>
 					</c:forEach>
 					</select>
 					   
-					
-					
 					</td>
                 </tr>
                 <tr>

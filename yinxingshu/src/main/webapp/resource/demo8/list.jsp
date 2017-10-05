@@ -57,7 +57,7 @@
 	<div></div>
 	<div class="div_search">
 		<span>
-			<form action="menu/menulist?pageNum=${page.getPageNum()}" method="post" >
+			<form action="menu/menulist?pageNum=1" method="post" >
 				菜单名称: <input type="text" name="menuName" id="mn" value="${sessionScope.menuBean.menuName }" /> 
 				状态: <select name="menuState" id="mstate">
 					<option value="999">-请选择-</option>

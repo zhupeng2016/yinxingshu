@@ -41,6 +41,12 @@ public interface RoleDao {
 	public boolean delRole(Integer roleId);
 	//修改职位信息
 	public boolean updateRoleBy(RoleBean rb);
+	//添加职位信息
+	public boolean addro(RoleBean rb);
+	// 最大编号
+	public String getMaxCode();
+	//得到id
+	public int getIdByCode(String roleCode);
 	
 	
 	

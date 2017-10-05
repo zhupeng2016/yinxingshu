@@ -11,6 +11,7 @@ import com.xhhy.bean.MenuBean;
 public interface MenuDao {
 	//查询所有菜单项
 	public List<MenuBean> getAllMenu();
+	public List<MenuBean> getMenus();
 	//根据菜单Id状态删除菜单
 	public boolean deleteMenu(String menuId);
 	//根据菜单Id查询菜单信息
@@ -23,5 +24,6 @@ public interface MenuDao {
 	public List<MenuBean> getAllMenu(MenuBean mb);
 	/* //自动填充
 	public Set<String> autoComplete(String str);*/
+	
 
 }

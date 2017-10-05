@@ -25,10 +25,41 @@ public class DeptController {
 	
 	@RequestMapping("/deptList")
 	public String showDept(Model m){
-		
 		List<DeptBean> deptlist=ds.getAllDept();
 		m.addAttribute("deptlist",deptlist);
 		return "/resource/demo1/ifm.jsp";
+	}
+	
+
+	@RequestMapping("/showDept")
+	public String showDept(Model m,int deptId){
+		DeptBean db=ds.getDeptById(deptId);
+		m.addAttribute("db",db);
+		return "/resource/demo1/view.jsp";
+	}
+	
+	@RequestMapping("/delete")
+	public String deleteDept(Model m,int deptId){
+		if(ds.deleteDeptById(deptId)){
+			m.addAttribute("msg","删除成功。");
+		}
+		return "/dept/deptList";
+	}
+	
+	@RequestMapping("/pupdate")
+	public String pupdateDept(Model m,int deptId){
+		DeptBean db=ds.getDeptById(deptId);
+		m.addAttribute("db",db);
+		return "/resource/demo1/update.jsp";
+	}
+	
+	@RequestMapping("/update")
+	public String updateDept(Model m,int deptId,DeptBean db){
+		db.setDeptId(deptId);
+		if(ds.updateDept(db)){
+			m.addAttribute("msg","修改成功。");
+		}
+		return "/dept/deptList";
 	}
 	
 	@RequestMapping("/add")
@@ -38,36 +69,5 @@ public class DeptController {
 			m.addAttribute("msg","添加成功。");
 			}
 		return "deptList";
-	}
-
-	@RequestMapping("/showDept/{deptId}")
-	public String showDept(Model m,@PathVariable("deptId")int deptId){
-		DeptBean db=ds.getDeptById(deptId);
-		m.addAttribute("db",db);
-		return "/resource/demo1/view.jsp";
-	}
-	
-	@RequestMapping("/delete/{deptId}")
-	public String deleteDept(Model m,@PathVariable("deptId")int deptId){
-		if(ds.deleteDeptById(deptId)){
-			m.addAttribute("msg","删除成功。");
-		}
-		return "/dept/deptList";
-	}
-	
-	@RequestMapping("/pupdate/{deptId}")
-	public String pupdateDept(Model m,@PathVariable("deptId")int deptId){
-		DeptBean db=ds.getDeptById(deptId);
-		m.addAttribute("db",db);
-		return "/resource/demo1/update.jsp";
-	}
-	
-	@RequestMapping("/update/{deptId}")
-	public String updateDept(Model m,@PathVariable("deptId")int deptId,@RequestParam("db")DeptBean db){
-		db.setDeptId(deptId);
-		if(ds.updateDept(db)){
-			m.addAttribute("msg","修改成功。");
-		}
-		return "/dept/deptList";
 	}
 }

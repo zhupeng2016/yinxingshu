@@ -1,11 +1,11 @@
 package com.xhhy.service;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.xhhy.bean.UserBean;
-import com.xhhy.bean.UserRoleBean;
 import com.xhhy.dao.UserRoleDao;
 
 @Service
@@ -16,9 +16,9 @@ public class UserRoleServiceImpl implements UserRoleService {
 	
 	//得到所有用户信息
 	@Override
-	public List<UserBean> getAllUsers(String userName,String roleName,String deptName) {
+	public List<UserBean> getAllUsers(UserBean userBean) {
 		// TODO Auto-generated method stub
-		return urd.getAllUsers(userName,roleName,deptName);
+		return urd.getAllUsers(userBean);
 	}
 
 	//通过用户id得到用户的所有信息。
@@ -51,6 +51,17 @@ public class UserRoleServiceImpl implements UserRoleService {
 			// TODO Auto-generated method stub
 			return urd.getMaxCode();
 		}
-		
+		//唯一验证
+		@Override
+		public UserBean getUserByName(String loginName) {
+			// TODO Auto-generated method stub
+			return urd.getUserByName(loginName);
+		}
+		//自动补全
+		@Override
+		public Set<String> autoCompleteString() {
+			// TODO Auto-generated method stub
+			return urd.autoCompleteString();
+		}
 		
 }

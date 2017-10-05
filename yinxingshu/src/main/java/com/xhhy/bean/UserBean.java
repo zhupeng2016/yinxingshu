@@ -24,7 +24,8 @@ public class UserBean implements Serializable {
 	private DeptBean db;// 链表
 	private RoleBean rb;
 	private int roleId;  // 职位id
-
+    private String roleName;//模糊查询用
+    private String deptName;//模糊查询用
 	public String getUserTime() {
 		return userTime;
 	}
@@ -209,10 +210,23 @@ public class UserBean implements Serializable {
 		this.roleId = roleId;
 	}
 
+	public String getRoleName() {
+		return roleName;
+	}
+
+	public void setRoleName(String roleName) {
+		this.roleName = roleName;
+	}
+
+	public String getDeptName() {
+		return deptName;
+	}
+
+	public void setDeptName(String deptName) {
+		this.deptName = deptName;
+	}
 
 
-	
-	
 
 	
 

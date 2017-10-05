@@ -57,7 +57,7 @@
 				/* 	d.add(0,-1,'部门管理'); */	
 					
 			  <c:forEach items="${deptlist }" var="dt">
-		            d.add("${dt.deptId}","${dt.parentDept}",""+"${dt.deptShortName}"+"","dept/showDept/${dt.deptId}");
+		            d.add("${dt.deptId}","${dt.parentDept}",""+"${dt.deptShortName}"+"","dept/showDept?deptId=${dt.deptId}");
 		        </c:forEach>
 					
 					

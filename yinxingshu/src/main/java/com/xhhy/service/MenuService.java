@@ -24,5 +24,6 @@ public interface MenuService {
 	public List<MenuBean> getAllMenu(MenuBean mb);
 	/*//自动填充
 	public Set<String> autoComplete(String str);*/
+	public List<MenuBean> getMenus();
 
 }

@@ -20,28 +20,26 @@ public class RoleServiceImpl implements RoleService {
 	@Autowired
 	private RoleDao rd;
 
-	
 	@Override
 	public List<RoleBean> getRoles() {
 		// TODO Auto-generated method stub
 		return rd.getRoles();
 	}
-	
-	public PageInfo getRoles(int pageNum,int pageSize,int num) {
+
+	public PageInfo getRoles(int pageNum, int pageSize, int num) {
 		List<RoleBean> l = null;
 		PageInfo<Object> info = null;
 		PageHelper.startPage(pageNum, pageSize);
 		l = rd.getRoles();
 		info = new PageInfo(l, num);
 		int c = info.getPages();
-		if(pageNum > c){
+		if (pageNum > c) {
 			PageHelper.startPage(c, pageSize);
 			l = rd.getRoles();
 			info = new PageInfo(l, num);
 		}
 		return info;
 	}
-
 
 	// 查看职位信息
 	public RoleBean getRole(Integer roleId) {
@@ -78,39 +76,53 @@ public class RoleServiceImpl implements RoleService {
 		return rd.addRole(role);
 	}
 
-	
-	
 // -----葛大龙------------
-	 //根据用户id得到roleid
-		@Override
-		public int getRoleId(int userId) {
-			// TODO Auto-generated method stub
-			return rd.getRoleId(userId);
-		}
+	// 根据用户id得到roleid
+	@Override
+	public int getRoleId(int userId) {
+		// TODO Auto-generated method stub
+		return rd.getRoleId(userId);
+	}
 
-	//状态删除职位
+	// 状态删除职位
 	public boolean delRole(Integer roleId) {
 		// TODO Auto-generated method stub
 		return rd.delRole(roleId);
 	}
 
-	//修改职位信息
-	
+	// 修改职位信息
 	public boolean updateRoleBy(RoleBean rb) {
 		// TODO Auto-generated method stub
 		return rd.updateRoleBy(rb);
 	}
-	//得到所有职位信息
-public List<RoleBean> getAllRole(RoleBean rb) {
-	// TODO Auto-generated method stub
-	return rd.getAllRole(rb);
-}
 
+	// 得到所有职位信息
+	public List<RoleBean> getAllRole(RoleBean rb) {
+		// TODO Auto-generated method stub
+		return rd.getAllRole(rb);
+	}
 
+	// 添加职位信息
+	@Override
+	public boolean addro(RoleBean rb) {
+		// TODO Auto-generated method stub
+		return rd.addro(rb);
+	}
+	// 最大编号
 
+	@Override
+	public String getMaxCode() {
+		// TODO Auto-generated method stub
+		return rd.getMaxCode();
+	}
+	//得到id
+	@Override
+	public int getIdByCode(String roleCode) {
+		// TODO Auto-generated method stub
+		return rd.getIdByCode(roleCode);
+	}
 	
-// -----葛大龙------------	
 	
+// -----葛大龙------------
 
-	
 }
