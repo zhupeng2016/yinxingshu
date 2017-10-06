@@ -1,8 +1,12 @@
 package com.xhhy.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.junit.runners.Parameterized.Parameter;
@@ -15,6 +19,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.google.gson.Gson;
 import com.xhhy.bean.DeptBean;
 import com.xhhy.bean.MenuBean;
 import com.xhhy.bean.RoleBean;
@@ -169,8 +174,21 @@ public class GeRoleController {
 		} else {
 			m.addAttribute("msg", "添加失败。");
 		}
-		
 		return "rolelist?method=clear";
 	}
+	//自动补全
+	@RequestMapping("/autoComplete")
+	public void auto(Model m, HttpServletResponse response) throws IOException {
+		Set<String> l = rms.autoCompleteString();
+		response.setContentType("text/html;");
+		PrintWriter out = response.getWriter();
+		String s = new Gson().toJson(l);
+		System.out.println(s);
+		out.write(s);
+		out.flush();
+		out.close();
+
+	}
+	
 
 }

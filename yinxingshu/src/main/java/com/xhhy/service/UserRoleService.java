@@ -3,6 +3,7 @@ package com.xhhy.service;
 import java.util.List;
 import java.util.Set;
 
+import com.xhhy.bean.RoleBean;
 import com.xhhy.bean.UserBean;
 
 public interface UserRoleService {
@@ -23,5 +24,7 @@ public interface UserRoleService {
 		public UserBean getUserByName(String loginName);
 		//自动补全
 		public Set<String> autoCompleteString();
+		//部门改变，职位改变。。
+		public List<RoleBean> getRoleByDetp(int deptId);
 		
 }

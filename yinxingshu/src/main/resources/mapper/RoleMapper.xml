@@ -123,6 +123,8 @@
 	<select id="getIdByCode" resultType="int">
 	    select role_id from role_tb where role_code=#{roleCode}
 	</select>
+	
+	
 <!-- 葛大龙 -->
 
 

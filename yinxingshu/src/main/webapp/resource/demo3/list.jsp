@@ -21,6 +21,15 @@ function show(){
 	 alert(msg);
 	 }
 }
+
+$(function() {
+		$("#roleName").AutoComplete({
+			'data' : 'role/autoComplete', //去服务器获得所有的提示信息
+			'width' : "auto",//提示框宽度
+			'itemheight' : 30//每个补全信息的高度
+		});
+	
+	});
 </script>
 </head>
 <body onload="show()" >
@@ -40,7 +49,7 @@ function show(){
 	<div class="div_search">
 		<span>
 			<form action="role/rolelist?pageNum=1" method="post">
-				职位名称: <input type="text" name="roleName" value="${sessionScope.roleBean.roleName }"/> 
+				职位名称: <input type="text" name="roleName" id="roleName" value="${sessionScope.roleBean.roleName }"/> 
 				所属部门: <input type="text"  name="deptName" value="${sessionScope.roleBean.deptName }"/> 
 				是否启用: <select name="roleState">
 					<option value="999">---请选择---</option>

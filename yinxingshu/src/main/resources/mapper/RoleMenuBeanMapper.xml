@@ -35,7 +35,10 @@
 	    </foreach>
 	    select * from dual
 	</insert>
-	
+	<!-- 自动补全 -->
+	<select id="autoCompleteString" resultType="String">
+	    select role_name from role_tb where role_del=0
+	</select>
 
 
 </mapper>

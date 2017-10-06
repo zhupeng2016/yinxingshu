@@ -13,8 +13,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>用户管理</title>
 <link href="css/mine.css" type="text/css" rel="stylesheet" />
-<link type="text/css" rel="stylesheet"
-	href="css/jquery.autocomplete.css" />
+<link type="text/css" rel="stylesheet"	href="css/jquery.autocomplete.css" />
 <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="js/jquery.autocomplete.min.js"></script>
 <script type="text/javascript">
@@ -28,6 +27,7 @@
 			'width' : "auto",//提示框宽度
 			'itemheight' : 30//每个补全信息的高度
 		});
+		
 	});
 
 	function show() {
@@ -61,8 +61,7 @@
 	<div></div>
 	<div class="div_search">
 		<span>
-			<form action="user/userlist?pageNum=1"
-				method="post">
+			<form action="user/userlist?pageNum=1"	method="post">
 				姓名： <input type="text" name="userName" id="username"
 					value="${sessionScope.userBean.userName }" /> 角色: <input
 					type="text" name="roleName"

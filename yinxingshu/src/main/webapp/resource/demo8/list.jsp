@@ -31,16 +31,13 @@
 	 alert(msg);
 	 }
  }
-
  
  $(function() {
-	 
-		$("#sname").AutoComplete({
+		$("#mn").AutoComplete({
 			'data' : 'menu/autoComplete', //去服务器获得所有的提示信息
 			'width' : "auto",//提示框宽度
 			'itemheight' : 30//每个补全信息的高度
 		});
-		
 	
 	});
 </script>

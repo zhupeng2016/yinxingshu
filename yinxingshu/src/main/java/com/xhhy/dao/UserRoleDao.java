@@ -6,6 +6,7 @@ import java.util.Set;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import com.xhhy.bean.RoleBean;
 import com.xhhy.bean.UserBean;
 
 @Repository
@@ -27,5 +28,7 @@ public interface UserRoleDao {
 	public UserBean getUserByName(@Param("ln")String loginName);
 	//自动补全
 	public Set<String> autoCompleteString();
+	//部门改变，职位改变。。
+	public List<RoleBean> getRoleByDetp(int deptId);
 	
 }

@@ -15,8 +15,6 @@
 <link href="css/mine.css" type="text/css" rel="stylesheet">
 <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
-
-
   $(function(){
 	  $("#bt").click(function(){
 		  var is=confirm("确认修改吗？");
@@ -25,7 +23,27 @@
 		  $("#myForm").submit();
 		  }
 	  });
+	 /*  
+	  $("#deptId").change(function(){
+		  alert(123);
+		  $.ajax({
+			  url:"user/changeRole",
+			  type:"post",
+			  async:"true",
+			  dataType:"json",
+			  data:{
+				  deptId:$("#deptId").val()
+			  },
+			  success:function(res){
+				  alert(res);
+				  
+			  }
+		  });
+	  });
+	   */
+	  
   })
+  
 </script>
 </head>
 
@@ -70,7 +88,7 @@
 					<td>所属部门<span style="color: red" >*</span>：
 					</td>
 					<td>
-					<select name="deptId">
+					<select name="deptId" id="deptId">
 					<c:forEach items="${dls }" var="db" >
 					  <option  <c:if test="${db.deptId==user.deptId }">selected="selected"</c:if> value="${db.deptId }" >${db.deptName }</option>
 					</c:forEach>
@@ -81,7 +99,7 @@
 					<td>所属职位<span style="color: red">*</span>：
 					</td>
 					<td>
-					<select name="roleId">
+					<select name="roleId" id="roleId">
 					<c:forEach items="${rls }" var="rb" >
 					  <option  <c:if test="${rb.roleId==user.roleId }">selected="selected"</c:if> value="${rb.roleId }">${rb.roleName }</option>
 					</c:forEach>

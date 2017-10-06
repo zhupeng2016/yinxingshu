@@ -1,9 +1,12 @@
 package com.xhhy.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +18,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.google.gson.Gson;
+
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -107,10 +112,17 @@ public class MenuController {
 		return "menulist?pageNum="+(String)session.getAttribute("pageNum")+"&method=clear";
 	}
 	
-	/*public Set<String> autoComplete(Model m,@RequestParam("str")String menuname){
-		Set<String> set=ms.autoComplete(menuname);
-		m.addAttribute("set",set);
-		return set;
-	}*/
+	@RequestMapping("/autoComplete")
+	public void auto(Model m, HttpServletResponse response) throws IOException {
+		Set<String> l = ms.autoCompleteString();
+		response.setContentType("text/html;");
+		PrintWriter out = response.getWriter();
+		String s = new Gson().toJson(l);
+		System.out.println(s);
+		out.write(s);
+		out.flush();
+		out.close();
+
+	}
 	
 }

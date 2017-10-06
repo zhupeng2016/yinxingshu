@@ -5,6 +5,8 @@ import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.xhhy.bean.RoleBean;
 import com.xhhy.bean.UserBean;
 import com.xhhy.dao.UserRoleDao;
 
@@ -62,6 +64,13 @@ public class UserRoleServiceImpl implements UserRoleService {
 		public Set<String> autoCompleteString() {
 			// TODO Auto-generated method stub
 			return urd.autoCompleteString();
+		}
+		//部门改变，职位改变。。
+
+		@Override
+		public List<RoleBean> getRoleByDetp(int deptId) {
+			// TODO Auto-generated method stub
+			return urd.getRoleByDetp(deptId);
 		}
 		
 }

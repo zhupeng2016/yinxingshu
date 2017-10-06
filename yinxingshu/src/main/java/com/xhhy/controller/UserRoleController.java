@@ -81,9 +81,9 @@ public class UserRoleController {
 		// 所有部门
 		List<DeptBean> dls = ds.getAllDept();
 		m.addAttribute("dls", dls);
-		// 所有职位
+	/*	// 所有职位
 		List<RoleBean> rls = rs.getRoles();
-		m.addAttribute("rls", rls);
+		m.addAttribute("rls", rls);*/
 		m.addAttribute("pageNum", pageNum);
 		return "/resource/demo2/update.jsp";
 	}
@@ -151,6 +151,7 @@ public class UserRoleController {
 		out.flush();
 		out.close();
 	}
+	//自动补全
 	@RequestMapping("/auto")
 	public void auto(Model m, String loginName, HttpServletResponse response) throws IOException {
 		Set<String> l = urs.autoCompleteString();
@@ -161,8 +162,18 @@ public class UserRoleController {
 		out.write(s);
 		out.flush();
 		out.close();
-
 	}
-	
+	//部门改变，职位改变。。
+	@RequestMapping("/changeRole")
+	public void changeRole(Model m, int deptId, HttpServletResponse response) throws IOException {
+		List<RoleBean> l=urs.getRoleByDetp(deptId);
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
+		String s = new Gson().toJson(l);
+		System.out.println(s);
+		out.write(s);
+		out.flush();
+		out.close();
+	}
 	
 }

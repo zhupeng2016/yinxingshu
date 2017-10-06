@@ -22,8 +22,10 @@ public interface MenuService {
 	public boolean addMenu(MenuBean mb);
 	//模糊查询
 	public List<MenuBean> getAllMenu(MenuBean mb);
-	/*//自动填充
-	public Set<String> autoComplete(String str);*/
+	//自动填充
+	public Set<String> autoCompleteString();
+	//查询所有菜单项。
 	public List<MenuBean> getMenus();
+	
 
 }

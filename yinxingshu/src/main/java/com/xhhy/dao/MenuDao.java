@@ -22,8 +22,8 @@ public interface MenuDao {
 	public boolean addMenu(MenuBean mb);
 	//模糊查询。
 	public List<MenuBean> getAllMenu(MenuBean mb);
-	/* //自动填充
-	public Set<String> autoComplete(String str);*/
+	 //自动填充
+	public Set<String> autoCompleteString();
 	
 
 }

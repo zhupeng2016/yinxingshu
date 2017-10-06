@@ -1,6 +1,7 @@
 package com.xhhy.service;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,5 +34,11 @@ public class RoleMenuServiceImpl implements RoleMenuService {
 		// TODO Auto-generated method stub
 		return rmd.addMenu(roleId,ls);
 	}
-
+	//自动补全
+	@Override
+	public Set<String> autoCompleteString() {
+		// TODO Auto-generated method stub
+		return rmd.autoCompleteString();
+	}
+	
 }

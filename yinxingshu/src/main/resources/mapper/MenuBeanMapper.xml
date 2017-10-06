@@ -36,9 +36,10 @@
 	    select menu_id,menu_name,parent_menu,url,menu_state,menu_remark
 		 from menu_tb  where menu_id=#{menuId} 
 	</select>
-	<!-- <select id="autoComplete"  resultMap="mymenu" >
-	    select  menu_name from menu_tb  where menu_del=0 and menu_name like  concat(concat('%',#{str}),'%')
-	</select> -->
+	<!-- 自动补全 -->
+	<select id="autoCompleteString"  resultType="String" >
+	    select  menu_name from menu_tb  where menu_del=0 
+	</select>
 	<update id="deleteMenu">
 	    update menu_tb set menu_del=1 where menu_id=#{menuId}
 	</update>

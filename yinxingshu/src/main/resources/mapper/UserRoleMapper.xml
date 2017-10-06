@@ -74,4 +74,10 @@
 	<select id="autoCompleteString" resultType="String">
 	    select user_name from user_tb where user_del=0
 	</select>
+	<!-- //部门改变，职位改变。。 -->
+	<select id="getRoleByDetp" resultType="com.xhhy.bean.RoleBean">
+	    select ROLE_ID,DEPT_ID,ROLE_CODE,ROLE_NAME,ROLE_KIND,ROLE_INTRO,ROLE_REMARK,ROLE_STATE 
+		from role_tb where dept_id=#{deptId}
+	</select>
+	
 </mapper>

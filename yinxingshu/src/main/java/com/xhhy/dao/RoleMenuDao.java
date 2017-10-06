@@ -1,6 +1,7 @@
 package com.xhhy.dao;
 
 import java.util.List;
+import java.util.Set;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -17,7 +18,8 @@ public interface RoleMenuDao {
 	public boolean delete(int roleId);
 	//根据roleId添加菜单项
 	public boolean addMenu(@Param("roleId")int roleId, @Param("ls")List<Integer> ls);
-	
+	//自动补全
+	public Set<String> autoCompleteString();
 	
 
 }
