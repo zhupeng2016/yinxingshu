@@ -78,7 +78,7 @@
 		<table class="table_a" border="1" width="100%">
 			<tbody>
 				<tr style="font-weight: bold;">
-					<td width="30px;"><input type="checkbox" /></td>
+					<td width="30px;"><input type="checkbox" id="checkedAll"/></td>
 					<td width="40px;">序号</td>
 					<td width="80px;">账号</td>
 					<td width="80px;">姓名</td>
@@ -89,7 +89,7 @@
 
 				<c:forEach items="${uls }" var="ub" varStatus="st">
 					<tr id="product1">
-						<td><input type="checkbox" /></td>
+						<td><input type="checkbox" value="${ub.userId }" name="chosen" /></td>
 						<td>${st.index+1 }</td>
 						<td>${ub.loginName }</td>
 						<td><a

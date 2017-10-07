@@ -20,9 +20,13 @@ function show(){
 	 if(msg!=null && msg!=""){
 	 alert(msg);
 	 }
-}
+};
 
 $(function() {
+		//全选   全不选
+		$("#checkedAll").click(function() {
+			$("input[name='chosen']").prop("checked", $(this).prop("checked"));
+		});
 		$("#roleName").AutoComplete({
 			'data' : 'role/autoComplete', //去服务器获得所有的提示信息
 			'width' : "auto",//提示框宽度
@@ -65,7 +69,7 @@ $(function() {
 		<table class="table_a" border="1" width="100%">
 			<tbody>
 				<tr style="font-weight: bold;">
-					<td width="30px;"><input type="checkbox" /></td>
+					<td width="30px;"><input type="checkbox" id="checkedAll" /></td>
 					<td width="40px;">序号</td>
 					<td width="80px;">职位编码</td>
 					<td>职位名称</td>
@@ -77,7 +81,7 @@ $(function() {
 				
                <c:forEach items="${rls }" var="rl" varStatus="st">
 				<tr id="product1">
-					<td><input type="checkbox" /></td>
+					<td><input type="checkbox" name="chosen" value="${rl.roleId }" /></td>
 					<td>${st.index+1 }</td>
 					<td>${rl.roleCode }</td>
 					<td><a href="role/look?roleId=${rl.roleId }&pageNum=${page.getPageNum() }">${rl.roleName }</a></td>

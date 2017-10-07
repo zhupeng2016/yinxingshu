@@ -93,8 +93,20 @@ public class UserRoleController {
 	}
 
 	@RequestMapping("/update")
-	public String update(Model m, int userId, UserBean ub, int pageNum) {
+	public String update(Model m, int userId, int pageNum,
+			HttpServletRequest request, UserBean ub,MultipartFile file) throws IllegalStateException, IOException {
+		String userImg=null;
+		if (!file.isEmpty()) {
+			// 保存文件路径
+			String path = request.getSession().getServletContext().getRealPath("/imgs/");
+			// 上传文件名
+			String filename = file.getOriginalFilename();
+			// 将上传文件保存到一个目标文件当中
+			file.transferTo(new File(path +"/"+ filename));
+			userImg=("imgs/"+filename);
+		}
 		ub.setUserId(userId);
+	  ub.setUserImg(userImg);
 		if (urs.update(ub)) {
 			m.addAttribute("msg", "修改成功。");
 		} else {

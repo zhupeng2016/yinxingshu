@@ -84,12 +84,10 @@
 					</td>
 					<td><input type="text" name="userName" value="${user.userName }" /></td>
 				</tr>
-				<%-- <tr>
-					<td>密码<span style="color: red">*</span>：
-					</td>
-					<td><input type="text" readonly name="f_goods_image"
-						value="${user.userCode }" /></td>
-				</tr> --%>
+				<tr>
+					<td>头像：</td>
+					<td><input type="file" name="file" id="file" src=""></td>
+				</tr>
 				<tr>
 					<td>所属部门<span style="color: red" >*</span>：
 					</td>

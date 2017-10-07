@@ -167,7 +167,7 @@ $(document).ready(function() {
 				<tr>
 					<td>添加时间：
 					</td>
-					<td><input type="text"  name="userTime" id="usertime" onclick="WdatePicker()" 
+					<td><input type="text"  name="userTime" id="usertime" onclick="WdatePicker({dateFmt:'yyy-MM-dd HH:mm:ss'})" 
 						value="" /><span style="color: red"></span></td>
 				</tr>
 				<tr>
