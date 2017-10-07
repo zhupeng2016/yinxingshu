@@ -20,7 +20,7 @@ public class RoleServiceImpl implements RoleService {
 	@Autowired
 	private RoleDao rd;
 
-	@Override
+
 	public List<RoleBean> getRoles() {
 		// TODO Auto-generated method stub
 		return rd.getRoles();
@@ -78,7 +78,7 @@ public class RoleServiceImpl implements RoleService {
 
 // -----葛大龙------------
 	// 根据用户id得到roleid
-	@Override
+
 	public int getRoleId(int userId) {
 		// TODO Auto-generated method stub
 		return rd.getRoleId(userId);
@@ -103,20 +103,20 @@ public class RoleServiceImpl implements RoleService {
 	}
 
 	// 添加职位信息
-	@Override
+
 	public boolean addro(RoleBean rb) {
 		// TODO Auto-generated method stub
 		return rd.addro(rb);
 	}
 	// 最大编号
 
-	@Override
+
 	public String getMaxCode() {
 		// TODO Auto-generated method stub
 		return rd.getMaxCode();
 	}
 	//得到id
-	@Override
+
 	public int getIdByCode(String roleCode) {
 		// TODO Auto-generated method stub
 		return rd.getIdByCode(roleCode);

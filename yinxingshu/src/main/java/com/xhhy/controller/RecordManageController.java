@@ -79,8 +79,11 @@ public class RecordManageController {
 	@RequestMapping("/queryOneRecord")
 	public String queryOneRecord(int archiveId,Model m){
 		RecordBean rb = rms.queryOneRecord(archiveId);
+		System.out.println(archiveId);
+		//System.out.println(rb.getArchiveEmail());
+		
 		m.addAttribute("recordBean", rb);
-		return "/pmag/demo1/query.jsp";
+		return "/pmag/demo1/query.jsp";  
 	}
 	/*
 	 * 变更前（要有数据）

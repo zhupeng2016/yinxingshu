@@ -17,7 +17,7 @@ public class UserRoleServiceImpl implements UserRoleService {
 	private UserRoleDao urd;
 	
 	//得到所有用户信息
-	@Override
+
 	public List<UserBean> getAllUsers(UserBean userBean) {
 		// TODO Auto-generated method stub
 		return urd.getAllUsers(userBean);
@@ -36,38 +36,38 @@ public class UserRoleServiceImpl implements UserRoleService {
 		}
 		
 		//修改用户信息
-		@Override
+	
 		public boolean update(UserBean ub) {
 			// TODO Auto-generated method stub
 			return urd.update(ub);
 		}
 		//添加用户
-		@Override
+		
 		public boolean add(UserBean ub) {
 			// TODO Auto-generated method stub
 			return urd.add(ub);
 		}
 		//用户最大编号。
-		@Override
+	
 		public String getMaxCode() {
 			// TODO Auto-generated method stub
 			return urd.getMaxCode();
 		}
 		//唯一验证
-		@Override
+	
 		public UserBean getUserByName(String loginName) {
 			// TODO Auto-generated method stub
 			return urd.getUserByName(loginName);
 		}
 		//自动补全
-		@Override
+	
 		public Set<String> autoCompleteString() {
 			// TODO Auto-generated method stub
 			return urd.autoCompleteString();
 		}
 		//部门改变，职位改变。。
 
-		@Override
+	
 		public List<RoleBean> getRoleByDetp(int deptId) {
 			// TODO Auto-generated method stub
 			return urd.getRoleByDetp(deptId);

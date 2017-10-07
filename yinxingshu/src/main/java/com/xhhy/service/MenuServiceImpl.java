@@ -53,13 +53,13 @@ public class MenuServiceImpl implements MenuService {
 		return md.getAllMenu(mb);
 	}
    //自动填充
-	@Override
+
 	public Set<String> autoCompleteString() {
 		// TODO Auto-generated method stub
 		return md.autoCompleteString();
 	}
 
-	@Override
+
 	public List<MenuBean> getMenus() {
 		// TODO Auto-generated method stub
 		return md.getMenus();
