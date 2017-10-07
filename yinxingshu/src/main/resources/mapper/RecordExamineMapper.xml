@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.xhhy.dao.RecordManageDao">
+<mapper namespace="com.xhhy.dao.RecordExamineDao">
 	<cache type="org.mybatis.caches.ehcache.EhcacheCache" />
 	<resultMap type="com.xhhy.bean.RecordBean" id="record">
 		<id column="archive_id"  property="archiveId" />
@@ -28,30 +28,13 @@
 	<result column="archive_cardid"  property="archiveCardId"/>
 	<result column="archive_remark"    property="archiveRemark"/>
 	</resultMap>
-	<select id="showAllRecord" resultMap="record">
-		SELECT
-		ARCHive_Id,ARCHIVE_CODE,ARCHIVE_NAME,ARCHIVE_SEX,ARCHIVE_DEPT,
-		ARCHIVE_DUTY,ARCHIVE_TITLE,ARCHIVETIME,AUDIT_STATE,ARCHIVE_STATE
-		FROM ARCHIVE_TB  
-	</select>
-	<!-- 添加档案 -->
-	<insert id="insertRecord"  parameterType="RecordBean">
-	INSERT INTO ARCHIVE_TB 
-	(ARCHIVE_ID,ARCHIVE_CODE,ARCHIVE_DEPT,ARCHIVE_STATE,ARCHIVE_DUTY,ARCHIVE_TITLE,ARCHIVE_DUTYCODE,
-	 ARCHIVE_NAME,ARCHIVE_SEX,ARCHIVE_EMAIL,ARCHIVE_PHONE,
-	 ARCHIVE_ADDRESS,ARCHIVE_CARDID,ARCHIVE_HOME_ADDRESS,ARCHIVE_POLITICS,
-	 ARCHIVE_GRADUATE_SCHOOL,ARCHIVE_EDUCATION,ARCHIVE_MAJOR,
-	 BANK,BANK_CARD,ARCHIVETIME,FAMILY_INFOR,ARCHIVE_REMARK,audit_state) 
-	 values
-	 (AAA.NEXTVAL,#{archiveCode},#{archiveDept},#{archiveState},#{archiveDuty},#{archiveTitle},#{archiveDutyCode},
-	 #{archiveName},#{archiveSex},#{archiveEmail},#{archivePhone},
-	 #{archiveAddress},#{archiveCardId},#{archiveHomeAddress},#{archivePolitics},
-	 #{archiveGraduateSchool},#{archiveEducation},#{archiveMajor},
-	 #{bank},#{bankCard},to_date(#{archiveTime},'yyyy-mm-dd hh24:mi'),#{familyInfo},#{archiveRemark},5
-	 )
 	
-	</insert>
-	<!--明细===== -->
+	<select id="showAllRecordExamine" resultMap="record">
+		SELECT
+		ARCHIVE_ID,ARCHIVE_CODE,ARCHIVE_NAME,ARCHIVE_SEX,ARCHIVE_DEPT,
+		ARCHIVE_DUTY,ARCHIVE_TITLE,ARCHIVETIME,AUDIT_STATE,ARCHIVE_STATE
+		FROM ARCHIVE_TB  WHERE AUDIT_STATE=0
+	</select>
 	<select id="queryOneRecord"   resultMap="record">
 	 SELECT
 	 ARCHIVE_CODE,ARCHIVE_DEPT,ARCHIVE_STATE,ARCHIVE_DUTY,ARCHIVE_DUTYCODE,
@@ -61,5 +44,6 @@
 	 BANK,BANK_CARD,ARCHIVETIME,FAMILY_INFOR,ARCHIVE_REMARK
 	 FROM ARCHIVE_TB WHERE ARCHIVE_ID=#{archiveId}
 	</select>
-	<!-- 修改 -->
+	
+	
 </mapper>
