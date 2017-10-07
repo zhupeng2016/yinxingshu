@@ -6,10 +6,10 @@
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
-<!DOCTYPE html PUBLIC >
+<!DOCTYPE html  >
 <html>
-<base href="<%=basePath%>">
 <head>
+<base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>用户管理</title>
 <link href="css/mine.css" type="text/css" rel="stylesheet">
@@ -18,7 +18,7 @@
 <script type="text/javascript" src="js/jquery.validate.js"></script>
 <script type="text/javascript" src="js/jquery.validate.defined.js"></script>
 <script type="text/javascript" src="js/yonghu.js"></script>
-<script type="text/javascript" src="js/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="<%=basePath%>js/My97DatePicker/WdatePicker.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
 	
@@ -69,7 +69,6 @@ $(document).ready(function() {
 		</span>
 	</div>
 	<div></div>
-
 	<div style="font-size: 13px; margin: 10px 5px">
 		<form action="user/add" method="post" id="myForm" enctype="multipart/form-data">
 			<table border="1" width="100%" class="table_a">
@@ -162,9 +161,8 @@ $(document).ready(function() {
 						value="" /></td>
 				</tr>
 				<tr>
-					<td>图片：
-					</td>
-					<td><img alt="" src=""  name="userImg" id="userimg"> </td>
+					<td>头像：</td>
+					<td><input type="file" name="file" id="file" src=""></td>
 				</tr>
 				<tr>
 					<td>添加时间：

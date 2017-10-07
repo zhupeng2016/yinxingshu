@@ -9,7 +9,7 @@
 <!DOCTYPE html PUBLIC >
 <html>
 <base href="<%=basePath%>">
-<title>薪酬标准管理</title>
+<title>用户管理</title>
 <meta http-equiv="content-type" content="text/html;charset=utf-8">
 <link href="css/mine.css" type="text/css" rel="stylesheet">
 </head>
@@ -17,7 +17,7 @@
 <body>
 
 	<div class="div_head">
-		<span> <span style="float: left">当前位置是：-》薪酬标准管理</span> <span
+		<span> <span style="float: left">当前位置是：-》用户管理</span> <span
 			style="float: right; margin-right: 8px; font-weight: bold"> <a
 				style="text-decoration: none" href="user/userlist?pageNum=${pageNum}">【返回】</a>
 		</span>
@@ -41,10 +41,10 @@
 					<td>用户姓名：</td>
 					<td>${ub.userName }</td>
 				</tr>
-			<!-- 	<tr>
-					<td>密码：</td>
-					<td>......</td>
-				</tr> -->
+				<tr>
+					<td>头像：</td>
+					<td><img alt="" width="100px;" src="${ub.userImg }"></td>
+				</tr> 
 				<tr>
 					<td>用户角色：</td>
 					<td>${ub.rb.roleName }</td>

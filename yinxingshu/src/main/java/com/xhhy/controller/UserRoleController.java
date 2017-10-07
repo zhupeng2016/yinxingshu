@@ -1,7 +1,9 @@
 package com.xhhy.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -14,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -125,8 +128,19 @@ public class UserRoleController {
 	}
 
 	@RequestMapping("/add")
-	public String add(Model m, UserBean ub) {
-		if (urs.add(ub)) {
+	public String add(Model m,HttpServletRequest request, UserBean ub,MultipartFile file) throws IllegalStateException, IOException {
+		String userImg=null;
+		if (!file.isEmpty()) {
+			// 保存文件路径
+			String path = request.getSession().getServletContext().getRealPath("/imgs/");
+			// 上传文件名
+			String filename = file.getOriginalFilename();
+			// 将上传文件保存到一个目标文件当中
+			file.transferTo(new File(path +"/"+ filename));
+			userImg=("imgs/"+filename);
+		}
+	  ub.setUserImg(userImg);
+	  if (urs.add(ub)) {
 			m.addAttribute("msg", "添加成功。");
 		} else {
 			m.addAttribute("msg", "添加失败。");
@@ -137,12 +151,10 @@ public class UserRoleController {
 	@RequestMapping("/onlyone")
 	public void onlyOne(Model m, String loginName, HttpServletResponse response) throws IOException {
 		response.setContentType("text/html;charset=utf-8");
-		System.out.println(loginName);
 		UserBean ubb =null;
 		if(loginName!=null){
 			 ubb = urs.getUserByName(loginName);
 		}
-//		System.out.println(ub.getUserId());
 		PrintWriter out = response.getWriter();
 		if (ubb != null) {
 			out.print(false); // 代表账号不可以用。
@@ -171,7 +183,6 @@ public class UserRoleController {
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
 		String s = new Gson().toJson(l);
-		System.out.println(s);
 		out.write(s);
 		out.flush();
 		out.close();
