@@ -21,8 +21,8 @@
 		<result column="user_time" jdbcType="VARCHAR" property="userTime"/>
 		<association property="db" javaType="com.xhhy.bean.DeptBean"
 			column="dept_id" select="com.xhhy.dao.DeptDao.getDeptById"></association>
-		<!-- <association property="rb" javaType="com.xhhy.bean.RoleBean"
-		     column="dept_id" select="com.xhhy.dao.RoleDao.getRoles"></association> -->
+		 <association property="rb" javaType="com.xhhy.bean.RoleBean"
+			column="role_id" select="com.xhhy.dao.RoleDao.getRole"></association> 
 	</resultMap>
 	<sql id="selectUser">
 		select
@@ -39,5 +39,8 @@
 	<update id="UpdateById">
 	    update user_tb set user_name=#{userName},sex=#{sex},id_card=#{idCard},phone=#{phone},mobile_phone=#{mobilePhone},user_email=#{userEmail},user_img=#{userImg},user_remark=#{userRemark}
 	     where  user_id=#{userId}
+	</update>
+	<update id="getUpdate">
+	    update user_tb set password=#{password} where user_id=#{userId}
 	</update>
 </mapper>

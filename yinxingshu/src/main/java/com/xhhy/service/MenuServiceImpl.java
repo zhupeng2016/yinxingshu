@@ -52,12 +52,21 @@ public class MenuServiceImpl implements MenuService {
 		// TODO Auto-generated method stub
 		return md.getAllMenu(mb);
 	}
-   /*//自动填充
-	@Override
-	public Set<String> autoComplete(String str) {
+   //自动填充
+
+	public Set<String> autoCompleteString() {
 		// TODO Auto-generated method stub
-		return md.autoComplete(str);
-	}*/
+		return md.autoCompleteString();
+	}
+
+
+	public List<MenuBean> getMenus() {
+		// TODO Auto-generated method stub
+		return md.getMenus();
+	}
 	
+	
+	
+
 	
 }

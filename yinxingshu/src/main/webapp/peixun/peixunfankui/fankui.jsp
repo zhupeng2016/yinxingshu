@@ -31,7 +31,7 @@ $(function(){
 	<div class="div_head">
 		<span> <span style="float: left">当前位置是：-》培训管理 -》培训反馈</span> <span
 			style="float: right; margin-right: 8px; font-weight: bold"> <a
-				style="text-decoration: none" href="peixun/fankui/pageNum=${requestScope.pageNum }">【返回】</a>
+				style="text-decoration: none" href="peixun/fankui?pageNum=${requestScope.pageNum }">【返回】</a>
 		</span>
 		</span>
 	</div>
@@ -78,8 +78,8 @@ $(function(){
 			</tr>
 
 			<tr>
-				<td></td>
-				<td><a href="">技术专家和教学专家的合作.zip</a></td>
+				<td>培训资料</td>
+				<td>{requestScope.tb.tarFile}</td>
 			</tr>
 			<tr>
 				<td>审核意见：</td>
@@ -101,7 +101,7 @@ $(function(){
 			<tr>
 				<td width="120px;">培训反馈<span style="color: red">*</span>：
 				</td>
-				<td><select name="tarRequired" value="">
+				<td><select name="tarRequired" value="${requestScope.tb.tarRequired}">
 						<option>请选择</option>
 						<option value="优">优</option>
 						<option value="良">良</option>
@@ -111,13 +111,13 @@ $(function(){
 			<tr>
 				<td>培训总结<span style="color: red">*</span>：
 				</td>
-				<td><textarea name="tarSummary" value=""></textarea></td>
+				<td><textarea name="tarSummary" value="${requestScope.tb.tarSummary}"></textarea></td>
 			</tr>
 
 			<tr>
 				<td>考核结果<span style="color: red">*</span>：
 				</td>
-				<td><textarea name="evalutionResult" value=""></textarea></td>
+				<td><textarea name="evalutionResult" value="${requestScope.tb.evalutionResult}"></textarea></td>
 			</tr>
 			<tr>
 				<td colspan="2" align="center"><input type="button" id="bnt" value="保存">

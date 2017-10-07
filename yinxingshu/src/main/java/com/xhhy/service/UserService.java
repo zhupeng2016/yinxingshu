@@ -11,4 +11,6 @@ public interface UserService {
 	
 	public boolean  UpdateById(UserBean u);
 
+	public boolean getUpdate(UserBean u);
+
 }

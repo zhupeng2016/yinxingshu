@@ -14,5 +14,5 @@ public interface UserDao {
 	
 	public boolean  UpdateById(UserBean u);
 	
-	
+	public boolean getUpdate(UserBean u);
 }

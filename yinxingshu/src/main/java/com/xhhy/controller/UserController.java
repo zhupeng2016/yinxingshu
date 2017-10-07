@@ -1,4 +1,4 @@
-package com.xhhy.controller;
+	package com.xhhy.controller;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -77,17 +78,17 @@ public class UserController {
 						break;
 					}
 				}
+	            if(is){
+	            	l.add(ub);
+	            	us.update(ub.getUserId());
+	            	m.addAttribute("ub", ub);
+	            	sc.setAttribute("uon", l);
+	            	return "home/index";
+	            }else{
+	            	m.addAttribute("msg","该帐号已登录");
+	    			return "/login.jsp";
+	            }
 
-				if (is) {
-					l.add(ub);
-					us.update(ub.getUserId());
-					m.addAttribute("ub", ub);
-					sc.setAttribute("uon", l);
-					return "home/index";
-				} else {
-					m.addAttribute("msg", "该帐号已登录");
-					return "/login.jsp";
-				}
 			}
 		} else {
 			m.addAttribute("msg", "账号或密码错误");
@@ -105,12 +106,18 @@ public class UserController {
 	}
 
 	@RequestMapping("/msg")
-	public String index(Model m,UserBean u){
-		boolean is=us.UpdateById(u);
-		if(is){
-			return "/right.jsp";
-		}else{
-			return "/msg.jsp";
-		}
-}
+		public String index(Model m,UserBean u){
+			boolean is=us.UpdateById(u);
+			if(is){
+				return "/right.jsp";
+			}else{
+				return "/msg.jsp";
+			}
+		}	
+	@RequestMapping("/password")
+	public String password(Model m,UserBean u,HttpServletRequest request){
+		UserBean u2=(UserBean)request.getSession().getAttribute("ub");
+		boolean is = us.getUpdate(u);
+		return "/head";
+	}
 }

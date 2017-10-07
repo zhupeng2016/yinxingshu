@@ -24,6 +24,7 @@ public class LoginController {
 	public String head(HttpServletRequest request,Model m){
 		HttpSession session = request.getSession();
 		UserBean ub = (UserBean)session.getAttribute("ub");
+
 		if(ub != null){
 			ServletContext sc = request.getSession().getServletContext();
 			List<UserBean> l = (List)sc.getAttribute("uon");
@@ -33,10 +34,14 @@ public class LoginController {
 					l.remove(i);
 					break;
 				}
+
+		
 			}
 			sc.setAttribute("uon", l);
 		}
-		session.invalidate();
+
+		
+		
 		return "/login.jsp";
 	}
 
