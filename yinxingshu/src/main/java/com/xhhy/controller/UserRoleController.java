@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.util.List;
 import java.util.Set;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -81,9 +82,9 @@ public class UserRoleController {
 		// 所有部门
 		List<DeptBean> dls = ds.getAllDept();
 		m.addAttribute("dls", dls);
-	/*	// 所有职位
+		// 所有职位
 		List<RoleBean> rls = rs.getRoles();
-		m.addAttribute("rls", rls);*/
+		m.addAttribute("rls", rls);
 		m.addAttribute("pageNum", pageNum);
 		return "/resource/demo2/update.jsp";
 	}
@@ -165,7 +166,7 @@ public class UserRoleController {
 	}
 	//部门改变，职位改变。。
 	@RequestMapping("/changeRole")
-	public void changeRole(Model m, int deptId, HttpServletResponse response) throws IOException {
+	public void changeRole(Model m, int deptId,HttpServletResponse response) throws IOException {
 		List<RoleBean> l=urs.getRoleByDetp(deptId);
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();

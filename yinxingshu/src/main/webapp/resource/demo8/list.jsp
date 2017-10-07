@@ -15,7 +15,7 @@
 <title>菜单管理</title>
 
 <link href="css/mine.css" type="text/css" rel="stylesheet" />
-<link type="text/css" rel="stylesheet" href="css/jquery.autocomplete.css"/>
+<link type="text/css" rel="stylesheet"	href="css/jquery.autocomplete.css" />
 <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="js/jquery.autocomplete.min.js"></script>
 <style>
@@ -34,9 +34,17 @@
  
  $(function() {
 		$("#mn").AutoComplete({
-			'data' : 'menu/autoComplete', //去服务器获得所有的提示信息
-			'width' : "auto",//提示框宽度
+			 'data' : 'menu/autoComplete', //去服务器获得所有的提示信息
+		 	 'width' : "auto", //提示框宽度
 			'itemheight' : 30//每个补全信息的高度
+			
+		
+		/* 	width:"auto",
+	        url:'menu/autoComplete',
+	        callback:function(data){
+	            //alert(data.title);    
+	        } */
+		
 		});
 	
 	});

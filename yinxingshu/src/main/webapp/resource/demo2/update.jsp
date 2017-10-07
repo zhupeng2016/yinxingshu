@@ -19,13 +19,12 @@
 	  $("#bt").click(function(){
 		  var is=confirm("确认修改吗？");
 		  if(is){
-			  
 		  $("#myForm").submit();
 		  }
 	  });
-	 /*  
+	  
+	  //部门改变时，职位随之变化，      二级联动
 	  $("#deptId").change(function(){
-		  alert(123);
 		  $.ajax({
 			  url:"user/changeRole",
 			  type:"post",
@@ -35,12 +34,19 @@
 				  deptId:$("#deptId").val()
 			  },
 			  success:function(res){
-				  alert(res);
-				  
+				 //alert(res.length); 
+				 document.all["roleId"].options.length=0;//清空原有的option
+				 var str="";
+				 if(res.length>0){
+				  for(var i=0;i<res.length;i++){
+					 str+="<option value='"+res[i].roleId+"'>"+res[i].roleName+"</option>";
+					 $("#roleId").html(str);
+				  }  
+				}  
 			  }
 		  });
 	  });
-	   */
+	   
 	  
   })
   
@@ -48,11 +54,11 @@
 </head>
 
 <body >
-
 	<div class="div_head">
 		<span> <span style="float: left">当前位置是：-》资源管理》用户管理</span> <span
-			style="float: right; margin-right: 8px; font-weight: bold"> <a
+			style="float: right; margin-right: 8px; font-weight: bold"> <a 
 				style="text-decoration: none" href="user/userlist?pageNum=${pageNum}">【返回】</a>
+		
 		</span>
 		</span>
 	</div>
@@ -98,12 +104,13 @@
 				<tr>
 					<td>所属职位<span style="color: red">*</span>：
 					</td>
-					<td>
-					<select name="roleId" id="roleId">
+					<td id="role">
+					 <select name="roleId" id="roleId">
 					<c:forEach items="${rls }" var="rb" >
 					  <option  <c:if test="${rb.roleId==user.roleId }">selected="selected"</c:if> value="${rb.roleId }">${rb.roleName }</option>
 					</c:forEach>
-					</select></td>
+					</select>
+					</td>
 				</tr>
 
 				<tr>

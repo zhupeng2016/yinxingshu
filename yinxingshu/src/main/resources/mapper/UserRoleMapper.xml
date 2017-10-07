@@ -23,6 +23,7 @@
 		<result column="login_count" jdbcType="VARCHAR" property="loginCount" />
 		<result column="user_del" jdbcType="INTEGER" property="userDel" />
 		<result column="user_time" jdbcType="VARCHAR" property="userTime"/>
+		<result column="role_id" jdbcType="INTEGER" property="roleId" />
 		<association property="db" javaType="com.xhhy.bean.DeptBean"
 			column="dept_id" select="com.xhhy.dao.DeptDao.getDeptById"></association>
 		 <association property="rb" javaType="com.xhhy.bean.RoleBean"

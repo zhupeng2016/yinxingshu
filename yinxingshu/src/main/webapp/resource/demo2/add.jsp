@@ -17,8 +17,8 @@
 <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="js/jquery.validate.js"></script>
 <script type="text/javascript" src="js/jquery.validate.defined.js"></script>
-<script type="text/javascript" src="js/My97DatePicker/WdatePicker.js"></script>
 <script type="text/javascript" src="js/yonghu.js"></script>
+<script type="text/javascript" src="js/My97DatePicker/WdatePicker.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
 	
@@ -28,6 +28,31 @@ $(document).ready(function() {
 			$("#myForm").submit();
 		}
 	});
+	
+	 //部门改变时，职位随之变化，      二级联动
+	  $("#deptId").change(function(){
+		  $.ajax({
+			  url:"user/changeRole",
+			  type:"post",
+			  async:"true",
+			  dataType:"json",
+			  data:{
+				  deptId:$("#deptId").val()
+			  },
+			  success:function(res){
+				 //alert(res.length); 
+				 document.all["roleId"].options.length=0;//清空原有的option
+				 var str="";
+				 if(res.length>0){
+				  for(var i=0;i<res.length;i++){
+					 str+="<option value='"+res[i].roleId+"'>"+res[i].roleName+"</option>";
+					 $("#roleId").html(str);
+				  }  
+				}  
+			  }
+		  });
+	  });
+	   
 	
 });
 
@@ -75,7 +100,7 @@ $(document).ready(function() {
 				<tr>
 					<td>所属部门<span style="color: red">*</span>：
 					</td>
-					<td><select name="deptId" id="">
+					<td><select name="deptId" id="deptId">
 							<c:forEach items="${dls }" var="db">
 								<option	value="${db.deptId }">${db.deptName }</option>
 							</c:forEach>
@@ -85,7 +110,7 @@ $(document).ready(function() {
 				<tr>
 					<td>所属职位<span style="color: red">*</span>：
 					</td>
-					<td><select name="roleId" id="">
+					<td><select name="roleId" id="roleId">
 							<c:forEach items="${rls }" var="rb">
 								<option	value="${rb.roleId }">${rb.roleName }</option>
 							</c:forEach>
@@ -144,7 +169,7 @@ $(document).ready(function() {
 				<tr>
 					<td>添加时间：
 					</td>
-					<td><input type="text"  name="userTime" id="usertime" onclick="WdatePicker()"
+					<td><input type="text"  name="userTime" id="usertime" onclick="WdatePicker()" 
 						value="" /><span style="color: red"></span></td>
 				</tr>
 				<tr>
