@@ -22,78 +22,8 @@
 	font-size: 10px
 }
 </style>
-<script type="text/javascript">
-	$(function() {
-		result = $("#myForm").validate({
-			rules : {
-				"userName" : {
-					required : true
-				},
-				"idCard" : {
-					required : true,
-					number : true,
-				},
 
-				"phone" : {
-					required : true,
-				//范围
-				},
-				"mobilePhone" : {
-					required : true,
-					mobilePhone : true
-				},
-				"userEmail" : {
-					required : true,
-					email : true
-				},
-				"userRemark" : {
-					required : true
-				}
-			}, //验证规则
-			messages : {
-				"userName" : {
-					required : "姓名不能为空!"
-				},
-				"idCard" : {
-					required : "身份证号不能为空!",
-					number : "请输入数字!",
-				},
-				"phone" : {
-					required : "座机号不能为空",
-				//范围
-				},
-				"mobilePhone" : {
-					required : "手机号不能为空!",
-					mobilePhone : "请输入正确的手机号码!"
-				},
-				"userEmail" : {
-					required : "请输入邮箱!",
-					email : "请输入与正确的邮箱!"
-				},
-				"userRemark" : {
-					required : "不能为空"
-				}
-			}, //提示信息
-			errorPlacement : function(error, element) { //提示信息的位置
-				element.next().html(error.text());
-			},
-			success : function(label) {
-				label.html();
-			}
-		});
-	});
-</script>
 
-<script type="text/javascript">
-	$(function() {
-		$("#bt").click(function() {
-			var is = confirm("是否提交?");
-			if (is) {
-				$("#myForm").submit();
-			}
-		});
-	});
-</script>
 </head>
 
 <body>
@@ -109,7 +39,7 @@
 
 	<div style="font-size: 13px; margin: 10px 5px">
 		<form action="msg" method="post" enctype="multipart/form-data"
-			id="myForm">
+			>
 			<table border="1" width="100%" class="table_a">
 				<input type="hidden" name="userId" value="${sessionScope.ub.userId}" />
 				<tr>
