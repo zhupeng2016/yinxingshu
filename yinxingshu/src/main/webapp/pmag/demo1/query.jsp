@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <base href="<%=basePath%>">
         <title>人事档案管理</title>
         <meta http-equiv="content-type" content="text/html;charset=utf-8">
-        <link href="../../css/mine.css" type="text/css" rel="stylesheet">
+        <link href="css/mine.css" type="text/css" rel="stylesheet">
     </head>
 
     <body>
@@ -30,31 +30,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <table border="1" width="100%" class="table_a">
                 <tr>
                     <td width="120px;">档案编码<span style="color:red">*</span>：</td>
-                    <td><input type="text" name="" value="${rb.archiveCode}" readonly /></td>
+                    <td><input type="text" name="" value="${recordBean.archiveCode}" readonly /></td>
                 </tr>
                 <tr>
                     <td>所属部门<span style="color:red">*</span>：</td>
                     <td>
-                       <input type="text" name="" value="${rb.archiveDept}" readonly /> 
+                       <input type="text" name="" value="${recordBean.archiveDept}" readonly /> 
                     </td>
                 </tr>
                
                 <tr>
                     <td>档案状态<span style="color:red">*</span>：</td>
                     <td>
-						<input type="text" name="" value="${rb.archiveState}" readonly /> 
+						<input type="text" name="" value="${recordBean.archiveState}" readonly /> 
 					</td>
                 </tr>
                 <tr>
                     <td>职位名称<span style="color:red">*</span>：</td>
                     <td>
-						<input type="text" readonly name="f_goods_image" readonly value="${rb.archiveDuty}" />
+						<input type="text" readonly name="f_goods_image" readonly value="${recordBean.archiveDuty}" />
 					</td>
                 </tr>
                 <tr>
                     <td>职位编码<span style="color:red">*</span>：</td>
                     <td>
-                        <input type="text" name="f_goods_image" readonly value="${rb.archiveDutyCode}" />
+                        <input type="text" name="f_goods_image" readonly value="${recordBean.archiveDutyCode}" />
                     </td>
                 </tr>
 
@@ -62,61 +62,61 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<tr>
                     <td>姓名<span style="color:red">*</span>：</td>
                     <td>
-                        <input type="text" name="f_goods_image"  readonly value="${rb.archiveName}"/>
+                        <input type="text" name="f_goods_image"  readonly value="${recordBean.archiveName}"/>
                     </td>                
                 </tr>
 
 				<tr>
                     <td>性别：</td>
                     <td>
-                        <c:if test="${rb.archiveSex==0}">男</c:if>
-                        <c:if test="${rb.archiveSex==1}">女</c:if>
+                        <c:if test="${recordBean.archiveSex==0}">男</c:if>
+                        <c:if test="${recordBean.archiveSex==1}">女</c:if>
                     </td>                
                 </tr>
 
 				<tr>
                     <td>EMAIL：</td>
                     <td>
-                        <input type="text" name="f_goods_image" readonly value="${rb.archiveEmail}"/>
+                        <input type="text" name="f_goods_image" readonly value="${recordBean.archiveEmail}"/>
                     </td>                
                 </tr>
 
 				<tr>
                     <td>联系电话：</td>
                     <td>
-                        <input type="text" name="f_goods_image" readonly value="${rb.archivePhone}" />
+                        <input type="text" name="f_goods_image" readonly value="${recordBean.archivePhone}" />
                     </td>                
                 </tr>
 
 				<tr>
                     <td>住址：</td>
                     <td>
-                        <input type="text" name="f_goods_image" readonly value="${rb.archiveAddress}" />
+                        <input type="text" name="f_goods_image" readonly value="${recordBean.archiveAddress}" />
                     </td>                
                 </tr>
 				<tr>
                     <td>身份证号：</td>
                     <td>
-                        <input type="text" name="f_goods_image" readonly value="${rb.archiveCardId}" />
+                        <input type="text" name="f_goods_image" readonly value="${recordBean.archiveCardId}" />
                     </td>                
                 </tr>
 				<tr>
                     <td>户口所在地：</td>
                     <td>
-                        <input type="text" name="f_goods_image" readonly value="${rb.archiveHomeAddress}" />
+                        <input type="text" name="f_goods_image" readonly value="${recordBean.archiveHomeAddress}" />
                     </td>                
                 </tr>
 				<tr>
                     <td>政治面貌：</td>
                     <td>
-                        <input type="text" name="f_goods_image" readonly value="${rb.archivePolitics}"/>
+                        <input type="text" name="f_goods_image" readonly value="${recordBean.archivePolitics}"/>
                     </td>                
                 </tr>	
 
 				<tr>
                     <td>毕业院校：</td>
                     <td>
-						 <input type="text" readonly name="f_goods_name" readonly value="${rb.archiveGraduateSchool}" />
+						 <input type="text" readonly name="f_goods_name" readonly value="${recordBean.archiveGraduateSchool}" />
                     </td>
                 </tr>
 
@@ -124,37 +124,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<tr>
                     <td>专业：</td>
                     <td>
-                        <input type="text" name="f_goods_image" readonly value="${rb.archiveMajor}"/>
+                        <input type="text" name="f_goods_image" readonly value="${recordBean.archiveMajor}"/>
                     </td>                
                 </tr>
 				<tr>
                     <td>学历：</td>
                     <td>
-                   <input type="text" name="f_goods_image" readonly value="${rb.archiveEducation}"/>
+                   <input type="text" name="f_goods_image" readonly value="${recordBean.archiveEducation}"/>
                     </td>                
                 </tr>
 				<tr>
                     <td>薪酬标准：</td>
                     <td>
-                     <input type="text" name="f_goods_image" readonly value="${rb.archiveSalary}"/>
+                     <input type="text" name="f_goods_image" readonly value="${recordBean.archiveSalary}"/>
                     </td>                
                 </tr>
 				<tr>
                     <td>开户行：</td>
                     <td>
-                        <input type="text" name="f_goods_image" readonly value="${rb.bank}"/>
+                        <input type="text" name="f_goods_image" readonly value="${recordBean.bank}"/>
                     </td>                
                 </tr>
 				<tr>
                     <td>银行卡号：</td>
                     <td>
-                        <input type="text" name="f_goods_image" readonly value="${rb.bankCard}"/>
+                        <input type="text" name="f_goods_image" readonly value="${recordBean.bankCard}"/>
                     </td>                
                 </tr>
 				<tr>
                     <td>社保卡号：</td>
                     <td>
-                        <input type="text" name="f_goods_image" readonly value="${rb.socialCard}"/>
+                        <input type="text" name="f_goods_image" readonly value="${recordBean.socialCard}"/>
                     </td>                
                 </tr>
 				<tr>
@@ -166,25 +166,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<tr>
                     <td>建档时间：</td>
                     <td>
-                        <input type="text" name="f_goods_image" readonly value="${rb.archiveTime}"/>
+                        <input type="text" name="f_goods_image" readonly value="${recordBean.archiveTime}"/>
                     </td>                
                 </tr>
 				<tr>
                     <td>个人履历：</td>
                     <td>
-                     <input type="text" name="f_goods_image" readonly value="${rb.archiveResume}"/>
+                     <input type="text" name="f_goods_image" readonly value="${recordBean.archiveResume}"/>
                     </td>                
                 </tr>
 				<tr>
                     <td>家庭关系信息：</td>
                     <td>
-                       <input type="text" name="f_goods_image" readonly value="${rb.familyInfo}"/>
+                       <input type="text" name="f_goods_image" readonly value="${recordBean.familyInfor}"/>
                     </td>                
                 </tr>
 				<tr>
                     <td>备注：</td>
                     <td>
-                       <input type="text" name="f_goods_image" readonly value="${rb.archiveRemark}"/>
+                       <input type="text" name="f_goods_image" readonly value="${recordBean.archiveRemark}"/>
                     </td>                
                 </tr>
 				<tr>

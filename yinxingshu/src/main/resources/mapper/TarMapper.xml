@@ -12,7 +12,7 @@
 		<result column="TRA_INTRO" jdbcType="LONGVARCHAR" property="tarIntro" />
 		<result column="TRA_RESOUCE" jdbcType="VARCHAR" property="tarResouce" />
 		<result column="TRA_STATE" jdbcType="INTEGER" property="tarState" />
-		<result column="TRA_OPINION" jdbcType="VARCHAR" property="TarOpinion" />
+		<result column="TRA_OPINION" jdbcType="VARCHAR" property="tarOpinion" />
 		<result column="TRA_RESULT" jdbcType="VARCHAR" property="tarResult" />
 		<result column="TRA_SUMMARY" jdbcType="LONGVARCHAR" property="tarSummary" />
 		<result column="EVALUTION_RESULT" jdbcType="LONGVARCHAR" property="evalutionResult" />
@@ -34,10 +34,10 @@
 		    and TRA_STATE = #{tarState}
 		</if>
 		<if test="tarStartTime !=null and tarStartTime != &quot;&quot;">
-		    and TRA_STARTTIME <![CDATA[<=]]> #{tarStartTime}
+		    and TRA_STARTTIME <![CDATA[<=]]> to_date(#{tarStartTime},'yyyy-mm-dd hh24:mi')
 		</if>
 		<if test="tarEddTime !=null and tarEddTime != &quot;&quot;">
-		    and TRA_EDDTIME <![CDATA[>=]]> #{tarEddTime}
+		    and TRA_EDDTIME <![CDATA[>=]]> to_date(#{tarEddTime},'yyyy-mm-dd hh24:mi')
 		</if>
 	</select>
 	<!--培训计划增加  -->
@@ -77,10 +77,10 @@
 		    and TRA_NAME like concat(concat('%',#{tarName}),'%')
 		</if>
 		<if test="tarStartTime !=null and tarStartTime != &quot;&quot;">
-		    and TRA_STARTTIME <![CDATA[<=]]> #{tarStartTime}
+		    and TRA_STARTTIME <![CDATA[<=]]> to_date(#{tarStartTime},'yyyy-mm-dd hh24:mi')
 		</if>
 		<if test="tarEddTime !=null and tarEddTime != &quot;&quot;">
-		    and TRA_EDDTIME <![CDATA[>=]]> #{tarEddTime}
+		    and TRA_EDDTIME <![CDATA[>=]]> to_date(#{tarEddTime},'yyyy-mm-dd hh24:mi')
 		</if>
 	</select>
 	<!--培训复核查看 -->
@@ -102,10 +102,10 @@
 		    and TRA_NAME like concat(concat('%',#{tarName}),'%')
 		</if>
 		<if test="tarStartTime !=null and tarStartTime != &quot;&quot;">
-		    and TRA_STARTTIME <![CDATA[<=]]> #{tarStartTime}
+		    and TRA_STARTTIME <![CDATA[<=]]> to_date(#{tarStartTime},'yyyy-mm-dd hh24:mi')
 		</if>
 		<if test="tarEddTime !=null and tarEddTime != &quot;&quot;">
-		    and TRA_EDDTIME <![CDATA[>=]]> #{tarEddTime}
+		    and TRA_EDDTIME <![CDATA[>=]]> to_date(#{tarEddTime},'yyyy-mm-dd hh24:mi')
 		</if>
 	</select>
 	<!-- 培训反馈查看 -->

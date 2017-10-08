@@ -147,6 +147,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<c:if test="${r.auditState==2}">驳回</c:if>
 						<c:if test="${r.auditState==3}">审核中</c:if>
 						<c:if test="${r.auditState==4}">变更审核中</c:if>
+						<c:if test="${r.auditState==5}">待审批</c:if>
 						</td>
 						<td>
 						<c:if test="${r.archiveState==0}">试用期</c:if>
@@ -156,8 +157,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</td>
 						<td>
 						<c:if test="${r.auditState==3||r.auditState==4}">
-							<a href="view.html">明细</a>
-							</c:if>
+							<a href="queryOneRecord?archiveId=${r.archiveId}">明细</a>
+						</c:if>
 							<c:if test="${r.auditState==0&&r.archiveState==0}">
 							<a href="edit.html">修改</a>
 							<a href="view.html">明细</a>

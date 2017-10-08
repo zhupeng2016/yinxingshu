@@ -13,7 +13,7 @@ public class RecordBean implements Serializable{
 	private int auditState;//审核状态
 	private int archiveDel;//删除状态
 	private String archiveTime;//建档时间
-	private String familyInfo;//家庭关系信息
+	private String familyInfor;//家庭关系信息
 	private String bank;//开户行
 	private String bankCard;//银行卡号
 	private String socialCard;//社保卡号
@@ -81,11 +81,11 @@ public class RecordBean implements Serializable{
 	public void setArchiveTime(String archiveTime) {
 		this.archiveTime = archiveTime;
 	}
-	public String getFamilyInfo() {
-		return familyInfo;
+	public String getFamilyInfor() {
+		return familyInfor;
 	}
-	public void setFamilyInfo(String familyInfo) {
-		this.familyInfo = familyInfo;
+	public void setFamilyInfor(String familyInfor) {
+		this.familyInfor = familyInfor;
 	}
 	public String getBank() {
 		return bank;
@@ -213,6 +213,12 @@ public class RecordBean implements Serializable{
 	public void setArchiveRemark(String archiveRemark) {
 		this.archiveRemark = archiveRemark;
 	}
+	public String getArchiveLoginName() {
+		return archiveLoginName;
+	}
+	public void setArchiveLoginName(String archiveLoginName) {
+		this.archiveLoginName = archiveLoginName;
+	}
 	public String getStartTime() {
 		return startTime;
 	}
@@ -250,12 +256,13 @@ public class RecordBean implements Serializable{
 		this.sb = sb;
 	}
 	public RecordBean(int archiveId, int archiveState, String archiveCode, int auditState, int archiveDel,
-			String archiveTime, String familyInfo, String bank, String bankCard, String socialCard, String archiveName,
+			String archiveTime, String familyInfor, String bank, String bankCard, String socialCard, String archiveName,
 			String archiveSex, String archiveDept, String archiveEmail, String archivePhone, String archiveAddress,
 			String archiveCardId, String archiveHomeAddress, String archivePolitics, String archiveGraduateSchool,
 			String archiveMajor, String archiveEducation, String archiveSalary, String archiveResume,
-			String archiveDuty, String archiveDutyCode, String archiveTitle, String archiveRemark, String startTime,
-			String endTime, DeptBean db, ResumeBean rb, UserBean ub, SalaryBean sb) {
+			String archiveDuty, String archiveDutyCode, String archiveTitle, String archiveRemark,
+			String archiveLoginName, String startTime, String endTime, DeptBean db, ResumeBean rb, UserBean ub,
+			SalaryBean sb) {
 		super();
 		this.archiveId = archiveId;
 		this.archiveState = archiveState;
@@ -263,7 +270,7 @@ public class RecordBean implements Serializable{
 		this.auditState = auditState;
 		this.archiveDel = archiveDel;
 		this.archiveTime = archiveTime;
-		this.familyInfo = familyInfo;
+		this.familyInfor = familyInfor;
 		this.bank = bank;
 		this.bankCard = bankCard;
 		this.socialCard = socialCard;
@@ -285,6 +292,7 @@ public class RecordBean implements Serializable{
 		this.archiveDutyCode = archiveDutyCode;
 		this.archiveTitle = archiveTitle;
 		this.archiveRemark = archiveRemark;
+		this.archiveLoginName = archiveLoginName;
 		this.startTime = startTime;
 		this.endTime = endTime;
 		this.db = db;
@@ -297,6 +305,6 @@ public class RecordBean implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 	
-	 
+	
 	
 }

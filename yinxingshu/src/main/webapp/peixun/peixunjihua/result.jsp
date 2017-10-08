@@ -68,19 +68,15 @@
 				<td>${requestScope.tb.tarIntro}</td>
 			</tr>
 
-			<tr>
+			 <tr>
 				<td></td>
-				<td><a href="">技术专家和教学专家的合作.zip</a></td>
-			</tr>
+				<td>${requestScope.tb.tarFile}</td>
+			</tr> 
 			<tr>
 				<td>审核意见：</td>
 				<td>${requestScope.tb.tarOpinion}</td>
 			</tr>
-
-
 		</table>
-
-
 	</div>
 	<hr>
 	培训反馈
@@ -94,13 +90,13 @@
 			<tr>
 				<td>培训总结<span style="color: red">*</span>：
 				</td>
-				<td><textarea value="${requestScope.tb.tarSummary}"></textarea></td>
+				<td><textarea value="${requestScope.tb.tarSummary}">${requestScope.tb.tarSummary}</textarea></td>
 			</tr>
 
 			<tr>
 				<td>考核结果<span style="color: red">*</span>：
 				</td>
-				<td><textarea value="${requestScope.tb.evalutionResult}"></textarea></td>
+				<td><textarea value="${requestScope.tb.evalutionResult}">${requestScope.tb.evalutionResult}</textarea></td>
 			</tr>
 
 

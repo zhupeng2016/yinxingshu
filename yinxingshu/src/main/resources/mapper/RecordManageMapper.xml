@@ -25,12 +25,12 @@
 		<result column="archive_education" property="archiveEducation"/>
 		<result column="archive_duty"  property="archiveDuty" />
 		<result column="archive_title"  property="archiveTitle" />
-	<result column="archive_cardid"  property="arhiveCardId"/>
+	<result column="archive_cardid"  property="archiveCardId"/>
 	<result column="archive_remark"    property="archiveRemark"/>
 	</resultMap>
 	<select id="showAllRecord" resultMap="record">
 		SELECT
-		ARCHIVE_CODE,ARCHIVE_NAME,ARCHIVE_SEX,ARCHIVE_DEPT,
+		ARCHive_Id,ARCHIVE_CODE,ARCHIVE_NAME,ARCHIVE_SEX,ARCHIVE_DEPT,
 		ARCHIVE_DUTY,ARCHIVE_TITLE,ARCHIVETIME,AUDIT_STATE,ARCHIVE_STATE
 		FROM ARCHIVE_TB  
 	</select>
@@ -41,25 +41,25 @@
 	 ARCHIVE_NAME,ARCHIVE_SEX,ARCHIVE_EMAIL,ARCHIVE_PHONE,
 	 ARCHIVE_ADDRESS,ARCHIVE_CARDID,ARCHIVE_HOME_ADDRESS,ARCHIVE_POLITICS,
 	 ARCHIVE_GRADUATE_SCHOOL,ARCHIVE_EDUCATION,ARCHIVE_MAJOR,
-	 BANK,BANK_CARD,ARCHIVETIME,FAMILY_INFOR,ARCHIVE_REMARK) 
+	 BANK,BANK_CARD,ARCHIVETIME,FAMILY_INFOR,ARCHIVE_REMARK,audit_state) 
 	 values
 	 (AAA.NEXTVAL,#{archiveCode},#{archiveDept},#{archiveState},#{archiveDuty},#{archiveTitle},#{archiveDutyCode},
 	 #{archiveName},#{archiveSex},#{archiveEmail},#{archivePhone},
 	 #{archiveAddress},#{archiveCardId},#{archiveHomeAddress},#{archivePolitics},
 	 #{archiveGraduateSchool},#{archiveEducation},#{archiveMajor},
-	 #{bank},#{bankCard},to_date(#{archiveTime},'yyyy-mm-dd hh24:mi'),#{familyInfo},#{archiveRemark}
+	 #{bank},#{bankCard},to_date(#{archiveTime},'yyyy-mm-dd hh24:mi'),#{familyInfo},#{archiveRemark},5
 	 )
 	
 	</insert>
-	<!--明细===== 貌似是职位编码是没有的-->
-	<!-- <select id="" >
+	<!--明细===== -->
+	<select id="queryOneRecord"   resultMap="record">
 	 SELECT
 	 ARCHIVE_CODE,ARCHIVE_DEPT,ARCHIVE_STATE,ARCHIVE_DUTY,ARCHIVE_DUTYCODE,
 	 ARCHIVE_NAME,ARCHIVE_SEX,ARCHIVE_EMAIL,ARCHIVE_PHONE,
 	 ARCHIVE_ADDRESS,ARCHIVE_CARDID,ARCHIVE_HOME_ADDRESS,ARCHIVE_POLITICS,
 	 ARCHIVE_GRADUATE_SCHOOL,ARCHIVE_EDUCATION,ARCHIVE_MAJOR,
-	 BANK,BANK_CARD,ARCHIVE_TIME,FAMILY_INFOR,ARCHIVE_REMARK
-	 FROM ARCHIVE_TB 
-	</select> -->
+	 BANK,BANK_CARD,ARCHIVETIME,FAMILY_INFOR,ARCHIVE_REMARK
+	 FROM ARCHIVE_TB WHERE ARCHIVE_ID=#{archiveId}
+	</select>
 	<!-- 修改 -->
 </mapper>

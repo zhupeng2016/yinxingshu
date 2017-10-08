@@ -1,9 +1,12 @@
 package com.xhhy.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +18,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.google.gson.Gson;
+
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,7 +35,7 @@ import com.xhhy.util.State;
 
 @Controller
 @RequestMapping("menu")
-@SessionAttributes({"mls","pageNum"})
+@SessionAttributes({"mls","pageNum","menuBean"})
 public class MenuController {
 	
 	@Autowired
@@ -38,7 +43,7 @@ public class MenuController {
 	
 	
 	@RequestMapping("menulist")
-	public String getAllMenu(Model m,String pageNum,String method,MenuBean mb) {
+	public String getAllMenu(Model m,String pageNum,String method,MenuBean mb,HttpSession session) {
 		// TODO Auto-generated method stub
 		int pagenum=0;
 		if(State.NOTNULL(pageNum)){
@@ -48,19 +53,21 @@ public class MenuController {
 		}
 		 PageHelper.startPage(pagenum, State.PAGESIZE);
 		 List<MenuBean> mls=new ArrayList<MenuBean>();
-		 if(State.NOTNULL(method)){
-			 mls=ms.getAllMenu(mb);
-		 }else{
-			 mls=ms.getAllMenu();
+		 if("clear".equals(method)){
+			 mb.setMenuName(null);
+			 mb.setMenuState(999);
+            session.removeAttribute("menuBean");
 		 }
-		PageInfo<Object> pl=new PageInfo(mls,State.NUM);
+		 m.addAttribute("menuBean",mb);
+		 mls=ms.getAllMenu(mb);
+		PageInfo<Object> info=new PageInfo(mls,State.NUM);
 		m.addAttribute("mls",mls);
-		m.addAttribute("page",pl);
+		m.addAttribute("page",info);
 		return "/resource/demo8/list.jsp";
 	}
 	@RequestMapping("/padd")
 	public String paddDept(Model m){
-		 List<MenuBean> mls=ms.getAllMenu();
+		 List<MenuBean> mls=ms.getMenus();
 		 m.addAttribute("mls",mls);
 		return "/resource/demo8/add.jsp";
 	}
@@ -69,12 +76,12 @@ public class MenuController {
 		if(ms.addMenu(mb)){
 			m.addAttribute("msg","添加成功。");
 		}
-		return "menulist";
+		return "menulist?method=clear&pageNum=1";
 	}
 	@RequestMapping("/look")
 	public String lookMenu(Model m,String menuId,String pageNum){
 		MenuBean mb=ms.getMenuById(menuId);
-		List<MenuBean> mls=ms.getAllMenu();
+		List<MenuBean> mls=ms.getMenus();
 		 m.addAttribute("mls",mls);
 		m.addAttribute("mb",mb);
 		m.addAttribute("pageNum",pageNum);
@@ -86,7 +93,7 @@ public class MenuController {
 		if(ms.deleteMenu(menuId)){
 			m.addAttribute("msg","删除成功。");
 		}
-		return "menulist";
+		return "menulist?method=clear";
 	}
 	
 	@RequestMapping("/pupdate")
@@ -102,13 +109,20 @@ public class MenuController {
 	@RequestMapping("update")
 	public String updateDept(Model m,MenuBean mb,HttpSession session){
 		ms.updateMenu(mb);
-		return "menulist?pageNum="+(String)session.getAttribute("pageNum")+"";
+		return "menulist?pageNum="+(String)session.getAttribute("pageNum")+"&method=clear";
 	}
 	
-	/*public Set<String> autoComplete(Model m,@RequestParam("str")String menuname){
-		Set<String> set=ms.autoComplete(menuname);
-		m.addAttribute("set",set);
-		return set;
-	}*/
+	@RequestMapping("/autoComplete")
+	public void auto(Model m, HttpServletResponse response) throws IOException {
+		Set<String> l = ms.autoCompleteString();
+		response.setContentType("text/html;");
+		PrintWriter out = response.getWriter();
+		String s = new Gson().toJson(l);
+		System.out.println(s);
+		out.write(s);
+		out.flush();
+		out.close();
+
+	}
 	
 }

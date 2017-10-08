@@ -21,8 +21,8 @@
 		<result column="user_time" jdbcType="VARCHAR" property="userTime"/>
 		<association property="db" javaType="com.xhhy.bean.DeptBean"
 			column="dept_id" select="com.xhhy.dao.DeptDao.getDeptById"></association>
-		<!-- <association property="rb" javaType="com.xhhy.bean.RoleBean"
-		     column="dept_id" select="com.xhhy.dao.RoleDao.getRoles"></association> -->
+		 <association property="rb" javaType="com.xhhy.bean.RoleBean"
+			column="role_id" select="com.xhhy.dao.RoleDao.getRole"></association> 
 	</resultMap>
 	<sql id="selectUser">
 		select
