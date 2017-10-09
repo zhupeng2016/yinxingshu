@@ -167,6 +167,29 @@
 			and a.dept_id=#{deptId}
 		</if>
 	</select>
-
-
+   
+   
+   
+   
+   <resultMap type="com.xhhy.bean.GuanliBean" id="myguanli">
+		<result column="GUANLI_ID" property="guanliId" />
+		<result column="YEAN" property="yean" />
+		<result column="GAOCENG" property="gaoceng" />
+		<result column="DICENG" property="diceng" />
+		<result column="YEWU" property="yewu" />
+		<result column="ZHINENG" property="zhineng" />
+		<result column="JISHU" property="jishu" />
+	</resultMap>
+	<select id="getzhixian" resultMap="myguanli">
+		SELECT
+		GUANLI_ID,YEAN,GAOCENG,DICENG,YEWU,ZHINENG,JISHU FROM GUANLI_TB where 1=1
+		<if test="guanliId!=0 and guanliId!=999">
+			and GUANLI_ID=#{guanliId}
+		</if>
+		
+	</select>
+	<select id="getzhixiana" resultMap="myguanli">
+		SELECT
+		GUANLI_ID,YEAN,GAOCENG,DICENG,YEWU,ZHINENG,JISHU FROM GUANLI_TB
+	</select>
 </mapper>

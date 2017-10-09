@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.github.pagehelper.PageInfo;
 import com.xhhy.bean.DeptBean;
 import com.xhhy.bean.EducationBean;
+import com.xhhy.bean.GuanliBean;
 import com.xhhy.bean.MingxiBean;
 import com.xhhy.bean.RecordBean;
 import com.xhhy.bean.ResumeBean;
@@ -24,7 +25,7 @@ import com.xhhy.service.DeptService;
 import com.xhhy.service.MingxiService;
 
 @Controller
-@SessionAttributes({ "mb", "rb", "eb", "yearBean" })
+@SessionAttributes({ "mb", "rb", "eb", "yearBean","guabliBean" })
 public class MingxiController {
 	@Autowired
 	private MingxiService ms;
@@ -95,5 +96,21 @@ public class MingxiController {
 		m.addAttribute("list", list);
 		m.addAttribute("yb", yb);
 		return "/datamsg/demo2/zilist.jsp";
+	}
+	
+	
+	@RequestMapping("/guanli")
+	public String getzhixian(Model m,GuanliBean gb,
+			@RequestParam(value = "query", required = false) String query, HttpServletRequest request){
+		if ("query".equals(query)) {
+			gb.setGuanliId(999);
+			m.addAttribute("guabliBean", gb);
+		}
+		List<GuanliBean> list = ms.getzhixian(gb.getGuanliId());
+		List<GuanliBean> l = ms.getzhixiana();
+		m.addAttribute("l",l);
+		m.addAttribute("list", list);
+		m.addAttribute("guabliBean", gb);
+		return "/datamsg/demo5/list.jsp";
 	}
 }
