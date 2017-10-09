@@ -10,10 +10,12 @@ public class MenuBean implements Serializable {
 	private int menuState;
 	private int menuDel;
 	private String menuRemark;
+	private boolean is;
 	public MenuBean() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
 	public MenuBean(int menuId, String menuName, int parentMenu, String url, int menuState, int menuDel,
 			String menuRemark) {
 		super();
@@ -25,6 +27,21 @@ public class MenuBean implements Serializable {
 		this.menuDel = menuDel;
 		this.menuRemark = menuRemark;
 	}
+	
+	
+	public MenuBean(int menuId, String menuName, int parentMenu, String url, int menuState, int menuDel,
+			String menuRemark, boolean is) {
+		super();
+		this.menuId = menuId;
+		this.menuName = menuName;
+		this.parentMenu = parentMenu;
+		this.url = url;
+		this.menuState = menuState;
+		this.menuDel = menuDel;
+		this.menuRemark = menuRemark;
+		this.is = is;
+	}
+
 	public int getMenuId() {
 		return menuId;
 	}
@@ -66,6 +83,14 @@ public class MenuBean implements Serializable {
 	}
 	public void setMenuRemark(String menuRemark) {
 		this.menuRemark = menuRemark;
+	}
+
+	public boolean isIs() {
+		return is;
+	}
+
+	public void setIs(boolean is) {
+		this.is = is;
 	}
 	
 	

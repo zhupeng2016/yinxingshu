@@ -1,5 +1,6 @@
 package com.xhhy.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,11 +11,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.github.pagehelper.PageInfo;
 import com.xhhy.util.State;
 import com.xhhy.bean.DeptBean;
+import com.xhhy.bean.MenuBean;
 import com.xhhy.bean.RoleBean;
 import com.xhhy.service.DeptService;
+import com.xhhy.service.MenuService;
+import com.xhhy.service.RoleMenuService;
 import com.xhhy.service.RoleService;
 @Controller
 @RequestMapping("/rec")
+
 public class RoleController {
 
 	// 展现职位发布列表
@@ -22,7 +27,8 @@ public class RoleController {
 	private RoleService rs;
 	@Autowired
 	private DeptService ds;
-	@RequestMapping("/demo1")
+	
+	/*@RequestMapping("/demo1")
 	public String getRoles(Integer pageNum,Model map) {
 		if(pageNum==null){
 			pageNum=1;
@@ -33,7 +39,7 @@ public class RoleController {
 		map.addAttribute("roleList", roleList);
         map.addAttribute("page",page); 
 		return "/zhaopin/demo1/list.jsp";
-	}
+	}*/
 
 	// 查看职员信息
 	@RequestMapping("/view")

@@ -34,9 +34,9 @@
    <update id="deleteDeptById">
        update dept_tb set dept_del=1  where dept_id=#{deptId}
    </update>
-  <!--  <update id="updateDept">
-       update dept_tb set dept_short_name=#{db.deptShortName},dept_name=#{db.deptName},parent_dept=#{db.parentDept},dept_address=#{db.deptAddress},dept_intro=#{db.deptIntro},
-       dept_remark=#{db.deptRemark},dept_state=#{db.deptState} where dept_id=#{db.deptId}
-   </update> -->
+    <update id="updateDept">
+       update dept_tb set dept_short_name=#{deptShortName},dept_name=#{deptName},parent_dept=#{parentDept},dept_address=#{deptAddress},dept_intro=#{deptIntro},
+       dept_remark=#{deptRemark},dept_state=#{deptState} where dept_id=#{deptId}
+   </update>
 	
 </mapper>

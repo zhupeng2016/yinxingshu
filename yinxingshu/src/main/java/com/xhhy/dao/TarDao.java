@@ -8,9 +8,7 @@ import com.xhhy.bean.TarBean;
 @Repository
 public interface TarDao {
 	    //培训计划展现
-		public List<TarBean> getTar();
-		//培训计划模糊查询
-		public List<TarBean> autoList(TarBean tb);
+		public List<TarBean> getTar(TarBean tb);
 		//培训计划增加
 		public void addTar(TarBean tb);
 		//培训计划查看

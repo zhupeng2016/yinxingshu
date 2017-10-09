@@ -15,8 +15,7 @@
 <meta http-equiv="content-type" content="text/html;charset=utf-8">
 <link href="css/mine.css" type="text/css" rel="stylesheet">
 <script type="text/javascript">
-
-
+	
 </script>
 
 </head>
@@ -26,10 +25,12 @@
 	<div class="div_head">
 		<span> <span style="float: left">当前位置是：-系统管理》部门管理</span> <span
 			style="float: right; margin-right: 8px; font-weight: bold"> <a
-				style="text-decoration: none" href="dept/pupdate/${db.deptId}">【修改】</a> <c:if
+				style="text-decoration: none"
+				href="dept/pupdate?deptId=${db.deptId}">【修改】</a> <c:if
 					test="${db.parentDept==0 }">
-					<a style="text-decoration: none" href="dept/addChildDept/${db.deptId}">【添加子部门】</a>
-				</c:if> <a style="text-decoration: none"  href="dept/delete/${db.deptId}" >【删除】</a>
+					<%-- <a style="text-decoration: none" href="dept/addChildDept">【添加子部门】</a> --%>
+				</c:if> <a style="text-decoration: none"
+				href="dept/delete?deptId=${db.deptId}">【删除】</a>
 		</span>
 		</span>
 	</div>
@@ -54,14 +55,15 @@
 				<tr>
 					<td>上级部门：</td>
 					<td>
-					   <c:if test="${db.parentDept==0 }">
-						<input type="text"  name="parentDept" value="银杏树信息管理公司" />
-					    </c:if>
-				<%-- 	<c:forEach items="${deptlist }" var="dbs" >
-					   <c:if test="${dbs.deptId==${db.parentDept }">
-					   <input type="text"  name="parentDept" value="${dbs.deptName }" />
-					   </c:if>
-					</c:forEach> --%>
+					<c:forEach items="${deptlist }" var="dbs">
+					<c:if test="${dbs.deptId==db.parentDept }">${dbs.deptName }</c:if>
+					</c:forEach>
+					<%-- <select name="parentDept">
+							<c:forEach items="${deptlist }" var="dbs">
+								<option value="${dbs.deptId }"
+									<c:if test="${dbs.deptId==db.parentDept }">selected="selected"</c:if>>${dbs.deptName }</option>
+							</c:forEach>
+					</select> --%>
 					</td>
 				</tr>
 				<tr>
@@ -81,9 +83,9 @@
 				<tr>
 					<td>是否启用：</td>
 					<td><c:if test="${db.deptState==0 }">
-					是					
+					启用					
 				    </c:if> <c:if test="${db.deptState==1 }">
-					否					
+					禁用					
 				    </c:if></td>
 				</tr>
 			</table>

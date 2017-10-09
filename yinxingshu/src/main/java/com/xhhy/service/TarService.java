@@ -7,9 +7,7 @@ import com.xhhy.bean.TarBean;
 
 public interface TarService {
 	//培训计划分页
-	public PageInfo getTar(int nowPage,int pageSize,int num);
-	//培训计划模糊查
-	public List<TarBean> autoList(TarBean tb);
+	public PageInfo getTar(TarBean tb,int nowPage,int pageSize,int num);
 	//培训计划增加
 	public void addTar(TarBean tb);
 	//培训计划查看

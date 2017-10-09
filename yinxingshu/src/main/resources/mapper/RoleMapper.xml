@@ -24,8 +24,11 @@
 	<sql id="selectRole">
 		select
 		ROLE_ID,DEPT_ID,ROLE_CODE,ROLE_NAME,ROLE_KIND,ROLE_NUM,STARTTIME,EDDTIME,ROLE_INTRO,ROLE_REMARK,ROLE_REQUIRED,ROLE_STATE,ROLE_DEL,ROLE_RECRITTYPE
+
 		from role_tb
 		where role_del = 0  
+
+		from role_tb where role_del=0
 	</sql>
 
 	<select id="getRoles" resultMap="myrole">
@@ -34,11 +37,13 @@
 	   <!--  <trim prefix="where" prefixOverrides="and">
 	       <if test="roleDel==0">role_id=#{roleId}</if>
 	    </trim> -->
+
+		<include refid="selectRole" />
+		<!-- <trim prefix="where" prefixOverrides="and"> <if test="roleDel==0">role_id=#{roleId}</if> 
+			</trim> -->
+		<!-- <include refid="selectRole" /> -->
 	</select>
-	<!-- 根据用户id得到roleid -->
-	<select id="getRoleId" resultType="int">
-		select role_id from user_role where user_id=#{userId}
-	</select>
+
 	<select id="getRole" resultMap="myrole">
 		<include refid="selectRole" />
 		and role_id = #{roleId}
@@ -66,4 +71,59 @@
 		ROLE_ID=#{roleId},DEPT_ID=#{deptId},ROLE_CODE={roleCode},ROLE_NAME=#{roleName},ROLE_KIND=#{roleKind},ROLE_NUM=#{roleNum},STARTTIME=#{startTime},EDDTIME=#{eddTime},ROLE_INTRO=#{roleIntro},ROLE_REMARK=#{roleRemark},ROLE_REQUIRED=#{roleRequired},ROLE_STATE=#{roleState},ROLE_DEL=#{roleDel},ROLE_RECRITTYP=#{roleRecritType}
 		where ROLE_ID=#{roleId} and ROLE_DEL=1
 	</update>
+
+
+	<!-- 葛大龙 -->
+
+	<!-- 根据用户id得到roleid -->
+	<select id="getRoleId" resultType="Integer">
+		select role_id from
+		user_tb where user_id=#{userId}
+	</select>
+
+	<!-- 查询所有职位信息 -->
+	<select id="getAllRole" resultMap="myrole">
+		<include refid="selectRole" />
+		<if test="roleName != null and roleName != &quot;&quot; ">
+			and role_name like concat(concat('%',#{roleName}),'%')
+		</if>
+		<if test="deptName != null and deptName != &quot;&quot; ">
+			and dept_id in(select dept_id from dept_tb where dept_name like
+			concat(concat('%',#{deptName}),'%') )
+		</if>
+		<if test="roleState !=999">
+			and role_state=#{roleState}
+		</if>
+               order by role_id desc
+	</select>
+
+	<!-- 状态删除职位 -->
+	<update id="delRole">
+		update role_tb set role_del=1 where role_id=#{roleId}
+	</update>
+	<!-- 修改职位 信息 -->
+	<update id="updateRoleBy">
+		update role_tb set
+		role_name=#{roleName},dept_id=#{deptId},role_intro=#{roleIntro},role_remark=#{roleRemark},role_state=#{roleState}
+		,role_kind=#{roleKind} where role_id=#{roleId}
+	</update>
+	<!-- 添加职位信息 -->
+	<insert id="addro">
+		insert into
+		role_tb(ROLE_ID,DEPT_ID,ROLE_CODE,ROLE_NAME,ROLE_KIND,ROLE_INTRO,ROLE_REMARK,ROLE_STATE,ROLE_DEL)
+		values(0,#{deptId},#{roleCode},#{roleName},#{roleKind},#{roleIntro},#{roleRemark},0,0)
+	</insert>
+	<!-- 最大编号 -->
+	<select id="getMaxCode" resultType="String">
+	    select role_code from role_tb where role_id=(select max(role_id) from role_tb)
+	</select>
+		<!-- //得到id -->
+	<select id="getIdByCode" resultType="int">
+	    select role_id from role_tb where role_code=#{roleCode}
+	</select>
+	
+	
+<!-- 葛大龙 -->
+
+
 </mapper>

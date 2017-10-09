@@ -13,8 +13,12 @@
 <title>用户登录</title>
 
 <link href="css/login.css" type="text/css" rel="stylesheet" />
-
+<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+<script src="js/jquery.validate.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery.validate.js"></script>
 </head>
+
 <body id="userlogin_body">
 	<form action="login" method="post">
 <div id="user_login">
