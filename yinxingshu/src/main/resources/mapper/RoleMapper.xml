@@ -24,11 +24,7 @@
 	<sql id="selectRole">
 		select
 		ROLE_ID,DEPT_ID,ROLE_CODE,ROLE_NAME,ROLE_KIND,ROLE_NUM,STARTTIME,EDDTIME,ROLE_INTRO,ROLE_REMARK,ROLE_REQUIRED,ROLE_STATE,ROLE_DEL,ROLE_RECRITTYPE
-
-		from role_tb
-		where role_del = 0  
-
-		from role_tb where role_del=0
+		 from role_tb where role_del=0
 	</sql>
 
 	<select id="getRoles" resultMap="myrole">
