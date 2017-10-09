@@ -53,14 +53,10 @@ public class RoleServiceImpl implements RoleService {
 		return rd.pupdateRole(roleId);
 	}
 
-	// 修改职位发布信息
-	public boolean updateRole(Integer roleId, String
+	//修改职位发布信息
+	public boolean updateRole(RoleBean role) {
 
-	roleNum, String roleRemark, String roleRequired) {
-		// TODO Auto-generated method stub
-		return rd.updateRole
-
-		(roleId, roleNum, roleRemark, roleRequired);
+		return rd.updateRole(role);
 	}
 
 	/*
@@ -83,6 +79,11 @@ public class RoleServiceImpl implements RoleService {
 		// TODO Auto-generated method stub
 		return rd.getRoleId(userId);
 	}
+
+	
+	
+	
+
 
 	// 状态删除职位
 	public boolean delRole(Integer roleId) {
@@ -120,6 +121,12 @@ public class RoleServiceImpl implements RoleService {
 	public int getIdByCode(String roleCode) {
 		// TODO Auto-generated method stub
 		return rd.getIdByCode(roleCode);
+	}
+
+	@Override
+	public boolean deleteRole(Integer roleId) {
+		// TODO Auto-generated method stub
+		return rd.deleteRole(roleId);
 	}
 	
 	

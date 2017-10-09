@@ -31,11 +31,20 @@ public class ResumeBean implements Serializable {
 	private String interviewTime; // 面试时间
 	private String resolutionTime; // 决议时间
 	private String attributeMianshi;// 是否面试过
+	private Integer resumeDel;// 是否删除
 	private Integer roleId;// 职位主键
 	private List<RoleBean> role; // 职位对象
 	private UserBean user; // 职员对象
 	private String roleName;// 职位名称
 	private String startTime;// 登记时间
+
+	public Integer getResumeDel() {
+		return resumeDel;
+	}
+
+	public void setResumeDel(Integer resumeDel) {
+		this.resumeDel = resumeDel;
+	}
 
 	public String getAttributeMianshi() {
 		return attributeMianshi;

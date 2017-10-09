@@ -9,6 +9,9 @@ public interface RoleService {
 
 	// 展现职位发布
 
+	public PageInfo getRoles(int nowPage,int pageSize,int num);
+
+
 	
 	public  List<RoleBean> getRoles();
 
@@ -24,11 +27,7 @@ public interface RoleService {
 	roleId);
 
 	// 变更职位
-	public boolean updateRole(Integer
-
-	roleId, String roleNum, String roleRemark, String
-
-	roleRequired);
+	public boolean updateRole(RoleBean role);
 
 	/*//预添加
 	public List<RoleBean> paddRole();*/
@@ -37,6 +36,12 @@ public interface RoleService {
 	//添加职员发布数据
 	public boolean addRole(RoleBean role);
 	
+
+	//删除职位
+	public boolean deleteRole(Integer roleId);
+	
+	
+	//根据用户id得到roleid
 	
 // -----葛大龙------------
 	//得到所有职位信息

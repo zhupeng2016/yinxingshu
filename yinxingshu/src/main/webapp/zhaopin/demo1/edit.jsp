@@ -10,42 +10,57 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
     <head>
+    <base href="<%=basePath%>" />
         <title>职位发布登记</title>
         <meta http-equiv="content-type" content="text/html;charset=utf-8">
-        <link href="../../css/mine.css" type="text/css" rel="stylesheet">
+        <link href="css/mine.css" type="text/css" rel="stylesheet">
+        <script type="text/javascript" src="js/My97DatePicker/WdatePicker.js"></script>
+		<script type="text/javascript">
+			function checkTime() {
+				var st = document.getElementById("st");
+				var et = document.getElementById("et");
+				if (st.value != null && st.value != "" && et.value != null
+						&& et.value != "") {
+					if (st.value > et.value) {
+						st.value = "";
+						et.value = "";
+						alert("请输入正确的时间!");
+					}
+				}
+			}
+		</script>
     </head>
-
     <body>
-
          <div class="div_head">
             <span>
                 <span style="float:left">当前位置是：职位发布管理-》职位发布登记</span>
                 <span style="float:right;margin-right: 8px;font-weight: bold">
-                    <a style="text-decoration: none" href="list.html">【返回】</a>
+                    <a style="text-decoration: none" href="rec/demo1">【返回】</a>
                 </span>
             </span>
         </div>
         <div></div>
 
         <div style="font-size: 13px;margin: 10px 5px">
-            <form action="list.html" method="post" enctype="multipart/form-data">
+            <form action="rec/edit" method="post" enctype="multipart/form-data">
             <table border="1" width="100%" class="table_a">
+            	<input type="hidden" name="roleId" value="${role.roleId }"/>
                 <tr>
                     <td width="120px;">部门<span style="color:red">*</span>：</td>
-                    <td><select>
-						<option>人事部</option>
-						<option>财务部</option>
-						<option selected >技术部</option>
-						<option>研发部</option>
+                    <td><select name="deptId">
+						    <option>-请选择-</option>
+						<c:forEach items="${dept }" var="d">
+						    <option value="${d.deptId }" <c:if test="${d.deptId==role.deptId }">selected</c:if>>${d.deptName }</option>
+						</c:forEach>
 					</select></td>
                 </tr>
                 <tr>
                     <td>招聘类型<span style="color:red">*</span>：</td>
                     <td>
-                     <select>
+                     <select name="roleRecritType">
 						<option>-请选择-</option>
-						<option>校园招聘</option>
-						<option>社会招聘</option>
+						<option value="0" <c:if test="${role.roleRecritType==0 }">selected</c:if>>校园招聘</option>
+						<option value="1" <c:if test="${role.roleRecritType==1 }">selected</c:if>>社会招聘</option>
 					 </select>
                     </td>
                 </tr>
@@ -53,42 +68,47 @@
                 <tr>
                     <td>招聘人数<span style="color:red">*</span>：</td>
                     <td>
-						<input type="text" name="" value="5" /></td>
+						<input type="text" name="roleNum" value="${role.roleNum }" /></td>
                 </tr>
                 <tr>
                     <td>职位名称<span style="color:red">*</span>：</td>
                     <td>
-						<input type="text" readonly name="f_goods_image" value="高级工程师" />
+						<input type="text" readonly name="roleName" value="${role.roleName }" />
 					</td>
                 </tr>
 				<tr>
                     <td>职位编码<span style="color:red">*</span>：</td>
                     <td>
-						<input type="text" readonly name="positionnum" value="JS001" />
+						<input type="text" readonly name="roleCode" value="${role.roleCode }" />
 					</td>
                 </tr>
 				<tr>
                     <td>职位分类<span style="color:red">*</span>：</td>
                     <td>
-						<input type="text" readonly name="positioncategory" value="技术" />
+						
+						<select name="roleKind">
+						    <option value="0" <c:if test="${role.roleKind==0 }">selected</c:if>>管理</option>
+						     <option value="1" <c:if test="${role.roleKind==1 }">selected</c:if>>技术</option>
+						     <option value="2" <c:if test="${role.roleKind==2 }">selected</c:if>>业务</option>
+						</select>
 					</td>
                 </tr>
 				<tr>
                     <td>登记人<span style="color:red">*</span>：</td>
                     <td>
-						<input type="text" readonly name="f_goods_image" value="刘经理" />
+						<input type="text" readonly name="userName" value="${ub.userName }" />
 					</td>
                 </tr>
                 <tr>
                     <td>登记时间<span style="color:red">*</span>：</td>
                     <td>
-                        <input type="text" name="f_goods_image" readonly value="2015-10-28" />
+                    <input type="text" name="startTime" readonly value="${role.startTime }" id="st" onclick="WdatePicker()" onchange="checkTime()"/>
                     </td>
                 </tr>
 <tr>
                     <td>截止时间<span style="color:red">*</span>：</td>
                     <td>
-                        <input type="text" name="f_goods_image" readonly value="2015-11-28" />
+                    <input type="text" name="eddTime"  value="${role.eddTime }"  id="et" onclick="WdatePicker()" onchange="checkTime()"/>
                     </td>
                 </tr>
 
@@ -96,8 +116,7 @@
                     <td>职位描述<span style="color:red">*</span>：</td>
                     <td>
                        <textarea cols="70" rows="12">  
-					 1、负责指导java产品技术方向，研发java教育产品。
-					   2、为java产品提供专家级的技术支持。
+					${role.roleRemark }
 					 
 					   </textarea>
                     </td>                
@@ -107,17 +126,7 @@
                     <td>招聘要求<span style="color:red">*</span>：</td>
                     <td>
                        <textarea cols="70" rows="12"> 
-					  技能要求：
-				1、至少5年以上大型B/S架构软件开发经验。
-				2、精通SSH，有2年以上的使用经验持。
-				3、至少具有一种主流数据库系统的缝隙使用经验，精通sql，熟悉基本的性能优化方法。
-				4、。。。
-				5.。。。
-				素质要求：
-				1、     热爱IT职业教育行业，具有良好的基本技术素质。
-				2、     有较强的学习能力，沟通，表达能力强，有良好工作习惯。
-				3、     。。。
-				4、     。。。
+					${role.roleRequired }
 					   </textarea>
                     </td>                
                 </tr>

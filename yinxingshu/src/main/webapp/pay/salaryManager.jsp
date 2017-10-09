@@ -42,6 +42,7 @@
 .tr_color {
 	background-color: #9F88FF
 }
+<body>
 </style>
 <body>
 	<div class="div_head">

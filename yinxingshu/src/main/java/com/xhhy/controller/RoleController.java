@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.github.pagehelper.PageInfo;
 import com.xhhy.util.State;
@@ -29,7 +30,6 @@ public class RoleController {
 	
 	/*@RequestMapping("/demo1")
 	public String getRoles(Integer pageNum,Model map) {
-		
 		if(pageNum==null){
 			pageNum=1;
 		}
@@ -53,18 +53,21 @@ public class RoleController {
 	@RequestMapping("/viewtwo")
 	public String pupdateRole(Model m, Integer roleId) {
 		RoleBean role = rs.getRole(roleId);
+		List<DeptBean> dept=ds.getAllDept();
+		m.addAttribute("dept", dept);
 		m.addAttribute("role", role);
 		return "/zhaopin/demo1/edit.jsp";
 	}
 
 	// 变更职员信息
 	@RequestMapping("/edit")
-	public String updateRole(Model m, Integer roleId, String roleNum, String roleRemark, String roleRequired) {
+	public String updateRole(Model m, RoleBean role) {
 		/*
 		 * role.setRoleId(roleId); //role.setDeptId(deptId);
 		 * role.setRoleCode(roleCode); role.setRoleName(roleName);
 		 */
-		boolean b = rs.updateRole(roleId, roleNum, roleRemark, roleRequired);
+		System.out.println(role);
+		boolean b = rs.updateRole(role);
 		if (b) {
 			return "/rec/demo1";
 		} else {
@@ -95,5 +98,6 @@ public class RoleController {
 			return "rec/demo1";
 		}
 	}
+
 	}
 
