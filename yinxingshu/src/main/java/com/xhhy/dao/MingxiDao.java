@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.xhhy.bean.EducationBean;
+import com.xhhy.bean.GuanliBean;
 import com.xhhy.bean.MingxiBean;
 import com.xhhy.bean.ResumeBean;
 import com.xhhy.bean.YearBean;
@@ -26,4 +27,8 @@ public interface MingxiDao {
 	
 	//查询所有部门学历人数
 	public List<YearBean> getyear(@Param("educationId")int educationId,@Param("deptId")int deptId);
+	
+	 
+	public List<GuanliBean>  getzhixian(@Param("guanliId")int guanliId);
+	public List<GuanliBean>  getzhixiana();
 }

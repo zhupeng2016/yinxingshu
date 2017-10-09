@@ -4,8 +4,8 @@ import java.util.List;
 
 import com.github.pagehelper.PageInfo;
 import com.xhhy.bean.EducationBean;
+import com.xhhy.bean.GuanliBean;
 import com.xhhy.bean.MingxiBean;
-import com.xhhy.bean.RecordBean;
 import com.xhhy.bean.YearBean;
 
 public interface MingxiService {
@@ -18,4 +18,6 @@ public interface MingxiService {
 		public List<EducationBean> geteducationa();
 		//查询所有部门学历人数
 		public List<YearBean> getyear(int educationId,int deptId);
+		public List<GuanliBean> getzhixian(int guanliId);
+		public List<GuanliBean> getzhixiana();
 }

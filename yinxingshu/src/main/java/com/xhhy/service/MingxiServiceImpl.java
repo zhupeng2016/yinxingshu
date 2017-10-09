@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.xhhy.bean.EducationBean;
+import com.xhhy.bean.GuanliBean;
 import com.xhhy.bean.MingxiBean;
 import com.xhhy.bean.ResumeBean;
 import com.xhhy.bean.YearBean;
@@ -73,5 +74,11 @@ public class MingxiServiceImpl implements MingxiService {
 			
 			return md.getyear(educationId,deptId);
 		}
-
+		
+		public List<GuanliBean> getzhixian(int guanliId){
+			return md.getzhixian(guanliId);
+		}
+		public List<GuanliBean> getzhixiana(){
+			return md.getzhixiana();
+		}
 }
