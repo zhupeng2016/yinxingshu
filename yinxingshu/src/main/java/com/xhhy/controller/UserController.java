@@ -106,9 +106,12 @@ public class UserController {
 	}
 
 	@RequestMapping("/msg")
-		public String index(Model m,UserBean u){
+		public String index(Model m,UserBean u,HttpSession session){
 			boolean is=us.UpdateById(u);
 			if(is){
+				UserBean ubb=(UserBean) session.getAttribute("ub");
+				UserBean ub=us.login(ubb.getLoginName(),ubb.getPassword());
+				m.addAttribute("ub",ub);
 				return "/right.jsp";
 			}else{
 				return "/msg.jsp";

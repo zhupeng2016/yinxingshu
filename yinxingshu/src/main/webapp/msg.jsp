@@ -52,7 +52,8 @@
 					<td><c:if test="${sessionScope.ub.sex==0}">
 							<input type="radio" name="sex" value="0" checked="checked" /> 男
                     	<input type="radio" name="sex" value="1" /> 女
-                    	</c:if> <c:if test="${sessionScope.ub.sex==1}">
+                    	</c:if>
+                    	 <c:if test="${sessionScope.ub.sex==1}">
 							<input type="radio" name="sex" value="0" /> 男
                        <input type="radio" name="sex" value="1"
 								checked="checked" /> 女
@@ -62,7 +63,7 @@
 				<tr>
 					<td>身份证号：</td>
 					<td><input type="text" name="idCard" id="idCard"
-						value="${sessionScope.ub.idCard}" /> <span calss="c1">请输入</span></td>
+						value="${sessionScope.ub.idCard}" /> <span calss="c1"></span></td>
 				</tr>
 				<tr>
 					<td>办公电话：</td>
@@ -92,7 +93,7 @@
 
 
 				<tr>
-					<td colspan="2" align="center"><input type="button" id="bt"
+					<td colspan="2" align="center"><input type="submit" id="bt"
 						value="修改"></td>
 				</tr>
 			</table>
