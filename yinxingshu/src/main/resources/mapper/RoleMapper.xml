@@ -34,10 +34,6 @@
 	       <if test="roleDel==0">role_id=#{roleId}</if>
 	    </trim> -->
 
-		<include refid="selectRole" />
-		<!-- <trim prefix="where" prefixOverrides="and"> <if test="roleDel==0">role_id=#{roleId}</if> 
-			</trim> -->
-		<!-- <include refid="selectRole" /> -->
 	</select>
 
 	<select id="getRole" resultMap="myrole">
