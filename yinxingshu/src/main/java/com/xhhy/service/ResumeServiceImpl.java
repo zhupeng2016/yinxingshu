@@ -18,6 +18,35 @@ public class ResumeServiceImpl implements ResumeService {
 		// TODO Auto-generated method stub
 		return rsd.getResume();
 	}
+	//查看简历用户信息
+	@Override
+	public ResumeBean viewResume(Integer resumeId) {
+		// TODO Auto-generated method stub
+		return rsd.viewResume(resumeId);
+	}
+	
+	//预修改
+	@Override
+	public ResumeBean pupdateResuem(Integer resumeId) {
+		// TODO Auto-generated method stub
+		return rsd.pupdateResume(resumeId);
+	}
+
+	
+	//修改
+	@Override
+	public boolean updateResume(Integer resumeId) {
+		// TODO Auto-generated method stub
+		return rsd.updateResume(resumeId);
+		
+	}
+	
+	//添加
+	@Override
+	public boolean addResume() {
+		// TODO Auto-generated method stub
+		return rsd.addResume();
+	}
 	
 	
 	

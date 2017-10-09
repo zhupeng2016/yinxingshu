@@ -36,9 +36,7 @@
 .tr_color {
 	background-color: #9F88FF
 }
-<
-body
->
+<body>
 </style>
 <div class="div_head">
 	<span> <span style="float: left;">当前位置是：薪酬管理-》薪酬标准管理</span> <span

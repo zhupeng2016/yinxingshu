@@ -23,9 +23,7 @@ public interface RoleDao {
 	public RoleBean pupdateRole(Integer roleId);
 
 	// 变更职位
-	public boolean updateRole(@Param("roleId") Integer roleId, @Param("roleNum") String
-
-	roleNum, @Param("roleRemark") String roleRemark, @Param("roleRequired") String roleRequired);
+	public boolean updateRole(RoleBean role);
 
 	//预添加
 	public List<RoleBean> paddRole();

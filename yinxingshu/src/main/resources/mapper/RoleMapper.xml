@@ -25,15 +25,15 @@
 		select
 		ROLE_ID,DEPT_ID,ROLE_CODE,ROLE_NAME,ROLE_KIND,ROLE_NUM,STARTTIME,EDDTIME,ROLE_INTRO,ROLE_REMARK,ROLE_REQUIRED,ROLE_STATE,ROLE_DEL,ROLE_RECRITTYPE
 		from role_tb
-		where role_del = 0
+		where role_del = 0  
 	</sql>
 
 	<select id="getRoles" resultMap="myrole">
+	
 	    <include refid="selectRole"/>
 	   <!--  <trim prefix="where" prefixOverrides="and">
 	       <if test="roleDel==0">role_id=#{roleId}</if>
 	    </trim> -->
-		<include refid="selectRole" />
 	</select>
 	<!-- 根据用户id得到roleid -->
 	<select id="getRoleId" resultType="int">
@@ -48,21 +48,9 @@
 		and role_id = #{roleId}
 	</select>
 	<update id="updateRole">
-		<if test="roleId!=0">
-			update role_tb
-			<trim prefix="set" suffixOverrides=",">
-				<if test="roleNum!=0">
-					role_num=#{roleNum},
-				</if>
-				<if test="roleRemark!=null and roleRemark!=&quot;&quot;">
-					role_remark=#{roleRemark},
-				</if>
-				<if test="roleRequired!=null and roleRequired!=&quot;&quot;">
-					role_required=#{roleRequired},
-				</if>
-			</trim>
-			where role_id=#{roleId}
-		</if>
+		update role_tb set
+		ROLE_NUM=#{roleNum},STARTTIME=to_date('#{startTime}','YYYY/MM/DD hh24:mi:ss'),EDDTIME=to_date('#{eddTime}','YYYY/MM/DD hh24:mi:ss'),ROLE_INTRO=#{roleIntro},ROLE_REMARK=#{roleRemark},ROLE_REQUIRED=#{roleRequired},ROLE_RECRITTYPE=#{roleRecritType}
+		where ROLE_ID=#{roleId} 
 	</update>
 
 	<!-- <select id="paddRole" resultMap="myrole"> <include refid="selectRole"/> 

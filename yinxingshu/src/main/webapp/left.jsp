@@ -168,6 +168,7 @@
 								<img height=9  src="./img/menu_icon.gif" width=9>
 							</td>
                             <td>
+							    <input type="hidden" name="pageNum" value="1"/>
 								<a class=menuchild  href="../yinxingshu/rec/demo1"   target="right">职位发布管理</a>
 							</td>
 						</tr>

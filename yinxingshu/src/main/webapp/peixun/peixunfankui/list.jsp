@@ -69,9 +69,9 @@
 				</tr>
 
 				<tr id="product1">
-				<c:forEach items="${requestScope.l }" var="li">
-					<td>${li.tarName }</td>
-					<td>${li.tarTeacher }</td>
+				<c:forEach items="${requestScope.l}" var="li">
+					<td>${li.tarName}</td>
+					<td>${li.tarTeacher}</td>
 					<td>${li.tarStartTime}</td>
 					<c:if test="${li.tarStartTime==2}">
 					<td>审核通过</td>

@@ -59,13 +59,9 @@ pageSize);
 	}
 
 	//修改职位发布信息
-	public boolean updateRole(Integer roleId, String
-
-	roleNum, String roleRemark, String roleRequired) {
+	public boolean updateRole(RoleBean role) {
 		// TODO Auto-generated method stub
-		return rd.updateRole
-
-		(roleId, roleNum, roleRemark, roleRequired);
+		return rd.updateRole(role);
 	}
 
 	
@@ -89,8 +85,7 @@ pageSize);
 		// TODO Auto-generated method stub
 		return rd.deleteRole(roleId);
 	}
-	public List<RoleBean> getRoles() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
+	
+	
 }
