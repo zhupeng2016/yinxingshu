@@ -111,7 +111,10 @@ charset=UTF-8" />
 
 							<td>业务</td>
 						</c:if>
+	              <c:if test="${roleList.deptId==0 }">
 
+							<td>银杏树信息管理公司</td>
+						</c:if>
 						<c:if test="${roleList.deptId==1 }">
 
 							<td>管理部</td>

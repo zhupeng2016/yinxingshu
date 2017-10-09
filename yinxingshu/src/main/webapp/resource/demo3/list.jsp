@@ -86,10 +86,10 @@ $(function() {
 					<td>${rl.roleCode }</td>
 					<td><a href="role/look?roleId=${rl.roleId }&pageNum=${page.getPageNum() }">${rl.roleName }</a></td>
 					<td>
-					<c:if test="${rl.roleKind==0 }">管理</c:if>
-					<c:if test="${rl.roleKind==1 }">技术</c:if>
-					<c:if test="${rl.roleKind==2 }">业务</c:if>
-					<c:if test="${rl.roleKind==3 }">职能</c:if>
+					<c:if test="${rl.roleKind==1 }">管理</c:if>
+					<c:if test="${rl.roleKind==2 }">技术</c:if>
+					<c:if test="${rl.roleKind==3 }">业务</c:if>
+					<c:if test="${rl.roleKind==4 }">职能</c:if>
 					</td>
 					<td>${rl.dept.deptName }</td>
 					<td>
