@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.xhhy.bean.MenuBean;
-import com.xhhy.bean.RoleMenuBean;
 import com.xhhy.bean.UserBean;
 import com.xhhy.service.RoleMenuService;
 import com.xhhy.service.RoleService;

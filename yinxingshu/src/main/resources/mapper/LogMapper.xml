@@ -3,7 +3,8 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.xhhy.dao.LogDao">
-	<cache type="org.mybatis.caches.ehcache.EhcacheCache" />
+      <cache type="com.xhhy.cache.RedisCache" />
+	<!-- <cache type="org.mybatis.caches.ehcache.EhcacheCache" /> -->
 
 
 	<!-- 查询年记录数目 -->

@@ -17,6 +17,7 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
+     <import resource="spring-redis.xml"/> 
 
 	<!-- 开启注解 -->
 	<context:component-scan base-package="com.xhhy.*"></context:component-scan>
@@ -27,7 +28,7 @@
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 
 	<!-- 读取外部文件 -->
-	<context:property-placeholder location="classpath:jdbc.properties" />
+	<!-- <context:property-placeholder location="classpath:jdbc.properties" /> -->
 	<!-- 配置数据源 -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 		<property name="driverClass" value="${oracle.driver}" />

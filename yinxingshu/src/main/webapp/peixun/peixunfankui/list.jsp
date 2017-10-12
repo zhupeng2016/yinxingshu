@@ -73,10 +73,7 @@
 					<td align="center" width="15%">操作</td>
 				</tr>
 
-				<tr id="product1">
-				<c:forEach items="${requestScope.l}" var="li">
-					<td>${li.tarName}</td>
-					<td>${li.tarTeacher}</td>
+				
 
 				<c:forEach items="${requestScope.l }" var="li">
 				<tr id="product1">
@@ -89,7 +86,7 @@
 					<td><a href="peixun/fankan?tarId=${li.tarId }&pageNum=${requestScope.page.getPageNum()}">培训反馈</a></td>
 				</tr>
 				</c:forEach>
-				</c:forEach>
+			
 				<tr>
 					<td colspan="20" style="text-align: center;"><span> <a
 							href="peixun/fankui?pageNum=1">首页</a> <c:if

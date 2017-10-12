@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xhhy.dao.SalaryManagerDao">
+    <cache type="com.xhhy.cache.RedisCache" />
 <!-- 数据库列名和bean的属性名称不相同  所以配置resultMap -->
 <resultMap type="com.xhhy.bean.SalaryBean" id="Salary">
 	<id column="SALARY_ID" jdbcType="INTEGER" property="salaryId"/>

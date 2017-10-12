@@ -29,7 +29,7 @@
 				href="dept/pupdate?deptId=${db.deptId}">【修改】</a> <c:if
 					test="${db.parentDept==0 }">
 					<%-- <a style="text-decoration: none" href="dept/addChildDept">【添加子部门】</a> --%>
-				</c:if> <a style="text-decoration: none"
+				</c:if> <a style="text-decoration: none" target="_parent"
 				href="dept/delete?deptId=${db.deptId}">【删除】</a>
 		</span>
 		</span>

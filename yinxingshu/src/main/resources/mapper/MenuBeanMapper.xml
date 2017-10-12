@@ -5,7 +5,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
 <mapper namespace="com.xhhy.dao.MenuDao">
-    
+    <cache type="com.xhhy.cache.RedisCache" />
     <resultMap id="mymenu" type="com.xhhy.bean.MenuBean">
     <id column="menu_id" jdbcType="INTEGER" property="menuId" />
     <result column="menu_name" jdbcType="VARCHAR" property="menuName" />

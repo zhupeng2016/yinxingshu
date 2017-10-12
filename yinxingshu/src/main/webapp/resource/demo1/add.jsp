@@ -45,7 +45,7 @@
 
 	<div style="font-size: 13px; margin: 10px 5px">
 
-		<form action="dept/add" method="post" id="myForm" enctype="multipart/form-data">
+		<form action="dept/add" method="post" target="_parent" id="myForm" enctype="multipart/form-data">
 			<table border="1" width="100%" class="table_a">
 				<tr>
 					<td width="120px;">部门编码：<span style="color: red">*</span>：

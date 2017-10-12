@@ -78,7 +78,12 @@
 					<td><input type="text" name="loginName" readonly  value="${user.loginName }" />
 					</td>
 				</tr>
-
+				<tr>
+					<td>密码<span style="color: red">*</span>：
+					</td>
+					<td><input type="text" name="loginName" readonly  value="${user.loginName }" />
+					</td>
+				</tr>
 				<tr>
 					<td>用户姓名<span style="color: red">*</span>：
 					</td>

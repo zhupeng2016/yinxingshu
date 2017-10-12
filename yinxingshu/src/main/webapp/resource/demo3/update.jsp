@@ -21,13 +21,17 @@
         	var is=confirm("确认修改吗？");
         	if(is){
         	$("#myForm").submit();
-        		
         	}
-        	
         });
+        $("#menuId${}")
+        $("#cs").click(function(){
+         var menuIds=$("input[name^=menueIds][checked='checked']").val();
+           alert(menuIds);
+           $("#menuIds").val(menuIds);
+        	});
+        
     }); 
-    
-    
+   
     
     </script>
 </head>
@@ -46,6 +50,7 @@
 	<div style="font-size: 13px; margin: 10px 5px">
 		<form action="role/update?roleId=${rb.roleId }" method="post" id="myForm" 
 			enctype="multipart/form-data">
+			<input type="hidden" id="menuIds" name="menuIds" value="">
 			<table border="1" width="100%" class="table_a">
 				<tr>
 					<td width="120px;">职位编码<span style="color: red">*</span>：
@@ -90,22 +95,26 @@
 					<td>菜单权限<span style="color: red">*</span>：
 					</td>
 					<td > 
-				
+			 <%--   <!-- 正常使用中。。 -->
 			<c:forEach items="${ml }" var="m">
 						<c:if test="${m.parentMenu !=0 }"> &nbsp;&nbsp;&nbsp;</c:if>
 						<input type="checkbox"  name="menuIds"  value="${m.menuId }" <c:if test="${m.is }">checked</c:if> />
 						${m.menuName }<br />
+			</c:forEach> --%>
+				
+				<!-- 添加选中父级菜单 子级菜单全选中 -->
+			<c:forEach items="${ml }" var="m">
+						<c:if test="${m.parentMenu !=0 }"> &nbsp;&nbsp;&nbsp;</c:if>
+						<input type="checkbox" <c:if test="${m.parentMenu ==0 }">id="menuId${m.menuId }"</c:if>
+						  name="menuIds${m.menuId }"  value="${m.menuId }" <c:if test="${m.is }">checked</c:if> />
+						${m.menuName }<br />
 			</c:forEach>
+			
+			
+			
 					</td>   
-					      <!-- <input type="checkbox" />个人信息修改  <br /> 
-					       &nbsp;&nbsp;&nbsp;<input type="checkbox" />密码修改<br /> 
-					       <input type="checkbox" />薪酬管理<br />
-						          &nbsp;&nbsp;&nbsp;<input type="checkbox" />薪酬标准管理<br />
-						          &nbsp;&nbsp;&nbsp;<input type="checkbox" />薪酬标准审批<br />
-						          &nbsp;&nbsp;&nbsp;<input type="checkbox" />薪酬发放管理<br /> -->
+					      
 				</tr>
-
-
 				<tr>
 					<td>职位描述<span style="color: red">*</span>：
 					</td>
@@ -128,6 +137,7 @@
 
 				<tr>
 					<td colspan="2" align="center"><input type="button" value="确定" id="bt">
+					<input type="button" value="测试" id="cs">
 						<input type="reset" value="重置"></td>
 				</tr>
 			</table>

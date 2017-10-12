@@ -57,20 +57,20 @@
 				<tr>
 					<td>培训目的<span style="color: red">*</span>：
 					</td>
-					<td><textarea name="tarResouce" value="${requestScope.tb.tarResouce }">一个新开辟领域的探讨，探讨摸索</textarea></td>
+					<td><textarea name="tarResouce" value="${requestScope.tb.tarResouce }"></textarea></td>
 				</tr>
 
 
 				<tr>
 					<td>参训人员<span style="color: red">*</span>：
 					</td>
-					<td><textarea name="tarEmployee" value="${requestScope.tb.tarEmployee }">李明、 潘贞玉、 李治、 武欣、 孙威、 韩健、 周嵘、 李红、 乔伟、 冯娜娜、 王艳丽、 蒋红林、 韩露、 于学杰、 李娜、 王俊鑫、 田仲义、 袁震</textarea>
+					<td><textarea name="tarEmployee" value="${requestScope.tb.tarEmployee }"></textarea>
 					</td>
 				</tr>
 
 				<tr>
 					<td>培训简介：</td>
-					<td><textarea name="tarIntro" value="${requestScope.tb.tarIntro }">技术专家和教学专家合作开发技术类课程的方法，包括开发流程、岗位职责与沟通方式。</textarea>
+					<td><textarea name="tarIntro" value="${requestScope.tb.tarIntro }"></textarea>
 					</td>
 				</tr>
 

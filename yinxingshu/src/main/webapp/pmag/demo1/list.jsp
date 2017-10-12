@@ -54,7 +54,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <span>
                 <form action="" method="get">
                    姓名: 
-					<input type="text" name="archiveName"   value="${sessionScope.rb.archiveName }" />
+					<input type="text" name="archiveName"   value="" />
 					 审核状态: 
 					<select>
 						<option>--请选择--</option>
